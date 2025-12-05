@@ -12,6 +12,7 @@
 |PMAN-DP Display module        |schematic, gerber and KiCAD files     |                                                          |
 |PMAN-SW Switch module         |schematic, gerber and KiCAD files     |                                                          |
 |PPOW Power distribution module|schematic, gerber and KiCAD files     |                                                          |
+|RCBus                         |information in PDF files              |[Small Computer Central](https://smallcomputercentral.com)|
 |SC126 Z180 motherboard        |short info, schematic and gerber files|[Small Computer Central](https://smallcomputercentral.com)|
 |SC702 RCBus backplane         |short info, schematic and gerber files|[Small Computer Central](https://smallcomputercentral.com)|
 |SC715 RCBus CF module         |short info, schematic and gerber files|[Small Computer Central](https://smallcomputercentral.com)|
@@ -26,7 +27,7 @@
 
 |name   |function                                                       |
 |-------|---------------------------------------------------------------|
-|PAIO   |Two channels analog input-output module (0-10V)                |
+|PANA   |Two channels analog input-output module (0-10V)                |
+|PCAS   |Cassette interface module                                      |
 |PCOX   |Internal COVOX-style mono sound module with earphone amplifier |
 |PMAN-IF|Manual programming interface module                            |
-|PTAP   |Tape interface module
