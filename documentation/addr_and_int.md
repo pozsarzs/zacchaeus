@@ -1,11 +1,19 @@
 # Zacchaeus Microcomputer
 
+## Memory address table
+
+|From   |To     |Function              |
+|------:|------:|----------------------|
+|0x00000|0x7FFFF|Flash ROM (512k bytes)|
+|0x80000|0xFFFFF|RAM (512k bytes)      |
+
+
 ## I/O address table
 
 |From|To  |Module|Function                          |Note     |
 |---:|---:|------|----------------------------------|---------|
 |0x00|0x0A|      |                                  |         |
-|    |0x0B|SC719 |MM8D module’s ports               |         |
+|    |0x0B|SC719 |PIOI module’s ports               |         |
 |    |0x0C|SC126 |System I/O port (RTC, SPI and I2C)|default  |
 |    |0x0D|SC126 |LED output port                   |default  |
 |0x0E|0x0F|      |                                  |         |
@@ -17,7 +25,7 @@
 |0x84|0x8A|      |                                  |         |
 |    |0x8B|SC718 |Z80 CTC’s internal I/O registers  |suggested|
 |0x8C|0xBF|      |                                  |         |
-|0xC0|0xFF|SC126 |Z180’s internal I/O registers     | default |
+|0xC0|0xFF|SC126 |Z180’s internal I/O registers     |default  |
 
 
 ## IRQ table
@@ -25,7 +33,6 @@
 |Number|Module|Function                          |Note     |
 |:----:|------|----------------------------------|---------|
 |NMI   |      |                                  |         |
+|INT0  |      |                                  |         |
 |INT1  |      |                                  |         |
 |INT2  |      |                                  |         |
-|INT3  |      |                                  |         |
-|INT4  |      |                                  |         |
