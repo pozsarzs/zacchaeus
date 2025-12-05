@@ -1,11 +1,11 @@
-<img align="left" style="float: left; margin: 0 10px 0 0;" alt="ModShell icon"
-  src="document/pictures/icon/z80inside.png">
+<img align="left" style="float: left; margin: 0 10px 0 0;" alt="Z80 inside"
+  src="pictures/icon/z80inside.png">
 <br>
 
 # Zacchaeus Microcomputer
 
-** 8-bit microcomputer built from commercially available and home-built components** 
-
+**8-bit microcomputer built from commercially available and home-built components** 
+  
 This project is a personal journey back in time to the heroic age of computing:
 a newly built, classic 8-bit system, in which I supplement the factory components
 with modules of my own design. My goal is to revive the joy of discovery, while
@@ -57,13 +57,13 @@ The computer consists of the following components:
 
 |name   |function                                     |
 |-------|---------------------------------------------|
-|SC126  |motherboard                                  |
-|SC702  |RCBus backplane                              |
-|SC715  |RCBus CF module                              |
-|SC716  |RCBus SIO-2 module                           |
-|SC717  |RCBus PIO module                             |
-|SC718  |RCBus CTC module                             |
-|SC719  |RCBus DIO module                             |
+|SC126  |motherboard (Stephen C. Cousins)             |
+|SC702  |RCBus backplane (Stephen C. Cousins)         |
+|SC715  |RCBus CF module (Stephen C. Cousins)         |
+|SC716  |RCBus SIO-2 module (Stephen C. Cousins)      |
+|SC717  |RCBus PIO module (Stephen C. Cousins)        |
+|SC718  |RCBus CTC module (Stephen C. Cousins)        |
+|SC719  |RCBus DIO module (Stephen C. Cousins)        |
 |PIOI   |I/O interface module                         |
 |PMAN-DP|Display module                               |
 |PMAN-SW|Switch module                                |
