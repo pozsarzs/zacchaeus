@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name "mm8d-rescue")(type "Legacy")(uri "${KIPRJMOD}/pioi-rescue.lib")(options "")(descr ""))
+)
