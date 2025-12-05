@@ -29,7 +29,7 @@ life again.
 |             |2 x serial RS-232 TTL                        |
 |             |2 x paralel TTL                              |
 |             |1 x CTC TTL                                  |
-|             |1 x I^2C TTL                                 |
+|             |1 x I<sup>2</sup>C TTL                                 |
 |             |1 x SPI TTL                                  |
 |             |1 x cassette interface (not yet implemented) | 
 |             |1 x earphone (not yet implemented)           |
