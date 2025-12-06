@@ -1,0 +1,85 @@
+; +-----------------------------------------------------------------------------+
+; | Zacchaeus * Tester program for PIOI interface module                        |
+; | Copyright (C) 2025 Pozsar Zsolt <pozsarzs@gmail.com>                        |
+; | pioitest.z80                                                                |
+; | Program for CP/M-80 (only Z80)                                              |
+; +-----------------------------------------------------------------------------+
+
+	ORG	100h
+BDOS	EQU	005h
+
+	LD	C, 9
+	LD	DE, MSG01		; show header 
+	CALL	BDOS
+	LD	DE, MSG02	   	
+	CALL	BDOS
+MENU:
+	LD	C, 9
+	LD	DE, MSG03		; show menu 
+	CALL	BDOS
+CHOICE:
+	LD	C, 9
+	LD	DE, MSG04		; show menu prompt 	
+	CALL	BDOS 
+	LD	C, 1			; read a character
+	CALL	BDOS
+	CP	'1'
+	JP	Z, PROC_1
+	CP	'2'
+	JP	Z, PROC_2
+	CP	'3'
+	JP	Z, PROC_3
+	CP	'4'
+	JP	Z, PROC_4
+	CP	'q'
+	JP	Z, QUIT
+	LD	C, 9
+	LD	DE, MSG05
+	CALL	BDOS        
+	JP	CHOICE 
+
+PROC_1:
+	LD	C, 9		; proc_1
+	LD	DE, MSG06
+	CALL	BDOS
+	JP	MENU 
+		 
+PROC_2:
+	LD	C, 9		; proc_2
+	LD	DE, MSG07
+	CALL	BDOS
+	JP	MENU 
+
+PROC_3:
+	LD	C, 9		; proc_3
+	LD	DE, MSG08
+	CALL	BDOS
+	JP	MENU 
+
+PROC_4:
+	LD	C, 9		; proc_4
+	LD	DE, MSG09
+	CALL	BDOS
+	JP	MENU 
+
+QUIT:
+	LD	C, 0
+	CALL	BDOS
+	RET
+        
+MSG01:	DB   	'*** PIOI module tester for Zacchaeus Microcomputer ***', 0Dh, 0Ah, '$'
+MSG02:	DB   	'(C) 2025 Pozsar Zsolt <pozsarzs@gmail.com> CC0 1.0 Universal' 0Dh, 0Ah, '$'
+MSG03:	DB   	'------------------------------------------------------------', 0Dh, 0Ah
+	DB   	' 1: set address', 0Dh, 0Ah
+	DB   	' 2: read input', 0Dh, 0Ah
+	DB   	' 3: set open collector outputs', 0Dh, 0Ah
+	DB   	' 4: set relay contact outputs', 0Dh, 0Ah
+	DB  	' q: quit', 0Dh, 0Ah
+	DB   	'------------------------------------------------------------$'
+MSG04:	DB   	0Dh, 0Ah, '> $'
+MSG05:	DB	' - No such item, enter again!$'
+MSG06:	DB	0Dh, 0Ah, 'proc_1', 0Dh, 0Ah, '$'
+MSG07:	DB	0Dh, 0Ah, 'proc_2', 0Dh, 0Ah, '$'
+MSG08:	DB	0Dh, 0Ah, 'proc_3', 0Dh, 0Ah, '$'
+MSG09:	DB	0Dh, 0Ah, 'proc_4', 0Dh, 0Ah, '$'
+	END
