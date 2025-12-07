@@ -9,9 +9,9 @@
 BDOS	EQU	005h
 
 ; *** MAIN PROGRAM ***
-	LD	DE, MSG01		; show header
+	LD	DE, MSG01		; show header 
 	CALL	WRITE
-	LD	DE, MSG02	   	
+	LD	DE, MSG02
 	CALL	WRITE
 MENU:
 	LD	DE, MSG03		; show menu 
@@ -42,7 +42,72 @@ PROC_1:	LD	DE, MSG06		; set I/O address
 
 PROC_2:	LD	DE, MSG07		; read inputs 
 	CALL	WRITE
-	JP	MENU 
+LOOP_2:	LD	B, 255			; wait
+WAIT_2:	NOP
+	NOP
+	NOP
+	NOP
+	DJNZ	WAIT_2
+	LD	DE, CR			; carriage return
+	CALL	WRITE
+	LD	C, 1			; read a character
+	CALL	BDOS
+	CP	' '
+	JP	Z, GETP_2
+	CP	'q'
+	JP	Z, MENU
+	JP	LOOP_2 
+GETP_2:	LD	A, (BA)
+	LD	C, A 
+	IN	A, (C)
+	XOR	255
+	LD	B, A
+BIT76:	AND	3
+	CP	3
+	JP	Z, HIGH_1
+	LD	DE, LOW
+	PUSH	BC
+	CALL	WRITE
+	JP	BIT54
+HIGH_1:	LD	DE, HIGH
+	CALL	WRITE
+BIT54:	POP	BC
+	LD	A, B	
+	AND	12
+	CP	12
+	JP	Z, HIGH_2
+	LD	DE, LOW
+	PUSH	BC
+	CALL	WRITE
+	JP	BIT32
+HIGH_2:	LD	DE, HIGH
+	CALL	WRITE
+BIT32:	POP	BC
+	LD	A, B
+	AND	48
+	CP	48
+	JP	Z, HIGH_3
+	LD	DE, LOW
+	PUSH	BC
+	CALL	WRITE
+	JP	BIT10
+HIGH_3:	LD	DE, HIGH
+	CALL	WRITE
+BIT10:	POP	BC
+	LD	A, B	
+	AND	192
+	CP	192
+	JP	Z, HIGH_4
+	LD	DE, LOW
+	CALL	WRITE
+	JP	DONE
+HIGH_4:	LD	DE, HIGH
+	CALL	WRITE
+DONE:	LD	DE, CR
+	CALL	WRITE
+	LD	DE, LF
+	CALL	WRITE
+JP	LOOP_2
 
 PROC_3:	LD	DE, MSG08		; set OC outputs
 	CALL	WRITE
@@ -150,6 +215,9 @@ WRITE:	LD	C, 9
 BA:	DB	0Ch			; default base address
 OD:	DB	0			; output data
 CR:	DB	0Dh, '$'
+LF:	DB	0Ah, '$'
+HIGH:	DB	' 1$'
+LOW:	DB	' 0$'
 MSG01:	DB   	'*** PIOI module tester for Zacchaeus Microcomputer ***', 0Dh, 0Ah, '$'
 MSG02:	DB   	'(C) 2025 Pozsar Zsolt <pozsarzs@gmail.com> CC0 1.0 Universal$'
 MSG03:	DB   	0Dh, 0Ah,'------------------------------------------------------------', 0Dh, 0Ah
@@ -162,7 +230,7 @@ MSG03:	DB   	0Dh, 0Ah,'---------------------------------------------------------
 MSG04:	DB   	0Dh, 0Ah,'> $'
 MSG05:	DB	' - No such item, enter again!$'
 MSG06:	DB	0Dh, 0Ah, 'Enter i/o address in hexadecimal format:$'
-MSG07:	DB	0Dh, 0Ah, 'Use [q] to exit.', 0Dh, 0Ah, '$'
+MSG07:	DB	0Dh, 0Ah, 'Use [ ] to read and [q] to exit.', 0Dh, 0Ah, '$'
 MSG08:	DB	0Dh, 0Ah, 'Use [0][1][2][3] to toggle output and [q] to exit.', 0Dh, 0Ah, '$'
 	END
 
