@@ -8,19 +8,17 @@
 	ORG	100h
 BDOS	EQU	005h
 
-	LD	C, 9
-	LD	DE, MSG01		; show header 
-	CALL	BDOS
+; *** MAIN PROGRAM ***
+	LD	DE, MSG01		; show header
+	CALL	WRITE
 	LD	DE, MSG02	   	
-	CALL	BDOS
+	CALL	WRITE
 MENU:
-	LD	C, 9
 	LD	DE, MSG03		; show menu 
-	CALL	BDOS
+	CALL	WRITE
 CHOICE:
-	LD	C, 9
-	LD	DE, MSG04		; show menu prompt 	
-	CALL	BDOS 
+	LD	DE, MSG04		; show menu prompt
+	CALL	WRITE 
 	LD	C, 1			; read a character
 	CALL	BDOS
 	CP	'1'
@@ -33,53 +31,138 @@ CHOICE:
 	JP	Z, PROC_4
 	CP	'q'
 	JP	Z, QUIT
-	LD	C, 9
 	LD	DE, MSG05
-	CALL	BDOS        
+	CALL	WRITE        
 	JP	CHOICE 
 
-PROC_1:
-	LD	C, 9		; proc_1
-	LD	DE, MSG06
-	CALL	BDOS
-	JP	MENU 
-		 
-PROC_2:
-	LD	C, 9		; proc_2
-	LD	DE, MSG07
-	CALL	BDOS
+PROC_1:	LD	DE, MSG06		; set I/O address
+	CALL	WRITE
+	LD	DE, MSG04
 	JP	MENU 
 
-PROC_3:
-	LD	C, 9		; proc_3
-	LD	DE, MSG08
-	CALL	BDOS
+PROC_2:	LD	DE, MSG07		; read inputs 
+	CALL	WRITE
 	JP	MENU 
 
-PROC_4:
-	LD	C, 9		; proc_4
-	LD	DE, MSG09
+PROC_3:	LD	DE, MSG08		; set OC outputs
+	CALL	WRITE
+LOOP_3:	LD	B, 255			; wait
+WAIT_3:	NOP
+	NOP
+	NOP
+	NOP
+	DJNZ	WAIT_3
+	LD	DE, CR			; carriage return
+	CALL	WRITE
+	LD	C, 1			; read a character
 	CALL	BDOS
-	JP	MENU 
+	CP	'0'
+	JP	Z, SET_31
+	CP	'1'
+	JP	Z, SET_32
+	CP	'2'
+	JP	Z, SET_33
+	CP	'3'
+	JP	Z, SET_34
+	CP	'q'
+	JP	Z, RST
+	JP	LOOP_3 
+SET_31:	LD	D, 01h
+	CALL	SETP
+	JP	LOOP_3
+SET_32:	LD	D, 02h
+	CALL	SETP
+	JP	LOOP_3
+SET_33:	LD	D, 04h
+	CALL	SETP
+	JP	LOOP_3
+SET_34:	LD	D, 08h
+	CALL	SETP
+	JP	LOOP_3
 
-QUIT:
+PROC_4:	LD	DE, MSG08		; set relay outputs
+	CALL	WRITE
+LOOP_4:	LD	B, 255			; wait
+WAIT_4:	NOP
+	NOP
+	NOP
+	NOP
+	DJNZ	WAIT_4
+	LD	DE, CR			; carriage return
+	CALL	WRITE
+	LD	C, 1			; read a character
+	CALL	BDOS
+	CP	'0'
+	JP	Z, SET_41
+	CP	'1'
+	JP	Z, SET_42
+	CP	'2'
+	JP	Z, SET_43
+	CP	'3'
+	JP	Z, SET_44
+	CP	'q'
+	JP	Z, RST
+	JP	LOOP_4 
+SET_41:	LD	D, 10h
+	CALL	SETP
+	JP	LOOP_4
+SET_42:	LD	D, 20h
+	CALL	SETP
+	JP	LOOP_4
+SET_43:	LD	D, 40h
+	CALL	SETP
+	JP	LOOP_4
+SET_44:	LD	D, 80h
+	CALL	SETP
+	JP	LOOP_4
+RST:	CALL	RESETP
+	JP	MENU
+
+; *** EXIT FROM PROGRAM ***
+QUIT:	CALL	RESETP
 	LD	C, 0
 	CALL	BDOS
 	RET
-        
+
+; *** SET PORT AND STORE OUTPUT DATA ***
+SETP:	LD	A, (BA)
+	LD	C, A
+	LD	A, (OD)
+	XOR	D
+	LD	(OD), A
+	OUT	(C), A
+	RET
+
+; *** RESET ALL PORTS AND STORE OUTPUT DATA ***
+RESETP:	LD	A, (BA)
+	LD	C, A
+	LD	A, 0
+	OUT	(C), A
+	LD	(OD), A
+	RET
+
+; *** WRITE MESSAGE TO CONSOLE ***
+WRITE:	LD	C, 9
+	CALL	BDOS
+	RET
+
+; *** VARIABLES AND CONSTANTS ***
+BA:	DB	0Ch			; default base address
+OD:	DB	0			; output data
+CR:	DB	0Dh, '$'
 MSG01:	DB   	'*** PIOI module tester for Zacchaeus Microcomputer ***', 0Dh, 0Ah, '$'
-MSG02:	DB   	'(C) 2025 Pozsar Zsolt <pozsarzs@gmail.com> CC0 1.0 Universal' 0Dh, 0Ah, '$'
-MSG03:	DB   	'------------------------------------------------------------', 0Dh, 0Ah
+MSG02:	DB   	'(C) 2025 Pozsar Zsolt <pozsarzs@gmail.com> CC0 1.0 Universal$'
+MSG03:	DB   	0Dh, 0Ah,'------------------------------------------------------------', 0Dh, 0Ah
 	DB   	' 1: set address', 0Dh, 0Ah
 	DB   	' 2: read input', 0Dh, 0Ah
 	DB   	' 3: set open collector outputs', 0Dh, 0Ah
 	DB   	' 4: set relay contact outputs', 0Dh, 0Ah
 	DB  	' q: quit', 0Dh, 0Ah
 	DB   	'------------------------------------------------------------$'
-MSG04:	DB   	0Dh, 0Ah, '> $'
+MSG04:	DB   	0Dh, 0Ah,'> $'
 MSG05:	DB	' - No such item, enter again!$'
-MSG06:	DB	0Dh, 0Ah, 'proc_1', 0Dh, 0Ah, '$'
-MSG07:	DB	0Dh, 0Ah, 'proc_2', 0Dh, 0Ah, '$'
-MSG08:	DB	0Dh, 0Ah, 'proc_3', 0Dh, 0Ah, '$'
-MSG09:	DB	0Dh, 0Ah, 'proc_4', 0Dh, 0Ah, '$'
+MSG06:	DB	0Dh, 0Ah, 'Enter i/o address in hexadecimal format:$'
+MSG07:	DB	0Dh, 0Ah, 'Use [q] to exit.', 0Dh, 0Ah, '$'
+MSG08:	DB	0Dh, 0Ah, 'Use [0][1][2][3] to toggle output and [q] to exit.', 0Dh, 0Ah, '$'
 	END
+
