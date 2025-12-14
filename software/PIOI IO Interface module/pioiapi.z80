@@ -1,0 +1,72 @@
+; +-----------------------------------------------------------------------------+
+; | Zacchaeus * Tester program for PIOI interface module                        |
+; | Copyright (C) 2025 Pozsar Zsolt <pozsarzs@gmail.com>                        |
+; | pioiapi.z80                                                                 |
+; | API of the PIOI ports for CP/M-80 (only Z80)                                |
+; +-----------------------------------------------------------------------------+
+
+	PUBLIC PIOI
+
+PIOI:	PUSH	DE
+	PUSH	HL
+	LD	D, A
+	LD	E, B
+	LD	A, C
+	CP	0
+	JP	Z, F00
+	CP	1
+	JP	Z, F01
+	CP	2
+	JP	Z, F02
+	CP	3
+	JP	Z, F03
+	CP	4
+	JP	Z, F04
+DONE:	POP	HL
+	POP	DE
+	RET
+
+; Set I/O address
+F00:	LD	A, 	D
+	LD	(ADDR), A	; store new i/o address
+	JP	DONE
+
+; Get I/O address
+F01:	LD	A, (ADDR)	; retrieve i/o address
+	JP	DONE
+	
+; Reset all OCOn and RCOn outputs
+F02:	LD	A, (ADDR)	; i/o address -> C
+	LD	C, A
+	LD	A, 0		; output data
+	LD	(DATOUT), A	; store data
+	OUT	(C), A		; write out data
+	JP	DONE
+
+; Reset all OCOn outputs
+F03:	LD	A, (ADDR)	; i/o address -> C
+	LD	C, A
+	LD	A, (DATOUT)	; retrieve previous output data
+	LD	B, 0F0h
+	AND	B
+	LD	(DATOUT), A	; store data
+	OUT	(C), A		; write out data
+	JP	DONE
+
+; Reset all RCOn outputs
+F04:	LD	A, (ADDR)	; i/o address -> C
+	LD	C, A
+	LD	A, (DATOUT)	; retrieve previous output data
+	LD	B, 0Fh
+	AND	B
+	LD	(DATOUT), A	; store data
+	OUT	(C), A		; write out data
+	JP	DONE
+
+; (...)
+
+; global variables
+ADDR:	DB	0		; I/O address
+DATINP:	DB	0		; last read data
+DATOUT:	DB	0		; last 
+	END

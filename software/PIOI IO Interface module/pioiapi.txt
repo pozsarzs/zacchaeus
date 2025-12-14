@@ -1,0 +1,51 @@
+PIOI API for Zacchaeus Microcomputer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  version	v0.1
+  licence	CC0 1.0 Universal
+  architecture	Z80
+  OS		CP/M-80
+  compiler	SLR Systems Z80ASM v1.32 (1986)
+
+This is a collection of routines for easy management of PIOI interface ports.
+
+(C) 2025 Pozsar Zsolt <pozsarzs@gmail.com>  
+
+Available functions
+~~~~~~~~~~~~~~~~~~~
+
+A	B	C	functions				A
+-----------------------------------------------------------------------
+address	N/A	00h	set address				N/A
+N/A	N/A	01h	get address				address
+N/A	N/A	02h	reset all OCOs and RCOs			N/A
+N/A	N/A	03h	reset all OCOs				N/A
+N/A	N/A	04h	reset all RCOs				N/A
+
+N/A	N/A	10h	read data from all PIs			data
+N/A	mask	11h	masked read data from all PIs		data
+N/A	mask	12h	masked change checking of all PIs	state
+N/A	portnum	18h	read state from a PI			state
+N/A	portnum	19h	change checking of the specified PI	state
+
+data	N/A	20h	write data to all OCOs			N/A
+data	mask	21h	masked write data to all OCOs		N/A
+N/A	portnum	28h	switch on a OCO port			N/A
+N/A	portnum	29h	switch off a OCO port			N/A
+delay	portnum	2Ah	switch on and delayed off a OCO port	N/A
+
+data	N/A	30h	write data to all RCOs			N/A
+data	mask	31h	masked write data to all RCOs		N/A
+N/A	portnum	38h	switch on a RCO port			N/A
+N/A	portnum	39h	switch off a RCO port			N/A
+delay	portnum	3Ah	switch on and delayed off a RCO port	N/A
+
+Notes
+~~~~~
+  address:	i/o address of interface [00..FFh]
+  data:		half byte [00..0Fh]
+  PI:		Protected Input
+  portnum:	number of port [0..3]
+  OCO:		Open Collector Output
+  RCO:		Relay Contact Output
+  state:	bit [00h/FFh]
