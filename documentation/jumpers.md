@@ -4,7 +4,6 @@
 
 |Module|Num   |Sign|Function                              |State     |Note  |
 |------|:----:|----|--------------------------------------|:--------:|------|
-|PCOX  |JP1   |A7-0|I/O address                           |00001110  |      |
 |PIOI  |JP1   |    |TTL level type +5V                    |1         |      |
 |      |JP2   |    |TTL level type +3.3V                  |0         |      |
 |SC126 |JP1   |    |ROMWBW write protect                  |1-2 closed|      |
