@@ -9,7 +9,7 @@
 This project is a personal journey back in time to the heroic age of computing:
 a newly built, classic 8-bit system, in which I supplement the factory components
 with modules of my own design. My goal is to revive the joy of discovery, while
-on this new machine, legendary languages​such as BASIC, Fortran or Cobol come to
+on this new machine, legendary languages ​such as BASIC, Fortran or Cobol come to
 life again.
 
 
