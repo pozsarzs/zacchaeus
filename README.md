@@ -25,6 +25,11 @@ life again.
 |bus          |RC2014, 9 BP80 socket                        |
 |disks        |32 MB CF card                                |
 |             |SD card                                      |
+|others       |RTC                                          |
+|             |MPU (manual programming unit)                |
+|             |- 8 data and 16 address switch               |
+|             |- 8 digits hexadecimal LED display           |
+|             |(partly implemented)                         |
 |connectors   |2 x serial RS-232                            |
 |             |2 x serial RS-232 TTL                        |
 |             |2 x paralel TTL                              |
@@ -40,11 +45,6 @@ life again.
 |             |2 x analog output 0-10V (not yet implemented)| 
 |power outputs|+12/5/3.3V 3A                                |
 |             |-12/5V 0,5A                                  |
-|others       |RTC                                          |
-|             |MPU (manual programming unit)                |
-|             |- 8 data and 16 address switch               |
-|             |- 8 digits hexadecimal LED display           |
-|             |(partly implemented)                         |
 |power supply |ATX 600W                                     |
 |OS           |Digital Research CP/M v2.2                   |
 |             |Z-System                                     |
