@@ -58,8 +58,6 @@ PIOI:
 	JP	Z, F12		; - masked change checking of all pis
 	CP	18h
 	JP	Z, F18		; - read state from a PI
-	CP	19h
-	JP	Z, F19		; - change checking of the specified PI
 	CP	20h
 	JP	Z, F20		; - write data to all OCOs
 	CP	21h
@@ -312,16 +310,6 @@ F18:
  _ZE18:	XOR	A		; set A = 0 and reset Carry flag
 	JP	DONE
 
-; --- CHANGE CHECKING OF A PI ----------
-; Input:     A = function code  (19h)
-;            E = port number    (00-03h)
-; Outputs:   A = changed?       (00/FFh)
-;            Carry = 0
-F19:
-	XOR	A		; set A = 0
-	SCF			; set Carry Flag
-	JP	DONE
-
 ; --- WRITE DATA TO ALL OCOS -----------------
 ; Input:     A = function code  (20h)
 ;            D = output data    (00-0Fh)
@@ -361,7 +349,7 @@ F21:
 
 	LD	A, E		; E -> A
 	XOR	0FFh		; invert mask
-	OR	F0h		; set high bits to 1
+	OR	F0h		; protect high 4 bits
 	LD	E, A		; A -> E
 
 	LD	A, (ADDR)	; retrieve i/o address
@@ -369,7 +357,7 @@ F21:
 	LD	A, (DATOUT)	; retrieve previous output data
 	AND	E		; mask previous output data
 	OR	D		; merge bytes
-	LD	(DATOUT), A	; store data
+	LD	(DATOUT), A	; store output data
 	OUT	(C), A		; write out data
 	SCF			; set Carry Flag
 	JP	DONE
@@ -380,7 +368,32 @@ F21:
 ; Outputs:   A = 0
 ;            Carry = 1 (no valid return value)
 F28:
-	XOR	A		; set A = 0
+	LD	A, 1		; starting place value
+	LD	B, E		; E -> B, shift counter
+	INC	B		; correction
+    
+_LO28:
+	DEC	B		; if B = 0
+	JR	Z, _DO28	; - the goto _DO28 label
+	SLA	A		; - else shift to left
+    	JR	_LO28		;   goto _LO28 label
+
+_DO28:
+	AND	0Fh		; mask the place value
+	LD	D, A		; A -> D
+
+	XOR	0FFh		; invert place value
+	OR	0F0h		; protect upper 4 bits
+	LD	E, A		; A -> E (byte punch mask)
+
+	LD	A, (ADDR)	; retrieve i/o address
+	LD	C, A		; A -> C
+	LD	A, (DATOUT)	; retrieve previous output data
+	AND	E		; punch specified place valé
+	OR	D		; put 1 to hole
+	
+	LD	(DATOUT), A	; store output data
+	OUT	(C), A		; write out data
 	SCF			; set Carry Flag
 	JP	DONE
 
@@ -390,7 +403,31 @@ F28:
 ; Outputs:   A = 0
 ;            Carry = 1 (no valid return value)
 F29:
-	XOR	A		; set A = 0
+	LD	A, 1		; starting place value
+	LD	B, E		; E -> B, shift counter
+	INC	B		; correction
+    
+_LO29:
+	DEC	B		; if B = 0
+	JR	Z, _DO29	; - the goto _DO29 label
+	SLA	A		; - else shift to left
+    	JR	_LO29		;   goto _LO29 label
+
+_DO29:
+	AND	0Fh		; mask the place value
+	LD	D, A		; A -> D
+
+	XOR	0FFh		; invert place value
+	OR	0F0h		; protect upper 4 bits
+	LD	E, A		; A -> E (byte punch mask)
+
+	LD	A, (ADDR)	; retrieve i/o address
+	LD	C, A		; A -> C
+	LD	A, (DATOUT)	; retrieve previous output data
+	AND	E		; punch specified place valé
+	
+	LD	(DATOUT), A	; store output data
+	OUT	(C), A		; write out data
 	SCF			; set Carry Flag
 	JP	DONE
 
@@ -401,7 +438,46 @@ F29:
 ; Outputs:   A = 0
 ;            Carry = 1 (no valid return value)
 F2A:
-	XOR	A		; set A = 0
+	LD	A, 1		; starting place value
+	LD	B, E		; E -> B, shift counter
+	INC	B		; correction
+    
+_LO2A:
+	DEC	B		; if B = 0
+	JR	Z, _DO2A	; - the goto _DO2A label
+	SLA	A		; - else shift to left
+    	JR	_LO2A		;   goto _LO2A label
+
+_DO2A:
+	AND	0Fh		; mask the place value
+	LD	H, A		; A -> H
+
+	XOR	0FFh		; invert place value
+	OR	0F0h		; protect upper 4 bits
+	LD	E, A		; A -> E (byte punch mask)
+
+	LD	A, (ADDR)	; retrieve i/o address
+	LD	C, A		; A -> C
+	LD	A, (DATOUT)	; retrieve previous output data
+	AND	E		; punch specified place valé
+	OR	H		; put 1 to hole
+	OUT	(C), A		; write out data
+
+	PUSH	HL		; save registers
+_OL2A:				; start of the outer loop
+	LD	HL, 4000h	; inner loop counter
+_IL2A:				; start of the inner loop
+	NOP			; waste of time
+	DEC	HL		; decrement counter
+	LD	A, H		; H -> A
+	OR	L		; if H OR L = 0 -> Z = 1
+	JP	NZ, _IL2A	; end of the inner loop
+	DEC	D		; decrement relative delay value
+	JP	NZ, _OL2A	; end of the outer loop
+	POP	HL		; restore registers
+
+	LD	A, (DATOUT)	; retrieve previous output data
+	OUT	(C), A		; write out data
 	SCF			; set Carry Flag
 	JP	DONE
 
@@ -471,8 +547,36 @@ F31:
 ; Outputs:   A = 0
 ;            Carry = 1 (no valid return value)
 F38:
-	XOR	A		; set A = 0
-	SCF			; set Carry Flag
+	LD	A, 1		; starting place value
+	LD	B, E		; E -> B, shift counter
+	INC	B		; correction
+    
+_LO38:
+	DEC	B		; if B = 0
+	JR	Z, _DO38	; - the goto _DO38 label
+	SLA	A		; - else shift to left
+    	JR	_LO38		;   goto _LO38 label
+
+_DO38:
+	RLCA			; shift: D0-D3 -> D4-D7
+	RLCA
+	RLCA
+	RLCA
+	LD	D, A		; A -> D
+
+	XOR	0FFh		; invert place value
+	OR	0Fh		; protect lower 4 bits
+	LD	E, A		; A -> E (byte punch mask)
+
+	LD	A, (ADDR)	; retrieve i/o address
+	LD	C, A		; A -> C
+	LD	A, (DATOUT)	; retrieve previous output data
+	AND	E		; punch specified place valé
+	OR	D		; put 1 to hole
+	
+	LD	(DATOUT), A	; store output data
+	OUT	(C), A		; write out data
+	SCF			;  set Carry Flag
 	JP	DONE
 
 ; --- SWITCH OFF A RCO PORT ------------------
@@ -481,8 +585,35 @@ F38:
 ; Outputs:   A = 0
 ;            Carry = 1 (no valid return value)
 F39:
-	XOR	A		; set A = 0
-	SCF			; set Carry Flag
+	LD	A, 1		; starting place value
+	LD	B, E		; E -> B, shift counter
+	INC	B		; correction
+    
+_LO39:
+	DEC	B		; if B = 0
+	JR	Z, _DO39	; - the goto _DO39 label
+	SLA	A		; - else shift to left
+    	JR	_LO39		;   goto _LO39 label
+
+_DO39:
+	RLCA			; shift: D0-D3 -> D4-D7
+	RLCA
+	RLCA
+	RLCA
+	LD	D, A		; A -> D
+
+	XOR	0FFh		; invert place value
+	OR	0Fh		; protect lower 4 bits
+	LD	E, A		; A -> E (byte punch mask)
+
+	LD	A, (ADDR)	; retrieve i/o address
+	LD	C, A		; A -> C
+	LD	A, (DATOUT)	; retrieve previous output data
+	AND	E		; punch specified place valé
+	
+	LD	(DATOUT), A	; store output data
+	OUT	(C), A		; write out data
+	SCF			;  set Carry Flag
 	JP	DONE
 
 ; --- SWITCH ON AND DELAYED OFF A RCO PORT ---
@@ -492,7 +623,49 @@ F39:
 ; Outputs:   A = 0
 ;            Carry = 1 (no valid return value)
 F3A:
-	XOR	A		; set A = 0
+	LD	A, 1		; starting place value
+	LD	B, E		; E -> B, shift counter
+	INC	B		; correction
+    
+_LO3A:
+	DEC	B		; if B = 0
+	JR	Z, _DO3A	; - the goto _DO3A label
+	SLA	A		; - else shift to left
+    	JR	_LO3A		;   goto _LO3A label
+
+_DO3A:
+	RLCA			; shift: D0-D3 -> D4-D7
+	RLCA
+	RLCA
+	RLCA
+	LD	H, A		; A -> H
+
+	XOR	0FFh		; invert place value
+	OR	0Fh		; protect lower 4 bits
+	LD	E, A		; A -> E (byte punch mask)
+
+	LD	A, (ADDR)	; retrieve i/o address
+	LD	C, A		; A -> C
+	LD	A, (DATOUT)	; retrieve previous output data
+	AND	E		; punch specified place valé
+	OR	H		; put 1 to hole
+	OUT	(C), A		; write out data
+
+	PUSH	HL		; save registers
+_OL3A:				; start of the outer loop
+	LD	HL, 4000h	; inner loop counter
+_IL3A:				; start of the inner loop
+	NOP			; waste of time
+	DEC	HL		; decrement counter
+	LD	A, H		; H -> A
+	OR	L		; if H OR L = 0 -> Z = 1
+	JP	NZ, _IL3A	; end of the inner loop
+	DEC	D		; decrement relative delay value
+	JP	NZ, _OL3A	; end of the outer loop
+	POP	HL		; restore registers
+
+	LD	A, (DATOUT)	; retrieve previous output data
+	OUT	(C), A		; write out data
 	SCF			; set Carry Flag
 	JP	DONE
 

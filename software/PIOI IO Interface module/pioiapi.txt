@@ -25,7 +25,6 @@ N/A	N/A	10h	read data from all PIs			data
 N/A	mask	11h	masked read data from all PIs		data
 N/A	mask	12h	masked change checking of all PIs	state
 N/A	portnum	18h	read state from a PI			state
-N/A	portnum	19h	change checking of the specified PI	state
 
 data	N/A	20h	write data to all OCOs			N/A
 data	mask	21h	masked write data to all OCOs		N/A
