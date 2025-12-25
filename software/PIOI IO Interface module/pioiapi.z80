@@ -1,72 +1,503 @@
-; +-----------------------------------------------------------------------------+
-; | Zacchaeus * Tester program for PIOI interface module                        |
-; | Copyright (C) 2025 Pozsar Zsolt <pozsarzs@gmail.com>                        |
-; | pioiapi.z80                                                                 |
-; | API of the PIOI ports for CP/M-80 (only Z80)                                |
-; +-----------------------------------------------------------------------------+
+; +---------------------------------------------------------------------+
+; | Zacchaeus * PIOI interface module                                   |
+; | Copyright (C) 2025 Pozsar Zsolt <pozsarzs@gmail.com>                |
+; | pioiapi.z80                                                         |
+; | API of the PIOI interface for CP/M-80                               |
+; +---------------------------------------------------------------------+
 
-	PUBLIC PIOI
+PUBLIC PIOI
 
-PIOI:	PUSH	DE
+; --- PIOI API FUNCTION -----------------------------
+; Input:     A = input data, optional
+;            B = input data, optional
+;            C = function code  (00-FFh)
+; Outputs:   Carry = 0, A = output data
+;            Carry = 1, A = 0 (no valid return value)
+; Preserves: BC, DE, HL
+; Clobbers:  AF
+;
+; I/O ports: * Protected inputs
+;              -PI0: D0 and D1 bits (equal and inverted)
+;              -PI1: D2 and D3 bits (equal and inverted)
+;              -PI2: D4 and D5 bits (equal and inverted)
+;              -PI3: D6 and D7 bits (equal and inverted)
+;            * Open collector outputs
+;              OCO0: D0 bit
+;              OCO1: D1 bit
+;              OCO2: D2 bit
+;              OCO3: D3 bit
+;            * Relay contact outputs
+;              RCO0: D4 bit
+;              RCO1: D5 bit
+;              RCO2: D6 bit
+;              RCO3: D7 bit
+
+PIOI:
+	PUSH	BC		; enter and save registers
+	PUSH	DE
 	PUSH	HL
-	LD	D, A
-	LD	E, B
-	LD	A, C
-	CP	0
-	JP	Z, F00
-	CP	1
-	JP	Z, F01
-	CP	2
-	JP	Z, F02
-	CP	3
-	JP	Z, F03
-	CP	4
-	JP	Z, F04
-DONE:	POP	HL
+	LD	D, A		; A -> D (address, data)
+	LD	E, B		; B -> E (port number, mask) 
+	LD	A, C		; C -> A (function code)
+
+	CP	00h		; subroutine selection
+	JP	Z, F00		; - set address
+	CP	01h
+	JP	Z, F01		; - get address
+	CP	02h
+	JP	Z, F02		; - reset all OCOs and RCOs
+	CP	03h
+	JP	Z, F03		; - reset all OCOs
+	CP	04h
+	JP	Z, F04		; - reset all RCOs
+	CP	10h
+	JP	Z, F10		; - read data from all pis
+	CP	11h
+	JP	Z, F10		; - masked read data from all pis
+	CP	12h
+	JP	Z, F12		; - masked change checking of all pis
+	CP	18h
+	JP	Z, F18		; - read state from a PI
+	CP	19h
+	JP	Z, F19		; - change checking of the specified PI
+	CP	20h
+	JP	Z, F20		; - write data to all OCOs
+	CP	21h
+	JP	Z, F21		; - masked write data to all OCOs
+	CP	28h
+	JP	Z, F28		; - switch on a OCO port
+	CP	29h
+	JP	Z, F29		; - switch off a OCO port
+	CP	2Ah
+	JP	Z, F2A		; - switch on and delayed off a OCO port
+	CP	30h
+	JP	Z, F30		; - write data to all RCOs
+	CP	31h
+	JP	Z, F31		; - masked write data to all RCOs
+	CP	38h
+	JP	Z, F38		; - switch on a RCO port
+	CP	39h
+	JP	Z, F39		; - switch off a RCO port
+	CP	3Ah
+	JP	Z, F3A		; - switch on and delayed off a RCO port
+	SCF			; - invalid function code, set Carry = 1
+	JR	DONE
+
+DONE:
+	POP	HL		; restore registers and return
 	POP	DE
+	POP	BC
+	RET	NC		; if Carry = 0 then return
+	LD	A, 0		; - else A = 0
+	SCF			;   set Carry flag
 	RET
 
-; Set I/O address
-F00:	LD	A, 	D
+; --- SET ADDRESS ----------------------------
+; Input:     A = function code  (00h)
+;            D = i/o address    (00-FFh)
+; Outputs:   Carry = 1 (no valid return value)
+F00:
+	LD	A, D		; D -> A
 	LD	(ADDR), A	; store new i/o address
+	SCF			; set Carry flag
 	JP	DONE
 
-; Get I/O address
-F01:	LD	A, (ADDR)	; retrieve i/o address
-	JP	DONE
-	
-; Reset all OCOn and RCOn outputs
-F02:	LD	A, (ADDR)	; i/o address -> C
-	LD	C, A
-	LD	A, 0		; output data
-	LD	(DATOUT), A	; store data
-	OUT	(C), A		; write out data
+; --- GET ADDRESS ---------------------
+; Input:     A = function code  (01h)
+; Outputs:   A = i/o address    (00-FFh)
+;            Carry = 0
+F01:
+	LD	A, (ADDR)	; retrieve i/o address
+	AND	A		; reset Carry flag
 	JP	DONE
 
-; Reset all OCOn outputs
-F03:	LD	A, (ADDR)	; i/o address -> C
-	LD	C, A
+; --- RESET ALL OCOS AND RCOS ----------------
+; Input:     A = function code  (02h)
+; Outputs:   Carry = 1 (no valid return value)
+F02:
+	LD	A, (ADDR)	; retrieve i/o address
+	LD	C, A		; A -> C
+	LD	A, 0		; set output data
+	LD	(DATOUT), A	; store output data
+	OUT	(C), A		; write output data to port
+	SCF			; set Carry flag
+	JP	DONE
+
+; --- RESET ALL OCOS -------------------------
+; Input:     A = function code  (03h)
+; Outputs:   Carry = 1 (no valid return value)
+F03:
+	LD	A, (ADDR)	; retrieve i/o address
+	LD	C, A		; A -> C
 	LD	A, (DATOUT)	; retrieve previous output data
-	LD	B, 0F0h
-	AND	B
-	LD	(DATOUT), A	; store data
-	OUT	(C), A		; write out data
+	LD	B, 0F0h		; set mask
+	AND	B		; merge bytes
+	LD	(DATOUT), A	; store output data
+	OUT	(C), A		; write output data to port
+	SCF			; set Carry flag
 	JP	DONE
 
-; Reset all RCOn outputs
-F04:	LD	A, (ADDR)	; i/o address -> C
-	LD	C, A
+; --- RESET ALL RCOS -------------------------
+; Input:     A = function code  (04h)
+; Outputs:   Carry = 1 (no valid return value)
+F04:
+	LD	A, (ADDR)	; retrieve i/o address
+	LD	C, A		; A -> C
 	LD	A, (DATOUT)	; retrieve previous output data
-	LD	B, 0Fh
-	AND	B
-	LD	(DATOUT), A	; store data
-	OUT	(C), A		; write out data
+	LD	B, 0Fh		; set mask
+	AND	B		; merge bytes
+	LD	(DATOUT), A	; store output data
+	OUT	(C), A		; write output data to port
+	SCF			; set Carry flag
 	JP	DONE
 
-; (...)
+; --- (MASKED) READ DATA FROM ALL PIS --------------
+; Input:     A = function code  (10-11h)
+;            E = mask           (00-0Fh), if A = 11h
+; Outputs:   A = input data     (00-0Fh)
+;            Carry = 0
+F10:
+	LD	H, A		; A -> H
+	LD	A, (ADDR)	; retrieve i/o address
+	LD	C, A		; A -> C
+	IN	A, (C)		; read input data from port
+	XOR	0FFh		; invert input data
+	LD	(DATINP), A	; store input data (in DDCCBBAA format)
 
-; global variables
+	AND	01h		; detect state of 0th bit
+	LD	D, A		; store partial result
+
+	LD	A, (DATINP)	; retrieve input data
+	AND	04h		; detect state of 2nd bit
+	SRL	A		; shift left
+	OR	D		; add to partial result
+	LD	D, A		; store partial result
+
+	LD	A, (DATINP)	; retrieve input data
+	AND	10h		; detect state of 4th bit
+	SRL	A		; shift left
+	SRL	A
+	OR	D		; add to partial result
+	LD	D, A		; store partial result
+
+	LD	A, (DATINP)	; retrieve input data
+	AND	40h		; detect state of 6th bit
+	SRL	A		; shift left
+	SRL	A
+	SRL	A
+	OR	D		; add to partial result
+	LD	(DATINP), D	; store input data (in 0000DCBA format)
+
+	LD	A, H		; H -> A
+	CP	11h		; if function code is 11h,
+	JP	Z, _F11		; - then jump to _F11 label
+	LD	A, (DATINP)	; - else retrieve input data
+	AND	A		;   reset Carry flag
+	JP	DONE
+
+_F11:
+	LD	A, (DATINP)	; retrieve input data
+	AND	E		; mask input data
+	AND	0Fh		; remove upper bits
+	AND	A		; reset Carry flag
+	JP	DONE
+
+; --- MASKED CHANGE CHECKING OF ALL PIS ---
+; Input:     A = function code  (12h)
+;            D = save?          (00/FFh)
+;            E = mask           (00-0Fh)
+; Outputs:   A = changed?       (00/FFh)
+;            Carry = 0
+F12:
+	LD	A, (ADDR)	; retrieve i/o address
+	LD	C, A		; A -> C
+	IN	A, (C)		; read input data from port
+	XOR	0FFh		; invert input data
+	LD	H, A		; store input data (in DDCCBBAA format)
+
+	AND	01h		; detect state of 0th bit
+	LD	B, A		; store partial result
+
+	LD	A, H		; retrieve input data
+	AND	04h		; detect state of 2nd bit
+	SRL	A		; shift left
+	OR	B		; add to partial result
+	LD	B, A		; store partial result
+
+	LD	A, H		; retrieve input data
+	AND	10h		; detect state of 4th bit
+	SRL	A		; shift left
+	SRL	A
+	OR	B		; add to partial result
+	LD	B, A		; store partial result
+
+	LD	A, H		; retrieve input data
+	AND	40h		; detect state of 6th bit
+	SRL	A		; shift left
+	SRL	A
+	SRL	A
+	OR	B		; add to partial result
+	LD	H, A		; store input data
+
+	LD	A, H		; retrieve input data
+	AND	E		; mask input data
+	LD	B, A		; store masked input data
+	LD	A, (DATINP)	; retrieve previous input data
+	AND	E		; mask previous input data
+	CP	B		; compare recent and previous data
+	JP	NZ, _CH12	; if not equal then goto label _CH12
+
+	CALL	_SV12		; - else store input data (in 0000DCBA format)
+	LD	A, 0		;   -> data is not changed 
+	AND	A		;   reset Carry flag
+	JP	DONE
+
+_CH12:
+	CALL	_SV12		; store input data (in 0000DCBA format)
+	LD	A, 0FFh		; -> data is changed   
+	AND	A		; reset Carry flag
+	JP	DONE
+
+_SV12:
+	PUSH	AF		; save registers
+	LD	A, D		; D -> A
+	CP	A, 0		; if A = 0 then
+	RET	Z		; - return
+	LD	A, H		; - else retrieve input data
+	LD	(DATINP), A	;   store input data (in 0000DCBA format)
+	POP	AF		; store registers
+	RET
+
+; --- READ STATE FROM A PI -------------
+; Input:     A = function code  (18h)
+;            E = port number    (00-03h)
+; Outputs:   A = state          (00/FFh)
+;            Carry = 0
+F18:
+	LD	A, (ADDR)	; retrieve i/o address
+	LD	C, A		; A -> C
+	IN	A, (C)		; read input data from port
+	XOR	0FFh		; invert input data
+	LD	(DATINP), A	; store input data (in DDCCBBAA format)
+
+	AND	01h		; detect state of 0th bit
+	LD	D, A		; store partial result
+
+	LD	A, (DATINP)	; retrieve input data
+	AND	04h		; detect state of 2nd bit
+	SRL	A		; shift left
+	OR	D		; add to result
+	LD	D, A		; store partial result
+
+	LD	A, (DATINP)	; retrieve input data
+	AND	10h		; detect state of 4th bit
+	SRL	A		; shift left
+	SRL	A
+	OR	D		; add to result
+	LD	D, A		; store partial result
+
+	LD	A, (DATINP)	; retrieve input data
+	AND	40h		; detect state of 6th bit
+	SRL	A		; shift left
+	SRL	A
+	SRL	A
+	OR	D		; add to result
+	LD	(DATINP), A	; store input data (in 0000DCBA format)
+
+	BIT	E, A		; check specified bit (set Z flag)
+	JR	Z, _ZE18	; if the specified bit is 0 then go to _ZE18
+	LD	A, 0FFh		; - else true output state
+	AND	A		;   reset Carry flag
+	JP	DONE
+ _ZE18:	XOR	A		; set A = 0 and reset Carry flag
+	JP	DONE
+
+; --- CHANGE CHECKING OF A PI ----------
+; Input:     A = function code  (19h)
+;            E = port number    (00-03h)
+; Outputs:   A = changed?       (00/FFh)
+;            Carry = 0
+F19:
+	XOR	A		; set A = 0
+	SCF			; set Carry Flag
+	JP	DONE
+
+; --- WRITE DATA TO ALL OCOS -----------------
+; Input:     A = function code  (20h)
+;            D = output data    (00-0Fh)
+; Outputs:   A = 0
+;            Carry = 1 (no valid return value)
+F20:
+	LD	A, D		; D -> A
+	AND	0Fh		; mask output data
+	LD      D, A		; masked output data -> D
+
+	LD	A, (ADDR)	; retrieve i/o address
+	LD	C, A		; i/o address -> C
+
+	LD	A, (DATOUT)	; retrieve previous output data
+	AND	0F0h		; mask previous output data
+	OR	D		; merge bytes
+	LD	(DATOUT), A	; store data
+	OUT	(C), A		; write out data
+	SCF			; set Carry Flag
+	JP	DONE
+
+; --- MASKED WRITE DATA TO ALL OCOS ----------
+; Input:     A = function code  (21h)
+;            D = output data    (00-0Fh)
+;            E = mask           (00-0Fh)
+; Outputs:   A = 0
+;            Carry = 1 (no valid return value)
+F21:
+	LD	A, E		; E -> A
+	AND	0Fh		; mask the mask
+	LD	E, A		; A -> E
+
+	LD	A, D		; D -> A
+	AND	0Fh		; mask output data
+	AND	E		; mask output data	
+	LD      D, A		; masked output data -> D
+
+	LD	A, E		; E -> A
+	XOR	0FFh		; invert mask
+	OR	F0h		; set high bits to 1
+	LD	E, A		; A -> E
+
+	LD	A, (ADDR)	; retrieve i/o address
+	LD	C, A		; i/o address -> C
+	LD	A, (DATOUT)	; retrieve previous output data
+	AND	E		; mask previous output data
+	OR	D		; merge bytes
+	LD	(DATOUT), A	; store data
+	OUT	(C), A		; write out data
+	SCF			; set Carry Flag
+	JP	DONE
+
+; --- SWITCH ON A OCO PORT ------------------------------------------------------
+; Input:     A = function code  (28h)
+;            E = port number    (00-03h)
+; Outputs:   A = 0
+;            Carry = 1 (no valid return value)
+F28:
+	XOR	A		; set A = 0
+	SCF			; set Carry Flag
+	JP	DONE
+
+; --- SWITCH OFF A OCO PORT ------------------
+; Input:     A = function code  (29h)
+;            E = port number    (00-03h)
+; Outputs:   A = 0
+;            Carry = 1 (no valid return value)
+F29:
+	XOR	A		; set A = 0
+	SCF			; set Carry Flag
+	JP	DONE
+
+; --- SWITCH ON AND DELAYED OFF A OCO PORT ---
+; Input:     A = function code  (2Ah)
+;            D = relative delay (00-FFh)
+;            E = port number    (00-03h)
+; Outputs:   A = 0
+;            Carry = 1 (no valid return value)
+F2A:
+	XOR	A		; set A = 0
+	SCF			; set Carry Flag
+	JP	DONE
+
+; --- WRITE DATA TO ALL RCOS -----------------
+; Input:     A = function code  (30h)
+;            D = output data    (00-0Fh)
+; Outputs:   A = 0
+;            Carry = 1 (no valid return value)
+F30:
+	LD	A, D		; D -> A
+	AND	0F0h		; mask output data
+	LD      D, A		; masked output data -> D
+
+	LD	A, (ADDR)	; retrieve i/o address
+	LD	C, A		; i/o address -> C
+
+	LD	A, (DATOUT)	; retrieve previous output data
+	AND	0Fh		; mask previous output data
+	OR	D		; merge bytes
+	LD	(DATOUT), A	; store data
+	OUT	(C), A		; write out data
+	SCF			; set Carry Flag
+	JP	DONE
+
+; --- MASKED WRITE DATA TO ALL RCOS ----------
+; Input:     A = function code  (31h)
+;            D = output data    (00-0Fh)
+;            E = mask           (00-0Fh)
+; Outputs:   A = 0
+;            Carry = 1 (no valid return value)
+F31:
+	LD	A, E		; E -> A
+	AND	0Fh		; mask the mask
+	SLA	A
+	SLA	A
+	SLA	A
+	SLA	A
+	LD	E, A		; A -> E
+
+	LD	A, D		; D -> A
+	SLA	A
+	SLA	A
+	SLA	A
+	SLA	A
+	AND	0F0h		; mask output data
+	AND	E		; mask output data	
+	LD      D, A		; masked output data -> D
+
+	LD	A, E		; E -> A
+	XOR	0FFh		; invert mask
+	OR	0Fh		; set low bits to 1
+	LD	E, A		; A -> E
+
+	LD	A, (ADDR)	; retrieve i/o address
+	LD	C, A		; i/o address -> C
+	LD	A, (DATOUT)	; retrieve previous output data
+	AND	E		; mask previous output data
+	OR	D		; merge bytes
+	LD	(DATOUT), A	; store data
+	OUT	(C), A		; write out data
+	SCF			; set Carry Flag
+	JP	DONE
+
+; --- SWITCH ON A RCO PORT ------------------------------------------------------
+; Input:     A = function code  (38h)
+;            E = port number    (00-03h)
+; Outputs:   A = 0
+;            Carry = 1 (no valid return value)
+F38:
+	XOR	A		; set A = 0
+	SCF			; set Carry Flag
+	JP	DONE
+
+; --- SWITCH OFF A RCO PORT ------------------
+; Input:     A = function code  (39h)
+;            E = port number    (00-03h)
+; Outputs:   A = 0
+;            Carry = 1 (no valid return value)
+F39:
+	XOR	A		; set A = 0
+	SCF			; set Carry Flag
+	JP	DONE
+
+; --- SWITCH ON AND DELAYED OFF A RCO PORT ---
+; Input:     A = function code  (3Ah)
+;            D = relative delay (00-FFh)
+;            E = port number    (00-03h)
+; Outputs:   A = 0
+;            Carry = 1 (no valid return value)
+F3A:
+	XOR	A		; set A = 0
+	SCF			; set Carry Flag
+	JP	DONE
+
+; --- DATA AREA -----------------------------------------------
 ADDR:	DB	0		; I/O address
-DATINP:	DB	0		; last read data
-DATOUT:	DB	0		; last 
+DATINP:	DB	0		; last data read from the port
+DATOUT:	DB	0		; last data written to the port
 	END
