@@ -12,7 +12,7 @@ with modules of my own design. My goal is to revive the joy of discovery, while
 on this new machine, legendary languages ​such as BASIC, Fortran or Cobol come to
 life again.
 
-<img align="left" style="float: left; margin: 0 10px 0 0;" alt="Appearance"
+<img align="left" style="float: center; margin: 0 10px 0 0;" alt="Appearance"
   src="pictures/equ_04.jpg" border="10">
 <br>
 

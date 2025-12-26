@@ -184,7 +184,7 @@ F10:
 	SRL	A
 	SRL	A
 	OR	D		; add to partial result
-	LD	(DATINP), D	; store input data (in 0000DCBA format)
+	LD	(DATINP), A	; store input data (in 0000DCBA format)
 
 	LD	A, H		; H -> A
 	CP	11h		; if function code is 11h,
@@ -302,8 +302,15 @@ F18:
 	OR	D		; add to result
 	LD	(DATINP), A	; store input data (in 0000DCBA format)
 
-	BIT	E, A		; check specified bit (set Z flag)
-	JR	Z, _ZE18	; if the specified bit is 0 then go to _ZE18
+	INC	E		; increment port number
+_LO18:
+	DEC	E		; decrement port number, E = 0 -> Z = 0
+	JP	Z, _DO18	; if Z = 0 then goto _DO18 label					
+	SRL	A		; - else shift to right
+	JP	_LO18		;   goto _L018 label     
+_DO18:
+	AND	01h		; mask result
+	JR	Z, _ZE18	; if the result is 0 then goto _ZE18
 	LD	A, 0FFh		; - else true output state
 	AND	A		;   reset Carry flag
 	JP	DONE
@@ -349,7 +356,7 @@ F21:
 
 	LD	A, E		; E -> A
 	XOR	0FFh		; invert mask
-	OR	F0h		; protect high 4 bits
+	OR	0F0h		; protect high 4 bits
 	LD	E, A		; A -> E
 
 	LD	A, (ADDR)	; retrieve i/o address
@@ -389,7 +396,7 @@ _DO28:
 	LD	A, (ADDR)	; retrieve i/o address
 	LD	C, A		; A -> C
 	LD	A, (DATOUT)	; retrieve previous output data
-	AND	E		; punch specified place valé
+	AND	E		; punch specified place valC)
 	OR	D		; put 1 to hole
 	
 	LD	(DATOUT), A	; store output data
@@ -424,7 +431,7 @@ _DO29:
 	LD	A, (ADDR)	; retrieve i/o address
 	LD	C, A		; A -> C
 	LD	A, (DATOUT)	; retrieve previous output data
-	AND	E		; punch specified place valé
+	AND	E		; punch specified place valC)
 	
 	LD	(DATOUT), A	; store output data
 	OUT	(C), A		; write out data
@@ -459,7 +466,7 @@ _DO2A:
 	LD	A, (ADDR)	; retrieve i/o address
 	LD	C, A		; A -> C
 	LD	A, (DATOUT)	; retrieve previous output data
-	AND	E		; punch specified place valé
+	AND	E		; punch specified place valC)
 	OR	H		; put 1 to hole
 	OUT	(C), A		; write out data
 
@@ -571,7 +578,7 @@ _DO38:
 	LD	A, (ADDR)	; retrieve i/o address
 	LD	C, A		; A -> C
 	LD	A, (DATOUT)	; retrieve previous output data
-	AND	E		; punch specified place valé
+	AND	E		; punch specified place valC)
 	OR	D		; put 1 to hole
 	
 	LD	(DATOUT), A	; store output data
@@ -609,7 +616,7 @@ _DO39:
 	LD	A, (ADDR)	; retrieve i/o address
 	LD	C, A		; A -> C
 	LD	A, (DATOUT)	; retrieve previous output data
-	AND	E		; punch specified place valé
+	AND	E		; punch specified place valC)
 	
 	LD	(DATOUT), A	; store output data
 	OUT	(C), A		; write out data
@@ -647,7 +654,7 @@ _DO3A:
 	LD	A, (ADDR)	; retrieve i/o address
 	LD	C, A		; A -> C
 	LD	A, (DATOUT)	; retrieve previous output data
-	AND	E		; punch specified place valé
+	AND	E		; punch specified place valC)
 	OR	H		; put 1 to hole
 	OUT	(C), A		; write out data
 
@@ -674,3 +681,4 @@ ADDR:	DB	0		; I/O address
 DATINP:	DB	0		; last data read from the port
 DATOUT:	DB	0		; last data written to the port
 	END
+

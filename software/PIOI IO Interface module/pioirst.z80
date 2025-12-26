@@ -11,8 +11,8 @@ EXTRN	PIOI
 
 START:
 	LD	C, 9			; show message
-	LD	DE, (MSG)
-	CALL	5
+	LD	DE, MSG
+	CALL	BDOS
 
 	LD	C, 0			; set i/o address
 	LD	A, (BA)
@@ -26,8 +26,8 @@ EXIT:
 	CALL	BDOS
 	RET
 
-; --- DATA AREA --------------------------------------
+; --- DATA AREA ----------------------------------------
 BA:	DB	0Ch			; base address
-MSG:	DB	'Reset OCO and RCO ports'
+MSG:	DB	'Reset OCO and RCO ports', 0Dh, 0Ah, '$'
 	END
-	
+
