@@ -1,14 +1,29 @@
 ; +-----------------------------------------------------------------------------+
-; | Zacchaeus * Tester program for PIOI interface module                        |
+; | Zacchaeus * PIOI interface module                                           |
 ; | Copyright (C) 2025 Pozsar Zsolt <pozsarzs@gmail.com>                        |
 ; | pioitest.z80                                                                |
-; | Program for CP/M-80 (only Z80)                                              |
+; | Tester program for PIOI interface module for CP/M-80                        |
 ; +-----------------------------------------------------------------------------+
 
-	ORG	100h
-BDOS	EQU	005h
+; I/O ports: * Protected inputs
+;              -PI0: D0 and D1 bits (equal and inverted)
+;              -PI1: D2 and D3 bits (equal and inverted)
+;              -PI2: D4 and D5 bits (equal and inverted)
+;              -PI3: D6 and D7 bits (equal and inverted)
+;            * Open collector outputs
+;              OCO0: D0 bit
+;              OCO1: D1 bit
+;              OCO2: D2 bit
+;              OCO3: D3 bit
+;            * Relay contact outputs
+;              RCO0: D4 bit
+;              RCO1: D5 bit
+;              RCO2: D6 bit
+;              RCO3: D7 bit
 
-; *** MAIN PROGRAM ***
+	ORG	100h
+BDOS	EQU	005h			; BDOS system call
+
 START:	LD	DE, MSG01		; show header 
 	CALL	WRITE
 	LD	DE, MSG02	   	
@@ -33,8 +48,8 @@ CHOICE:	LD	DE, MSG04		; show menu prompt
 	CALL	WRITE
 	JP	CHOICE 
 
-; set base address (00..FFh)
-PROC_1:	LD	DE, MSG06		; set I/O address
+PROC_1:
+	LD	DE, MSG06		; set I/O address
 	CALL	WRITE
 	LD	DE, MSG04
 	XOR	A			; erase variables
@@ -74,8 +89,8 @@ DONE_1:	LD	DE, MSG09		; done is value entering
 	CALL	WRITE 
 	JP	MENU 
 
-; read protected inputs (PI 0..3)
-PROC_2:	LD	DE, MSG07
+PROC_2:					; read protected inputs (PI 0..3)
+	LD	DE, MSG07
 	CALL	WRITE
 LOOP_2:	LD	B, 255			; delay
 WAIT_2:	NOP
@@ -144,8 +159,8 @@ DONE_2:	LD	DE, CR
 	CALL	WRITE
 JP	LOOP_2
 
-; set open collector outputs (OCO 0..3)
-PROC_3:	LD	DE, MSG08
+PROC_3:;				set open collector outputs (OCO 0..3)
+	LD	DE, MSG08
 	CALL	WRITE
 LOOP_3:	LD	B, 255
 WAIT_3:	NOP				; delay
@@ -181,8 +196,9 @@ SET_34:	LD	D, 08h			; set/reset OCO 3
 	CALL	SETP
 	JP	LOOP_3
 
-; set relay contact outputs (RCO 0..3)
-PROC_4:	LD	DE, MSG08
+
+PROC_4:
+	LD	DE, MSG08		; set relay contact outputs (RCO 0..3)
 	CALL	WRITE
 LOOP_4:	LD	B, 255
 WAIT_4:	NOP				; delay
@@ -217,35 +233,57 @@ SET_43:	LD	D, 40h			; set/reset RCO 2
 SET_44:	LD	D, 80h			; set/reset RCO 3
 	CALL	SETP
 	JP	LOOP_4
-RST:	CALL	RESETP			; reset all ports
+
+RST:					; reset all ports
+	CALL	RESETP
 	JP	MENU
 
-; *** EXIT FROM PROGRAM ***
-QUIT:	CALL	RESETP
+QUIT:
+	CALL	RESETP			; exit from program
 	LD	C, 0
 	CALL	BDOS
 	RET
 
 ; *** SET PORT AND STORE OUTPUT DATA ***
-SETP:	LD	A, (BA)
+; Input:     D = select port
+; Output:    -
+; Preserves: BC, DE
+; Clobbers:  AF
+SETP:
+	PUSH	BC
+	PUSH	DE
+	LD	A, (BA)
 	LD	C, A
 	LD	A, (OD)
 	XOR	D
 	LD	(OD), A
 	OUT	(C), A
+	POP	DE
+	POP	BC
 	RET
 
-; *** RESET ALL PORTS AND STORE OUTPUT DATA ***
-RESETP:	LD	A, (BA)
+; --- RESET ALL PORTS AND STORE OUTPUT DATA ---
+; Input:     -
+; Outputs:   -
+; Preserves: BC
+; Clobbers:  AF
+RESETP:
+	PUSH	BC
+	LD	A, (BA)
 	LD	C, A
 	LD	A, 0
 	OUT	(C), A
 	LD	(OD), A
+	POP	BC
 	RET
 
-; *** ASCII HEX -> BIN (0..15) CONVERSION ***
-; * Error: CARRY = 1
-HEX2BIN:CP	'0'			; input character: 0..9
+; --- ASCII HEX -> BIN (0..15) CONVERSION ---
+; Input:    A = character (ASCII code)
+; Output:   A = character (ASCII code)
+;           Carry = 1: error
+; Clobbers:  AF
+HEX2BIN:
+	CP	'0'			; input character: 0..9
 	JP	C, BAD
 	CP	'9'+1
 	JP	C, NUM
@@ -275,24 +313,29 @@ NUM:	SUB	'0'
 BAD:	SCF				; input character is bad
 	RET
 
-; *** READ A CHARACTER FROM CONSOLE ***
-; * RESULT: A
-GETCHR:	PUSH	BC
+; --- READ A CHARACTER FROM CONSOLE ---
+; Output:    A = character (ASCII code)
+; Preserves: BC
+GETCHR:
+	PUSH	BC
 	LD	C, 1
 	CALL	BDOS
 	POP	BC
 	RET
 
-; *** WRITE A CHARACTER TO CONSOLE ***
-; * INPUT: E
-PUTCHR:	PUSH	BC
+; --- WRITE A CHARACTER TO CONSOLE ----
+; Input:     E = character (ASCII code)
+; Preserves: BC
+PUTCHR:
+	PUSH	BC
 	LD	C, 2
 	CALL	BDOS
 	POP	BC
 	RET
 
-; *** WRITE MESSAGE TO CONSOLE ***
-; * INPUT: DE
+; --- WRITE MESSAGE TO CONSOLE -----------------
+; Input:     DE = starting address of the string
+; Preserves: BC
 WRITE:
 	PUSH	BC
 	LD	C, 9
@@ -300,7 +343,7 @@ WRITE:
 	POP	BC
 	RET
 
-; *** VARIABLES AND CONSTANTS ***
+; --- DATA AREA ---------------------------------------------------------------------------------
 BA:	DB	0Ch			; base address
 CH0	DB	32			; input value in ASCII
 CH1	DB	32			; input value in ASCII
@@ -309,7 +352,7 @@ DIGCNT:	DB	0			; digit number of input value
 HIGH:	DB	' 1$'			; high state
 LF:	DB	0Ah, '$'		; line feed
 LOW:	DB	' 0$'			; low state
-NL:	DB	0Dh, 0Ah, '$'
+NL:	DB	0Dh, 0Ah, '$'		; new line
 OD:	DB	0			; output data
 ; messages
 MSG01:	DB   	'*** PIOI module tester for Zacchaeus Microcomputer ***', 0Dh, 0Ah, '$'
@@ -328,4 +371,4 @@ MSG07:	DB	0Dh, 0Ah, 'Use [ ] to read and [q] to exit.', 0Dh, 0Ah, '$'
 MSG08:	DB	0Dh, 0Ah, 'Use [0][1][2][3] to toggle output and [q] to exit.', 0Dh, 0Ah, '$'
 MSG09:	DB	0Dh, 0Ah, 'Result: $'
 	END
-
+	

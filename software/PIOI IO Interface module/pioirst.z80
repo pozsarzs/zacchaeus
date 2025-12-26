@@ -1,27 +1,33 @@
 ; +-----------------------------------------------------------------------------+
-; | Zacchaeus * Tester program for PIOI interface module                        |
+; | Zacchaeus * PIOI interface module                                           |
 ; | Copyright (C) 2025 Pozsar Zsolt <pozsarzs@gmail.com>                        |
 ; | pioirst.z80                                                                 |
-; | PIOIAPI example program for CP/M-80 (only Z80)                              |
+; | Reset output program for CP/M-80 (sample program using PIOIAPI)             |
 ; +-----------------------------------------------------------------------------+
 
 	ORG	100h
-BDOS	EQU	005h
+BDOS	EQU	005h			; BDOS system call
 EXTRN	PIOI
 
-; *** MAIN PROGRAM ***
-START:	LD	C, 9			; show message
+START:
+	LD	C, 9			; show message
 	LD	DE, (MSG)
 	CALL	5
+
 	LD	C, 0			; set i/o address
 	LD	A, (BA)
 	CALL	PIOI
+
 	LD	C, 2			; reset output ports
 	CALL	PIOI
+
+EXIT:
 	LD	C, 0			; exit
 	CALL	BDOS
 	RET
 
-BA:	DB	0Ch
+; --- DATA AREA --------------------------------------
+BA:	DB	0Ch			; base address
 MSG:	DB	'Reset OCO and RCO ports'
 	END
+	

@@ -11,7 +11,7 @@ PUBLIC PIOI
 ; Input:     A = input data, optional
 ;            B = input data, optional
 ;            C = function code  (00-FFh)
-; Outputs:   Carry = 0, A = output data
+; Output:    Carry = 0, A = output data
 ;            Carry = 1, A = 0 (no valid return value)
 ; Preserves: BC, DE, HL
 ; Clobbers:  AF
@@ -93,7 +93,7 @@ DONE:
 ; --- SET ADDRESS ----------------------------
 ; Input:     A = function code  (00h)
 ;            D = i/o address    (00-FFh)
-; Outputs:   Carry = 1 (no valid return value)
+; Output:    Carry = 1 (no valid return value)
 F00:
 	LD	A, D		; D -> A
 	LD	(ADDR), A	; store new i/o address
@@ -102,7 +102,7 @@ F00:
 
 ; --- GET ADDRESS ---------------------
 ; Input:     A = function code  (01h)
-; Outputs:   A = i/o address    (00-FFh)
+; Output:    A = i/o address    (00-FFh)
 ;            Carry = 0
 F01:
 	LD	A, (ADDR)	; retrieve i/o address
@@ -111,7 +111,7 @@ F01:
 
 ; --- RESET ALL OCOS AND RCOS ----------------
 ; Input:     A = function code  (02h)
-; Outputs:   Carry = 1 (no valid return value)
+; Output:    Carry = 1 (no valid return value)
 F02:
 	LD	A, (ADDR)	; retrieve i/o address
 	LD	C, A		; A -> C
@@ -123,7 +123,7 @@ F02:
 
 ; --- RESET ALL OCOS -------------------------
 ; Input:     A = function code  (03h)
-; Outputs:   Carry = 1 (no valid return value)
+; Output:    Carry = 1 (no valid return value)
 F03:
 	LD	A, (ADDR)	; retrieve i/o address
 	LD	C, A		; A -> C
@@ -137,7 +137,7 @@ F03:
 
 ; --- RESET ALL RCOS -------------------------
 ; Input:     A = function code  (04h)
-; Outputs:   Carry = 1 (no valid return value)
+; Output:    Carry = 1 (no valid return value)
 F04:
 	LD	A, (ADDR)	; retrieve i/o address
 	LD	C, A		; A -> C
@@ -152,7 +152,7 @@ F04:
 ; --- (MASKED) READ DATA FROM ALL PIS --------------
 ; Input:     A = function code  (10-11h)
 ;            E = mask           (00-0Fh), if A = 11h
-; Outputs:   A = input data     (00-0Fh)
+; Output:    A = input data     (00-0Fh)
 ;            Carry = 0
 F10:
 	LD	H, A		; A -> H
@@ -204,7 +204,7 @@ _F11:
 ; Input:     A = function code  (12h)
 ;            D = save?          (00/FFh)
 ;            E = mask           (00-0Fh)
-; Outputs:   A = changed?       (00/FFh)
+; Output:    A = changed?       (00/FFh)
 ;            Carry = 0
 F12:
 	LD	A, (ADDR)	; retrieve i/o address
@@ -269,7 +269,7 @@ _SV12:
 ; --- READ STATE FROM A PI -------------
 ; Input:     A = function code  (18h)
 ;            E = port number    (00-03h)
-; Outputs:   A = state          (00/FFh)
+; Output:    A = state          (00/FFh)
 ;            Carry = 0
 F18:
 	LD	A, (ADDR)	; retrieve i/o address
@@ -313,7 +313,7 @@ F18:
 ; --- WRITE DATA TO ALL OCOS -----------------
 ; Input:     A = function code  (20h)
 ;            D = output data    (00-0Fh)
-; Outputs:   A = 0
+; Output:    A = 0
 ;            Carry = 1 (no valid return value)
 F20:
 	LD	A, D		; D -> A
@@ -335,7 +335,7 @@ F20:
 ; Input:     A = function code  (21h)
 ;            D = output data    (00-0Fh)
 ;            E = mask           (00-0Fh)
-; Outputs:   A = 0
+; Output:    A = 0
 ;            Carry = 1 (no valid return value)
 F21:
 	LD	A, E		; E -> A
@@ -365,7 +365,7 @@ F21:
 ; --- SWITCH ON A OCO PORT ------------------------------------------------------
 ; Input:     A = function code  (28h)
 ;            E = port number    (00-03h)
-; Outputs:   A = 0
+; Output:    A = 0
 ;            Carry = 1 (no valid return value)
 F28:
 	LD	A, 1		; starting place value
@@ -400,7 +400,7 @@ _DO28:
 ; --- SWITCH OFF A OCO PORT ------------------
 ; Input:     A = function code  (29h)
 ;            E = port number    (00-03h)
-; Outputs:   A = 0
+; Output:    A = 0
 ;            Carry = 1 (no valid return value)
 F29:
 	LD	A, 1		; starting place value
@@ -435,7 +435,7 @@ _DO29:
 ; Input:     A = function code  (2Ah)
 ;            D = relative delay (00-FFh)
 ;            E = port number    (00-03h)
-; Outputs:   A = 0
+; Output:    A = 0
 ;            Carry = 1 (no valid return value)
 F2A:
 	LD	A, 1		; starting place value
@@ -484,7 +484,7 @@ _IL2A:				; start of the inner loop
 ; --- WRITE DATA TO ALL RCOS -----------------
 ; Input:     A = function code  (30h)
 ;            D = output data    (00-0Fh)
-; Outputs:   A = 0
+; Output:    A = 0
 ;            Carry = 1 (no valid return value)
 F30:
 	LD	A, D		; D -> A
@@ -506,7 +506,7 @@ F30:
 ; Input:     A = function code  (31h)
 ;            D = output data    (00-0Fh)
 ;            E = mask           (00-0Fh)
-; Outputs:   A = 0
+; Output:    A = 0
 ;            Carry = 1 (no valid return value)
 F31:
 	LD	A, E		; E -> A
@@ -544,7 +544,7 @@ F31:
 ; --- SWITCH ON A RCO PORT ------------------------------------------------------
 ; Input:     A = function code  (38h)
 ;            E = port number    (00-03h)
-; Outputs:   A = 0
+; Output:    A = 0
 ;            Carry = 1 (no valid return value)
 F38:
 	LD	A, 1		; starting place value
@@ -582,7 +582,7 @@ _DO38:
 ; --- SWITCH OFF A RCO PORT ------------------
 ; Input:     A = function code  (39h)
 ;            E = port number    (00-03h)
-; Outputs:   A = 0
+; Output:    A = 0
 ;            Carry = 1 (no valid return value)
 F39:
 	LD	A, 1		; starting place value
@@ -620,7 +620,7 @@ _DO39:
 ; Input:     A = function code  (3Ah)
 ;            D = relative delay (00-FFh)
 ;            E = port number    (00-03h)
-; Outputs:   A = 0
+; Output:    A = 0
 ;            Carry = 1 (no valid return value)
 F3A:
 	LD	A, 1		; starting place value
