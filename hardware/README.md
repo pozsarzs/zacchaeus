@@ -6,6 +6,7 @@
 |------------------------------|--------------------------------------|----------------------------------------------------------|
 |Front panel                   |plan, appearance and production file  |[QuickPanel](https://www.quickpanel.sk)                   |
 |PBKP Back panel               |schematic and KiCAD files             |                                                          |
+|PCOX Covox module             |schematic gerber and KiCAD files      |                                                          |
 |PIOI I/O interface module     |schematic, gerber and KiCAD files     |                                                          |
 |PFRP Front panel              |schematic and KiCAD files             |                                                          |
 |PMAN-DP Display module        |schematic, gerber and KiCAD files     |                                                          |

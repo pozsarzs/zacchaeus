@@ -58,22 +58,23 @@ life again.
 The machine is housed in a power supply unit (OMSZÖV OE-222) from the 1980s.
 The computer consists of the following components:
 
-|name   |function                                     |
-|-------|---------------------------------------------|
-|SC126  |motherboard (Stephen C. Cousins)             |
-|SC702  |RCBus backplane (Stephen C. Cousins)         |
-|SC715  |RCBus CF module (Stephen C. Cousins)         |
-|SC716  |RCBus SIO-2 module (Stephen C. Cousins)      |
-|SC717  |RCBus PIO module (Stephen C. Cousins)        |
-|SC718  |RCBus CTC module (Stephen C. Cousins)        |
-|SC719  |RCBus DIO module (Stephen C. Cousins)        |
-|PIOI   |I/O interface module                         |
-|PMAN-DP|Display module                               |
-|PMAN-SW|Switch module                                |
-|PPOW   |Power distribution module with external fuses|
-|PSPK   |Speaker amplifier module with speaker        |
-|       |2 x TTL/RS232 level shifter module           |
-|       |ATX PC power supply                          |
+|name   |function                                                      |
+|-------|--------------------------------------------------------------|
+|SC126  |motherboard (Stephen C. Cousins)                              |
+|SC702  |RCBus backplane (Stephen C. Cousins)                          |
+|SC715  |RCBus CF module (Stephen C. Cousins)                          |
+|SC716  |RCBus SIO-2 module (Stephen C. Cousins)                       |
+|SC717  |RCBus PIO module (Stephen C. Cousins)                         |
+|SC718  |RCBus CTC module (Stephen C. Cousins)                         |
+|SC719  |RCBus DIO module (Stephen C. Cousins)                         |
+|PCOX   |Internal COVOX-style mono sound module with earphone amplifier|
+|PIOI   |I/O interface module                                          |
+|PMAN-DP|Display module                                                |
+|PMAN-SW|Switch module                                                 |
+|PPOW   |Power distribution module with external fuses                 |
+|PSPK   |Speaker amplifier module with speaker                         |
+|       |2 x TTL/RS232 level shifter module                            |
+|       |ATX PC power supply                                           |
 
 
 ### Planned modules
@@ -82,5 +83,4 @@ The computer consists of the following components:
 |-------|--------------------------------------------------------------|
 |PANA   |Two channels analog input-output module (0-10V)               |
 |PCAS   |Cassette interface module                                     |
-|PCOX   |Internal COVOX-style mono sound module with earphone amplifier|
 |PMAN-IF|Manual programming interface module                           |
