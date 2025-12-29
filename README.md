@@ -25,7 +25,7 @@ life again.
 |processor    |Z180 processor (33 MHz - at 18.432 MHz)      | 
 |ROM          |2 x 512 kB byte Flash memory                 |
 |RAM          |1 x 512 kB byte RAM                          |
-|bus          |RC2014, 9 BP80 socket                        |
+|bus          |9 x BP80 socket                              |
 |disks        |32 MB CF card                                |
 |             |SD card                                      |
 |others       |RTC                                          |
