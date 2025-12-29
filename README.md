@@ -67,7 +67,7 @@ The computer consists of the following components:
 |SC717  |RCBus PIO module (Stephen C. Cousins)                         |
 |SC718  |RCBus CTC module (Stephen C. Cousins)                         |
 |SC719  |RCBus DIO module (Stephen C. Cousins)                         |
-|PCOX   |Internal COVOX-style mono sound module with earphone amplifier|
+|PCOX   |Internal COVOX-style mono sound module with earphone amplifier[^*]|
 |PIOI   |I/O interface module                                          |
 |PMAN-DP|Display module                                                |
 |PMAN-SW|Switch module                                                 |
@@ -84,3 +84,5 @@ The computer consists of the following components:
 |PANA   |Two channels analog input-output module (0-10V)               |
 |PCAS   |Cassette interface module                                     |
 |PMAN-IF|Manual programming interface module                           |
+
+[^*]: The circuit and software are currently under construction.
