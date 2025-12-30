@@ -1,4 +1,4 @@
-#Zacchaeus Microcomputer
+# Zacchaeus Microcomputer
 
 ## BP80 extended bus
 
@@ -69,9 +69,6 @@ not part of the standard according to their individual needs.
 | 79|USER7      |I2C SDA[^2]|
 | 80|USER8      |IEI        |
 
-[^1]: SC126 JP5 close 1-2
-[^2]: SC126 JP5 close 3-4
-
 
 ### Backplane
 
@@ -93,6 +90,9 @@ USER lines. For the drawing, see bus_connection.pdf.
 | 79|USER7      |     |       |       |          |     |    |
 | 80|USER8      |     |       |       |          |     |    |
 
+### Jumpering
+[^1]: SC126 JP5 close 1-2
+[^2]: SC126 JP5 close 3-4
 [^4]: SC716 JP8 close 1-2
 [^5]: SC716 JP9 close 1-2
 [^6]: SC717 JP2 close 1-2
