@@ -25,7 +25,7 @@ life again.
 |processor    |Z180 processor (33 MHz - at 18.432 MHz)      | 
 |ROM          |2 x 512 kB byte Flash memory                 |
 |RAM          |1 x 512 kB byte RAM                          |
-|bus          |RC2014, 9 BP80 socket                        |
+|bus          |9 x BP80 socket                              |
 |disks        |32 MB CF card                                |
 |             |SD card                                      |
 |others       |RTC                                          |
@@ -67,7 +67,7 @@ The computer consists of the following components:
 |SC717  |RCBus PIO module (Stephen C. Cousins)                         |
 |SC718  |RCBus CTC module (Stephen C. Cousins)                         |
 |SC719  |RCBus DIO module (Stephen C. Cousins)                         |
-|PCOX   |Internal COVOX-style mono sound module with earphone amplifier|
+|PCOX   |Internal COVOX-style mono sound module with earphone amplifier[^*]|
 |PIOI   |I/O interface module                                          |
 |PMAN-DP|Display module                                                |
 |PMAN-SW|Switch module                                                 |
@@ -84,3 +84,5 @@ The computer consists of the following components:
 |PANA   |Two channels analog input-output module (0-10V)               |
 |PCAS   |Cassette interface module                                     |
 |PMAN-IF|Manual programming interface module                           |
+
+[^*]: The circuit and software are currently under construction.

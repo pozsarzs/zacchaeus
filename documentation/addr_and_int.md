@@ -17,7 +17,7 @@
 |    |0x0B|SC719 |DIO module for PIOI               |         |
 |    |0x0C|SC126 |system I/O port (RTC, SPI and I2C)|         |
 |    |0x0D|SC126 |LED output port                   |         |
-|    |0x0E|PCOX  |Covox sound output                |planned  |
+|    |0x0E|PCOX  |Covox sound output                |         |
 |    |0x0F|      |                                  |         |
 |0x10|0x17|SC715 |CF card                           |         |
 |0x20|0x27|PMAN  |Manual programming unit's card    |planned  |
@@ -37,5 +37,6 @@
 |Number|Module|Function                          |Note     |
 |:----:|------|----------------------------------|---------|
 |NMI   |      |                                  |         |
+|INT0  |      |                                  |         |
 |INT1  |      |                                  |         |
 |INT2  |      |                                  |         |
