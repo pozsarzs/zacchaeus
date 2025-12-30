@@ -74,7 +74,7 @@ not part of the standard according to their individual needs.
 
 The SC-702 backplane forwards all lines straight with basic jumpering,
 but if necessary, daisy-chain interrupt lines can be created using the
-USER lines. For the drawing, see bus_connection.pdf.
+USER lines. For the drawing, see [bus_connection.pdf](bus_connection.pdf).
 
 
 ### Expansion cards
@@ -91,6 +91,7 @@ USER lines. For the drawing, see bus_connection.pdf.
 | 80|USER8      |     |       |       |          |     |    |
 
 ### Jumpering
+
 [^1]: SC126 JP5 close 1-2
 [^2]: SC126 JP5 close 3-4
 [^4]: SC716 JP8 close 1-2
