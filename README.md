@@ -84,5 +84,6 @@ The computer consists of the following components:
 |PANA   |Two channels analog input-output module (0-10V)               |
 |PCAS   |Cassette interface module                                     |
 |PMAN-IF|Manual programming interface module                           |
+|PMBX   |Expansion box for vintage Moeller PS316 PLC I/O cards (EBExxx)|          |
 
 [^*]: The circuit and software are currently under construction.

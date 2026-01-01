@@ -70,14 +70,14 @@ not part of the standard according to their individual needs.
 | 80|USER8      |IEI        |
 
 
-### Backplane
+### On the backplane
 
 The SC-702 backplane forwards all lines straight with basic jumpering,
 but if necessary, daisy-chain interrupt lines can be created using the
 USER lines. For the drawing, see [bus_connection.pdf](bus_connection.pdf).
 
 
-### Expansion cards
+### On expansion cards
 
 |Pin|Signal Name|SC715|SC716  |SC717  |SC718     |SC719|PCOX|
 |--:|-----------|-----|-------|-------|----------|-----|----|
