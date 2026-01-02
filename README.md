@@ -18,72 +18,86 @@ life again.
 
 ## Features
 
-|components   |type, size, etc.                             |
-|-------------|---------------------------------------------|
-|motherboard  |SC126 (Stephen C. Cousins)                   |
-|firmware     |RomWBW SCZ180_sc126 v3.5.1 2025-05-21        |
-|processor    |Z180 processor (33 MHz - at 18.432 MHz)      | 
-|ROM          |2 x 512 kB byte Flash memory                 |
-|RAM          |1 x 512 kB byte RAM                          |
-|bus          |9 x BP80 socket                              |
-|disks        |32 MB CF card                                |
-|             |SD card                                      |
-|others       |RTC                                          |
-|             |MPU (manual programming unit)                |
-|             |- 8 data and 16 address switch               |
-|             |- 8 digits hexadecimal LED display           |
-|             |(partly implemented)                         |
-|connectors   |2 x serial RS-232                            |
-|             |2 x serial RS-232 TTL                        |
-|             |2 x paralel TTL                              |
-|             |1 x CTC TTL                                  |
-|             |1 x I<sup>2</sup>C TTL                       |
-|             |1 x SPI TTL                                  |
-|             |1 x cassette (not yet implemented)           | 
-|             |1 x earphone (not yet implemented)           |
-|             |4 x protected digital input 12V              |
-|             |4 x open collector output                    |
-|             |4 x NO/NC relay contact output               |
-|             |2 x analog input 0-10V (not yet implemented) | 
-|             |2 x analog output 0-10V (not yet implemented)| 
-|power outputs|+12/5/3.3V 3A                                |
-|             |-12/5V 0,5A                                  |
-|power supply |ATX 600W                                     |
-|OS           |Digital Research CP/M v2.2                   |
-|             |Z-System                                     |
+|components      |type, size, etc.                             |
+|----------------|---------------------------------------------|
+|motherboard     |SC126                                        |
+|firmware        |RomWBW SCZ180_sc126 v3.5.1 2025-05-21        |
+|processor       |Z180 processor (33 MHz - at 18.432 MHz)      | 
+|ROM             |2 x 512 kB byte Flash memory                 |
+|RAM             |512 kB byte RAM                              |
+|bus             |BP80 (extended RC2014 bus), 9 sockets        |                              |
+|disks           |32 MB CF card                                |
+|                |SD card                                      |
+|others          |RTC                                          |
+|control panel   |8 digits hexadecimal LED display             |
+|                |8 data input switch                          |
+|                |16 address input switch                      |
+|                |8 control button                             |
+|                |(partly implemented)                         |
+|front connectors|1 x cassette (not yet implemented)           | 
+|                |1 x earphone (not yet implemented)           |
+|                |4 x protected digital input 12V              |
+|                |4 x open collector output                    |
+|                |4 x NO/NC relay contact output               |
+|                |2 x analog input 0-10V (not yet implemented) | 
+|                |2 x analog output 0-10V (not yet implemented)| 
+|                |+12/5/3.3V 3A power outputs                  |
+|                |-12/5V 0.5A power outputs                    |
+|back connectors |2 x serial RS-232 (DB9M black)               |
+|                |2 x serial RS-232 TTL (DB9M and DB25M blue)  |
+|                |2 x paralel TTL (DB25F blue)                 |
+|                |1 x CTC TTL (DB9F blue)                      |
+|                |1 x spare DB9F (DB9F white)                  |
+|                |1 x I<sup>2</sup>C TTL                       |
+|                |1 x SPI TTL                                  |
+|                |1 x Line out (not yet implemented)           |
+|power supply    |ATX 600W                                     |
+|OS              |Digital Research CP/M v2.2                   |
+|                |Z-System                                     |
 
 
 ## Internal structure
 
-The machine is housed in a power supply unit (OMSZÖV OE-222) from the 1980s.
+The SCxxx modules are designed by Stephen C. Cousins, all information about
+them can be found at [Small Computer Central](https://smallcomputercentral.com/)
+site.
+
+The Pxxx modules were designed by me, their documentation is available on
+the [Github](https://github.com/pozsarzs/zacchaeus) and will soon be
+available on my [homepage](http://www.pozsarzs.hu).
+
+The machine is housed in a power supply cover (OMSZÖV OE-222) from the 1980s.
+
 The computer consists of the following components:
 
 |name   |function                                                      |
 |-------|--------------------------------------------------------------|
-|SC126  |motherboard (Stephen C. Cousins)                              |
-|SC702  |RCBus backplane (Stephen C. Cousins)                          |
-|SC715  |RCBus CF module (Stephen C. Cousins)                          |
-|SC716  |RCBus SIO-2 module (Stephen C. Cousins)                       |
-|SC717  |RCBus PIO module (Stephen C. Cousins)                         |
-|SC718  |RCBus CTC module (Stephen C. Cousins)                         |
-|SC719  |RCBus DIO module (Stephen C. Cousins)                         |
+|SC126  |motherboard                                                   |
+|SC702  |RCBus backplane                                               |
+|SC715  |RCBus CF module                                               |
+|SC716  |RCBus SIO-2 module                                            |
+|SC717  |RCBus PIO module                                              |
+|SC718  |RCBus CTC module                                              |
+|SC719  |RCBus DIO module                                              |
 |PCOX   |Internal COVOX-style mono sound module with earphone amplifier[^*]|
 |PIOI   |I/O interface module                                          |
-|PMAN-DP|Display module                                                |
-|PMAN-SW|Switch module                                                 |
+|PMAN-DP|Manual control panel - display module                         |
+|PMAN-SW|Manual control panel - switch module                          |
 |PPOW   |Power distribution module with external fuses                 |
 |PSPK   |Speaker amplifier module with speaker                         |
 |       |2 x TTL/RS232 level shifter module                            |
 |       |ATX PC power supply                                           |
+
+More information is available in the hardware folder.
 
 
 ### Planned modules
 
 |name   |function                                                      |
 |-------|--------------------------------------------------------------|
-|PANA   |Two channels analog input-output module (0-10V)               |
+|PANA   |Two channels analog input/output module (0-10V)               |
 |PCAS   |Cassette interface module                                     |
-|PMAN-IF|Manual programming interface module                           |
+|PMAN-IF|Manual control panel - interface module                       |
 |PMBX   |Expansion box for vintage Moeller PS316 PLC I/O cards (EBExxx)|          |
 
 [^*]: The circuit and software are currently under construction.
