@@ -95,9 +95,10 @@ More information is available in the hardware folder.
 
 |name   |function                                                      |
 |-------|--------------------------------------------------------------|
-|PANA   |Two channels analog input/output module (0-10V)               |
+|PANA   |Analog input/output module (2AI, 2AO, 0-10V)                  |
 |PCAS   |Cassette interface module                                     |
 |PMAN-IF|Manual control panel - interface module                       |
-|PMBX   |Expansion box for vintage Moeller PS316 PLC I/O cards (EBExxx)|          |
+|PEMX   |External memory box (EPROM bank)                              |
+|PEPX   |External port box (with vintage Moeller PS316 PLC I/O cards)  |
 
 [^*]: The circuit and software are currently under construction.
