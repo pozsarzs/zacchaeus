@@ -9817,6 +9817,16 @@
 	)
 	(wire
 		(pts
+			(xy 71.12 76.2) (xy 71.12 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "839143d0-3fd7-49dc-a0cc-a770c709834b")
+	)
+	(wire
+		(pts
 			(xy 83.82 85.09) (xy 95.25 85.09)
 		)
 		(stroke
@@ -10577,6 +10587,16 @@
 	)
 	(wire
 		(pts
+			(xy 71.12 77.47) (xy 73.66 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c15d8520-2fb4-41fd-b973-969537badd3d")
+	)
+	(wire
+		(pts
 			(xy 76.2 130.175) (xy 76.2 181.61)
 		)
 		(stroke
@@ -10934,16 +10954,6 @@
 			(type default)
 		)
 		(uuid "db62017a-1b92-42f5-9370-3567b4d68b29")
-	)
-	(wire
-		(pts
-			(xy 72.39 77.47) (xy 73.66 77.47)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "db6b2adb-71db-4dce-985a-54a7a7371055")
 	)
 	(wire
 		(pts
@@ -12968,73 +12978,6 @@
 			(project ""
 				(path "/2b98932b-1694-4573-88df-6f0ce09fa9d6"
 					(reference "#PWR012")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GNDD")
-		(at 72.39 77.47 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "3166a414-1609-4094-9a5e-221c92da970c")
-		(property "Reference" "#PWR07"
-			(at 66.04 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GNDD"
-			(at 68.58 77.4699 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 72.39 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 72.39 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 72.39 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "f9a675db-e22f-4958-b659-372ce80d3661")
-		)
-		(instances
-			(project ""
-				(path "/2b98932b-1694-4573-88df-6f0ce09fa9d6"
-					(reference "#PWR07")
 					(unit 1)
 				)
 			)
@@ -17145,6 +17088,70 @@
 			(project ""
 				(path "/2b98932b-1694-4573-88df-6f0ce09fa9d6"
 					(reference "R1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5VD")
+		(at 71.12 76.2 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f9252af2-c6ce-413d-84de-bf42559bdc08")
+		(property "Reference" "#PWR07"
+			(at 71.12 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5VD"
+			(at 71.12 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 71.12 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 71.12 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 71.12 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e0de43ba-58f8-434c-8af2-33cf393ff472")
+		)
+		(instances
+			(project "pcox"
+				(path "/2b98932b-1694-4573-88df-6f0ce09fa9d6"
+					(reference "#PWR07")
 					(unit 1)
 				)
 			)
