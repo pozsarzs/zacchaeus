@@ -1,3 +1,13 @@
+### My related projects on Github
+
+- [An extended Turing machine implementation for CP/M and DOS](https://github.com/pozsarzs/alanz80x)
+- [Turing machine implementation for CP/M and DOS](https://github.com/pozsarzs/alanz80)
+- [Simulator for running DATAS machine code for CP/M and DOS](https://github.com/pozsarzs/datassim)
+- [The FORTRAN Month](https://github.com/pozsarzs/fortran_month)
+
+<hr>
+
+
 <img align="left" style="float: left; margin: 0 10px 0 0;" alt="Z80 inside"
   src="pictures/icon/z80inside.png">
 <br>
@@ -14,16 +24,8 @@ life again.
 
 <img align="left" style="float: center; margin: 0 10px 0 0;" alt="Appearance"
   src="pictures/equ_04.jpg" border="10">
-<br>
-
-** My related projects on Github:**  
-
-- [An extended Turing machine implementation for CP/M and DOS](https://github.com/pozsarzs/alanz80x]
-- [Turing machine implementation for CP/M and DOS](https://github.com/pozsarzs/alanz80]
-- [Simulator for running DATAS machine code for CP/M and DOS](https://github.com/pozsarzs/datassim]
-- [The FORTRAN Month](https://github.com/pozsarzs/fortran_month]
-
-
+<br>&nbsp;
+  
 ## Features
 
 |components      |type, size, etc.                             |
