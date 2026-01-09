@@ -16,6 +16,14 @@ life again.
   src="pictures/equ_04.jpg" border="10">
 <br>
 
+** My related projects on Github:**  
+
+- [An extended Turing machine implementation for CP/M and DOS](https://github.com/pozsarzs/alanz80x]
+- [Turing machine implementation for CP/M and DOS](https://github.com/pozsarzs/alanz80]
+- [Simulator for running DATAS machine code for CP/M and DOS](https://github.com/pozsarzs/datassim]
+- [The FORTRAN Month](https://github.com/pozsarzs/fortran_month]
+
+
 ## Features
 
 |components      |type, size, etc.                             |
@@ -79,7 +87,6 @@ The computer consists of the following components:
 |SC717  |RCBus PIO module                                              |
 |SC718  |RCBus CTC module                                              |
 |SC719  |RCBus DIO module                                              |
-|PCOX   |Internal COVOX-style mono sound module with earphone amplifier[^*]|
 |PIOI   |I/O interface module                                          |
 |PMAN-DP|Manual control panel - display module                         |
 |PMAN-SW|Manual control panel - switch module                          |
@@ -93,12 +100,18 @@ More information is available in the hardware folder.
 
 ### Planned modules
 
+The __planning_ folder contains CAD files, notes, and other supporting
+materials for the element under construction. These will later be moved
+to their final location or deleted.
+
 |name   |function                                                      |
 |-------|--------------------------------------------------------------|
 |PANA   |Analog input/output module (2AI, 2AO, 0-10V)                  |
 |PCAS   |Cassette interface module                                     |
+|PCOX   |Internal COVOX-style mono sound module with earphone amplifier[^1]|
 |PMAN-IF|Manual control panel - interface module                       |
-|PEMX   |External memory box (EPROM bank)                              |
+|PEMX   |External memory box (EPROM bank) [^2]                         |
 |PEPX   |External port box (with vintage Moeller PS316 PLC I/O cards)  |
 
-[^*]: The circuit and software are currently under construction.
+[^1]: The circuit and software are currently under construction.
+[^2]: The circuit and software are currently under planning.
