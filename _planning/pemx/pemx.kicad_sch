@@ -10411,7 +10411,7 @@
     (property "Value" "L_Ferrite" (id 1) (at 61.595 241.935 90)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Footprint" "Inductor_THT:L_Axial_L20.0mm_D8.0mm_P25.40mm_Horizontal" (id 2) (at 61.595 245.745 0)
+    (property "Footprint" "Inductor_THT:L_Axial_L14.5mm_D5.8mm_P20.32mm_Horizontal_Fastron_HBCC" (id 2) (at 61.595 245.745 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 61.595 245.745 0)
@@ -10497,7 +10497,7 @@
     (property "Value" "L_Ferrite" (id 1) (at 61.595 249.555 90)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Footprint" "Inductor_THT:L_Axial_L20.0mm_D8.0mm_P25.40mm_Horizontal" (id 2) (at 61.595 253.365 0)
+    (property "Footprint" "Inductor_THT:L_Axial_L14.5mm_D5.8mm_P20.32mm_Horizontal_Fastron_HBCC" (id 2) (at 61.595 253.365 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 61.595 253.365 0)
@@ -12485,10 +12485,10 @@
       (reference "JP16") (unit 1) (value "Jumper_3_Bridged12") (footprint "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical")
     )
     (path "/6227f43c-3af3-4686-a986-632237f8f075"
-      (reference "L1") (unit 1) (value "L_Ferrite") (footprint "Inductor_THT:L_Axial_L20.0mm_D8.0mm_P25.40mm_Horizontal")
+      (reference "L1") (unit 1) (value "L_Ferrite") (footprint "Inductor_THT:L_Axial_L14.5mm_D5.8mm_P20.32mm_Horizontal_Fastron_HBCC")
     )
     (path "/691a884f-f531-48e1-a0a0-c3de6489163c"
-      (reference "L2") (unit 1) (value "L_Ferrite") (footprint "Inductor_THT:L_Axial_L20.0mm_D8.0mm_P25.40mm_Horizontal")
+      (reference "L2") (unit 1) (value "L_Ferrite") (footprint "Inductor_THT:L_Axial_L14.5mm_D5.8mm_P20.32mm_Horizontal_Fastron_HBCC")
     )
     (path "/2a72677a-1508-49cf-8394-19493c267036"
       (reference "R1") (unit 1) (value "1k") (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal")
