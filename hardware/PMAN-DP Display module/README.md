@@ -2,7 +2,7 @@
 
 ## Hardware/PMAN-DP Display module
 
-## Directory content
+### Directory content
 
 |file                    |description                   |
 |------------------------|------------------------------|
@@ -14,7 +14,7 @@
 |pman-dp.pdf             |schematic drawing             |
 
 
-## About module
+### About module
 
 The PMAN-DP module is the component of the Manual control panel, which
 contains eight hexadecimal LED displays connected in a matrix. The module

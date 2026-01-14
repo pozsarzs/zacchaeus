@@ -2,7 +2,7 @@
 
 ## Hardware/PMAN-SW Switch module
 
-## Directory content
+### Directory content
 
 |file                    |description                   |
 |------------------------|------------------------------|
@@ -14,7 +14,7 @@
 |pman-sw.pdf             |schematic drawing             |
 
 
-## About module
+### About module
 
 The PMAN-SW module is the component of the Manual control panel, which contains
 32 switches, 8 pushbuttons and 4 LEDs. Switches and six pushbuttons connected in

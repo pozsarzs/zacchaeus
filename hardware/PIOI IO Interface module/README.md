@@ -2,7 +2,7 @@
 
 ## Hardware/PIOI IO interface module directory
 
-## Directory content
+### Directory content
 
 |file                 |description                   |
 |---------------------|------------------------------|
@@ -14,7 +14,7 @@
 |pioi.pdf             |schematic drawing             |
 
 
-## About module
+### About module
 
 The PIOI is a combined interface module originally built for another device.
 It has 4 isolated 5..12V digital inputs, 4 open collector outputs and 4 NC/NO

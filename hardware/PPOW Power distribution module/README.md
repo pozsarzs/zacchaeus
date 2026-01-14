@@ -2,7 +2,7 @@
 
 ## Hardware/PPOW Power distribution module
 
-## Directory content
+### Directory content
 
 |file                 |description                   |
 |---------------------|------------------------------|
@@ -14,7 +14,7 @@
 |ppow.pdf             |schematic drawing             |
 
 
-## About module
+### About module
 
 The PPOW module is responsible for distributing the power voltages coming from
 the ATX PC power supply. The module has two +12V, three +5V and 3.3V, one -5V,
