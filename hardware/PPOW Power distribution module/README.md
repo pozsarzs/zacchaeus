@@ -1,6 +1,6 @@
 # Zacchaeus Microcomputer
 
-## Hardware/PPOW Power distribution module
+## Hardware/PPOW Power distribution module 
 
 ### Directory content
 
@@ -81,4 +81,4 @@ Pinout of connectors and terminal blocks:
 
 ### Softwares
 
-The switch module does not have its own software.
+The power distribution module does not have its own software.
