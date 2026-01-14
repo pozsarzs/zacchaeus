@@ -59,3 +59,9 @@ The module is connected to the computer bus by a SC719 RCBus DIO module:
 |      |P2/14|    |Output RCO2              |    |J5/3|PIOI   |
 |      |P2/16|    |Output RCO2              |    |J5/4|PIOI   |
 |      |P2/18|    |GND                      |    |    |       |
+
+### Softwares
+
+This hardware comes a function collection (in assembly language) and a compiled,
+relocatable object code module, the latter of which can be linked to our own
+program.
