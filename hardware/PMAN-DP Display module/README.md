@@ -20,7 +20,7 @@ The PMAN-DP module is the component of the Manual control panel, which
 contains eight hexadecimal LED displays connected in a matrix. The module
 has four selection lines and 8-bit data input, to which the displays are
 connected in pairs. The blanking input of the displays is common. The module
-requires 5V DC to operate.
+requires +5V DC to operate.
 
 
 ### Jumper settings
@@ -49,6 +49,7 @@ This component is connected to the computer bus by the PMAN-IF interface module.
 |PMAN-IF|     | D5 |DIS5-8 data input B      | D5 |J3/1|PMAN-DP|				Adata inputJ3jpDIS1-8 blank             |BL  |J2/5|PMAN-DP|
 |PMAN-IF|     | D6 |DIS5-8 data input C      | D6 |J3/1|PMAN-DP|				Adata inputJ3jpDIS1-8 blank             |BL  |J2/5|PMAN-DP|
 |PMAN-IF|     | D7 |DIS1-4 data input D      | D7 |J3/1|PMAN-DP|				Adata inputJ3jpDIS1-8 blank             |BL  |J2/5|PMAN-DP|
+
 
 ### Softwares
 

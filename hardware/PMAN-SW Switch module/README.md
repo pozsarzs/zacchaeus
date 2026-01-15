@@ -46,10 +46,10 @@ This component is connected to the computer bus by the PMAN-IF interface module.
 |PMAN-IF|     | R1 |Row selection (A8-A15)   | R1 |J2/2|PMAN-SW|
 |PMAN-IF|     | R2 |Row selection (D0-D7)    | R2 |J2/3|PMAN-SW|
 |PMAN-IF|     | R3 |Row selection (buttons)  | R3 |J2/4|PMAN-SW|
-|SC126  |P8/1 |GND |GND                      |GND |J3/1|PMAN-SW|
-|       |P8/2 |    |NMI button               |    |J3/2|       |
+|PMAN-SW|J3/1 |GND |GND                      |GND |P8/1|SC126  |
+|PMAN-SW|J3/2 |    |RESET button             |    |P8/2|SC126  |
 |PMAN-IF|     |GND |GND                      |GND |J4/1|PMAN-SW|
-|       |     |    |Reset button             |    |J4/2|       |
+|PMAN-IF|     |    |NMI button               |    |J4/2|PMAN-SW|
 |PMAN-IF|     |GND |Common cathode           |GND |J5/1|PMAN-SW|
 |PMAN-IF|     |    |ERROR LED anode          |    |J5/2|PMAN-SW|
 |PMAN-IF|     |    |RUN LED anode            |    |J5/3|PMAN-SW|
