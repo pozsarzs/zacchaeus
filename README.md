@@ -94,7 +94,7 @@ The computer consists of the following components:
 |PMAN-SW|Manual control panel - switch module                          |
 |PPOW   |Power distribution module with external fuses                 |
 |PSPK   |Speaker amplifier module with speaker                         |
-|       |2 x TTL/RS232 level shifter module                            |
+|MCS-51M|2 pcs. TTL/RS232 level shifter module                         |
 |       |ATX PC power supply                                           |
 
 More information is available in the hardware folder.
