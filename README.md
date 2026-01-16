@@ -9,7 +9,7 @@
 
 
 <img align="left" style="float: left; margin: 0 10px 0 0;" alt="Z80 inside"
-  src="pictures/icon/z80inside.png">
+  src="pictures/icon/z180_64x64_black.png">
 <br>
 
 # Zacchaeus Microcomputer
