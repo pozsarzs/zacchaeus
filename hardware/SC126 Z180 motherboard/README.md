@@ -4,12 +4,12 @@
 
 ### Directory content
 
-|file                  |description                  |
-|----------------------|-----------------------------|
-|SC126 assembled.jpg   |picture about assembled board| 
-|SC126 description.pdf |detailed description         |
-|SC126 kit contents.pdf|kit contents                 |
-|SC126 schematic.pdf   |schematic drawing            |
+|file                  |description                               |
+|----------------------|------------------------------------------|
+|SC126 assembled.jpg   |picture about assembled board             | 
+|SC126 description.pdf |detailed description                      |
+|SC126 kit contents.pdf|contents of the kit available for purchase|
+|SC126 schematic.pdf   |schematic drawing                         |
 
 
 ### About module
@@ -21,15 +21,15 @@ files.
 
 ### Jumper settings
 
-|Module|Num |Sign|Function                   |State     |Note|
-|------|:--:|----|---------------------------|:--------:|----|
-|SC126 |JP1 |    |ROMWBW write protect       |1-2 closed|    |
-|SC126 |JP2 |    |SCM S6 write protect       |1-2 closed|    |
-|SC126 |JP3 |    |flash select               |2-3 closed|    |
-|SC126 |JP4 |    |DCD0/DREQ1 select          |1-2 closed|    |
-|SC126 |JP5 |    |I<sup>2<sup>C to bus socket|all opened|    |
-|SC126 |P4  |    |+5V to serial connector P5 |closed    |    |
-|SC126 |P7  |    |+5V to serial connector P6 |closed    |    |
+|Module|Num |Sign|Function                    |State     |Note|
+|------|:--:|----|----------------------------|:--------:|----|
+|SC126 |JP1 |    |ROMWBW write protect        |1-2 closed|    |
+|SC126 |JP2 |    |SCM S6 write protect        |1-2 closed|    |
+|SC126 |JP3 |    |flash select                |2-3 closed|    |
+|SC126 |JP4 |    |DCD0/DREQ1 select           |1-2 closed|    |
+|SC126 |JP5 |    |I<sup>2</sup>C to bus socket|all opened|    |
+|SC126 |P4  |    |+5V to serial connector P5  |closed    |    |
+|SC126 |P7  |    |+5V to serial connector P6  |closed    |    |
 
 
 ### Connection with others
