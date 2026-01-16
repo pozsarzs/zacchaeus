@@ -1,6 +1,8 @@
 # Zacchaeus Microcomputer
 
-## Software directory
+## Software
+
+### Directory content
 
 |directory                            |note, url, etc.                                                                                                |
 |-------------------------------------|---------------------------------------------------------------------------------------------------------------|
