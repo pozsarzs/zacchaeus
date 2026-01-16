@@ -165,8 +165,7 @@ The SC-702 backplane forwards all lines straight with basic jumpering,
 but if necessary, daisy-chain interrupt lines can be created using the
 USER lines. For the drawing, see [bus_connection.pdf](RCBus/bus_connection.pdf).
 
-
-### On expansion cards
+_On expansion cards:_  
 
 |Pin|Signal Name|SC715|SC716  |SC717  |SC718     |SC719|PCOX|
 |--:|-----------|-----|-------|-------|----------|-----|----|

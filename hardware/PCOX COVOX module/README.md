@@ -25,9 +25,9 @@ operate.
 
 ### Jumper settings
 
-|Module|Num |Sign |Function            |State      |Note                    |
-|------|:--:|-----|--------------------|:---------:|------------------------|
-|PCOX  |SW1 |/A7-0|I/O address         |11110001   |DIP switch, address 0x0E|
+|Module|Num |Sign |Function            |State   |Note                   |
+|------|:--:|-----|--------------------|:------:|-----------------------|
+|PCOX  |SW1 |/A7-0|I/O address         |11001110|DIP switch, address 31h|
 
 
 ### Connection with others
