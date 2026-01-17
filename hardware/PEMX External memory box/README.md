@@ -12,6 +12,7 @@
 |pemx-F_Silkscreen.pdf|silkscreen of the PCB         |
 |pemx-gerber.zip      |Gerber files for manufacturing|
 |pemx.pdf             |schematic drawing             |
+|eprom_pinout.md      |comparison of EPROM's pinout  |
 
 
 ### About module
@@ -20,7 +21,7 @@ The PEMX is an 8-slot external EPROM bank that connects to the computer via two
 PIO ports (SC717 module). The bank can use the 2764, 27128, 27256 and 27512
 EPROMs and their "A" and CMOS versions. The selected EPROM is not built into the
 machine's memory area, but can be copied to disk or loaded into memory (and run)
-using utility programs. This equipment requires 230 V AC for operation.
+using utility programs. This equipment requires 230V AC for operation.
 
 
 ### Jumper settings
