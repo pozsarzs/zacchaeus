@@ -115,5 +115,5 @@ to their final location or deleted.
 |PEMX   |External memory box (EPROM bank) [2]                          |
 |PEIX   |External interface box (for vintage Moeller PS316 I/O cards) [1] |
 
-[1]: The circuit and software are currently under planning.
-[2]: The circuit and software are currently under construction.
+[1]: The circuit and software are currently under planning.  
+[2]: The circuit and software are currently under construction.  
