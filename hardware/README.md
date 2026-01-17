@@ -17,8 +17,10 @@ current settings and information.
 |directory                            |note, url, etc.                                                                                                      |
 |-------------------------------------|---------------------------------------------------------------------------------------------------------------------|
 |Front panel                          |[QuickPanel](https://www.quickpanel.sk)                                                                              |
+|MCS-51M RS232 level shifter module   |                                                                                                                     |
 |PBKP Back panel                      |                                                                                                                     |
 |PCOX Covox module                    |                                                                                                                     |
+|PEIX External interface box          |                                                                                                                     |
 |PEMX External memory box (EPROM bank)|                                                                                                                     |
 |PIOI I/O interface module            |                                                                                                                     |
 |PFRP Front panel                     |                                                                                                                     |

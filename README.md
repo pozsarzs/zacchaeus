@@ -110,10 +110,10 @@ to their final location or deleted.
 |-------|--------------------------------------------------------------|
 |PANA   |Analog input/output module (2AI, 2AO, 0-10V)                  |
 |PCAS   |Cassette interface module                                     |
-|PCOX   |Internal COVOX-style mono sound module with earphone amplifier[^1]|
+|PCOX   |Internal COVOX-style mono sound module with earphone amplifier [2]|
 |PMAN-IF|Manual control panel - interface module                       |
-|PEMX   |External memory box (EPROM bank) [^2]                         |
-|PEPX   |External port box (with vintage Moeller PS316 PLC I/O cards)  |
+|PEMX   |External memory box (EPROM bank) [2]                          |
+|PEIX   |External interface box (for vintage Moeller PS316 I/O cards) [1] |
 
-[^1]: The circuit and software are currently under construction.
-[^2]: The circuit and software are currently under planning.
+[1]: The circuit and software are currently under planning.
+[2]: The circuit and software are currently under construction.
