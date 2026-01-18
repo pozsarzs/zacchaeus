@@ -20,9 +20,10 @@ external push button. The card uses internal +5V and external +24V power supply.
 
 ### Integrated circuits important for control
 
-<img align="left" style="float: center; margin: 0 10px 0 0;" alt="Appearance"
+<p align="center">
+<img style="width:50%;height:auto; margin:auto 0 10px 0 0;" alt="Appearance"
   src="ebe-266_1 DO.jpg" border="10">
-<br>&nbsp;
+</p>
 
 |Own sign|Type    |Function                   |Work                   |Note    |
 |:------:|:------:|---------------------------|-----------------------|--------|
