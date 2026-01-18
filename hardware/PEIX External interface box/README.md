@@ -7,12 +7,12 @@
 |file                 |description                                  |
 |---------------------|---------------------------------------------|
 |LEGAL.md             |Legal Disclaimer & Interoperability Statement|
-|ebe-206_1 DI.md      |16-channel digital input card                |
-|ebe-266_1 DO.md      |                                             |
-|ebe-275_2 AI.md      |                                             |
-|ebe-287_1 AO.md      |                                             |
-|78-070-0300 PS.md    |                                             |
-|0116-a04 BP.md       |                                             |
+|ebe-206_1 DI.md      |16-channel digital input module              |
+|ebe-266_1 DO.md      |16-channel digital output module             |
+|ebe-275_2 AI.md      |4-channel analog input module                |
+|ebe-287_1 AO.md      |4-channel analog output module               |
+|78-070-0300 PS.md    |power supply module                          |
+|0116-a04 BP.md       |backplane                                    |
 
 
 ### About module

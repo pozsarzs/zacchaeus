@@ -10,8 +10,6 @@
 
 ### About module
 
-_There are no position numbers or other markings printed on the panel._  
-
 The 16 inputs are isolated by optocouplers. If the card address on the card
 address lines and the DIP switch match, the card sets the DI output to match the
 input specified on the DSn lines. The card only uses an internal +5V power
@@ -62,3 +60,9 @@ The card address can be set using the 8-position DIP switch on the card.
 
 This module does not have its own software. Its operation was ensured by the
 CPU module of the original system.
+
+> [WARNING!]
+> There are no position numbers or other markings printed on the panel. The
+>marking shown in the picture and in the documentation are my own assignment and
+> do not match the markings used by the manufacturer.
+>

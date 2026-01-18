@@ -18,10 +18,24 @@ switch match, the card sets the output specified on the DSn lines to match the
 DO line. The status of the outputs can be reset from the bus and with an
 external push button. The card uses internal +5V and external +24V power supply. 
 
+### Integrated circuits important for control
+
+<img align="left" style="float: center; margin: 0 10px 0 0;" alt="Appearance"
+  src="ebe-266_1 DO.jpg" border="10">
+<br>&nbsp;
+
+|Own sign|Type    |Function                   |Work                   |Note    |
+|:------:|:------:|---------------------------|-----------------------|--------|
+|   U1   |74ALS688|8-bit identity comparator  |card address comparison|        |
+|   U2   |74ALS240|octal inverting line driver|                       |        |
+|   U3   |74ALS32 |quad 2-input OR gate       |other logic            |        |
+|   U4   |74HC259 |8-bit addressable latches  |output latches #1      |out 0-7 |
+|   U5   |74HC259 |8-bit addressable latches  |output latches #2      |out 8-16|
+
 
 ### Jumper settings
 
-The card address can be set using the 8-position DIP switch on the card.
+The card address can be set using the 8-position DIP switch (SW1).
 
 |SW |Own sign|Function    |Note|
 |--:|:------:|------------|----|
