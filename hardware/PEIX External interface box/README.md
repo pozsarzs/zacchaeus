@@ -6,11 +6,15 @@
 
 |file                 |description                                  |
 |---------------------|---------------------------------------------|
+|\[ebe-206-1\]        |module directory                             |
+|\[ebe-266-1\]        |module directory                             |
+|\[ebe-275-2\]        |module directory                             |
+|\[ebe-287-1\]        |module directory                             |
 |LEGAL.md             |Legal Disclaimer & Interoperability Statement|
-|ebe-206_1 DI.md      |16-channel digital input module              |
-|ebe-266_1 DO.md      |16-channel digital output module             |
-|ebe-275_2 AI.md      |4-channel analog input module                |
-|ebe-287_1 AO.md      |4-channel analog output module               |
+|ebe-206-1 DI.md      |16-channel digital input module              |
+|ebe-266-1 DO.md      |16-channel digital output module             |
+|ebe-275-2 AI.md      |4-channel analog input module                |
+|ebe-287-1 AO.md      |4-channel analog output module               |
 |78-070-0300 PS.md    |power supply module                          |
 |0116-a04 BP.md       |backplane                                    |
 
