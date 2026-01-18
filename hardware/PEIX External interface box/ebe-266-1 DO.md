@@ -20,16 +20,10 @@ external push button. The card uses internal +5V and external +24V power supply.
 
 ### Integrated circuits important for control
 
-<<<<<<< HEAD:hardware/PEIX External interface box/ebe-266-1 DO.md
-<img align="left" style="float: center; margin: 0 10px 0 0;" alt="Appearance"
-  src="ebe-266-1/ebe-266-1.jpg" border="10">
-<br>&nbsp;
-=======
 <p align="center">
 <img style="width:50%;height:auto; margin:auto 0 10px 0 0;" alt="Appearance"
-  src="ebe-266_1 DO.jpg" border="10">
+  src="ebe-266-1/ebe-266-1.jpg" border="10">
 </p>
->>>>>>> c2c62631b75f6b8e8c31701ed7035a0a7167bef1:hardware/PEIX External interface box/ebe-266_1 DO.md
 
 |Own sign|Type    |Function                   |Work                      |Note       |
 |:------:|:------:|---------------------------|--------------------------|-----------|
