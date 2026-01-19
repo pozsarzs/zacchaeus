@@ -13,10 +13,18 @@
 _There are no position numbers or other markings printed on the panel._  
 
 The external voltage is switched to the 16 outputs by optocoupler-isolated
-electronic switches. If the card address on the card address lines and the DIP
-switch match, the card sets the output specified on the DSn lines to match the
-DO line. The status of the outputs can be reset from the bus and with an
-external push button. The card uses internal +5V and external +24V power supply. 
+electronic switches. The status of the outputs can be reset from the bus and with an
+external push button.
+
+Setting the state of an output channel:
+- setting the card address on lines DA0..5,
+- setting the number of the output channel on lines DS0..3,
+- setting the state of the  output channel on line D0
+- setting /AEN low to write the state of D0 to the output buffer, then pulling
+  it high again.
+
+The card uses internal +5V and external +24V power supply. 
+
 
 ### Integrated circuits important for control
 
@@ -40,7 +48,7 @@ Schematic in pdf: [ebe-266-1.pdf](ebe-266-1/ebe-266-1.pdf)
 
 The card address can be set using the 8-position DIP switch (SW1).
 
-|SW |Own sign|Function    |Note|
+|Num|Own sign|Function    |Note|
 |--:|:------:|------------|----|
 | 1 |'DA0    |card address|    |
 | 2 |'DA1    |card address|    |
