@@ -68,8 +68,8 @@ The card address can be set using the 8-position DIP switch (SW1).
 |--:|--------------------|:------:|:------:|-------------------|
 | 2a|GND                 |        |        |                   |
 | 4a|+5V                 |        |        |                   |
-| 6a|output status       |  <---  |  D0    |                   |
-| 8a|address enable      |  --->  |  /AEN  |                   |
+| 6a|output status       |  --->  |  D0    |                   |
+| 8a|address enable      |  <---  |  /AEN  |                   |
 |10a|clear output latches|  <---  |  /RST  |                   |
 |12a|N.C.                |        |        |                   |
 |14a|card address line   |  <---  |  DA5   |                   |

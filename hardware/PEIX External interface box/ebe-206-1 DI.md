@@ -10,17 +10,41 @@
 
 ### About module
 
-The 16 inputs are isolated by optocouplers. If the card address on the card
-address lines and the DIP switch match, the card sets the DI output to match the
-input specified on the DSn lines. The card only uses an internal +5V power
-supply. 
+_There are no position numbers or other markings printed on the panel._  
+
+The 16 inputs are isolated by optocouplers.
+
+Reading the input channel status:
+- setting the card address on lines DA0..5,
+- setting the input channel number on lines DS0..3,
+- reading the input channel status on lines D0.
+
+The card uses internal +5V and external +24V power supply. 
+
+
+### Integrated circuits important for control
+
+<p align="center">
+<img style="width:50%;height:auto; margin:auto 0 10px 0 0;" alt="Appearance"
+  src="ebe-206-1/ebe-206-1.jpg" border="10">
+</p>
+
+|Own sign|Type    |Function                   |Work                      |Note       |
+|:------:|:------:|---------------------------|--------------------------|-----------|
+|   U1   |74ALS688|8-bit identity comparator  |card address comparison   |           |
+|   U2   |74ALS244|octal bus line driver      |DSn and D0 lines drive    |           |
+|   U3   |74ALS00 |quad 2-input NAND gate     |gating multiplexers       |           |
+|   U4   |74HC251 |data selector/multiplexer  |connect input line to D0  |input 0-7  |
+|   U5   |74HC251 |data selector/multiplexer  |connect input line to D0  |input 8-16 |
+
+Schematic in pdf: [ebe-206-1.pdf](ebe-206-1/ebe-206-1.pdf)  
 
 
 ### Jumper settings
 
-The card address can be set using the 8-position DIP switch on the card.
+The card address can be set using the 8-position DIP switch (SW1).
 
-|SW |Own sign|Function    |Note|
+|Num|Own sign|Function    |Note|
 |--:|:------:|------------|----|
 | 1 |'DA0    |card address|    |
 | 2 |'DA1    |card address|    |
@@ -28,8 +52,8 @@ The card address can be set using the 8-position DIP switch on the card.
 | 4 |'DA3    |card address|    |
 | 5 |'DA4    |card address|    |
 | 6 |'DA5    |card address|    |
-| 7 |        |N.C.        |    |
-| 8 |        |N.C.        |    |
+| 7 |        |not used    |    |
+| 8 |        |not used    |    |
 
 'DAn switches == DAn lines.
 
@@ -43,26 +67,20 @@ The card address can be set using the 8-position DIP switch on the card.
 | 6a|N.C.                |        |        |                   |
 | 8a|N.C.                |        |        |                   |
 |10a|N.C.                |        |        |                   |
-|12a|DIn status          |  --->  |  DI    |                   |
+|12a|input status        |  --->  |  D0    |                   |
 |14a|card address line   |  <---  |  DA5   |                   |
 |16a|card address line   |  <---  |  DA4   |                   |
 |18a|card address line   |  <---  |  DA3   |                   |
 |20a|card address line   |  <---  |  DA2   |                   |
 |22a|card address line   |  <---  |  DA1   |                   |
 |24a|card address line   |  <---  |  DA0   |                   |
-|26a|select mux/demux    |  <---  |  DS3   |L/H: DI0..7/DI8..15|
-|28a|mux/demux selector A|  <---  |  DS0   |                   |
-|30a|mux/demux selector B|  <---  |  DS1   |                   |
-|32a|mux/demux selector C|  <---  |  DS2   |                   |
+|26a|part selector line  |  <---  |  DS3   |L/H: DI0..7/DI8..15|
+|28a|port selector line  |  <---  |  DS2   |                   |
+|30a|port selector line  |  <---  |  DS1   |                   |
+|32a|port selector line  |  <---  |  DS0   |                   |
 
 
 ### Softwares
 
 This module does not have its own software. Its operation was ensured by the
 CPU module of the original system.
-
-> [WARNING!]
-> There are no position numbers or other markings printed on the panel. The
->marking shown in the picture and in the documentation are my own assignment and
-> do not match the markings used by the manufacturer.
->
