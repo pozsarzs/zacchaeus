@@ -239,7 +239,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "ebe-266-1.kicad_pro",
+    "filename": "ebe_287-1.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -310,7 +310,7 @@
       "workbook_filename": ""
     },
     "page_layout_descr_file": "",
-    "plot_directory": "",
+    "plot_directory": "/home/pozsarzs/Asztal/Zacchaeus/computer/hardware/PEIX External interface box/ebe_287-1/",
     "spice_adjust_passive_values": false,
     "spice_external_command": "spice \"%I\"",
     "subpart_first_id": 65,
@@ -320,6 +320,18 @@
     [
       "7b85de9c-cf4a-47c5-b810-f94db5d827df",
       ""
+    ],
+    [
+      "64b0b3dc-876d-421d-9807-51baf112f6e7",
+      "Analog board"
+    ],
+    [
+      "16767644-d139-4c76-8b79-c013d3b78bbf",
+      "M0"
+    ],
+    [
+      "d0984119-8bf2-4d32-b301-49786a85755b",
+      "M1"
     ]
   ],
   "text_variables": {}

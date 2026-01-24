@@ -5,11 +5,11 @@
   (paper "A4")
 
   (title_block
-    (title "Integrated circuits important for control")
+    (title "Control-related circuits")
     (date "2026-01-18")
     (rev "1.0")
     (company "Pozsar Zsolt")
-    (comment 1 "EBE-266.1 digital output module")
+    (comment 1 "EBE 266.1 digital output module")
   )
 
   (lib_symbols
@@ -2238,7 +2238,7 @@
   )
 
   (text "Reconstructed functional schematic (reverse engineered for interoperability)."
-    (at 144.78 35.56 0)
+    (at 196.85 163.83 0)
     (effects (font (size 1.27 1.27) italic) (justify left bottom))
     (uuid 256255e8-b4d0-4085-872e-514b59e1ba9a)
   )
@@ -2263,7 +2263,7 @@
     (effects (font (size 1.27 1.27) italic) (justify left bottom))
     (uuid 3756176f-a339-4391-b1a7-7639649ba0a5)
   )
-  (label "D0" (at 68.58 100.33 0)
+  (label "DO" (at 68.58 100.33 0)
     (effects (font (size 1.27 1.27) italic) (justify left bottom))
     (uuid 47c56eb2-3bde-4351-a701-6e3e725f3180)
   )

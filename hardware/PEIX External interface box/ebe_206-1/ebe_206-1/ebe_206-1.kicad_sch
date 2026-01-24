@@ -5,11 +5,11 @@
   (paper "A4")
 
   (title_block
-    (title "Integrated circuits important for control")
+    (title "Control-related circuits")
     (date "2026-01-19")
     (rev "1.0")
     (company "Pozsar Zsolt")
-    (comment 1 "EBE-206.1 digital input module")
+    (comment 1 "EBE 206.1 digital input module")
   )
 
   (lib_symbols
@@ -1892,7 +1892,7 @@
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid b188017e-2a96-43d8-b168-2436d47a0400)
   )
-  (wire (pts (xy 54.61 106.68) (xy 72.39 106.68))
+  (wire (pts (xy 53.34 106.68) (xy 72.39 106.68))
     (stroke (width 0) (type default) (color 0 0 0 0))
     (uuid b1ae3984-0feb-4396-864a-77e10f5a4dd9)
   )
@@ -2154,7 +2154,7 @@
   )
 
   (text "Reconstructed functional schematic (reverse engineered for interoperability)."
-    (at 166.37 43.18 0)
+    (at 196.85 163.83 0)
     (effects (font (size 1.27 1.27) italic) (justify left bottom))
     (uuid 256255e8-b4d0-4085-872e-514b59e1ba9a)
   )
@@ -2179,7 +2179,7 @@
     (effects (font (size 1.27 1.27) italic) (justify left bottom))
     (uuid 3756176f-a339-4391-b1a7-7639649ba0a5)
   )
-  (label "D0" (at 54.61 106.68 0)
+  (label "DI" (at 54.61 106.68 0)
     (effects (font (size 1.27 1.27) italic) (justify left bottom))
     (uuid 47c56eb2-3bde-4351-a701-6e3e725f3180)
   )

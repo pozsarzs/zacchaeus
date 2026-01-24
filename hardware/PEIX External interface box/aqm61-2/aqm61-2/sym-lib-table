@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name "dil")(type "Legacy")(uri "${KIPRJMOD}/dil.pretty/dil.lib")(options "")(descr ""))
+)
