@@ -24,6 +24,13 @@ are five unprotected outputs that are connected to the front panel power outputs
 using back panel fuses. The module also has two 24V/41 mA ground-independent
 auxiliary power outputs, power switch and LED connectors.
 
+#### The installed module
+
+<p align="center">
+<img style="width:50%;height:auto; margin:auto 0 10px 0 0;" alt="Appearance"
+  src="ppow.jpg" border="10">
+</p>
+
 
 ### Jumper settings
 

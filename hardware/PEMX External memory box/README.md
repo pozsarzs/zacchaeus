@@ -101,28 +101,28 @@ Internal ribbon cable between main board and DB25F connector on the back panel:
 
 Y-cable between equipment and two PIO ports:
 
-|Module|Num  |Sign|Function                           |Sign|Num   |Module|
-|------|:---:|----|-----------------------------------|----|:----:|------|
-|PIO #1|  2  | P0 |data line                          |AD0 |J3A/1 |back  |
-|PIO #1|  4  | P2 |data line                          |AD2 |J3A/2 |back  |
-|PIO #1|  6  | P4 |data line                          |AD4 |J3A/3 |back  |
-|PIO #1|  8  | P6 |data line                          |AD6 |J3A/4 |back  |
-|PIO #1| 18  |GND |GND                                |GND |J3A/5 |back  |
-|PIO #1|  3  | P1 |data line                          |AD1 |J3A/14|back  |
-|PIO #1|  5  | P3 |data line                          |AD3 |J3A/15|back  |
-|PIO #1|  7  | P5 |data line                          |AD5 |J3A/16|back  |
-|PIO #1|  9  | P7 |data line                          |AD7 |J3A/17|back  |
-|PIO #1| 25  |GND |GND                                |GND |J3A/18|back  |
-|PIO #2|  2  | P0 |data line                          |BD0 |J3A/10|back  |
-|PIO #2|  4  | P2 |data line                          |BD2 |J3A/11|back  |
-|PIO #2|  6  | P4 |data line                          |BD4 |J3A/12|back  |
-|PIO #2|  8  | P6 |data line                          |BD6 |J3A/13|back  |
-|PIO #2| 18  |GND |GND                                |GND |J3A/9 |back  |
-|PIO #2|  3  | P1 |data line                          |BD1 |J3A/22|back  |
-|PIO #2|  5  | P3 |data line                          |BD3 |J3A/23|back  |
-|PIO #2|  7  | P5 |data line                          |BD5 |J3A/24|back  |
-|PIO #2|  9  | P7 |data line                          |BD7 |J3A/25|back  |
-|PIO #2| 25  |GND |GND                                |GND |J3A/21|back  |
+|Module|Num|Sign|Function |Sign|Num   |Module|
+|------|:-:|----|---------|----|:----:|------|
+|PIO #1|  2| P0 |data line|AD0 |J3A/1 |back  |
+|PIO #1|  4| P2 |data line|AD2 |J3A/2 |back  |
+|PIO #1|  6| P4 |data line|AD4 |J3A/3 |back  |
+|PIO #1|  8| P6 |data line|AD6 |J3A/4 |back  |
+|PIO #1| 18|GND |GND      |GND |J3A/5 |back  |
+|PIO #1|  3| P1 |data line|AD1 |J3A/14|back  |
+|PIO #1|  5| P3 |data line|AD3 |J3A/15|back  |
+|PIO #1|  7| P5 |data line|AD5 |J3A/16|back  |
+|PIO #1|  9| P7 |data line|AD7 |J3A/17|back  |
+|PIO #1| 25|GND |GND      |GND |J3A/18|back  |
+|PIO #2|  2| P0 |data line|BD0 |J3A/10|back  |
+|PIO #2|  4| P2 |data line|BD2 |J3A/11|back  |
+|PIO #2|  6| P4 |data line|BD4 |J3A/12|back  |
+|PIO #2|  8| P6 |data line|BD6 |J3A/13|back  |
+|PIO #2| 18|GND |GND      |GND |J3A/9 |back  |
+|PIO #2|  3| P1 |data line|BD1 |J3A/22|back  |
+|PIO #2|  5| P3 |data line|BD3 |J3A/23|back  |
+|PIO #2|  7| P5 |data line|BD5 |J3A/24|back  |
+|PIO #2|  9| P7 |data line|BD7 |J3A/25|back  |
+|PIO #2| 25|GND |GND      |GND |J3A/21|back  |
 
 ### Softwares
 

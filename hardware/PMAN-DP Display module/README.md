@@ -22,6 +22,16 @@ has four selection lines and 8-bit data input, to which the displays are
 connected in pairs. The blanking input of the displays is common. The module
 requires +5V DC to operate.
 
+#### The installed module
+
+<p align="center">
+<img style="width:50%;height:auto; margin:auto 0 10px 0 0;" alt="Appearance"
+  src="pman-dp-1.jpg" border="10">
+<br><br>
+<img style="width:50%;height:auto; margin:auto 0 10px 0 0;" alt="Appearance"
+  src="pman-dp-2.jpg" border="10">
+</p>
+
 
 ### Jumper settings
 
