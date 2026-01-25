@@ -797,7 +797,7 @@
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 4a40accb-c7ad-4915-a9ad-2a70c7877559)
   )
-  (hierarchical_label "(01) UPD" (shape input) (at 76.2 82.55 180)
+  (hierarchical_label "(01) {slash}UPD" (shape input) (at 76.2 82.55 180)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 526e0ca5-60db-4de8-a698-0c8c607770f9)
   )
