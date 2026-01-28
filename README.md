@@ -44,7 +44,7 @@ life again.
 |                |16 address input switch                      |
 |                |8 control button                             |
 |                |(partly implemented)                         |
-|front connectors|1 x cassette (not yet implemented)           | 
+|front connectors|1 x tape (not yet implemented)               | 
 |                |1 x earphone (not yet implemented)           |
 |                |4 x protected digital input 12V              |
 |                |4 x open collector output                    |
@@ -109,11 +109,11 @@ to their final location or deleted.
 |name   |function                                                      |
 |-------|--------------------------------------------------------------|
 |PANA   |Analog input/output module (2AI, 2AO, 0-10V)                  |
-|PCAS   |Cassette interface module                                     |
 |PCOX   |Internal COVOX-style mono sound module with earphone amplifier [3]|
 |PMAN-IF|Manual control panel - interface module                       |
 |PEMX   |External memory box (EPROM bank) [2]                          |
 |PEIX   |External interface box (for vintage Moeller PS316 I/O cards) [1] |
+|PTAP   |Tape and speaker interface module [1]                            |
 
 [1]: The circuit and software are currently under planning.  
 [2]: The circuit are currently under construction.  

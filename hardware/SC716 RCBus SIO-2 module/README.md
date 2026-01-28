@@ -32,13 +32,22 @@ You can find the details in the original PDF files.
 |SC716 |JP8 |IEI |daisy-chain interrupt line            |closed    |    |
 |SC716 |JP9 |IEO |daisy-chain interrupt line            |closed    |    |
 |SC716 |JP10|    |+5 V to serial connector A            |opened    |    |
-|SC716 |JP11|    |+5 V to serial connector B            |opened    |    |
+|SC716 |JP11|    |+5 V to serial connector B            |closed    |    |
 
 
 ### Connection with others
 
-The serial ports of the card are connected to the male DB9 connectors on the back
-panel according to the PBKP wiring diagram.
+The serial ports of the card are connected to the male DB9 connectors on the
+back panel according to the PBKP wiring diagram.
+
+|Module |Num |Sign|Function|Sign|Num |Module    |
+|-------|:--:|----|--------|----|:--:|----------|
+|SC716  |P3/1|    |GND     |TTL |2   |MCS-51M #2|
+|SC716  |P3/2|    |RTS     |    |    |          |
+|SC716  |P3/3|    |+5V     |TTL |1   |MCS-51M #2|
+|SC726  |P3/4|    |RXD     |TTL |4   |MCS-51M #2|
+|SC716  |P3/5|    |TXD     |TTL |3   |MCS-51M #2|
+|SC716  |P3/6|    |CTS     |    |    |          |
 
 
 ### Softwares

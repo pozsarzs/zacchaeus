@@ -17,41 +17,46 @@
 This is a commercially available expansion card designed by Stephen C. Cousins.
 You can find the details in the original PDF files.
 
+Channel 0 of the module is the user output on the back panel, channels 1-2 are
+cascaded to provide the clock signal (CLK2 on bus) for the speaker interface,
+and channel 3 is the timed interrupt.
+
 
 ### Jumper settings
 
-|Module|Num |Sign|Function                        |State   |Note|
-|------|:--:|----|--------------------------------|:------:|----|
-|SC718 |JP1 |A7-0|I/O address                     |10001000|    |
-|SC718 |JP2 |CLK |CTC0 clock source: system clock |closed  |    |
-|      |    |CLK2|CTC0 clock source: CLK2         |opened  |    |
-|      |    |CLKX|CTC0 clock source: X1 oscillator|opened  |    |
-|      |    |INT1|CTC0 clock source: INT1         |opened  |    |
-|      |    |INT2|CTC0 clock source: INT2         |opened  |    |
-|SC718 |JP3 |CLK |CTC1 clock source: system clock |closed  |    |
-|      |    |CLK2|CTC1 clock source: CLK2         |opened  |    |
-|      |    |CLKX|CTC1 clock source: X1 oscillator|opened  |    |
-|      |    |INT1|CTC1 clock source: INT1         |opened  |    |
-|      |    |INT2|CTC1 clock source: INT2         |opened  |    |
-|SC718 |JP4 |CLK |CTC2 clock source: system clock |closed  |    |
-|      |    |CLK2|CTC2 clock source: CLK2         |opened  |    |
-|      |    |CLKX|CTC2 clock source: X1 oscillator|opened  |    |
-|      |    |INT1|CTC2 clock source: INT1         |opened  |    |
-|      |    |INT2|CTC2 clock source: INT2         |opened  |    |
-|SC718 |JP5 |CLK |CTC3 clock source: system clock |closed  |    |
-|      |    |CLK2|CTC3 clock source: CLK2         |opened  |    |
-|      |    |CLKX|CTC3 clock source: X1 oscillator|opened  |    |
-|      |    |INT1|CTC3 clock source: INT1         |opened  |    |
-|      |    |ZT0 |CTC3 clock source: CTC2 output  |opened  |    |
-|SC718 |JP6 |ZT0 |CLK2 source: CTC0 output        |closed  |    |
-|      |    |ZT1 |CLK2 source: CTC1 output        |opened  |    |
-|      |    |ZT2 |CLK2 source: CTC2 output        |opened  |    |
-|      |    |CLKX|CLK2 source: X1 oscillator      |opened  |    |
-|      |    |CLX |CLK2 source: system clock       |opened  |    |
-|SC718 |JP7 |IEI |daisy-chain interrupt line      |closed  |    |
-|SC718 |JP8 |IEO |daisy-chain interrupt line      |closed  |    |
-|SC718 |JP9 |INT1|interrupt line                  |opened  |    |
-|SC718 |JP10|INT2|interrupt line                  |opened  |    |
+|Module|Num   |Sign |Function                        |State   |Note|
+|------|:----:|-----|--------------------------------|:------:|----|
+|SC718 |JP1   |A7-0 |I/O address                     |10001000|    |
+|SC718 |JP2   |CLK  |CTC0 clock source: system clock |closed  |    |
+|      |      |CLK2 |CTC0 clock source: CLK2         |opened  |    |
+|      |      |CLKX |CTC0 clock source: X1 oscillator|opened  |    |
+|      |      |INT1 |CTC0 clock source: INT1         |opened  |    |
+|      |      |INT2 |CTC0 clock source: INT2         |opened  |    |
+|SC718 |JP3   |CLK  |CTC1 clock source: system clock |closed  |    |
+|      |      |CLK2 |CTC1 clock source: CLK2         |opened  |    |
+|      |      |CLKX |CTC1 clock source: X1 oscillator|opened  |    |
+|      |      |INT1 |CTC1 clock source: INT1         |opened  |    |
+|      |      |INT2 |CTC1 clock source: INT2         |opened  |    |
+|SC718 |JP4   |CLK  |CTC2 clock source: system clock |opened  |    |
+|      |      |CLK2 |CTC2 clock source: CLK2         |opened  |    |
+|      |      |CLKX |CTC2 clock source: X1 oscillator|opened  |    |
+|      |      |INT1 |CTC2 clock source: INT1         |opened  |    |
+|      |      |INT2 |CTC2 clock source: INT2         |opened  |    |
+|SC718 |JP5   |CLK  |CTC3 clock source: system clock |closed  |    |
+|      |      |CLK2 |CTC3 clock source: CLK2         |opened  |    |
+|      |      |CLKX |CTC3 clock source: X1 oscillator|opened  |    |
+|      |      |INT1 |CTC3 clock source: INT1         |opened  |    |
+|      |      |ZT0  |CTC3 clock source: CTC2 output  |opened  |    |
+|SC718 |JP6   |ZT0  |CLK2 source: CTC0 output        |closed  |    |
+|      |      |ZT1  |CLK2 source: CTC1 output        |opened  |    |
+|      |      |ZT2  |CLK2 source: CTC2 output        |closed  |    |
+|      |      |CLKX |CLK2 source: X1 oscillator      |opened  |    |
+|      |      |CLX  |CLK2 source: system clock       |opened  |    |
+|SC718 |JP7   |IEI  |daisy-chain interrupt line      |closed  |    |
+|SC718 |JP8   |IEO  |daisy-chain interrupt line      |closed  |    |
+|SC718 |JP9   |INT1 |interrupt line                  |opened  |    |
+|SC718 |JP10  |INT2 |interrupt line                  |opened  |    |
+|SC718 |P2/5-6|CTCIO|ZT1-CT2 cascade                 |closed  |    |
 
 
 ### Connection with others

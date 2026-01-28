@@ -29,7 +29,7 @@ files.
 |SC126 |JP4 |    |DCD0/DREQ1 select           |1-2 closed|    |
 |SC126 |JP5 |    |I<sup>2</sup>C to bus socket|all opened|    |
 |SC126 |P4  |    |+5V to serial connector P5  |closed    |    |
-|SC126 |P7  |    |+5V to serial connector P6  |closed    |    |
+|SC126 |P7  |    |+5V to serial connector P6  |opened    |    |
 
 
 ### Connection with others
@@ -44,12 +44,6 @@ files.
 |SC126  |P5/4|    |RXD     |TTL |4   |MCS-51M #1|
 |SC126  |P5/5|    |TXD     |TTL |3   |MCS-51M #1|
 |SC126  |P5/6|    |CTS     |    |    |          |
-|SC126  |P6/1|    |GND     |TTL |2   |MCS-51M #2|
-|SC126  |P6/2|    |RTS     |    |    |          |
-|SC126  |P6/3|    |+5V     |TTL |1   |MCS-51M #2|
-|SC126  |P6/4|    |RXD     |TTL |4   |MCS-51M #2|
-|SC126  |P6/5|    |TXD     |TTL |3   |MCS-51M #2|
-|SC126  |P6/6|    |CTS     |    |    |          |
 
 
 ### Softwares

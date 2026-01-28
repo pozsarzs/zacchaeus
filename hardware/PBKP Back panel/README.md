@@ -15,3 +15,6 @@
 This wiring diagram contains the connections of the fixed and removable
 backplane connectors. It is occasionally updated due to newly connected
 ones.
+
+The connection of serial ports and modules may vary depending on the
+application (for example: tape interface).
