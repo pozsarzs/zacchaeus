@@ -10,15 +10,36 @@ BDOS	EQU	005h			; BDOS system call
 EXTRN	PIOI
 
 START:
-	LD	C, 9			; show message
-	LD	DE, MSG
-	CALL	BDOS
-
 	LD	C, 0			; set i/o address
 	LD	A, (BA)
 	CALL	PIOI
 
-	LD	C, 2			; reset output ports
+	LD	C, 9			; show message
+	LD	DE, MSG1
+	CALL	BDOS
+
+	LD	A, 0FFH			; switch on all OCO ports
+	LD	C, 20H
+	CALL	PIOI
+
+	CALL	WAIT
+	
+	LD	C, 3			; reset all OCO ports 
+	CALL	PIOI
+
+	CALL	WAIT
+
+	LD	C, 9			; show message
+	LD	DE, MSG2
+	CALL	BDOS
+
+	LD	A, 0FFH			; switch on all RCO ports
+	LD	C, 30H
+	CALL	PIOI
+	
+	CALL	WAIT
+	
+	LD	C, 4			; reset all RCO ports 
 	CALL	PIOI
 
 EXIT:
@@ -26,8 +47,27 @@ EXIT:
 	CALL	BDOS
 	RET
 
+WAIT:
+	PUSH	AF
+	PUSH	BC
+	PUSH	DE
+	LD	B, 10
+WAIT0:	LD	C, 255
+WAIT1:	LD	D, 255
+WAIT2:	DEC	D
+	JP	NZ, WAIT2
+	DEC	C
+	JP	NZ, WAIT1
+	DEC	B
+	JP	NZ, WAIT0
+	POP	DE
+	POP	BC
+	POP	AF
+	RET
+
 ; --- DATA AREA ----------------------------------------
 BA:	DB	0Ch			; base address
-MSG:	DB	'Reset OCO and RCO ports', 0Dh, 0Ah, '$'
+MSG1:	DB	'Reset OCO ports', 0Dh, 0Ah, '$'
+MSG2:	DB	'Reset RCO ports', 0Dh, 0Ah, '$'
 	END
-
+
