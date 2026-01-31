@@ -1,0 +1,66 @@
+PIOI functions for Zacchaeus Microcomputer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  version	v0.1
+  licence	CC0 1.0 Universal
+  architecture	Z80
+  OS		CP/M-80
+  compiler	Borland Turbo Pascal v3.01A (1985)
+
+This is a collection of routines for easy management of PIOI interface ports.
+
+(C) 2025-2026 Pozsar Zsolt <pozsarzs@gmail.com>  
+
+Available procedures and functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+name						functions				A
+-----------------------------------------------------------------------
+procedure setbase(address: byte);		set address
+function getbase: byte;				get address
+procedure resetall;				reset all OCOs and RCOs
+procedure resetoco;				reset all OCOs
+procedure resetrco;				reset all RCOs
+
+function readallpi: byte;			read data from all PIs
+function maskreadpi(mask: byte):		byte;masked read data from PIs
+function checkpi(mask: byte): byte;		masked change checking of PIs
+function readpi(portnum: byte): byte;		read state from a PI
+
+procedure writeoco(data: byte);			write data to all OCOs
+procedure maskwriteoco (data, mask: byte);	masked write data to all OCOs
+procedure onoco(portnum: byte);			switch on a OCO port
+procedure offoco(portnum: byte);		switch off a OCO port
+procedure pulseoco(delay, portnum: byte);	switch on and delayed off a OCO
+
+procedure writerco(data: byte);			write data to all RCOs
+procedure maskwriterco (data, mask: byte);	masked write data to all RCOs
+procedure onrco(portnum: byte);			switch on a RCO port
+procedure offrco(portnum: byte);		switch off a RCO port
+procedure pulserco(delay, portnum: byte);	switch on and delayed off a RCO
+
+Notes
+~~~~~
+  address:	i/o address of interface [00..FFh]
+  data:		half byte [00..0Fh]
+  PI:		Protected Input
+  portnum:	number of port [0..3]
+  OCO:		Open Collector Output
+  RCO:		Relay Contact Output
+  state:	bit [00h/FFh]
+
+Ports
+~~~~~
+  -PI0:		D0 and D1 bits (equal and inverted)
+  -PI1:		D2 and D3 bits (equal and inverted)
+  -PI2:		D4 and D5 bits (equal and inverted)
+  -PI3:		D6 and D7 bits (equal and inverted)
+
+   OCO0:	D0 bit
+   OCO1:	D1 bit
+   OCO2:	D2 bit
+   OCO3:	D3 bit
+
+   RCO0:	D4 bit
+   RCO1:	D5 bit
+   RCO2:	D6 bit
+   RCO3:	D7 bit

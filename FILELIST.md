@@ -140,16 +140,20 @@
 [x] hardware/PIOI IO Interface module/pioi.pdf
 [x] hardware/PIOI IO Interface module/README.md
 [x] hardware/PIOI IO Interface module/pioi/*
-[x] software/PIOI IO Interface module/build.sub
-[x] software/PIOI IO Interface module/pioiapi.rel
-[x] software/PIOI IO Interface module/pioiapi.txt
-[x] software/PIOI IO Interface module/pioiapi.z80
-[x] software/PIOI IO Interface module/pioirst.com
-[x] software/PIOI IO Interface module/pioirst.z80
-[x] software/PIOI IO Interface module/pioitest.com
 [x] software/PIOI IO Interface module/pioitest.txt
-[x] software/PIOI IO Interface module/pioitest.z80
+[x] software/PIOI IO Interface module/pioitest.com
 [x] software/PIOI IO Interface module/README.md
+[x] software/PIOI IO Interface module/pioitest.z80
+[ ] software/PIOI IO Interface module/pioiapi/pioirst.com
+[x] software/PIOI IO Interface module/pioifunc/pioirst.pas
+[ ] software/PIOI IO Interface module/pioifunc/pioifunc.pas
+[x] software/PIOI IO Interface module/pioifunc/pioifunc.txt
+[x] software/PIOI IO Interface module/pioiapi/pioiapi.rel
+[x] software/PIOI IO Interface module/pioiapi/pioirst.z80
+[x] software/PIOI IO Interface module/pioiapi/pioirst.com
+[x] software/PIOI IO Interface module/pioiapi/build.sub
+[x] software/PIOI IO Interface module/pioiapi/pioiapi.txt
+[x] software/PIOI IO Interface module/pioiapi/pioiapi.z80
 
 
 #### PMAN-DP Display module
