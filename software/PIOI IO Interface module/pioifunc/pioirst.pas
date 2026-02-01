@@ -12,22 +12,17 @@ const
 {$I pioifunc.pas}
 
 procedure wait;
-label
-  wait0, wait1, wait2;
 begin
   inline(
-      $06/$0B/		{ LD	B, 10 }
-    wait0:
-      $0E/$FF/		{ LD	C, 255 }
-    wait1:
-      $16/$FF/		{ LD	D, 255 }
-    wait2:
-      $15/		{ DEC	D }
-      $C2/wait2/	{ JP	NZ, WAIT2 }
-      $0D/		{ DEC	C }
-      $C2/wait1/	{ JP	NZ, WAIT1 }
-      $05/		{ DEC	B }
-      $C2/wait0/	{ JP	NZ, WAIT0 }
+    $06/$0B/        {         LD    B, 10           ; 10 -> B }
+    $0E/$FF/        { WAIT0:  LD    C, 255          ; 255 -> C }
+    $16/$FF/        { WAIT1:  LD    D, 255          ; 255 -> D }
+    $15/            { WAIT2:  DEC   D               ; decrement D }
+    $C2/*-2/        {         JP    NZ, WAIT2       ; if D <> 0 goto WAIT2 }
+    $0D/            {         DEC   C               ; decrement C }
+    $C2/*-8/        {         JP    NZ, WAIT1       ; if D <> 0 goto WAIT2 }
+    $05/            {         DEC   B               ; decrement B }
+    $C2/*-14/       {         JP    NZ, WAIT0       ; if D <> 0 goto WAIT2 }
   );
 end;
 
