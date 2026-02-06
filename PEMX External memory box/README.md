@@ -118,5 +118,6 @@ object module—the latter of which can be linked to your own programs.
 
 ### Utilities
 
-- _emxdump.com_: Saves a selected EPROM range to disk or displays it.
-- _emxload.com_: Loads a selected EPROM range into memory starting at a specific RAM address.
+- _emxdump.com_: Saves a selected EPROM range to disk or displays it. (soon)
+- _emxload.com_: Loads a selected EPROM range into memory starting at a
+                 specific RAM address and can optionally execute it. (soon)

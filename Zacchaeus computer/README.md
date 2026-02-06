@@ -285,4 +285,19 @@ The order is important because of daisy-chain interrupt handling.
 
 ## Software
 
-_README.md_ contains all textual information in the subdirectories.
+This hardware is accompanied by a collection of functions (written in
+Assembly), a Turbo Pascal include file, and a compiled, relocatable
+object module—the latter of which can be linked to your own programs.
+
+The motherboard library contains the current contents of the two ROMs,
+the newer version can be downloaded from the internet.
+
+### Utilities
+
+- _tapload.com_: Loads data from tape into memory starting at a
+                 specific RAM address and can optionally execute it. (soon)
+- _tapsave.com_: Saves data from a selected memory range to tape. (soon) 
+- _tapdump.com_: Saves data from tape to disk or displays it. (soon) 
+- _coxplayer.com_: Plays a raw audio file using the PCOX module.
+- _coxpiano.com_: A utility for checking the PCOX module. (soon)
+- _pioitest.com_: A utility for checking the PIOI module.

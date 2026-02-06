@@ -38,7 +38,7 @@ A detailed description of the computer can be found in the
 > [!NOTE]
 > Content will be updated continuously as development progresses.
 
-PEIX is an 8-slot interface connecting legacy Klockner-Moeller PS316 I/O modules
+PEIX is an 8-slot interface connecting legacy _Klöckner-Moeller PS316_ I/O modules
 to the Zacchaeus computer. It restores functionality to these obsolete analog
 and digital modules.
 
