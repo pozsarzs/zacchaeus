@@ -30,7 +30,7 @@ These components are complemented by custom-designed expansion cards and
 external peripherals. These components are licensed as _public domain_.
 
 A detailed description of the computer can be found in the
-[Zacchaeus computer](Zacchaeus%20computer/README.md) folder. 
+[Zacchaeus computer](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer) folder. 
 
 
 ## External interface box
@@ -43,7 +43,7 @@ to the Zacchaeus computer. It restores functionality to these obsolete analog
 and digital modules.
 
 A detailed description of the interface box can be found in the [PEIX External
-interface box](PEIX%20External%20interface%20box/README.md) folder. 
+interface box](https://github.com/pozsarzs/zacchaeus/tree/main/PEIX%20External%20interface%20box) folder. 
 
 
 ## External memory box (EPROM bank)
@@ -55,7 +55,7 @@ PEMX is an 8-slot external EPROM bank connected via two PIO ports. It supports
 2764 through 27512 EPROMs, including 'A' and CMOS variants.
 
 A detailed description of the memory box can be found in the [PEMX External
-memory box](PEMX%20External%20memory%20box/README.md) folder. 
+memory box](https://github.com/pozsarzs/zacchaeus/tree/main/PEMX%20External%20memory%20box) folder. 
 
 <hr>
 
