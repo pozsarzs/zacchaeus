@@ -39,9 +39,6 @@
 |OS              |Digital Research CP/M v2.2                   |
 |                |Z-System                                     |
 
-<img align="left" style="float: center; margin: 0 10px 0 0;" alt="Appearance"
-  src="pictures/Zacchaeus_04.jpg" border="10">
-<br>&nbsp;
 
 ### Internal structure
 
@@ -54,6 +51,10 @@ the [Github](https://github.com/pozsarzs/zacchaeus) and will soon be
 available on my [homepage](http://www.pozsarzs.hu).
 
 The machine is housed in a power supply cover (OMSZÖV OE-222) from the 1980s.
+
+<img align="left" style="float: center; margin: 0 10px 0 0;" alt="Appearance"
+  src="../pictures/Zacchaeus_03.jpg" border="10">
+<br>&nbsp;
 
 The computer consists of the following components:
 
@@ -287,7 +288,7 @@ The order is important because of daisy-chain interrupt handling.
 
 This hardware is accompanied by a collection of functions (written in
 Assembly), a Turbo Pascal include file, and a compiled, relocatable
-object module—the latter of which can be linked to your own programs.
+object module - the latter of which can be linked to your own programs.
 
 The motherboard library contains the current contents of the two ROMs,
 the newer version can be downloaded from the internet.
