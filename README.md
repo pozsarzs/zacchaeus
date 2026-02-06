@@ -27,7 +27,7 @@ These components are complemented by custom-designed expansion cards and
 external peripherals. These components are licensed as public domain.
 
 A detailed description of the computer can be found in the
-[Zacchaeus computer](Zacchaeus computer/README.md) folder. 
+__Zacchaeus computer__ folder. 
 
 
 ## External interface box
@@ -36,8 +36,8 @@ PEIX is an 8-slot interface connecting legacy Klockner-Moeller PS316 I/O modules
 to the Zacchaeus computer. It restores functionality to these obsolete analog
 and digital modules.
 
-A detailed description of the interface box can be found in the
-[PEIX External interface box](PEIX External interface box/README.md) folder. 
+A detailed description of the interface box can be found in the __PEIX External
+interface box__ folder. 
 
 
 ## External memory box (EPROM bank)
@@ -45,8 +45,8 @@ A detailed description of the interface box can be found in the
 PEMX is an 8-slot external EPROM bank connected via two PIO ports. It supports
 2764 through 27512 EPROMs, including 'A' and CMOS variants.
 
-A detailed description of the memory box can be found in the
-[PEMX External memory box](PEMX External memory box/README.md) folder. 
+A detailed description of the memory box can be found in the __PEMX External
+memory box__ folder. 
 
 <hr>
 
