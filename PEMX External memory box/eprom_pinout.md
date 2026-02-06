@@ -1,8 +1,6 @@
-# Zacchaeus Microcomputer
+# External memory box
 
-## Hardware/PEMX External memory box
-
-### Comparison of the pinout of usable EPROMs
+## Comparison of the pinout of usable EPROMs
 
 |Pin	|2764	|27128	|27256	|27512	|Diff.	|
 |------:|-------|-------|-------|-------|:-----:|

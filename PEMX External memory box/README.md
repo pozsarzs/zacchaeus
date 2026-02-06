@@ -1,8 +1,6 @@
-# Zacchaeus Microcomputer
+# External memory box
 
-## PEMX External memory box
-
-### Directory content
+## Directory content
 
 |file                          |description                          |note|
 |------------------------------|-------------------------------------|----|
@@ -24,7 +22,7 @@
 [2]: SLR Systems Z80ASM v1.32 (1986)
 
 
-### About equipment
+## About equipment
 
 The PEMX is an 8-slot external EPROM bank that connects to the computer via two
 PIO ports (SC717 module). The bank can use the 2764, 27128, 27256 and 27512
@@ -33,7 +31,7 @@ machine's memory area, but can be copied to disk or loaded into memory (and run)
 using utility programs. This equipment requires 230V AC for operation.
 
 
-### Jumper settings
+## Jumper settings
 
 |Module|Num |Sign|Function            |State   |Note   |
 |------|:--:|----|--------------------|:------:|-------|
@@ -74,7 +72,7 @@ using utility programs. This equipment requires 230V AC for operation.
 |PEMX  |JP16|3-2 |type: 2764, 27128   |closed  |BANK #7|
 
 
-### Connection with others
+## Connection with others
 
 Internal ribbon cable between main board and DB25F connector on the back panel:
 
@@ -134,7 +132,7 @@ Y-cable between equipment and two PIO ports:
 |PIO #2| 25|GND |GND      |GND |J3A/21|back  |
 
 
-### Softwares
+## Softwares
 
 This hardware comes a function collection (in assembly ), Turbo Pascal include
 file and a compiled, relocatable object code module, the latter of which can be linked to our own
