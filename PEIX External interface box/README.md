@@ -1,8 +1,6 @@
-# Zacchaeus Microcomputer
+# External interface box
 
-## Hardware/PEIX External interface box
-
-### Directory content
+## Directory content
 
 |file                   |description                                  |note|
 |-----------------------|---------------------------------------------|----|
@@ -27,10 +25,10 @@
 |LEGAL.md               |Legal Disclaimer & Interoperability Statement|    |
 
 
-### About equipment
+## About equipment
 
 The PEIX serves as an 8-slot external interface, designed to integrate legacy
-Klockner-Moeller PS316 I/O modules with the Zacchaeus computer. Although the
+_Klöckner-Moeller PS316_ I/O modules with the Zacchaeus computer. Although the
 PS316 family has been obsolete since the mid-2000s, this circuit enables
 continued functionality by interfacing with the system's original analog and
 digital I/O modules.
@@ -51,19 +49,19 @@ their characteristics and control method.
 This equipment requires 230 V AC for operation.
 
 
-### Jumper settings
+## Jumper settings
 
 |Module|Num |Sign|Function            |State   |Note   |
 |------|:--:|----|--------------------|:------:|-------|
 |      |    |    |                    |        |       |
 
 
-### Connection with others
+## Connection with others
 
 |Module|Num  |Sign|Function                           |Sign|Num   |Module|
 |------|:---:|----|-----------------------------------|----|:----:|------|
 |      |     |    |                                   |    |      |      |
 
-### Softwares
+## Softwares
 
 (..)
