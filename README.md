@@ -1,11 +1,14 @@
+
 <img align="left" style="float: left; margin: 0 10px 0 0;" alt="Z80 inside"
   src="pictures/icon/z180_64x64_black.png">
 <br>
 
 # Zacchaeus Microcomputer
-
 **8-bit microcomputer built from commercially available and home-built components** 
-  
+
+> [!NOTE]
+> Content will be updated continuously as development progresses.
+
 This project is a personal journey back in time to the heroic age of computing:
 a newly built, classic 8-bit system, in which I supplement the factory components
 with modules of my own design. My goal is to revive the joy of discovery, while
@@ -32,6 +35,9 @@ A detailed description of the computer can be found in the
 
 ## External interface box
 
+> [!NOTE]
+> Content will be updated continuously as development progresses.
+
 PEIX is an 8-slot interface connecting legacy Klockner-Moeller PS316 I/O modules
 to the Zacchaeus computer. It restores functionality to these obsolete analog
 and digital modules.
@@ -41,6 +47,9 @@ interface box](PEIX%20External%20interface%20box/README.md) folder.
 
 
 ## External memory box (EPROM bank)
+
+> [!NOTE]
+> Content will be updated continuously as development progresses.
 
 PEMX is an 8-slot external EPROM bank connected via two PIO ports. It supports
 2764 through 27512 EPROMs, including 'A' and CMOS variants.
