@@ -1,27 +1,5 @@
 # External memory box
 
-## Directory content
-
-|file                          |description                          |note|
-|------------------------------|-------------------------------------|----|
-|hardware/pemx/*               |KiCAD files                          |    |
-|hardware/pemx-B_Cu.pdf        |solder side of the PCB               |    |
-|hardware/pemx-F_Cu.pdf        |component side of the PC             |    |
-|hardware/pemx-F_Silkscreen.pdf|silkscreen of the PCB                |    |
-|hardware/pemx-gerber.zip      |Gerber files for manufacturing       |    |
-|hardware/pemx.pdf             |schematic drawing                    |    |
-|software/pemxapi/*	       |functions - relocatable object       |[2] |
-|software/pemxfunc/*           |functions - include with machine code|[1] |
-|software/emxdump.*            |EPROM dump to screen or disk         |[1] |
-|software/emxload.*            |EPROM load to RAM                    |[2] |
-|eprom_pinout.md               |comparison of EPROM's pinout         |    |
-
-**Compilers:**  
-
-[1]: Borland Turbo Pascal v3.01A (1985)
-[2]: SLR Systems Z80ASM v1.32 (1986)
-
-
 ## About equipment
 
 The PEMX is an 8-slot external EPROM bank that connects to the computer via two
@@ -132,9 +110,13 @@ Y-cable between equipment and two PIO ports:
 |PIO #2| 25|GND |GND      |GND |J3A/21|back  |
 
 
-## Softwares
+## Software
 
-This hardware comes a function collection (in assembly ), Turbo Pascal include
-file and a compiled, relocatable object code module, the latter of which can be linked to our own
-program. In addition, two user programs were written to dump and load the
-contents of memory.
+This hardware is accompanied by a collection of functions (written in
+Assembly), a Turbo Pascal include file, and a compiled, relocatable
+object module—the latter of which can be linked to your own programs.
+
+### Utilities
+
+- _emxdump.com_: Saves a selected EPROM range to disk or displays it.
+- _emxload.com_: Loads a selected EPROM range into memory starting at a specific RAM address.
