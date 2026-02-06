@@ -21,13 +21,13 @@ cards designed by Stephen C. Cousins. These component descriptions are provided
 for completeness and represent the versions available at the time of use.
 For more detailed descriptions and the latest updates, please visit the original
 author's website ([Small Computer Central](https://smallcomputercentral.com/)).
-These components are licensed as open source and public domain. 
+These components are licensed as _open source_ and _public domain_. 
 
 These components are complemented by custom-designed expansion cards and
-external peripherals. These components are licensed as public domain.
+external peripherals. These components are licensed as _public domain_.
 
 A detailed description of the computer can be found in the
-[Zacchaeus computer](Zacchaeus%20computer/README.md>) folder. 
+[Zacchaeus computer](Zacchaeus%20computer/README.md) folder. 
 
 
 ## External interface box
@@ -36,8 +36,8 @@ PEIX is an 8-slot interface connecting legacy Klockner-Moeller PS316 I/O modules
 to the Zacchaeus computer. It restores functionality to these obsolete analog
 and digital modules.
 
-A detailed description of the interface box can be found in the __PEIX External
-interface box__ folder. 
+A detailed description of the interface box can be found in the [PEIX External
+interface box](PEIX%20External%20interface%20box/README.md) folder. 
 
 
 ## External memory box (EPROM bank)
@@ -45,8 +45,8 @@ interface box__ folder.
 PEMX is an 8-slot external EPROM bank connected via two PIO ports. It supports
 2764 through 27512 EPROMs, including 'A' and CMOS variants.
 
-A detailed description of the memory box can be found in the __PEMX External
-memory box__ folder. 
+A detailed description of the memory box can be found in the [PEMX External
+memory box](PEMX%20External%20memory%20box/README.md) folder. 
 
 <hr>
 
