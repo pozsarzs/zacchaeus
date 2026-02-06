@@ -1,28 +1,5 @@
 # External interface box
 
-## Directory content
-
-|file                   |description                                  |note|
-|-----------------------|---------------------------------------------|----|
-|hardware/0116-a04/*    |backplane                                    |    |
-|hardware/78-070-0300/* |power supply module                          |    |
-|hardware/aim62-1/*     |sub-module directory                         |    |
-|hardware/aqm61-2/*     |sub-module directory                         |    |
-|hardware/ebe_206-1/*   |module directory                             |    |
-|hardware/ebe_266-1/*   |module directory                             |    |
-|hardware/ebe_275-2/*   |module directory                             |    |
-|hardware/ebe_287-1/*   |module directory                             |    |
-|hardware/peix/*        |KiCAD files                                  |    |
-|hardware/0116-a04.md   |backplane                                    |    |
-|hardware/78-070-0300.md|power supply module                          |    |
-|hardware/aim61-2.md    |I/f converter sub-module (4-20 mA)           |    |
-|hardware/aqm61-2.md    |D/A converter sub-module (-10..+10 V)        |    |
-|hardware/ebe_206-1.md  |16-channel digital input module              |    |
-|hardware/ebe_266-1.md  |16-channel digital output module             |    |
-|hardware/ebe_275-2.md  |4-channel analog input module                |    |
-|hardware/ebe_287-1.md  |4-channel analog output module               |    |
-|hardware/peix.pdf      |schematic drawing                            |    |
-
 
 ## About equipment
 
