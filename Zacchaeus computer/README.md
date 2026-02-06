@@ -1,7 +1,3 @@
-<img align="left" style="float: left; margin: 0 10px 0 0;" alt="Z80 inside"
-  src="../pictures/icon/z180_64x64_black.png">
-<br>
-
 # Zacchaeus Microcomputer
   
 ## Features
@@ -44,7 +40,7 @@
 |                |Z-System                                     |
 
 <img align="left" style="float: center; margin: 0 10px 0 0;" alt="Appearance"
-  src="pictures/equ_04.jpg" border="10">
+  src="pictures/Zacchaeus_04.jpg" border="10">
 <br>&nbsp;
 
 ### Internal structure
@@ -79,14 +75,12 @@ The computer consists of the following components:
 |       |ATX PC power supply                                       |
 
 
-### Planned equipments and modules
+### Planned modules
 
 |name   |function                                                      |
 |-------|--------------------------------------------------------------|
 |PANA   |Analog input/output module (2AI, 2AO, 0-10V)                  |
 |PCOX   |Internal COVOX-style mono sound module with earphone amplifier [3]|
-|PEIX   |External interface box (for vintage Moeller PS316 I/O cards) [1] |
-|PEMX   |External memory box (EPROM bank) [2]                          |
 |PMAN-IF|Manual control panel - interface module                       |
 |PTAP   |Tape and speaker interface module [1]                         |
 
@@ -102,9 +96,9 @@ In addition to the contents of the subdirectories, this description contains
 all information that applies to the computer as a whole or to several cards
 together.
 
-README.md contains all textual information in the directory of self-designed
-hardware elements, *description.pdf provides the same information in the
-directory of purchased devices. In these, the README.md only contains the
+_README.md_ contains all textual information in the directory of self-designed
+hardware elements, _*description.pdf_ provides the same information in the
+directory of purchased devices. In these, the _README.md_ only contains the
 current settings and information.
 
 ### Physical memory address table
@@ -162,7 +156,7 @@ address space defined by the Z80/Z180 instruction set.
 SC126 has 80-pin expansion sockets which are an extended RC2014 bus, known as
 Backplane-80 (or BP80). This is an unofficial variant of the RC2014 Bus.
 
-|Pin |Signal Name|Dir.|From-to         |Pin |Signal Name|Dir.|From-to      |
+|Pin |Signal name|Dir.|From-to         |Pin |Signal name|Dir.|From-to      |
 |---:|-----------|----|----------------|---:|-----------|----|-------------|
 | 41 | n41       |    |not yet assigned|  1 | A15       | <- |CPU-A15      |
 | 42 | n42       |    |not yet assigned|  2 | A14       | <- |CPU-A14      |
@@ -214,7 +208,7 @@ not part of the standard according to their individual needs.
 
 _On the motherboard:_  
 
-|Pin|Signal Name|SC126      |
+|Pin|Signal name|SC126      |
 |--:|-----------|-----------|
 | 37|USER1      |           |
 | 38|USER2      |           |
@@ -239,7 +233,7 @@ but if necessary, daisy-chain interrupt lines can be created
 
 _On expansion cards:_  
 
-|Pin|Signal Name|SC715|SC716  |SC717  |SC718     |SC719|PCOX|
+|Pin|Signal name|SC715|SC716  |SC717  |SC718     |SC719|PCOX|
 |--:|-----------|-----|-------|-------|----------|-----|----|
 | 37|USER1      |     |       |       |/INT1 [8] |     |    |
 | 38|USER2      |     |IEI [4]|IEI [6]|IEI [9]   |     |    |
@@ -264,7 +258,7 @@ Jumpering:
 
 **Other lines** 
 
-|Pin|Signal Name|User function                    |
+|Pin|Signal name|User function                    |
 |--:|-----------|---------------------------------|
 | 61|CLK2       |Speaker signal SC718/CTC2 -> PTAP|
 | 75|TX2        |Serial data  SC126 -> PTAP       |
@@ -291,4 +285,4 @@ The order is important because of daisy-chain interrupt handling.
 
 ## Software
 
-README.md contains all textual information in the subdirectories.
+_README.md_ contains all textual information in the subdirectories.

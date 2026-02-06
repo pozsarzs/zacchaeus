@@ -27,7 +27,7 @@ These components are complemented by custom-designed expansion cards and
 external peripherals. These components are licensed as public domain.
 
 A detailed description of the computer can be found in the
-__Zacchaeus computer__ folder. 
+[Zacchaeus computer](Zacchaeus%20computer/README.md>) folder. 
 
 
 ## External interface box
