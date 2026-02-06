@@ -1,0 +1,19 @@
+EMXDump Module Tester for Zacchaeus Microcomputer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  version	v0.1
+  licence	CC0 1.0 Universal
+  architecture	Z80
+  OS		CP/M-80
+  compiler	SLR Systems Z80ASM v1.32 (1986)
+
+A simple utility to test the PIOI module on the Zacchaeus Microcomputer.
+Provides basic functionality for setting addresses, reading inputs, and
+controlling outputs.
+
+  usage:
+  
+
+
+
+(C) 2025 Pozsar Zsolt <pozsarzs@gmail.com>  

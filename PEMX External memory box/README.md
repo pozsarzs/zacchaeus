@@ -1,21 +1,30 @@
 # Zacchaeus Microcomputer
 
-## Hardware/PEMX External memory box
+## PEMX External memory box
 
 ### Directory content
 
-|file                 |description                   |
-|---------------------|------------------------------|
-|\[pemx\]             |KiCAD files                   |
-|pemx-B_Cu.pdf        |solder side of the PCB        |
-|pemx-F_Cu.pdf        |component side of the PC      |
-|pemx-F_Silkscreen.pdf|silkscreen of the PCB         |
-|pemx-gerber.zip      |Gerber files for manufacturing|
-|pemx.pdf             |schematic drawing             |
-|eprom_pinout.md      |comparison of EPROM's pinout  |
+|file                          |description                          |note|
+|------------------------------|-------------------------------------|----|
+|hardware/pemx/*               |KiCAD files                          |    |
+|hardware/pemx-B_Cu.pdf        |solder side of the PCB               |    |
+|hardware/pemx-F_Cu.pdf        |component side of the PC             |    |
+|hardware/pemx-F_Silkscreen.pdf|silkscreen of the PCB                |    |
+|hardware/pemx-gerber.zip      |Gerber files for manufacturing       |    |
+|hardware/pemx.pdf             |schematic drawing                    |    |
+|software/pemxapi/*	       |functions - relocatable object       |[2] |
+|software/pemxfunc/*           |functions - include with machine code|[1] |
+|software/emxdump.*            |EPROM dump to screen or disk         |[1] |
+|software/emxload.*            |EPROM load to RAM                    |[2] |
+|eprom_pinout.md               |comparison of EPROM's pinout         |    |
+
+**Compilers:**  
+
+[1]: Borland Turbo Pascal v3.01A (1985)
+[2]: SLR Systems Z80ASM v1.32 (1986)
 
 
-### About module
+### About equipment
 
 The PEMX is an 8-slot external EPROM bank that connects to the computer via two
 PIO ports (SC717 module). The bank can use the 2764, 27128, 27256 and 27512
@@ -124,9 +133,10 @@ Y-cable between equipment and two PIO ports:
 |PIO #2|  9| P7 |data line|BD7 |J3A/25|back  |
 |PIO #2| 25|GND |GND      |GND |J3A/21|back  |
 
+
 ### Softwares
 
-This hardware comes a function collection (in assembly language) and a compiled,
-relocatable object code module, the latter of which can be linked to our own
+This hardware comes a function collection (in assembly ), Turbo Pascal include
+file and a compiled, relocatable object code module, the latter of which can be linked to our own
 program. In addition, two user programs were written to dump and load the
 contents of memory.

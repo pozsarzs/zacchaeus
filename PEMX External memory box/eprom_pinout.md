@@ -33,4 +33,4 @@
 |25	|A8	|A8	|A8	|A8	|	|
 |26	|N.C.	|A13	|A13	|A13	|   !	|
 |27	|/PGM	|/PGM	|A14	|A14	|   !	|
-|28	|VCC	|VCC	|VCC	|VCC​	|	|
+|28	|VCC	|VCC	|VCC	|VCC	|	|

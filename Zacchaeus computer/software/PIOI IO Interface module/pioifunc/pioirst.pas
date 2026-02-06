@@ -9,7 +9,10 @@ program pioirst;
 const
   BA: byte = $0C;
 
-{$I pioifunc.pas}
+{$I pioigen.pas}
+{$I pioioco.pas}
+{$I pioirco.pas}
+{$I pioipi.pas}
 
 procedure wait;
 begin
