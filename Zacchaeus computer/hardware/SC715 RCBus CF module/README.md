@@ -27,7 +27,3 @@ The CF module does not have jumpers.
 
 Only the CF adapter needs to be connected to the CF module, which requires its
 own power supply (3.5" FDD power plug).
-
-### Softwares
-
-The CF module does not have its own software.

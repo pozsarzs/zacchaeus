@@ -48,8 +48,3 @@ back panel according to the PBKP wiring diagram.
 |SC726  |P3/4|    |RXD     |TTL |4   |MCS-51M #2|
 |SC716  |P3/5|    |TXD     |TTL |3   |MCS-51M #2|
 |SC716  |P3/6|    |CTS     |    |    |          |
-
-
-### Softwares
-
-The SIO-2 module does not have its own software.

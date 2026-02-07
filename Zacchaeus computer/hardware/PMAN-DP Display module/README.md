@@ -59,8 +59,3 @@ This component is connected to the computer bus by the PMAN-IF interface module.
 |PMAN-IF|     | D5 |DIS5-8 data input B      | D5 |J3/1|PMAN-DP|				Adata inputJ3jpDIS1-8 blank             |BL  |J2/5|PMAN-DP|
 |PMAN-IF|     | D6 |DIS5-8 data input C      | D6 |J3/1|PMAN-DP|				Adata inputJ3jpDIS1-8 blank             |BL  |J2/5|PMAN-DP|
 |PMAN-IF|     | D7 |DIS1-4 data input D      | D7 |J3/1|PMAN-DP|				Adata inputJ3jpDIS1-8 blank             |BL  |J2/5|PMAN-DP|
-
-
-### Softwares
-
-The display does not have its own software.

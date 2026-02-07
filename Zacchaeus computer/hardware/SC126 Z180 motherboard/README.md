@@ -44,8 +44,3 @@ files.
 |SC126  |P5/4|    |RXD     |TTL |4   |MCS-51M #1|
 |SC126  |P5/5|    |TXD     |TTL |3   |MCS-51M #1|
 |SC126  |P5/6|    |CTS     |    |    |          |
-
-
-### Softwares
-
-This hardware comes system softwares in flash ROMs.

@@ -45,11 +45,3 @@ The module is connected to the BP80 expansion socket.
 |PPOW  |     |GND |GND                 |GND |J4/2  |PCOX  |
 |PCOX  |J5/1 |EAR |earphone output     |EAR |J1/S-T|PFRP  |
 |PCOX  |J5/2 |GND |GND                 |GND |J1/G  |PFRP  |
-
-
-### Softwares
-
-This hardware comes a function collection (in assembly language) and a compiled,
-relocatable object code module, the latter of which can be linked to our own
-program. Additionally, a simple test program and a playback program were also
-prepared.

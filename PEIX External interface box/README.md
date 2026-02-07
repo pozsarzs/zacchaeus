@@ -37,7 +37,7 @@ This equipment requires 230 V AC for operation.
 |------|:---:|----|-----------------------------------|----|:----:|------|
 |      |     |    |                                   |    |      |      |
 
-## Softwares
+## Software
 
 (..)
 

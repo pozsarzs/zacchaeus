@@ -55,8 +55,3 @@ This component is connected to the computer bus by the PMAN-IF interface module.
 |PMAN-IF|     |    |RUN LED anode            |    |J5/3|PMAN-SW|
 |PMAN-IF|     |    |PAUSE LED anode          |    |J5/4|PMAN-SW|
 |PMAN-IF|     |    |STOP LED anode           |    |J5/5|PMAN-SW|
-
-
-### Softwares
-
-The switch module does not have its own software.

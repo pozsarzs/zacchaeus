@@ -84,10 +84,3 @@ The module is connected to the computer bus by a SC719 RCBus DIO module.
 |PIOI  |J10/3 |     |open collector output 2|OCO0|J18   |PFRP  |
 |PIOI  |J10/4 |     |open collector output 3|OCO0|J19   |PFRP  |
 |PIOI  |J10/5 |     |GND                    |OCO0|J20   |PFRP  |
-
-
-### Softwares
-
-This hardware comes a function collection (in assembly language) and a compiled,
-relocatable object code module, the latter of which can be linked to our own
-program. Additionally, a simple test program were also created.

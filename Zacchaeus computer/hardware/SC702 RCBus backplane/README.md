@@ -61,8 +61,3 @@ by Stephen C. Cousins. You can find the details in the original PDF files.
 ### Connection with others
 
 The backplane does not connect to anything else except expansion cards.
-
-
-### Softwares
-
-The backplane does not have its own software.

@@ -126,14 +126,3 @@ The module is connected to the BP80 expansion socket.
 |PTAP  |J4   |WLED|WRITE LED (red)   |WLED  |D4  |PFRP  |
 |PTAP  |J5   |MLED|MOTOR LED (yellow |MLED  |D5  |PFRP  |
 |PTAP  |J6   |SPK |speaker           |TTL in|J3  |PSPK  |
-
-
-### Softwares
-
-This hardware comes a function collection (in assembly language) and a compiled,
-relocatable object code module, the latter of which can be linked to our own
-program.
-
- Additionally, a simple test program and a playback program were also
-prepared.
-

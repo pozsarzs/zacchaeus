@@ -31,8 +31,3 @@ You can find the details in the original PDF files.
 
 The paralel ports of the card are connected to the female DB25 connectors on the
 back panel according to the PBKP wiring diagram.
-
-
-### Softwares
-
-The PIO module does not have its own software.

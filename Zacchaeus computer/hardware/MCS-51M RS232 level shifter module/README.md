@@ -45,8 +45,3 @@ The level shifter module does not have jumpers.
 
 The level shifter module is mounted on the backplane and connected to the
 motherboard. The wiring is located in the motherboard's README.md.
-
-
-### Softwares
-
-The level shifter module does not have its own software.

@@ -84,8 +84,3 @@ Pinout of connectors and terminal blocks:
 |PPOW  |J29/1  |+24V |auxiliary voltage output  |    |    |       |
 |PPOW  |J29/2  |-24V |auxiliary voltage output  |    |    |       |
 |PPOW  |J29/3  |N.C. |                          |    |    |       |
-
-
-### Softwares
-
-The power distribution module does not have its own software.

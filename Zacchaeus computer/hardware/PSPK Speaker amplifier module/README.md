@@ -42,8 +42,3 @@ There is no jumper setting option on the module.
 |      |    |    |GND                    |GND |J3/2|PSPK   |
 |PSPK  |J5/1|    |speaker +              | +  |    |speaker|
 |PSPK  |J5/2|    |speaker -              | -  |    |speaker|
-
-
-### Softwares
-
-This module does not have its own software.

@@ -29,8 +29,3 @@ You can find the details in the original PDF files.
 
 The DIO module is connected to the PIOI board. The wiring is in the PIOI's
 README.md file.
-
-
-### Softwares
-
-The DIO module does not have its own software.

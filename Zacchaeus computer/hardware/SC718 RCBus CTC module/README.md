@@ -63,8 +63,3 @@ and channel 3 is the timed interrupt.
 
 The first channel of the CTC module is connected to the DB9 connector on the
 back panel. The wiring can be found in the PBKP wiring diagram.
-
-
-### Softwares
-
-The CTC module does not have its own software.
