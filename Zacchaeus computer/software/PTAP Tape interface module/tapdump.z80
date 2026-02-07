@@ -1,0 +1,19 @@
+; +----------------------------------------------------------------------------+
+; | Zacchaeus Microcomputer                                                    |
+; | Pozsar Zsolt <pozsarzs@gmail.com>, 2026. CC0 1.0 Universal                 |
+; | tapdump.z80                                                                |
+; | Tape data lister utility for CP/M-80, v0.1                                 |
+; +----------------------------------------------------------------------------+
+
+	ORG	100h
+BDOS	EQU	005h			; BDOS system call
+EXTRN	PEMX
+
+START:
+
+; (..)
+
+; --- DATA AREA -------------------------------------
+ADDR:	DB	0			; I/O address
+	END
+

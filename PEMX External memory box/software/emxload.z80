@@ -1,9 +1,9 @@
-; +---------------------------------------------------------------------+
-; | PEMX External memory box (EPROM bank)                               |
-; | Pozsar Zsolt <pozsarzs@gmail.com>, 2026. CC0 1.0 Universal          |
-; | emxload.z80                                                         |
-; | Data loader utility for CP/M-80, v0.1                               |
-; +---------------------------------------------------------------------+
+; +----------------------------------------------------------------------------+
+; | PEMX External memory box (EPROM bank)                                      |
+; | Pozsar Zsolt <pozsarzs@gmail.com>, 2026. CC0 1.0 Universal                 |
+; | emxload.z80                                                                |
+; | Data loader utility for CP/M-80, v0.1                                      |
+; +----------------------------------------------------------------------------+
 
 	ORG	100h
 BDOS	EQU	005h			; BDOS system call

@@ -1,9 +1,9 @@
-; +-----------------------------------------------------------------------------+
-; | Zacchaeus * PIOI interface module                                           |
-; | Copyright (C) 2025 Pozsar Zsolt <pozsarzs@gmail.com>                        |
-; | pioirst.z80                                                                 |
-; | Reset output program for CP/M-80 (sample program using PIOIAPI)             |
-; +-----------------------------------------------------------------------------+
+; +----------------------------------------------------------------------------+
+; | Zacchaeus Microcomputer                                                    |
+; | Pozsar Zsolt <pozsarzs@gmail.com>, 2025. CC0 1.0 Universal                 |
+; | pioirst.z80                                                                |
+; | Reset output program for CP/M-80 (sample program using PIOIAPI)            |
+; +----------------------------------------------------------------------------+
 
 	ORG	100h
 BDOS	EQU	005h			; BDOS system call

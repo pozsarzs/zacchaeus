@@ -1,0 +1,17 @@
+PTAP API
+~~~~~~~~
+
+  version	v0.1
+  licence	CC0 1.0 Universal
+  architecture	Z80
+  OS		CP/M-80
+  compiler	SLR Systems Z80ASM v1.32 (1986)
+  author	Pozsar Zsolt <pozsarzs@gmail.com> (2026)
+
+This is a collection of routines for easy management of PTAP module.
+
+
+Available functions
+~~~~~~~~~~~~~~~~~~~
+
+(..)

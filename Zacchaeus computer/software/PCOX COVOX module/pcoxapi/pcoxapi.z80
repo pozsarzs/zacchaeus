@@ -1,0 +1,21 @@
+; +----------------------------------------------------------------------------+
+; | Zacchaeus Microcomputer                                                    |
+; | Pozsar Zsolt <pozsarzs@gmail.com>, 2026. CC0 1.0 Universal                 |
+; | pcoxapi.z80                                                                |
+; | API of the PCOX module for CP/M-80, v0.1                                   |
+; +----------------------------------------------------------------------------+
+
+PUBLIC PCOX
+
+; --- API FUNCTION --------------------------
+
+; (..)
+
+PCOX:
+
+; (..)
+
+; --- DATA AREA -----------------------------
+ADDR:	DB	0		; I/O address
+	END
+

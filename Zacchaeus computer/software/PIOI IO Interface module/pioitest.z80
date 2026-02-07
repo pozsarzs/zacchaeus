@@ -1,9 +1,9 @@
-; +-----------------------------------------------------------------------------+
-; | Zacchaeus * PIOI interface module                                           |
-; | Copyright (C) 2025 Pozsar Zsolt <pozsarzs@gmail.com>                        |
-; | pioitest.z80                                                                |
-; | Tester program for PIOI interface module for CP/M-80                        |
-; +-----------------------------------------------------------------------------+
+; +----------------------------------------------------------------------------+
+; | Zacchaeus Microcomputer                                                    |
+; | Pozsar Zsolt <pozsarzs@gmail.com>, 2025. CC0 1.0 Universal                 |
+; | pioitest.z80                                                               |
+; | Tester program for PIOI interface module for CP/M-80                       |
+; +----------------------------------------------------------------------------+
 
 ; I/O ports: * Protected inputs
 ;              -PI0: D0 and D1 bits (equal and inverted)
@@ -371,5 +371,3 @@ MSG07:	DB	0Dh, 0Ah, 'Use [ ] to read and [q] to exit.', 0Dh, 0Ah, '$'
 MSG08:	DB	0Dh, 0Ah, 'Use [0][1][2][3] to toggle output and [q] to exit.', 0Dh, 0Ah, '$'
 MSG09:	DB	0Dh, 0Ah, 'Result: $'
 	END
-	
-

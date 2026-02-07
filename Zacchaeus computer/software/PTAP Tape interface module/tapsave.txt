@@ -1,0 +1,16 @@
+TAPSave utility
+~~~~~~~~~~~~~~~
+
+  version	v0.1
+  licence	CC0 1.0 Universal
+  architecture	Z80
+  OS		CP/M-80
+  compiler	SLR Systems Z80ASM v1.32 (1986)
+  author	Pozsar Zsolt <pozsarzs@gmail.com> (2026)
+
+  This utility saves data from a selected memory range to tape.
+
+Usage
+~~~~~
+
+(..)

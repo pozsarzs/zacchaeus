@@ -83,7 +83,6 @@ Internal ribbon cable between main board and DB25F connector on the back panel:
 |board |J3/25|BD5 |output data                        |BD5 |J3A/24|back  |
 |board |J3/26|BD7 |output data                        |BD7 |J3A/25|back  |
 
-
 Y-cable between equipment and two PIO ports:
 
 |Module|Num|Sign|Function |Sign|Num   |Module|
@@ -116,8 +115,11 @@ This hardware is accompanied by a collection of functions (written in
 Assembly), a Turbo Pascal include file, and a compiled, relocatable
 object module—the latter of which can be linked to your own programs.
 
+
 ### Utilities
 
-- _emxdump.com_: Saves a selected EPROM range to disk or displays it. (soon)
-- _emxload.com_: Loads a selected EPROM range into memory starting at a
-                 specific RAM address and can optionally execute it. (soon)
+- [_emxdump.com_](https://github.com/pozsarzs/zacchaeus/tree/main/PEMX%20External%20memory%20box/software):
+  Saves a selected EPROM range to disk or displays it. (soon)
+- [_emxload.com_](https://github.com/pozsarzs/zacchaeus/tree/main/PEMX%20External%20memory%20box/software):
+  Loads a selected EPROM range into memory starting at a specific RAM
+  address and can optionally execute it. (soon)

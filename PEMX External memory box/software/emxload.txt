@@ -6,7 +6,7 @@ EMXLoad utility
   architecture	Z80
   OS		CP/M-80
   compiler	SLR Systems Z80ASM v1.32 (1986)
-  author	Pozsar Zsolt <pozsarzs@gmail.com>  (2026)
+  author	Pozsar Zsolt <pozsarzs@gmail.com> (2026)
 
   Data loader utility. It loads a selected EPROM range into memory starting at a
   specific RAM address and can optionally execute it.
