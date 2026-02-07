@@ -1,6 +1,6 @@
 { +--------------------------------------------------------------------------+ }
 { | PEMX External memory box (EPROM bank)                                    | }
 { | Pozsar Zsolt <pozsarzs@gmail.com>, 2026. CC0 1.0 Universal               | }
-{ | emxdump.pas                                                              | }
-{ | Data lister and saver utility for CP/M-80, v0.1                          | }
+{ | pemxfunc.pas                                                             | }
+{ | Functions of the PEMX equipment for CP/M-80, v0.1                        | }
 { +--------------------------------------------------------------------------+ }
