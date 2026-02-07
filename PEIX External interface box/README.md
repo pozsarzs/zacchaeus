@@ -1,6 +1,5 @@
 # External interface box
 
-
 ## About equipment
 
 The PEIX serves as an 8-slot external interface, designed to integrate legacy
