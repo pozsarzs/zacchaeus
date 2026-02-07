@@ -60,19 +60,19 @@ The computer consists of the following components:
 
 |name   |function                                                  |
 |-------|----------------------------------------------------------|
-|SC126  |motherboard                                               |
-|SC702  |RCBus backplane                                           |
-|SC715  |RCBus CF module                                           |
-|SC716  |RCBus SIO-2 module                                        |
-|SC717  |RCBus PIO module                                          |
-|SC718  |RCBus CTC module                                          |
-|SC719  |RCBus DIO module                                          |
-|PIOI   |I/O interface module                                      |
-|PMAN-DP|Manual control panel - display module (currently not used)|
-|PMAN-SW|Manual control panel - switch module (currently not used) |
-|PPOW   |Power distribution module with external fuses             |
-|PSPK   |Speaker amplifier module with speaker (currently not used)|
-|MCS-51M|2 pcs. TTL/RS232 level shifter module                     |
+|SC126  |[motherboard](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC126%20Z180%20motherboard)|
+|SC702  |[RCBus backplane](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC702%20RCBus%20backplane)                                           |
+|SC715  |[RCBus CF module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC715%20RCBus%20CF%20module)                                           |
+|SC716  |[RCBus SIO-2 module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC716%20RCBus%20SIO-2%20module)                                        |
+|SC717  |[RCBus PIO module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC717%20RCBus%20PIO%20module)                                          |
+|SC718  |[RCBus CTC module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC718%20RCBus%20CTC%20module)                                          |
+|SC719  |[RCBus DIO module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC719%20RCBus%20DIO%20module)                                          |
+|PIOI   |[I/O interface module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PIOI%20IO%20Interface%20module)                                      |
+|PMAN-DP|[Manual control panel - display module (currently not used)](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PMAN-DP%20Display%20module)|
+|PMAN-SW|[Manual control panel - switch module (currently not used)](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PMAN-SW%20Switch%20module) |
+|PPOW   |[Power distribution module with external fuses](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PPOW%20Power%20distribution%20module)             |
+|PSPK   |[Speaker amplifier module with speaker (currently not used)](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PSPK%20Speaker%20amplifier%20module)|
+|MCS-51M|[2 pcs. TTL/RS232 level shifter module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/MCS-51M%20RS232%20level%20shifter%20module)                     |
 |       |ATX PC power supply                                       |
 
 
@@ -81,9 +81,9 @@ The computer consists of the following components:
 |name   |function                                                      |
 |-------|--------------------------------------------------------------|
 |PANA   |Analog input/output module (2AI, 2AO, 0-10V)                  |
-|PCOX   |Internal COVOX-style mono sound module with earphone amplifier [3]|
+|PCOX   |[Internal COVOX-style mono sound module with earphone amplifier](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PCOX%20COVOX%20module) [3]|
 |PMAN-IF|Manual control panel - interface module                       |
-|PTAP   |Tape and speaker interface module [1]                         |
+|PTAP   |[Tape and speaker interface module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PTAP%20Tape%20interface%20module)  [1]                        |
 
 [1]: The circuit and software are currently under planning.  
 [2]: The circuit are currently under construction.  
@@ -290,15 +290,15 @@ This hardware is accompanied by a collection of functions (written in
 Assembly), a Turbo Pascal include file, and a compiled, relocatable
 object module - the latter of which can be linked to your own programs.
 
-The motherboard library contains the current contents of the two ROMs,
+The [motherboard library](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/SC126%20Z180%20motherboard) contains the current contents of the two ROMs,
 the newer version can be downloaded from the internet.
 
 ### Utilities
 
-- _tapload.com_: Loads data from tape into memory starting at a
-                 specific RAM address and can optionally execute it. (soon)
-- _tapsave.com_: Saves data from a selected memory range to tape. (soon) 
-- _tapdump.com_: Saves data from tape to disk or displays it. (soon) 
-- _coxplayer.com_: Plays a raw audio file using the PCOX module.
-- _coxpiano.com_: A utility for checking the PCOX module. (soon)
-- _pioitest.com_: A utility for checking the PIOI module.
+- [_tapload.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PTAP%20Tape%20interface%20module):
+  Loads data from tape into memory starting at a specific RAM address and can optionally execute it. (soon)
+- [_tapsave.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PTAP%20Tape%20interface%20module): Saves data from a selected memory range to tape. (soon) 
+- [_tapdump.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PTAP%20Tape%20interface%20module): Saves data from tape to disk or displays it. (soon) 
+- [_coxplayer.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PCOX%20COVOX%20module): Plays a raw audio file using the PCOX module.
+- [_coxpiano.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PCOX%20COVOX%20module): A utility for checking the PCOX module. (soon)
+- [_pioitest.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PIOI%20IO%20Interface%20module): A utility for checking the PIOI module.
