@@ -10,8 +10,7 @@ digital I/O modules.
 
 The device is controlled by a circuit built with an 87C51 microcontroller.
 It is responsible for controlling the PLC modules and communicating with
-Zacchaeus via the RS-232 serial port. The module was designed as a prototype
-board.
+Zacchaeus via the RS-232 serial port.
 
 Adapting the device's variously controllable, undocumented modules to a
 non-original device is a complex, multi-step task, so I implement the
@@ -25,18 +24,54 @@ their characteristics and control method.
 This equipment requires 230 V AC for operation.
 
 
+## Mechanical structure
+
+The device remains in the original PS 316.x08 housing, which also includes the
+backplane. The built-in power supply was from the PS416 PLC, the control and
+communication module follows the design of the PS416 NET-400 module. Their
+front panel also hides the permanently connected connectors. The I/O modules
+are made for the older PS316 system. The original connectors of the digital
+modules were not used, the front panel contacts are ideal for stable connection
+of crocodile clips. Remember, this is just a 'toy', it will not perform a
+serious control task.
+
+**Modules**
+
+|Slot|Sign     |Function                 |Note|
+|----|---------|-------------------------|----|
+| #0 |         |power supply             |    |
+| #1 |PEIX     |control and communication|    |
+| #2 |         |                         |    |
+| #3 |         |                         |    |
+| #4 |         |                         |    |
+| #5 |         |                         |    |
+| #6 |EBE 206.1|digital input            |    |
+| #7 |EBE 206.1|digital input            |    |
+| #8 |EBE 266.1|digital output           |    |
+| #9 |EBE 266.1|digital output           |    |
+
+
 ## Jumper settings
 
-|Module|Num |Sign|Function            |State   |Note   |
-|------|:--:|----|--------------------|:------:|-------|
-|      |    |    |                    |        |       |
+|Module     |Num |Sign    |Function                 |State     |Note        |
+|-----------|:--:|--------|-------------------------|:--------:|------------|
+|PEIX       |JP1 |EXT ROM |enable external ROM      |closed    |            |
+|PEIX       |JP2 |LED FUNC|MUC ACT LED from port PC7|1-2 closed|            |
+|EBE 206.1@6|SW1 |'DA0-5  |card address             |10100000  |switch 1..8 |
+|EBE 206.1@7|SW1 |'DA0-5  |card address             |01100000  |switch 1..8 |
+|EBE 266.1@8|SW1 |'DA0-5  |card address             |11100000  |switch 1..8 |
+|EBE 266.1@9|SW1 |'DA0-5  |card address             |00010000  |switch 1..8 |
+
+(..)
 
 
 ## Connection with others
 
-|Module|Num  |Sign|Function                           |Sign|Num   |Module|
-|------|:---:|----|-----------------------------------|----|:----:|------|
-|      |     |    |                                   |    |      |      |
+|Module|Num |Sign|Function              |Sign|Num   |Module     |
+|------|:--:|----|----------------------|----|:----:|-----------|
+|PEIX  |J7/2|RXD |received data (DCE)   |RXD |DB9M/2|serial port|
+|PEIX  |J7/3|TXD |transmitted data (DCE)|TXD |DB9M/3|serial port|
+|PEIX  |J7/5|RXD |GND                   |GND |DB9M/5|serial port|
 
 ## Software
 
