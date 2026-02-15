@@ -10,7 +10,7 @@ procedure writeoco(data: byte);
 begin
   inline(
     { initial value(s) }
-    $3A/addr/       {         LD    A, (addr)       ; retrieve i/o address }
+    $3A/ioaddr/     {         LD    A, (ioaddr)     ; retrieve i/o address }
     $4F/            {         LD    C, A            ; A -> C }
 
     $3A/data/       {         LD    A, (data)       ; data -> A }
@@ -35,7 +35,7 @@ begin
     $57/            {         LD    D, A            ; A -> D }
     $3A/mask/       {         LD    A, (MASK)       ; retrieve mask }
     $5F/            {         LD    E, A            ; A -> E }
-    $3A/addr/       {         LD    A, (ADDR)       ; retrieve i/o address }
+    $3A/ioaddr/     {         LD    A, (ioaddr)     ; retrieve i/o address }
     $4F/            {         LD    C, A            ; A -> C }
 
     $7B/            {         LD    A, E            ; E -> A }
@@ -68,7 +68,7 @@ begin
     $3A/portnum/    {         LD    A, (PORTNUM)    ; retrieve port number }
     $5F/            {         LD    E, A            ; A -> E }
 
-    $3A/addr/       {         LD    A, (ADDR)       ; retrieve i/o address }
+    $3A/ioaddr/     {         LD    A, (ioaddr)     ; retrieve i/o address }
     $4F/            {         LD    C, A            ; A -> C }
 
     $3E/$01/        {         LD    A, 1            ; starting place value }
@@ -102,7 +102,7 @@ begin
     { initial value(s) }
     $3A/portnum/    {         LD    A, (PORTNUM)    ; retrieve port number }
     $5F/            {         LD    E, A            ; A -> E }
-    $3A/addr/       {         LD    A, (ADDR)       ; retrieve i/o address }
+    $3A/ioaddr/     {         LD    A, (ioaddr)     ; retrieve i/o address }
     $4F/            {         LD    C, A            ; A -> C }
 
     $3E/$01/        {         LD    A, 1            ; starting place value }
@@ -137,7 +137,7 @@ begin
     $57/            {         LD    D, A            ; A -> D }
     $3A/portnum/    {         LD    A, (PORTNUM)    ; retrieve port number }
     $5F/            {         LD    E, A            ; A -> E }
-    $3A/addr/       {         LD    A, (ADDR)       ; retrieve i/o address }
+    $3A/ioaddr/     {         LD    A, (ioaddr)     ; retrieve i/o address }
     $4F/            {         LD    C, A            ; A -> C }
 
     $3E/$01/        {         LD    A, 1            ; starting place value }

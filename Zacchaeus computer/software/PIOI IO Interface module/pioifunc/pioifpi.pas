@@ -10,7 +10,7 @@ function readallpi: byte;
 begin
   inline(
     { initial value(s) }
-    $3A/addr/       {         LD    A, (ADDR)       ; retrieve i/o address }
+    $3A/ioaddr/     {         LD    A, (ioaddr)     ; retrieve i/o address }
     $4F/            {         LD    C, A            ; A -> C }
 
     $ED/$78/        {         IN    A, (C)          ; read input data from port }
@@ -55,7 +55,7 @@ begin
     { initial value(s) }
     $3A/mask/       {         LD    A, (MASK)       ; retrieve mask }
     $5F/            {         LD    E, A            ; A -> E }
-    $3A/addr/       {         LD    A, (ADDR)       ; retrieve i/o address }
+    $3A/ioaddr/     {         LD    A, (ioaddr)     ; retrieve i/o address }
     $4F/            {         LD    C, A            ; A -> C }
 
     $ED/$78/        {         IN    A, (C)          ; read input data from port }
@@ -104,7 +104,7 @@ begin
     $57/            {         LD    D, A            ; A -> D }
     $3A/mask/       {         LD    A, (MASK)       ; retrieve mask }
     $5F/            {         LD    E, A            ; A -> E }
-    $3A/addr/       {         LD    A, (ADDR)       ; retrieve i/o address }
+    $3A/ioaddr/     {         LD    A, (ioaddr)     ; retrieve i/o address }
     $4F/            {         LD    C, A            ; A -> C }
 
     $ED/$78/        {         IN    A, (C)          ; read input data from port }
@@ -177,7 +177,7 @@ begin
     { initial value(s) }
     $3A/portnum/    {         LD    A, (PORTNUM)    ; portnum -> A }
     $5F/            {         LD    E, A            ; A -> E }
-    $3A/addr/       {         LD    A, (ADDR)       ; retrieve i/o address }
+    $3A/ioaddr/     {         LD    A, (ioaddr)     ; retrieve i/o address }
     $4F/            {         LD    C, A            ; A -> C }
 
     $ED/$78/        {         IN    A, (C)          ; read input data from port }

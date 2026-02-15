@@ -6,20 +6,20 @@
 { +--------------------------------------------------------------------------+ }
 
 var
-  addr, datinp, datout: byte;
+  ioaddr, datinp, datout: byte;
 
-{ SET ADDRESS }
-procedure setbase(address: byte);
+{ SET I/O ADDRESS }
+procedure setioaddr(ioaddress: byte);
 begin
-  addr := address;
+  ioaddr := ioaddress;
   datinp := 0;
   datout := 0;
 end;
 
-{ GET ADDRESS }
-function getbase: byte;
+{ GET I/O ADDRESS }
+function getioaddr: byte;
 begin
-  getbase := addr;
+  getbase := ioaddr;
 end;
 
 { RESET ALL OCOS AND RCOS }
@@ -27,7 +27,7 @@ procedure resetall;
 begin
   inline(
     { initial value(s) }
-    $3A/addr/       {         LD    A, (addr)       ; retrieve i/o address }
+    $3A/ioaddr/     {         LD    A, (ioaddr)     ; retrieve i/o address }
     $4F/            {         LD    C, A            ; A -> C }
 
     $3E/$00/        {         LD    A, 0            ; set output data }
@@ -41,7 +41,7 @@ procedure resetoco;
 begin
   inline(
     { initial value(s) }
-    $3A/addr/       {         LD    A, (addr)       ; retrieve i/o address }
+    $3A/ioaddr/     {         LD    A, (ioaddr)     ; retrieve i/o address }
     $4F/            {         LD    C, A            ; A -> C }
 
     $3A/datout/     {         LD    A, (datout)     ; retrieve previous output data }
@@ -57,7 +57,7 @@ procedure resetrco;
 begin
   inline(
     { initial value(s) }
-    $3A/addr/       {         LD    A, (addr)       ; retrieve i/o address }
+    $3A/ioaddr/     {         LD    A, (ioaddr)     ; retrieve i/o address }
     $4F/            {         LD    C, A            ; A -> C }
 
     $3A/datout/     {         LD    A, (datout)     ; retrieve previous output data }

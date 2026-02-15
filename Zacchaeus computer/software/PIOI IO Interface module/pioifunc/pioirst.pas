@@ -30,7 +30,7 @@ begin
 end;
 
 begin
-  setbase(BA);
+  setioaddr(BA);
 
   writeln('Reset OCO ports');
   writeoco($0F);

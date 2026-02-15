@@ -8,9 +8,10 @@ PS316 family has been obsolete since the mid-2000s, this circuit enables
 continued functionality by interfacing with the system's original analog and
 digital I/O modules.
 
-The device is powered by a circuit built with an 80C51 microcontroller. It is
-responsible for controlling the PLC modules and communicating with Zacchaeus
-via the RS-232 serial port.
+The device is controlled by a circuit built with an 87C51 microcontroller.
+It is responsible for controlling the PLC modules and communicating with
+Zacchaeus via the RS-232 serial port. The module was designed as a prototype
+board.
 
 Adapting the device's variously controllable, undocumented modules to a
 non-original device is a complex, multi-step task, so I implement the

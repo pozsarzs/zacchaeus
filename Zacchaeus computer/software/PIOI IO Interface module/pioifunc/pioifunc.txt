@@ -16,8 +16,8 @@ Available procedures and functions
 
 name						functions				A
 -------------------------------------------------------------------------------
-procedure setbase(address: byte);		set address
-function getbase: byte;				get address
+procedure setioaddr(address: byte);		set i/o address
+function getioaddr: byte;			get i/o address
 procedure resetall;				reset all OCOs and RCOs
 procedure resetoco;				reset all OCOs
 procedure resetrco;				reset all RCOs
