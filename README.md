@@ -42,6 +42,10 @@ PEIX is an 8-slot interface connecting legacy _Klöckner-Moeller PS316_ I/O modu
 to the Zacchaeus computer. It restores functionality to these obsolete analog
 and digital modules.
 
+<img align="left" style="float: center; margin: 0 10px 0 0;" alt="Appearance"
+  src="pictures/PEIX_01.jpg" border="10">
+<br>&nbsp;
+
 A detailed description of the interface box can be found in the [PEIX External
 interface box](https://github.com/pozsarzs/zacchaeus/tree/main/PEIX%20External%20interface%20box) folder. 
 
