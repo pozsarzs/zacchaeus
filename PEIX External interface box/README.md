@@ -56,7 +56,7 @@ serious control task.
 |Module     |Num |Sign    |Function                 |State     |Note        |
 |-----------|:--:|--------|-------------------------|:--------:|------------|
 |PEIX       |JP1 |EXT ROM |enable external ROM      |closed    |            |
-|PEIX       |JP2 |LED FUNC|MUC ACT LED from port PC7|1-2 closed|            |
+|PEIX       |JP2 |AKT LED |MCU ACT LED from port PC7|1-2 closed|            |
 |EBE 206.1@6|SW1 |'DA0-5  |card address             |10100000  |switch 1..8 |
 |EBE 206.1@7|SW1 |'DA0-5  |card address             |01100000  |switch 1..8 |
 |EBE 266.1@8|SW1 |'DA0-5  |card address             |11100000  |switch 1..8 |
