@@ -73,14 +73,25 @@ serious control task.
 |PEIX  |J7/3|TXD |transmitted data (DCE)|TXD |DB9M/3|serial port|
 |PEIX  |J7/5|RXD |GND                   |GND |DB9M/5|serial port|
 
+
 ## Software
 
-(..)
+The software in the control and communication module of the PEIX is responsible
+for the I/O cards and the communication between itself and the control computer.
+
+The program stores the analog and digital signals coming from the I/O cards and
+to be written there in Modbus registers. Reading and writing are repeated
+periodically, as long as there are no incoming telegrams on the serial port.
+
+External data exchange takes place via an interrupt-based serial connection.
+This ensures a fast and reliable connection between the hardware and the
+monitoring system. The module communicates with the computer via a simple
+custom protocol (TLCP).
 
 
-## Legal Disclaimer & Interoperability Statement
+## Legal disclaimer & interoperability statement
 
-### Purpose of this Project
+### Purpose of this project
 
 This project involves the reverse engineering of the connection points and
 interface logic of the Moeller/Eaton PS316 I/O cards. The sole purpose of this
@@ -89,7 +100,7 @@ modern control systems, ensuring the continued use and maintenance of existing
 equipment (Right to Repair).
 
 
-### Legal Basis (EU & USA)
+### Legal basis (EU & USA)
 
 This project is conducted and shared in compliance with the following legal
 frameworks:
@@ -106,26 +117,26 @@ enabling a software program or hardware device to exchange and use information
 with other systems.
 
 
-### Status of the PS316 System
+### Status of the PS316 system
 
-**Legacy Hardware:** The PS316 series, originally manufactured by Moeller (now
+**Legacy hardware:** The PS316 series, originally manufactured by Moeller (now
 part of Eaton), is a legacy product line that has reached End-of-Life (EOL) and
 End-of-Support (EOS) status.
 
-**Commercial Non-Competition:** This project does not compete with any current
+**Commercial non-competition:** This project does not compete with any current
 product offered by the original manufacturer. Documentation for these cards is
 no longer commercially available or supported by the vendor.
 
-**Functional Information:** The information shared (such as pinouts, voltage
+**Functional information:** The information shared (such as pinouts, voltage
 levels, and signal paths) is strictly functional and does not constitute a
 "creative work" protected by copyright.
 
 
-### Intellectual Property Compliance
+### Intellectual property compliance
 
-**No Proprietary Code:** This repository does not contain any proprietary
+**No proprietary code:** This repository does not contain any proprietary
 firmware, binary blobs, or copyrighted software extracted from the devices.
 
-**Independent Implementation:** All schematics, drivers, and adapter designs
+**Independent implementation:** All schematics, drivers, and adapter designs
 provided here are original works created by the author based on the discovered
 functional parameters.
