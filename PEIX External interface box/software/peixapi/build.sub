@@ -1,0 +1,4 @@
+z80asm peixapi/m
+z80asm $1/m
+l80 $1,peixapi,$1/n/e
+

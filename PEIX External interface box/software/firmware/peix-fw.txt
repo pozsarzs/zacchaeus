@@ -1,0 +1,13 @@
+Firmware
+~~~~~~~~
+
+  version	v0.1
+  licence	CC0 1.0 Universal
+  architecture	8051
+  OS		-
+  compiler	
+  author	Pozsar Zsolt <pozsarzs@gmail.com> (2026)
+
+Firmware of the PEIX control and communication module.
+
+(..)

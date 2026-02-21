@@ -1,0 +1,11 @@
+EIXMon
+~~~~~~
+
+  version	v0.1
+  licence	CC0 1.0 Universal
+  architecture	Z80
+  OS		CP/M-80
+  compiler	Borland Turbo Pascal v3.01A (1985)
+  author	Pozsar Zsolt <pozsarzs@gmail.com> (2026)
+
+  Port monitor and controller program.

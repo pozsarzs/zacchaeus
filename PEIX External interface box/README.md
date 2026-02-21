@@ -85,8 +85,8 @@ periodically, as long as there are no incoming telegrams on the serial port.
 
 External data exchange takes place via an interrupt-based serial connection.
 This ensures a fast and reliable connection between the hardware and the
-monitoring system. The module communicates with the computer via a simple
-custom protocol (TLCP).
+monitoring system. The module communicates with the computer via the
+[SCRAP](https://github.com/pozsarzs/scrap) protocol.
 
 
 ## Legal disclaimer & interoperability statement
