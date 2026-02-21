@@ -119,7 +119,7 @@ within form a single entity (e.g., CAD drawings, original files).
       - [x] README.md
       - [x] SC719* (original files)
   - [ ] **software**  
-    - [ ] **PCOX COVOX module
+    - [ ] **PCOX COVOX module**
       - [ ] coxpiano.com
       - [ ] coxpiano.pas
       - [ ] coxpiano.txt
