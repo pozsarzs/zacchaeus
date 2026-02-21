@@ -1,0 +1,174 @@
+# Zacchaeus Microcomputer
+
+## Current file status
+
+This list tracks the current status of the project units:
+- [ ] – In-progress or still-changing file.
+- [x] – Completed, stable, and tested file or module.
+
+Items **_marked this way_** are directories managed as a single unit, as the files
+within form a single entity (e.g., CAD drawings, original files).
+
+- [ ] **Zacchaeus computer**  
+  - [x] README.md  
+  - [ ]	**hardware**
+    - [x] **Front panel**
+      - [x] README.md
+      - [x] z180cpu.cdr
+      - [x] zacchaeus.cdr
+      - [x] zacchaeus_z180.dxf
+      - [x] zacchaeus_z180.jpg
+      - [x] zacchaeus_z180.panel
+    - [x] **MCS-51M RS232 level shifter module**
+      - [x] MCS-51M assembled.jpg
+      - [x] MCS-51M size.jpg
+      - [x] README.md
+    - [x] **PBKP Back panel**
+      - [x] pbkp.pdf
+      - [x] README.md
+      - [x] **_pbkp_**
+    - [x] **PCOX COVOX module**
+      - [x] pcox-B_Cu.pdf
+      - [x] pcox-F_Cu.pdf
+      - [x] pcox-F_Silkscreen.pdf
+      - [x] pcox-gbr.zip
+      - [ ] pcox.jpg
+      - [x] pcox.pdf
+      - [x] README.md
+      - [x] **_pcox_**
+    - [x] **PFRP Front panel**
+      - [x] pfrp.pdf
+      - [x] README.md
+      - [x] **_pfrp_**
+    - [x] **PIOI IO Interface module**
+      - [x] pioi-B_Cu.pdf
+      - [x] pioi-F_Cu.pdf
+      - [x] pioi-F_Silkscreen.pdf
+      - [x] pioi-gbr.zip
+      - [x] pioi.jpg
+      - [x] pioi.pdf
+      - [x] README.md
+      - [x] **_pioi_**
+    - [x] **PMAN-DP Display module**
+      - [x] pman-dp-1.jpg
+      - [x] pman-dp-2.jpg
+      - [x] pman-dp-B_Cu.pdf
+      - [x] pman-dp-F_Cu.pdf
+      - [x] pman-dp-F_Silkscreen.pdf
+      - [x] pman-dp-gerber.zip
+      - [x] pman-dp.pdf
+      - [x] README.md
+      - [x] **_pman-dp_**
+    - [x] **PMAN-SW Switch module**
+      - [x] pman-sw-B_Cu.pdf
+      - [x] pman-sw-F_Cu.pdf
+      - [x] pman-sw-F_Silkscreen.pdf
+      - [x] pman-sw-gerber.zip
+      - [x] pman-sw.pdf
+      - [x] README.md
+      - [x] **_pman-sw_**
+    - [x] **PPOW Power distribution module**
+      - [x] ppow-B_Cu.pdf
+      - [x] ppow-F_Cu.pdf
+      - [x] ppow-F_Silkscreen.pdf
+      - [x] ppow-gerber.zip
+      - [x] ppow.jpg
+      - [x] ppow.pdf
+      - [x] README.md
+      - [x] **_ppow_**
+    - [x] **PSPK Speaker amplifier module**
+      - [x] pspk-B_Cu.pdf
+      - [x] pspk-F_Silkscreen.pdf
+      - [x] pspk-gerber.zip
+      - [x] pspk.jpg
+      - [x] pspk.pdf
+      - [x] README.md
+      - [x] **_pspk_**
+    - [ ] **PTAP Tape interface module**
+      - [x] KCS.md
+      - [ ] ptap-B_Cu.pdf
+      - [ ] ptap-F_Cu.pdf
+      - [ ] ptap-F_Silkscreen.pdf
+      - [ ] ptap-gbr.zip
+      - [ ] ptap.jpg
+      - [ ] ptap.pdf
+      - [ ] README.md
+    - [x] **RCBus**
+      - [x] bus_connection.pdf
+      - [x] bus_connection.zip
+      - [x] RCBus* (original files)
+    - [x] **SC126 Z180 motherboard**
+      - [x] README.md
+      - [x] SC126* (original files)
+    - [x] **SC702 RCBus backplane**
+      - [x] README.md
+      - [x] SC702* (original files)
+    - [x] **SC715 RCBus CF module**
+      - [x] README.md
+      - [x] SC715* (original files)
+    - [x] **SC716 RCBus SIO-2 module**
+      - [x] README.md
+      - [x] SC716* (original files)
+    - [x] **SC717 RCBus PIO module**
+      - [x] README.md
+      - [x] SC717* (original files)
+    - [x] **SC718 RCBus CTC module**
+      - [x] README.md
+      - [x] SC718* (original files)
+    - [x] **SC719 RCBus DIO module**
+      - [x] README.md
+      - [x] SC719* (original files)
+  - [ ] **software**  
+    - [ ] **PCOX COVOX module
+      - [ ] coxpiano.com
+      - [ ] coxpiano.pas
+      - [ ] coxpiano.txt
+      - [ ] coxplayer.com
+      - [ ] coxplayer.pas
+      - [ ] coxplayer.txt
+      - [ ] **pcoxapi**
+        - [ ] build.sub
+        - [ ] pcoxapi.rel
+        - [ ] pcoxapi.txt
+        - [ ] pcoxapi.z80
+      - [ ] **pcoxfunc**
+        - [ ] pcoxfunc.pas
+        - [ ] pcoxfunc.txt
+    - [x] **PIOI IO Interface module**
+      - [x] pioitest.com
+      - [x] pioitest.txt
+      - [x] pioitest.z80
+      - [x] **pioiapi**
+        - [x] build.sub
+        - [x] pioiapi.rel
+        - [x] pioiapi.txt
+        - [x] pioiapi.z80
+        - [x] pioirst.com
+        - [x] pioirst.z80
+      - [x] **piofunc**
+        - [x] pioifgen.pas
+        - [x] pioifoco.pas
+        - [x] pioifpi.pas
+        - [x] pioifrco.pas
+        - [x] pioifunc.txt
+        - [x] pioirst.com
+        - [x] pioirst.pas
+    - [ ] **PTAP Tape interface module**
+      - [ ] tapdump.com
+      - [ ] tapdump.txt
+      - [ ] tapdump.z80
+      - [ ] tapload.com
+      - [ ] tapload.txt
+      - [ ] tapload.z80
+      - [ ] tapsave.com
+      - [ ] tapsave.txt
+      - [ ] tapsave.z80
+      - [ ] **ptapapi**
+        - [ ] build.sub
+        - [ ] ptapapi.rel
+        - [ ] ptapapi.txt
+        - [ ] ptapapi.z80
+      - [ ] **ptapfunc**
+        - [ ] ptapfunc.pas
+        - [ ] ptapfunc.txt
+    - [x] **_SC126 Z180 motherboard_** (original files)
