@@ -7,7 +7,8 @@
 **8-bit microcomputer built from commercially available and home-built components** 
 
 > [!NOTE]
-> Content will be updated continuously as development progresses.
+> Content will be updated continuously as development progresses.  
+> The current status of the related files is shown [here](Zacchaeus_files.md).
 
 This project is a personal journey back in time to the heroic age of computing:
 a newly built, classic 8-bit system, in which I supplement the factory components
@@ -36,7 +37,8 @@ A detailed description of the computer can be found in the
 ## External interface box
 
 > [!NOTE]
-> Content will be updated continuously as development progresses.
+> Content will be updated continuously as development progresses.  
+> The current status of the related files is shown [here](PEIX_files.md).
 
 PEIX is an 8-slot interface connecting legacy _Klöckner-Moeller PS316_ I/O modules
 to the Zacchaeus computer. It restores functionality to these obsolete analog
@@ -53,7 +55,8 @@ interface box](https://github.com/pozsarzs/zacchaeus/tree/main/PEIX%20External%2
 ## External memory box (EPROM bank)
 
 > [!NOTE]
-> Content will be updated continuously as development progresses.
+> Content will be updated continuously as development progresses.  
+> The current status of the related files is shown [here](PEMX_files.md).
 
 PEMX is an 8-slot external EPROM bank connected via two PIO ports. It supports
 2764 through 27512 EPROMs, including 'A' and CMOS variants.
