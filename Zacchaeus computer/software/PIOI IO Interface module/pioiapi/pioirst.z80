@@ -2,7 +2,7 @@
 ; | Zacchaeus Microcomputer                                                    |
 ; | Pozsar Zsolt <pozsarzs@gmail.com>, 2025. CC0 1.0 Universal                 |
 ; | pioirst.z80                                                                |
-; | Reset output program for CP/M-80 (sample program using PIOIAPI)            |
+; | Example: reset outputs, Z80, CP/M-80, v0.1                                 |
 ; +----------------------------------------------------------------------------+
 
 	ORG	100h

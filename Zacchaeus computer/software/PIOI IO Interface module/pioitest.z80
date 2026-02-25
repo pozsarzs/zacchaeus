@@ -1,25 +1,16 @@
 ; +----------------------------------------------------------------------------+
 ; | Zacchaeus Microcomputer                                                    |
-; | Pozsar Zsolt <pozsarzs@gmail.com>, 2025. CC0 1.0 Universal                 |
+; | Copyright (C) 2025 Pozsar Zsolt <pozsarzs@gmail.com>                       |
 ; | pioitest.z80                                                               |
-; | Tester program for PIOI interface module for CP/M-80                       |
+; | PIOI module tester, Z80, CP/M-80, v0.1                                     |
 ; +----------------------------------------------------------------------------+
 
-; I/O ports: * Protected inputs
-;              -PI0: D0 and D1 bits (equal and inverted)
-;              -PI1: D2 and D3 bits (equal and inverted)
-;              -PI2: D4 and D5 bits (equal and inverted)
-;              -PI3: D6 and D7 bits (equal and inverted)
-;            * Open collector outputs
-;              OCO0: D0 bit
-;              OCO1: D1 bit
-;              OCO2: D2 bit
-;              OCO3: D3 bit
-;            * Relay contact outputs
-;              RCO0: D4 bit
-;              RCO1: D5 bit
-;              RCO2: D6 bit
-;              RCO3: D7 bit
+; This program is free software: you can redistribute it and/or modify it
+; under the terms of the European Union Public License 1.2 version.
+;
+; This program is distributed in the hope that it will be useful, but WITHOUT
+; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+; FOR A PARTICULAR PURPOSE.
 
 	ORG	100h
 BDOS	EQU	005h			; BDOS system call
@@ -356,7 +347,7 @@ NL:	DB	0Dh, 0Ah, '$'		; new line
 OD:	DB	0			; output data
 ; messages
 MSG01:	DB   	'*** PIOI module tester for Zacchaeus Microcomputer ***', 0Dh, 0Ah, '$'
-MSG02:	DB   	'(C) 2025 Pozsar Zsolt <pozsarzs@gmail.com> CC0 1.0 Universal$'
+MSG02:	DB   	'(C) 2025 Pozsar Zsolt <pozsarzs@gmail.com> EUPL v1.2$'
 MSG03:	DB   	0Dh, 0Ah,'------------------------------------------------------------', 0Dh, 0Ah
 	DB   	' 1: set address', 0Dh, 0Ah
 	DB   	' 2: read input', 0Dh, 0Ah

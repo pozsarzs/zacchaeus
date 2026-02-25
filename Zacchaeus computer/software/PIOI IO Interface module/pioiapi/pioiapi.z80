@@ -1,13 +1,20 @@
 ; +----------------------------------------------------------------------------+
 ; | Zacchaeus Microcomputer                                                    |
-; | Pozsar Zsolt <pozsarzs@gmail.com>, 2025. CC0 1.0 Universal                 |
+; | Copyright (C) 2025 Pozsar Zsolt <pozsarzs@gmail.com>                       |
 ; | pioiapi.z80                                                                |
-; | API of the PIOI interface for CP/M-80                                      |
+; | API of the PIOI interface, Z80, CP/M-80, v0.1                              |
 ; +----------------------------------------------------------------------------+
+
+; This program is free software: you can redistribute it and/or modify it
+; under the terms of the European Union Public License 1.2 version.
+;
+; This program is distributed in the hope that it will be useful, but WITHOUT
+; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+; FOR A PARTICULAR PURPOSE.
 
 PUBLIC PIOI
 
-; --- PIOI API FUNCTION -----------------------------
+; --- API FUNCTION -------------------------------------
 ; Input:     A = input data, optional
 ;            B = input data, optional
 ;            C = function code  (00-FFh)
@@ -15,22 +22,6 @@ PUBLIC PIOI
 ;            Carry = 1, A = 0 (no valid return value)
 ; Preserves: BC, DE, HL
 ; Clobbers:  AF
-;
-; I/O ports: * Protected inputs
-;              -PI0: D0 and D1 bits (equal and inverted)
-;              -PI1: D2 and D3 bits (equal and inverted)
-;              -PI2: D4 and D5 bits (equal and inverted)
-;              -PI3: D6 and D7 bits (equal and inverted)
-;            * Open collector outputs
-;              OCO0: D0 bit
-;              OCO1: D1 bit
-;              OCO2: D2 bit
-;              OCO3: D3 bit
-;            * Relay contact outputs
-;              RCO0: D4 bit
-;              RCO1: D5 bit
-;              RCO2: D6 bit
-;              RCO3: D7 bit
 
 PIOI:
 	PUSH	BC		; enter and save registers

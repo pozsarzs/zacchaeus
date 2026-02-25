@@ -2,7 +2,7 @@ Firmware
 ~~~~~~~~
 
   version	v0.1
-  licence	CC0 1.0 Universal
+  licence	EUPL v1.2
   architecture	8051
   OS		-
   compiler	

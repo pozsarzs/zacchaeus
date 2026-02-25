@@ -31,6 +31,6 @@ within form a single entity (e.g., CAD drawings).
       - [x] pemxapi.rel  
       - [x] pemxapi.txt  
       - [x] pemxapi.z80  
-    - [x] **pemxfunc**  
-      - [x] pemxfunc.pas
+    - [ ] **pemxfunc**  
+      - [ ] pemxfunc.pas
       - [x] pemxfunc.txt

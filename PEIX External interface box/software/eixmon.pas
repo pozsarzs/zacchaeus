@@ -1,8 +1,8 @@
 { +--------------------------------------------------------------------------+ }
-{ | Zacchaeus Microcomputer                                                  | }
+{ | PEIX External interface box                                              | }
 { | Copyright (C) 2025-2026 Pozsar Zsolt <pozsarzs@gmail.com>                | }
-{ | coxplayer.pas                                                            | }
-{ | PCOX raw music player, Z80, CP/M-80, v0.1                                | }
+{ | eixmon.pas                                                               | }
+{ | Port monitor and controller program, Z80, CP/M-80, v0.1                  | }
 { +--------------------------------------------------------------------------+ }
 
 { This program is free software: you can redistribute it and/or modify it

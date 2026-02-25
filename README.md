@@ -28,7 +28,8 @@ author's website ([Small Computer Central](https://smallcomputercentral.com/)).
 These components are licensed as _open source_ and _public domain_. 
 
 These components are complemented by custom-designed expansion cards and
-external peripherals. These components are licensed as _public domain_.
+external peripherals. The custom-designed software are licensed as
+_open source_ and hardware are licensed as _public domain_.  
 
 A detailed description of the computer can be found in the
 [Zacchaeus computer](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer) folder. 

@@ -2,7 +2,7 @@
 { | Zacchaeus Microcomputer                                                  | }
 { | Pozsar Zsolt <pozsarzs@gmail.com>, 2026. CC0 1.0 Universal               | }
 { | pioirst.pas                                                              | }
-{ | Reset output program for CP/M-80 (sample program using PIOIFUNC)         | }
+{ | Example: reset outputs, Z80, CP/M-80, v0.1                               | }
 { +--------------------------------------------------------------------------+ }
 
 program pioirst;

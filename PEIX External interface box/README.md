@@ -21,6 +21,19 @@ The documentation for PLC modules contains only what is necessary to understand
 the control. Modules can also be used perfectly as "black boxes" if we know
 their characteristics and control method.
 
+The interface is developed in a modular manner in four main phases. At the end
+of each phase, a functional system is obtained, which is expanded according to
+the following schedule:
+
+- [ ] **Basic infrastructure:** Development of the control and communication
+      board, SCRAP protocol, API, and monitor program.
+- [ ] **Digital I/O:** Circuit decoding, matching, and software support of the
+      digital input and output boards.
+- [ ] **Analog Output:** Circuit decoding, hardware integration of the analog
+      output board and implementation of related functions.
+- [ ] **Analog Input:** Circuit decoding, matching and full software management of
+      the analog input board.
+
 This equipment requires 230 V AC for operation.
 
 
@@ -61,8 +74,6 @@ serious control task.
 |EBE 206.1@7|SW1 |'DA0-5  |card address             |01100000  |switch 1..8 |
 |EBE 266.1@8|SW1 |'DA0-5  |card address             |11100000  |switch 1..8 |
 |EBE 266.1@9|SW1 |'DA0-5  |card address             |00010000  |switch 1..8 |
-
-(..)
 
 
 ## Connection with others
