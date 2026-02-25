@@ -1,7 +1,5 @@
-
-<img align="left" style="float: left; margin: 0 10px 0 0;" alt="Z80 inside"
+<img align="left" style="height:64px; float: left;  margin: 0 0 0 0;" alt="logo"
   src="pictures/icon/z180_64x64_black.png">
-<br>
 
 # Zacchaeus Microcomputer
 **8-bit microcomputer built from commercially available and home-built components** 
