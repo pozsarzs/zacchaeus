@@ -30,9 +30,13 @@ const
   db = 0;
   ds = 8;
 var
+  bf: file;
   buffer: PByte;
+  opmode: byte;
   options: TPOptions;
   page: byte;
+  scrline: byte;
+  tf: text;
 
 { I pemxfunc/pemxfunc.pas}
 
@@ -40,7 +44,6 @@ var
 procedure waitforkey;
 begin
   bdos($01);
-  writeln;
 end;
 
 { DETECT KEYPRESS }
@@ -204,14 +207,15 @@ var
 begin
   for l := 0 to 127 do
   begin
+    scrline := scrline + 1;
     { address at the start of line }
     write(bhex(hi(l * 16 + page * 2048)),
           bhex(lo(l * 16 + page * 2048)),'  ');
-    { 16 byte in hexadecimal format }
+    { 16 bytes in hexadecimal format }
     for b := 0 to 15 do
       write(bhex(mem[addr(buffer^) + b + l * 16]), ' ');
       write(' ');
-    { 16 byte in character format }
+    { 16 bytes in character format }
     for b := 0 to 15 do
     begin
       i := addr(buffer^) + b + l * 16;
@@ -220,17 +224,60 @@ begin
         else write('.');
     end;
     writeln;
+    { wait after write 24 lines }
+    if scrline = 24 then
+    begin
+      waitforkey;
+      scrline := 0;
+    end;
   end;
 end;
 
 { WRITE DATA FROM BUFFER AREA TO DISC IN READABLE FORMAT }
-function dumptodisc(f: TStr15; page: byte): boolean;
+function dumptodisc(page: byte): boolean;
+var
+  b, l: byte;
+  i: integer;
 begin
+  dumptodisc := false;
+  {$I-}
+  for l := 0 to 127 do
+  begin
+    scrline := scrline + 1;
+    { address at the start of line }
+    write(tf, bhex(hi(l * 16 + page * 2048)),
+          bhex(lo(l * 16 + page * 2048)),'  ');
+    { 16 bytes in hexadecimal format }
+    for b := 0 to 15 do
+      write(tf, bhex(mem[addr(buffer^) + b + l * 16]), ' ');
+      write(tf, ' ');
+    { 16 bytes in character format }
+    for b := 0 to 15 do
+    begin
+      i := addr(buffer^) + b + l * 16;
+      if (mem[i] > 31) and (mem[i] < 127)
+        then write(tf, char(mem[i]))
+        else write(tf, '.');
+    end;
+    writeln(tf,'');
+  end;
+  {$I+}
+  if ioresult <> 0 then exit;
+  dumptodisc := true;
 end;
 
 { WRITE DATA FROM BUFFER AREA TO DISC IN BINARY FORMAT }
-function savetodisc(f: TStr15): boolean;
+function savetodisc: boolean;
+var
+  b, l: byte;
+  i: integer;
 begin
+  savetodisc := false;
+  {$I-}
+  blockwrite(bf, buffer^, 16); { 16 block, 128 byte blocksize }
+  {$I+}
+  if ioresult <> 0 then exit;
+  savetodisc := true;
 end;
 
 begin
@@ -250,13 +297,21 @@ begin
       { detect options }
       if detectoptions(paramcount, options) then
       begin
-        { main }
+        { store operation mode }
+        with options do
+        begin
+          if (cmd = 1) and (f = #20) then opmode := 0;
+          if (cmd = 1) and (f <> #20) then opmode := 1;
+          if (cmd = 2) then opmode := 2;
+        end;
         with options do
         begin
           write(  'Operation:        ');
-          if (cmd = 1) and (f = #20) then writeln('dump to screen');
-          if (cmd = 1) and (f <> #20) then writeln('dump to file');
-          if (cmd = 2) then writeln('save to file');
+          case opmode of
+            0: writeln('dump to screen');
+            1: writeln('dump to file');
+            2: writeln('save to file');
+          end;
           writeln('Base I/O address: ', a);
           writeln('EPROM bank:       ', b);
           writeln('EPROM size:       ', s, ' kB');
@@ -269,22 +324,45 @@ begin
           { set address of Z80PIO and buffer area }
           { setioaddress(a); }
           { setmemaddress(addr(buffer)); }
+          scrline := 0;
+          { open or create target file }
+          case opmode of
+            1: begin
+                 assign(tf, f);
+                 {$I-}
+                 rewrite(tf);
+                 {$I+}
+                 if ioresult <> 0 then error(1, f);
+               end;
+            2: begin
+                 assign(bf, f);
+                 {$I-}
+                 rewrite(bf);
+                 {$I+}
+                 if ioresult <> 0 then error(1, f);
+               end;
+          end;
           repeat
-            { fillchar(buffer^, 2048, 0);}
+            fillchar(buffer^, 2048, 0);
             { read a 2 kB block to memory }
             { readblock(b, page); }
             { write data to target medium}
-            if (cmd = 1) and (f = #20) then dumptoscreen(page);
-            if (cmd = 1) then
-              if not dumptodisc(f, page) then error(1, f);
-            if (cmd = 2) then
-              if not savetodisc(f) then error(1, f);
+            case opmode of
+              0: dumptoscreen(page);
+              1: if not dumptodisc(page) then error(1, f);
+              2: if not savetodisc then error(1, f);
+            end;
             page := page + 1;
           until page * 2 = s;
+          { close target file }
+          case opmode of
+            1: close(tf);
+            2: close(bf);
+          end;
           { release buffer area }
           freemem(buffer, 2048);
         end;
       end else howtouse;
     end else howtouse;
   halt;
-end.
+end.
