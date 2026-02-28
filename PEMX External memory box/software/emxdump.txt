@@ -11,8 +11,23 @@ EMXDump utility
   Data lister and saver utility. It saves a selected EPROM range to disk or
   displays it.
 
+
 Usage
 ~~~~~
-
-emxdump bank from to [filename]
-
+                                                                              
+  emxdump command [options]                                                     
+                                                                                
+commands:                                                                       
+  d(ump) - Print the entire EPROM contents to the screen or to a file in        
+           readable hexadecimal format.                                         
+  s(ave) - Save the entire EPROM contents to a file in binary format.           
+                                                                                
+options:                                                                        
+  /a:0..255     - base adress of the Z80PIO (default: 12)                       
+  /b:0..7       - EPROM bank (default: 0)                                       
+  /f:file       - target file (default: target.bin)                             
+  /s:8|16|32|64 - EPROM size in kB (default: 8)                                 
+                                                                                
+examples:                                                                       
+  emxdump d /b:7 /s:32 /f:eprom.lst                                             
+  emxdump s /f:eprom.bin /b:7 /s:32  
