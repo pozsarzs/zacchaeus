@@ -104,8 +104,8 @@ F02:
 ;            L = EPROM page index  (0-1Fh)
 ; Output:    A = 0, Carry = 0: no error
 ;            A = 1, Carry = 0: no Z80PIO on the specified port
-;            A = 4, Carry = 0: invalid 'bank' value
-;            A = 8, Carry = 0: invalid 'page' value
+;            A = 2, Carry = 0: invalid 'bank' value
+;            A = 4, Carry = 0: invalid 'page' value
  
 F10:
 	LD	A, H		; H -> A
@@ -236,18 +236,18 @@ CLOSE:				; SET Z80PIO TO DEFAULT MODE
 	JP	DONE
 
 ERIO:				; NO Z80PIO ON THE SPECIFIED PORT
-	LD	A, 01h		; set return value to 1
 	XOR	A          	; reset A and CF
+	LD	A, 01h		; set return value to 1
 	JP	DONE
 
 ERBI:				; INVALID 'BANK' VALUE
-	LD	A, 02h		; set return value to 2
 	XOR	A          	; reset A and CF
+	LD	A, 02h		; set return value to 2
 	JP	DONE
 
 ERPI:				; INVALID 'PAGE' VALUE
-	LD	A, 04h		; set return value to 4
 	XOR	A          	; reset A and CF
+	LD	A, 04h		; set return value to 4
 	JP	DONE		; RETURN
 	
 RGWR:				; WRITE DATA TO ONE OF THE REGISTERS

@@ -321,8 +321,8 @@ begin
           getmem(buffer, 2048);
           if buffer = nil then error(2, '');
           { set address of Z80PIO and buffer area }
-          setioaddress(a);
-          setmemaddress(addr(buffer^));
+          setioaddr(a);
+          setmemaddr(addr(buffer^));
           scrline := 0;
           { open or create target file }
           case opmode of
@@ -342,7 +342,6 @@ begin
                end;
           end;
           repeat
-            fillchar(buffer^, 2048, 0);
             { read a 2 kB block to memory }
             readblock(b, page);
             { write data to target medium}

@@ -29,7 +29,7 @@ end;
 { GET I/O ADDRESS }
 function getioaddr: byte;
 begin
-  getbase := ioad;
+  getioaddr := ioad;
 end;
 
 { SET 2 KB BUFFER START ADDRESS }
@@ -64,7 +64,7 @@ begin
     $54/            {         LD      D, H            ; H -> D }
     $5D             {         LD      E, L            ; L -> E }
     $13/            {         INC     DE              ; increment DE }
-    $ED/$48/(busi)/ {         LD      BC, (BUSI)      ; 2047 -> BC }
+    $ED/$4B/(busi)/ {         LD      BC, (BUSI)      ; 2047 -> BC }
     $ED/$B0/        {         LDIR                    ; reset (BUAD)...(BUAD) + 2047 area }
 
                     {                                 ; INITIALIZE Z80PIO }
@@ -91,12 +91,12 @@ begin
     $07/            {         RLCA                    ; rotate bits to left }
     $07/            {         RLCA                    ; rotate bits to left, A = 1nnn 0000b }
     $F6/$01/        {         OR      01h             ; A = 1nnn 0001b, bit0: select bank register (U5) }
-    $CD/lo/hi/      {         CALL    RGWR            ; write data to register }
+    $CD/RGWR!/      {         CALL    RGWR            ; write data to register }
 
                     { LOOP:                           ; TOP OF THE READING LOOP }
 
                     {                                 ; MAKE PHYSICAL ADDRESS }
-    $ED/$48/(epad)/ {         LD      BC, (EPAD)      ; 0000 0aaa aaaa aaaab }
+    $ED/$4B/(epad)/ {         LD      BC, (EPAD)      ; 0000 0aaa aaaa aaaab }
     $3A/(eppi)/     {         LD      A, (EPPI)       ; ???p ppppb }
     $E6/$1F/        {         AND     1Fh             ; 000p ppppb }
     $07/            {         RLCA                    ; rotate bits to left }
@@ -142,14 +142,14 @@ begin
 
                     {                                 ; STORE A BYTE }
     $2A/(buad)/     {         LD      HL, (BUAD)      ; buffer address -> HL }
-    $ED/5B/(epad)/  {         LD      DE, (EPAD)      ; offset -> DE }
+    $ED/$5B/(epad)/ {         LD      DE, (EPAD)      ; offset -> DE }
     $19/            {         ADD     HL, DE          ; HL = buffer address + offset }
     $77/            {         LD      (HL), A         ; read byte -> (HL) }
 
                     {                                 ; INCREMENT OFFSET }
     $13/            {         INC     DE              ; increment DE }
-    $ED/$53/(epad)  {         LD      (EPAD), DE      ; incremented offset -> (EPAD) }
-    $2A/(epad)      {         LD      HL, (EPAD)      ; (EPAD) -> HL }
+    $ED/$53/(epad)/ {         LD      (EPAD), DE      ; incremented offset -> (EPAD) }
+    $2A/(epad)/     {         LD      HL, (EPAD)      ; (EPAD) -> HL }
     $01/$00/$08/    {         LD      BC, 2048        ; 2048 -> BC }
     $B7/            {         OR      A               ; reset CF }
     $ED/$42/        {         SBC     HL, BC          ; subtract 2048 from }
@@ -170,18 +170,18 @@ begin
     $C3/DONE!/      {         JP      DONE            ; RETURN }
 
                     { ERIO:                           ; NO Z80PIO ON THE SPECIFIED PORT }
-    $3E/$01/        {         LD      A, 01h          ; set return value to 1 }
     $AF/            {         XOR     A               ; reset A and CF }
+    $3E/$01/        {         LD      A, 01h          ; set return value to 1 }
     $C3/DONE!/      {         JP      DONE            ; RETURN }
 
                     { ERBI:                           ; INVALID 'BANK' VALUE }
-    $3E/$02/        {         LD      A, 02h          ; set return value to 2 }
     $AF/            {         XOR     A               ; reset A and CF }
+    $3E/$02/        {         LD      A, 02h          ; set return value to 2 }
     $C3/DONE!/      {         JP      DONE            ; RETURN }
 
                     { ERPI:                           ; INVALID 'PAGE' VALUE }
-    $3E/$04/        {         LD      A, 04h          ; set return value to 4 }
     $AF/            {         XOR     A               ; reset A and CF }
+    $3E/$04/        {         LD      A, 04h          ; set return value to 4 }
     $C3/DONE!/      {         JP      DONE            ; RETURN }
         
                     { RGWR:                           ; WRITE DATA TO ONE OF THE REGISTERS }
@@ -200,7 +200,7 @@ begin
     $ED/$79/        {         OUT     (C), A          ; write to port }
     $D1/            {         POP     DE              ; restore DE register pair }
     $C1/            {         POP     BC              ; restore BC register pair }
-    $C9             {         RET }
+    $C9/            {         RET }
 
                     { RGRD:                           ; READ DATA AND STORE IN THE BUFFER }
     $C5/            {         PUSH    BC              ; save BC register pair }
@@ -215,6 +215,6 @@ begin
     $C9             {         RET }
 
                     { DONE:                           ; EXIT FROM FUNCTION }
-                    {         LD (readblock), A       ; set result }
+    $32/(readblock)/{         LD (readblock), A       ; set result }
   );
 end;
