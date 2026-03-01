@@ -63,7 +63,7 @@ Internal ribbon cable between main board and DB25F connector on the back panel:
 |board |J3/5 |GND |GND                                |GND |J3A/5 |back  |
 |board |J3/6 |J5/1|spare                              |    |J3A/6 |back  |
 |board |J3/7 |J5/2|spare                              |    |J3A/7 |back  |
-|board |J3/8 |J5/3|spare                              |    |J3A/8 |back  |
+|board |J3/8 |J5/3|spare                              |    |      |      |
 |board |J3/9 |GND |GND                                |GND |J3A/9 |back  |
 |board |J3/10|BD0 |output data                        |BD0 |J3A/10|back  |
 |board |J3/11|BD2 |output data                        |BD2 |J3A/11|back  |
@@ -75,8 +75,8 @@ Internal ribbon cable between main board and DB25F connector on the back panel:
 |board |J3/17|AD7 |register input data                |AD7 |J3A/17|back  |
 |board |J3/18|GND |GND                                |GND |J3A/18|back  |
 |board |J3/19|J1/1|spare                              |    |J3A/19|back  |
-|board |J3/20|J1/2|spare                              |    |      |      |
-|board |J3/21|J1/3|spare                              |    |J3A/20|back  |
+|board |J3/20|J1/2|spare                              |    |J3A/20|back  |
+|board |J3/21|J1/3|spare                              |    |      |      |
 |board |J3/22|GND |GND                                |GND |J3A/21|back  |
 |board |J3/23|BD1 |output data                        |BD1 |J3A/22|back  |
 |board |J3/24|BD3 |output data                        |BD3 |J3A/23|back  |
@@ -85,28 +85,30 @@ Internal ribbon cable between main board and DB25F connector on the back panel:
 
 Y-cable between equipment and two PIO ports:
 
-|Module|Num|Sign|Function |Sign|Num   |Module|
-|------|:-:|----|---------|----|:----:|------|
-|PIO #1|  2| P0 |data line|AD0 |J3A/1 |back  |
-|PIO #1|  4| P2 |data line|AD2 |J3A/2 |back  |
-|PIO #1|  6| P4 |data line|AD4 |J3A/3 |back  |
-|PIO #1|  8| P6 |data line|AD6 |J3A/4 |back  |
-|PIO #1| 18|GND |GND      |GND |J3A/5 |back  |
-|PIO #1|  3| P1 |data line|AD1 |J3A/14|back  |
-|PIO #1|  5| P3 |data line|AD3 |J3A/15|back  |
-|PIO #1|  7| P5 |data line|AD5 |J3A/16|back  |
-|PIO #1|  9| P7 |data line|AD7 |J3A/17|back  |
-|PIO #1| 25|GND |GND      |GND |J3A/18|back  |
-|PIO #2|  2| P0 |data line|BD0 |J3A/10|back  |
-|PIO #2|  4| P2 |data line|BD2 |J3A/11|back  |
-|PIO #2|  6| P4 |data line|BD4 |J3A/12|back  |
-|PIO #2|  8| P6 |data line|BD6 |J3A/13|back  |
-|PIO #2| 18|GND |GND      |GND |J3A/9 |back  |
-|PIO #2|  3| P1 |data line|BD1 |J3A/22|back  |
-|PIO #2|  5| P3 |data line|BD3 |J3A/23|back  |
-|PIO #2|  7| P5 |data line|BD5 |J3A/24|back  |
-|PIO #2|  9| P7 |data line|BD7 |J3A/25|back  |
-|PIO #2| 25|GND |GND      |GND |J3A/21|back  |
+|Module|Num  |Sign|Function |Sign|Num       |Module|
+|------|:---:|----|---------|----|:--------:|------|
+|PIO #1|    1| RDY|READY    |RDY |J3B/6     |back  |
+|PIO #1|    2| P0 |data line|AD0 |J3B/1     |back  |
+|PIO #1|    3| P1 |data line|AD1 |J3B/14    |back  |
+|PIO #1|    4| P2 |data line|AD2 |J3B/2     |back  |
+|PIO #1|    5| P3 |data line|AD3 |J3B/15    |back  |
+|PIO #1|    6| P4 |data line|AD4 |J3B/3     |back  |
+|PIO #1|    7| P5 |data line|AD5 |J3B/16    |back  |
+|PIO #1|    8| P6 |data line|AD6 |J3B/4     |back  |
+|PIO #1|    9| P7 |data line|AD7 |J3B/17    |back  |
+|PIO #1|   10|-STB|-STROBE  |-STB|J3B/19    |back  |
+|PIO #1|18-25| GND|GND      |GND |J3B/5, 18 |back  |
+|PIO #2|    1| RDY|READY    |RDY |J3B/20    |back  |
+|PIO #2|    2| P0 |data line|BD0 |J3B/10    |back  |
+|PIO #2|    3| P1 |data line|BD1 |J3B/22    |back  |
+|PIO #2|    4| P2 |data line|BD2 |J3B/11    |back  |
+|PIO #2|    5| P3 |data line|BD3 |J3B/23    |back  |
+|PIO #2|    6| P4 |data line|BD4 |J3B/12    |back  |
+|PIO #2|    7| P5 |data line|BD5 |J3B/24    |back  |
+|PIO #2|    8| P6 |data line|BD6 |J3B/13    |back  |
+|PIO #2|    9| P7 |data line|BD7 |J3B/25    |back  |
+|PIO #2|   10|-STB|-STROBE  |-STB|J3B/7     |back  |
+|PIO #2|18-25| GND|GND      |GND |J3B/9, 21 |back  |
 
 
 ## Software

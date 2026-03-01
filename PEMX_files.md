@@ -20,9 +20,9 @@ within form a single entity (e.g., CAD drawings).
     - [x] pemx-gbr.zip  
     - [x] pemx.pdf  
   - [ ] **software**  
-    - [ ] emxdump.com  
-    - [ ] emxdump.pas  
-    - [ ] emxdump.txt  
+    - [ ] emxdump.com  _(soon)_  
+    - [ ] emxdump.pas  _(soon)_  
+    - [x] emxdump.txt  
     - [ ] emxload.com  
     - [ ] emxload.txt  
     - [ ] emxload.z80  
@@ -32,5 +32,5 @@ within form a single entity (e.g., CAD drawings).
       - [x] pemxapi.txt  
       - [x] pemxapi.z80  
     - [ ] **pemxfunc**  
-      - [ ] pemxfunc.pas
+      - [ ] pemxfunc.pas  _(soon)_  
       - [x] pemxfunc.txt
