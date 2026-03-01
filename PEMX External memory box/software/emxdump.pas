@@ -16,7 +16,6 @@ program emxdump;
 type
   PByte = ^byte;
   TStr2 = string[2];
-  TStr4 = string[4];
   TStr15 = string[15];
   TStr72 = string[72];
   TPOptions = record
@@ -38,7 +37,7 @@ var
   scrline: byte;
   tf: text;
 
-{ I pemxfunc/pemxfunc.pas}
+{$I pemxfunc.pas}
 
 { WAIT FOR A KEY }
 procedure waitforkey;
@@ -322,8 +321,8 @@ begin
           getmem(buffer, 2048);
           if buffer = nil then error(2, '');
           { set address of Z80PIO and buffer area }
-          { setioaddress(a); }
-          { setmemaddress(addr(buffer)); }
+          setioaddress(a);
+          setmemaddress(addr(buffer^));
           scrline := 0;
           { open or create target file }
           case opmode of
@@ -345,7 +344,7 @@ begin
           repeat
             fillchar(buffer^, 2048, 0);
             { read a 2 kB block to memory }
-            { readblock(b, page); }
+            readblock(b, page);
             { write data to target medium}
             case opmode of
               0: dumptoscreen(page);

@@ -138,12 +138,14 @@ F10:
 	ADD	A, 2		; A = A + 2 (Port A control register)
 	LD	C, A		; A -> C
 	LD	A, 0Fh		; set port A to output mode 
+	LD	B, 0		; 0 -> B
 	OUT	(C), A		; write control byte to PIO register
 	IN	B, (C)		; read control register to check PIO
 	CP	B		; compare input and output data
 	JP	NZ, ERIO	; if not equal goto label ERIO
 	INC	C		; A = A + 1 (Port B control register)
 	LD	A, 4Fh		; set port B to input mode 
+	LD	B, 0		; 0 -> B
 	OUT	(C), A		; write control byte to PIO resister
 
 				; STORE EPROM BANK NUMBER
@@ -251,8 +253,11 @@ ERPI:				; INVALID 'PAGE' VALUE
 RGWR:				; WRITE DATA TO ONE OF THE REGISTERS
 	PUSH	BC		; save BC registers
 	PUSH	DE		; save DE registers
-	LD	D, (IOAD)	; i/o address -> D
-	LD	C, D		; D -> C
+	LD	B, A		; A -> B
+	LD	A, (IOAD)	; i/o address -> A
+	LD	C, A		; A -> C
+	LD	A, B		; B -> A
+	LD	B, 0		; 0 -> B
 	OR	8		; set to 1 the CLK line, A = 1nnn 1001 b
 	OUT	(C), A		; write to port
 	NOP			; waiting
@@ -267,7 +272,9 @@ RGRD:				; READ DATA AND STORE IN THE BUFFER
 	PUSH	BC		; save BC register pair
 	NOP			; waiting
 	NOP			; waiting
-	LD	C, (IOAD)	; i/o address -> D
+	LD	B, 0		; 0 -> B
+	LD	A, (IOAD)	; i/o address -> A
+	LD	C, A		; A -> C
 	INC	C		; set B port address
 	IN	A, (C)		; read a byte	
 	POP	BC		; restore BC register pair
