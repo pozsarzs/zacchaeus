@@ -32,38 +32,28 @@ begin
   getbase := ioad;
 end;
 
-{ SET BUFFER ADDRESS }
+{ SET 2 KB BUFFER START ADDRESS }
 procedure setmemaddr(address: integer);
 begin
   buad := address;
 end;
 
-{ 
-; -- Read 2048 byte data (1 page) from EPROM to buffer ----
-; Input:     H = EPROM bank number (0-7h)
-;            L = EPROM page index  (0-1Fh)
-; Output:    A = 0, Carry = 0: no error
-;            A = 1, Carry = 0: no Z80PIO on the specified port
-;            A = 4, Carry = 0: invalid 'bank' value
-;            A = 8, Carry = 0: invalid 'page' value
- }
-
-{ READ DATA FROM EPROM TO BUFFER }
+{ READ 2048 BYTE DATA (1 PAGE) FROM EPROM TO BUFFER }
 function readblock(bank, page: byte): byte;
 begin
   inline(
-    $3A/(bank)/     { F10:    LD    A, (bank)         ; (bank) -> A }
-        LD      (EPBI), (bank)  ; store EPROM bank index
-        LD      A, (page)       ; L -> A
-        LD      (EPPI), (page)  ; store EPROM page index
+    $3A/(bank)/     {         LD      A, (bank)       ; (bank) -> A }
+    $32/(epbi)/     {         LD      (EPBI), A       ; store EPROM bank index }
+    $3A/(page)/     {         LD      A, (page)       ; (page) -> A }
+    $32/(eppi)/     {         LD      (EPPI), A       ; store EPROM page index }
 
                     {                                 ; CHECK BANK AND PAGE INDEX }
-        LD      A, (bank)       ; H -> A
+    $3A/(bank)/     {         LD      A, (bank)       ; (bank) -> A }
     $FE/$08/        {         CP      08h             ; check value of the bank index (0..7) }
-        JP      NC, ERBI        ; if (EPBI) => 8 then goto label ERBI
-        LD      A, (page)       ; H -> A
-    $FE/$20/        {         CP      20h             ; check value of the page index (0..31) }
-        JP      NC, ERPI        ; if (EPPI) => 32 then goto label ERPI
+    $D2/ERBI!/      {         JP      NC, ERBI        ; if (EPBI) => 8 then goto label ERBI }
+    $3A/(page)/     {         LD      A, (page)       ; (page) -> A }
+    $FE/$20/        {         CP      20h	      ; check value of the page index (0..31) }
+    $D2/ERPI!/      {         JP      NC, ERPI        ; if (EPPI) => 32 then goto label ERPI }
 
                     {                                 ; ZEROIZE BUFFER AND VARIABLE(S) }
     $AF/            {         XOR     A               ; 0 -> A }
@@ -78,18 +68,18 @@ begin
     $ED/$B0/        {         LDIR                    ; reset (BUAD)...(BUAD) + 2047 area }
 
                     {                                 ; INITIALIZE Z80PIO }
-    $3A/(ioad)/     {         LD      A, (IOAD)       ; i/o address -> A }
+    $3A/(ioad)/     {         LD      A, (IOAD)       ; i/o address  lower byte -> A }
     $C6/$02/        {         ADD     A, 2            ; A = A + 2 (Port A control register) }
     $4F/            {         LD      C, A            ; A -> C }
     $3E/$0F/        {         LD      A, 0Fh          ; set port A to output mode }
-    $06/$00/        {         LD      B, 0            ; 0 -> B }
+    $06/$00/        {         LD      B, 0            ; zeroize i/o address upper byte }
     $ED/$79/        {         OUT     (C), A          ; write control byte to PIO register }
     $ED/$40/        {         IN      B, (C)          ; read control register to check PIO }
     $B8/            {         CP      B               ; compare input and output data }
     $C2/ERIO!/      {         JP      NZ, ERIO        ; if not equal goto label ERIO }
     $0C/            {         INC     C               ; A = A + 1 (Port B control register) }
     $3E/$4F/        {         LD      A, 4Fh          ; set port B to input mode }
-    $06/$00/        {         LD      B, 0            ; 0 -> B }
+    $06/$00/        {         LD      B, 0            ; zeroize i/o address upper byte }
     $ED/$79/        {         OUT     (C), A          ; write control byte to PIO resister }
 
                     {                                 ; STORE EPROM BANK NUMBER }
@@ -167,10 +157,11 @@ begin
                     {                                 ; BOTTOM OF THE READING LOOP }
 
                     { CLOSE:                          ; SET Z80PIO TO DEFAULT MODE }
-    $3A/(ioad)/     {         LD      A, (IOAD)       ; i/o address -> A }
+    $3A/(ioad)/     {         LD      A, (IOAD)       ; i/o address lower byte -> A }
     $C6/$02/        {         ADD     A, 2            ; A = A + 2 (Port A control register) }
     $4F/            {         LD      C, A            ; A -> C }
     $3E/$4F/        {         LD      A, 4Fh          ; set port A to input mode }
+    $06/$00/        {         LD      B, 0            ; zeroize i/o address upper byte }
     $ED/$79/        {         OUT     (C), A          ; write control byte to PIO resister }
     $0C/            {         INC     C               ; A = A + 1 (Port B control register) }
     $3E/$4F/        {         LD      A, 4Fh          ; set port B to input mode }
@@ -197,11 +188,11 @@ begin
     $C5/            {         PUSH    BC              ; save BC register pair }
     $D5/            {         PUSH    DE              ; save DE registers }
     $47/            {         LD      B, A            ; A -> B }
-    $3A/(ioad)/     {         LD      A, (IOAD)       ; i/o address -> A }
+    $3A/(ioad)/     {         LD      A, (IOAD)       ; i/o address lower byte -> A }
     $4F/            {         LD      C, A            ; A -> C }
     $78/            {         LD      A, B            ; B -> A }
-    $06/$00/        {         LD      B, 0            ; 0 -> B }
     $F6/$08/        {         OR      8               ; set to 1 the CLK line, A = 1nnn 1001 b }
+    $06/$00/        {         LD      B, 0            ; zeroize i/o address upper byte }
     $ED/$79/        {         OUT     (C), A          ; write to port }
     $00/            {         NOP                     ; waiting }
     $00/            {         NOP                     ; waiting }
@@ -215,12 +206,15 @@ begin
     $C5/            {         PUSH    BC              ; save BC register pair }
     $00/            {         NOP                     ; waiting }
     $00/            {         NOP                     ; waiting }
-    $06/$00/        {         LD      B, 0            ; 0 -> B }
-    $3A/(ioad)/     {         LD      A, (IOAD)       ; i/o address -> A }
+    $3A/(ioad)/     {         LD      A, (IOAD)       ; i/o address lower byte -> A }
     $4F/            {         LD      C, A            ; A -> C }
     $0C/            {         INC     C               ; set B port address }
+    $06/$00/        {         LD      B, 0            ; zeroize i/o address upper byte }
     $ED/$78/        {         IN      A, (C)          ; read a byte }
     $C1/            {         POP     BC              ; restore BC register pair }
     $C9             {         RET }
+
+                    { DONE:                           ; EXIT FROM FUNCTION }
+                    {         LD (readblock), A       ; set result }
   );
 end;

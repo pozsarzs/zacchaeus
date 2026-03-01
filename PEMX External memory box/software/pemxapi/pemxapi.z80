@@ -89,7 +89,7 @@ F01:
 	AND	A		; reset Carry flag
 	JP	DONE
 
-; --- Set 2 kB buffer start address. ------------------------
+; --- SET 2 KB BUFFER START ADDRESS ----------
 ; Input:     A = function code   (02h)
 ;            DE = memory address (0000-FFFFh)
 ; Output:    Carry = 1 (no valid return value)
@@ -98,7 +98,7 @@ F02:
 	SCF			; set Carry flag
 	JP	DONE
 
-; -- Read 2048 byte data (1 page) from EPROM to buffer ----
+; -- READ 2048 BYTE DATA (1 PAGE) FROM EPROM TO BUFFER -------
 ; Input:     A = function code     (10h)
 ;            H = EPROM bank number (0-7h)
 ;            L = EPROM page index  (0-1Fh)
@@ -109,9 +109,9 @@ F02:
  
 F10:
 	LD	A, H		; H -> A
-	LD	(EPBI), H	; store EPROM bank index
+	LD	(EPBI), A	; store EPROM bank index
 	LD	A, L		; L -> A
-	LD	(EPPI), L	; store EPROM page index
+	LD	(EPPI), A	; store EPROM page index
 
 				; CHECK BANK AND PAGE INDEX
 	LD	A, H		; H -> A
@@ -134,18 +134,18 @@ F10:
 	LDIR			; reset (BUAD)...(BUAD) + 2047 area
 
 				; INITIALIZE Z80PIO
-	LD	A, (IOAD)	; i/o address -> A
+	LD	A, (IOAD)	; i/o address lower byte -> A
 	ADD	A, 2		; A = A + 2 (Port A control register)
 	LD	C, A		; A -> C
 	LD	A, 0Fh		; set port A to output mode 
-	LD	B, 0		; 0 -> B
+	LD	B, 0		; zeroize i/o address upper byte
 	OUT	(C), A		; write control byte to PIO register
 	IN	B, (C)		; read control register to check PIO
 	CP	B		; compare input and output data
 	JP	NZ, ERIO	; if not equal goto label ERIO
 	INC	C		; A = A + 1 (Port B control register)
 	LD	A, 4Fh		; set port B to input mode 
-	LD	B, 0		; 0 -> B
+	LD	B, 0		; zeroize i/o address upper byte
 	OUT	(C), A		; write control byte to PIO resister
 
 				; STORE EPROM BANK NUMBER
@@ -223,13 +223,14 @@ LOOP:				; TOP OF THE READING LOOP
 				; BOTTOM OF THE READING LOOP
 
 CLOSE:				; SET Z80PIO TO DEFAULT MODE
-	LD	A, (IOAD)	; i/o address -> A
+	LD	A, (IOAD)	; i/o address lower byte -> A
 	ADD	A, 2		; A = A + 2 (Port A control register)
 	LD	C, A		; A -> C
 	LD	A, 4Fh		; set port A to input mode 
 	OUT	(C), A		; write control byte to PIO resister
 	INC	C		; A = A + 1 (Port B control register)
 	LD	A, 4Fh		; set port B to input mode 
+	LD	B, 0		; zeroize i/o address upper byte
 	OUT	(C), A		; write control byte to PIO resister
 	XOR	A          	; reset A and CF
 	JP	DONE
@@ -247,18 +248,17 @@ ERBI:				; INVALID 'BANK' VALUE
 ERPI:				; INVALID 'PAGE' VALUE
 	LD	A, 04h		; set return value to 4
 	XOR	A          	; reset A and CF
-
 	JP	DONE		; RETURN
 	
 RGWR:				; WRITE DATA TO ONE OF THE REGISTERS
 	PUSH	BC		; save BC registers
 	PUSH	DE		; save DE registers
 	LD	B, A		; A -> B
-	LD	A, (IOAD)	; i/o address -> A
+	LD	A, (IOAD)	; i/o address lower byte -> A
 	LD	C, A		; A -> C
 	LD	A, B		; B -> A
-	LD	B, 0		; 0 -> B
 	OR	8		; set to 1 the CLK line, A = 1nnn 1001 b
+	LD	B, 0		; zeroize i/o address upper byte
 	OUT	(C), A		; write to port
 	NOP			; waiting
 	NOP			; waiting
@@ -268,17 +268,17 @@ RGWR:				; WRITE DATA TO ONE OF THE REGISTERS
 	POP	BC		; restore BC register pair
 	RET
 
-RGRD:				; READ DATA AND STORE IN THE BUFFER
+RGRD:				; READ EPROM DATA
 	PUSH	BC		; save BC register pair
 	NOP			; waiting
 	NOP			; waiting
-	LD	B, 0		; 0 -> B
-	LD	A, (IOAD)	; i/o address -> A
+	LD	A, (IOAD)	; i/o address lower byte -> A
 	LD	C, A		; A -> C
 	INC	C		; set B port address
+	LD	B, 0		; zeroize i/o address upper byte
 	IN	A, (C)		; read a byte	
 	POP	BC		; restore BC register pair
-	RET
+	RET                     ; return, data in A
 
 ; --- DATA AREA ------------------------------------------------
 BUAD:	DW	0		; buffer start address
