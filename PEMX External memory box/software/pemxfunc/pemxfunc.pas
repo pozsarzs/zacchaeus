@@ -154,7 +154,8 @@ begin
     $B7/            {         OR      A               ; reset CF }
     $ED/$42/        {         SBC     HL, BC          ; subtract 2048 from }
     $DA/* -81/      {         JP      C, LOOP         ; if HL < 2048 then goto loop label }
-                    {                                 ; BOTTOM OF THE READING LOOP }
+
+    { BOTTOM OF THE READING LOOP }
 
     { set z80pio to default mode (21 byte) }
     $3A/(ioad)/     { CLOSE:  LD      A, (IOAD)       ; i/o address lower byte -> A }

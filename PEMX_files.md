@@ -14,11 +14,15 @@ within form a single entity (e.g., CAD drawings).
   - [x]	eprom_pinout.md  
   - [x]	**hardware**  
     - [x] **_pemx_**  
+    - [x] **_pemx-cables_**  
+    - [x] **_pemx-reset_**  
     - [x] pemx-B_Cu.pdf  
     - [x] pemx-F_Cu.pdf  
     - [x] pemx-F_Silkscreen.pdf  
     - [x] pemx-gbr.zip  
     - [x] pemx.pdf  
+    - [x] pemx-cables.pdf  
+    - [x] pemx-reset.pdf  
   - [ ] **software**  
     - [ ] emxdump.com  _(soon)_  
     - [ ] emxdump.pas  _(soon)_  
