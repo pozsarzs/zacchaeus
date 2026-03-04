@@ -9,9 +9,9 @@ their "A" and CMOS variants). The device does not support the use of smaller
 EPROMs. Only one EPROM can be used at a time and they do not form a contiguous
 memory area.
 
-The EPROM content is raw code or a set of files stored in the EFAT "file
-system". The raw code is handled by the _emxdump_ utility, displayed on the
-screen or saved to disk in two formats. The EPROMs in the EFAT system are
+The EPROM content is raw code or a set of files stored in the lowFAT file
+system. The raw code is handled by the _emxdump_ utility, displayed on the
+screen or saved to disk in two formats. The EPROMs in the lowFAT system are
 handled by the _emxload_ utility, which lists their table of contents, saves
 them to disk in binary form, loads them into memory (to a definable location)
 and runs them if necessary.
@@ -136,6 +136,6 @@ object module—the latter of which can be linked to your own programs.
   binary format.
 
 - [_emxload.com_](https://github.com/pozsarzs/zacchaeus/tree/main/PEMX%20External%20memory%20box/software):
-  Data loading utility. Displays the table of contents of the selected EPROM,
-  saves it in binary format, loads it into memory, and if necessary, starts the
-  selected entry.
+  Data loading utility for EPROM with lowFAT filesystem. Displays the table of
+  contents of the selected EPROM, saves it in binary format, loads it into
+  memory, and if necessary, starts the selected entry.

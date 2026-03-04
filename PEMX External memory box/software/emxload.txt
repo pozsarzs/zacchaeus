@@ -8,7 +8,7 @@ EMXLoad utility
   compiler	SLR Systems Z80ASM v1.32 (1986)
   author	Pozsar Zsolt <pozsarzs@gmail.com> (2026)
 
-  Data loading utility for EFAT type content. Displays the table of contents
+  Data loading utility for lowFAT type content. Displays the table of contents
   of the selected EPROM, saves it in binary format, loads it into memory, and
   if necessary, starts the selected entry.
 

@@ -40,8 +40,8 @@ A detailed description of the computer can be found in the
 > The current status of the related files is shown [here](PEIX_files.md).
 
 PEIX is an 8-slot interface connecting legacy _Klöckner-Moeller PS316_ I/O modules
-to the Zacchaeus computer. It restores functionality to these obsolete analog
-and digital modules.
+to the Zacchaeus computer via RS-232 serial line with SCRAP protocol. It restores
+functionality to these obsolete analog and digital modules.
 
 <img align="left" style="float: center; margin: 0 10px 0 0;" alt="Appearance"
   src="pictures/PEIX_01.jpg" border="10">
@@ -58,7 +58,8 @@ interface box](https://github.com/pozsarzs/zacchaeus/tree/main/PEIX%20External%2
 > The current status of the related files is shown [here](PEMX_files.md).
 
 PEMX is an 8-slot external EPROM bank connected via two PIO ports. It supports
-2764 through 27512 EPROMs, including 'A' and CMOS variants.
+2764 through 27512 EPROMs, including 'A' and CMOS variants with raw data and
+lowFAT filesystem.
 
 A detailed description of the memory box can be found in the [PEMX External
 memory box](https://github.com/pozsarzs/zacchaeus/tree/main/PEMX%20External%20memory%20box) folder. 
@@ -72,3 +73,4 @@ memory box](https://github.com/pozsarzs/zacchaeus/tree/main/PEMX%20External%20me
 - [Simulator for running DATAS machine code for CP/M and DOS](https://github.com/pozsarzs/datassim)
 - [The FORTRAN Month](https://github.com/pozsarzs/fortran_month)
 - [Synchronized Client Register Access Protocol](https://github.com/pozsarzs/scrap)
+- [lowFAT EPROM filesystem](https://github.com/pozsarzs/lowfat)
