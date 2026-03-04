@@ -2,11 +2,21 @@
 
 ## About equipment
 
-The PEMX is an 8-slot external EPROM bank that connects to the computer via two
-PIO ports (SC717 module). The bank can use the 2764, 27128, 27256 and 27512
-EPROMs and their "A" and CMOS versions. The selected EPROM is not built into the
-machine's memory area, but can be copied to disk or loaded into memory (and run)
-using utility programs. This equipment requires 230V AC for operation.
+The PEMX is an external EPROM bank that connects to the computer (SC717 module)
+via two PIO ports. The device contains eight ZIF-type EPROM sockets that can
+accommodate the following types of EPROMs: 2764, 27128, 27256 and 27512 (and
+their "A" and CMOS variants). The device does not support the use of smaller
+EPROMs. Only one EPROM can be used at a time and they do not form a contiguous
+memory area.
+
+The EPROM content is raw code or a set of files stored in the EFAT "file
+system". The raw code is handled by the _emxdump_ utility, displayed on the
+screen or saved to disk in two formats. The EPROMs in the EFAT system are
+handled by the _emxload_ utility, which lists their table of contents, saves
+them to disk in binary form, loads them into memory (to a definable location)
+and runs them if necessary.
+
+This equipment requires 230V AC for operation.
 
 
 ## Jumper settings
@@ -121,7 +131,11 @@ object module—the latter of which can be linked to your own programs.
 ### Utilities
 
 - [_emxdump.com_](https://github.com/pozsarzs/zacchaeus/tree/main/PEMX%20External%20memory%20box/software):
-  Saves a selected EPROM range to disk or displays it. (soon)
+  Data listing and saving utility. Lists the entire contents of the selected
+  EPROM in hexadecimal and character format or saves them to disk in the same or
+  binary format.
+
 - [_emxload.com_](https://github.com/pozsarzs/zacchaeus/tree/main/PEMX%20External%20memory%20box/software):
-  Loads a selected EPROM range into memory starting at a specific RAM
-  address and can optionally execute it. (soon)
+  Data loading utility. Displays the table of contents of the selected EPROM,
+  saves it in binary format, loads it into memory, and if necessary, starts the
+  selected entry.
