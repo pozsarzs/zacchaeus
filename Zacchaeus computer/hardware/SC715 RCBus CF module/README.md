@@ -11,17 +11,14 @@
 |SC715 schematic.pdf                     |schematic drawing                         |
 |SC715_v1.0.0_2023-04-27_14-17_Gerber.zip|Gerber files for manufacturing            |
 
-
 ### About module
 
 This is a commercially available expansion card designed by Stephen C. Cousins.
 You can find the details in the original PDF files.
 
-
 ### Jumper settings
 
 The CF module does not have jumpers.
-
 
 ### Connection with others
 

@@ -11,7 +11,6 @@
 |SC718 schematic.pdf                     |schematic drawing                         |
 |SC718_v1.0.1_2023-05-26_16-41_Gerber.zip|Gerber files for manufacturing            |
 
-
 ### About module
 
 This is a commercially available expansion card designed by Stephen C. Cousins.
@@ -20,7 +19,6 @@ You can find the details in the original PDF files.
 Channel 0 of the module is the user output on the back panel, channels 1-2 are
 cascaded to provide the clock signal (CLK2 on bus) for the speaker interface,
 and channel 3 is the timed interrupt.
-
 
 ### Jumper settings
 
@@ -57,7 +55,6 @@ and channel 3 is the timed interrupt.
 |SC718 |JP9   |INT1 |interrupt line                  |opened  |    |
 |SC718 |JP10  |INT2 |interrupt line                  |opened  |    |
 |SC718 |P2/5-6|CTCIO|ZT1-CT2 cascade                 |closed  |    |
-
 
 ### Connection with others
 

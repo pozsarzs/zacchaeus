@@ -9,7 +9,6 @@
 |\[pfrp\]|KiCAD files      |
 |pfrp.pdf|schematic drawing|
 
-
 ### About module
 
 This wiring diagram contains the connections of the manuals and connectors

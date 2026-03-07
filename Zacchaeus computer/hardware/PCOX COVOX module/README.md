@@ -13,7 +13,6 @@
 |pcox-gerber.zip      |Gerber files for manufacturing|
 |pcox.pdf             |schematic drawing             |
 
-
 ### About module
 
 This BP-80 bus-compatible expansion board combines the classic The Covox Speech
@@ -22,13 +21,11 @@ convert 8-bit digital audio into analog output. The board has LINE and headphone
 outputs, with headphone volume control. The module requires +5V and +12V DC to
 operate.
 
-
 ### Jumper settings
 
 |Module|Num |Sign |Function   |State   |Note                   |
 |------|:--:|-----|-----------|:------:|-----------------------|
 |PCOX  |SW1 |/A7-0|I/O address|11001110|DIP switch, address 31h|
-
 
 ### Connection with others
 

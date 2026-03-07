@@ -3,6 +3,7 @@
 ## Current file status
 
 This list tracks the current status of the project units:
+
 - [ ] – In-progress or still-changing file.
 - [x] – Completed, stable, and tested file or module.
 
@@ -11,8 +12,8 @@ within form a single entity (e.g., CAD drawings).
 
 - [ ] **PEMX External memory box**  
   - [x] README.md  
-  - [x]	eprom_pinout.md  
-  - [x]	**hardware**  
+  - [x] eprom_pinout.md  
+  - [x] **hardware**  
     - [x] **_pemx_**  
     - [x] **_pemx-cables_**  
     - [x] **_pemx-reset_**  

@@ -18,7 +18,6 @@ and runs them if necessary.
 
 This equipment requires 230V AC for operation.
 
-
 ## Jumper settings
 
 |Module|Num |Sign|Function            |State   |Note   |
@@ -58,7 +57,6 @@ This equipment requires 230V AC for operation.
 |PEMX  |JP15|3-2 |type: 2764..27256   |closed  |BANK #7|
 |PEMX  |JP16|1-2 |type: 27256, 27512  |closed  |BANK #7|
 |PEMX  |JP16|3-2 |type: 2764, 27128   |closed  |BANK #7|
-
 
 ## Connection with others
 
@@ -120,13 +118,11 @@ Y-cable between equipment and two PIO ports:
 |PIO #2|   10|-STB|-STROBE  |-STB|J3B/7     |back  |
 |PIO #2|18-25| GND|GND      |GND |J3B/9, 21 |back  |
 
-
 ## Software
 
 This hardware is accompanied by a collection of functions (written in
 Assembly), a Turbo Pascal include file, and a compiled, relocatable
 object module—the latter of which can be linked to your own programs.
-
 
 ### Utilities
 

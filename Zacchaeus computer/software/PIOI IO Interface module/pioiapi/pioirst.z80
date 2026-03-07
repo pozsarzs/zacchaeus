@@ -6,44 +6,44 @@
 ; +----------------------------------------------------------------------------+
 
 	ORG	100h
-BDOS	EQU	005h			; BDOS system call
+BDOS	EQU	005h		; BDOS system call
 EXTRN	PIOI
 
 START:
-	LD	C, 0			; set i/o address
+	LD	C, 0		; set i/o address
 	LD	A, (BA)
 	CALL	PIOI
 
-	LD	C, 9			; show message
+	LD	C, 9		; show message
 	LD	DE, MSG1
 	CALL	BDOS
 
-	LD	A, 0FFH			; switch on all OCO ports
+	LD	A, 0FFH		; switch on all OCO ports
 	LD	C, 20H
 	CALL	PIOI
 
 	CALL	WAIT
 	
-	LD	C, 3			; reset all OCO ports 
+	LD	C, 3		; reset all OCO ports 
 	CALL	PIOI
 
 	CALL	WAIT
 
-	LD	C, 9			; show message
+	LD	C, 9		; show message
 	LD	DE, MSG2
 	CALL	BDOS
 
-	LD	A, 0FFH			; switch on all RCO ports
+	LD	A, 0FFH		; switch on all RCO ports
 	LD	C, 30H
 	CALL	PIOI
 	
 	CALL	WAIT
 	
-	LD	C, 4			; reset all RCO ports 
+	LD	C, 4		; reset all RCO ports 
 	CALL	PIOI
 
 EXIT:
-	LD	C, 0			; exit
+	LD	C, 0		; exit
 	CALL	BDOS
 	RET
 
@@ -66,8 +66,8 @@ WAIT2:	DEC	D
 	RET
 
 ; --- DATA AREA ----------------------------------------
-BA:	DB	0Ch			; base address
+BA:	DB	0Ch		; base address
 MSG1:	DB	'Reset OCO ports', 0Dh, 0Ah, '$'
 MSG2:	DB	'Reset RCO ports', 0Dh, 0Ah, '$'
 	END
-
+

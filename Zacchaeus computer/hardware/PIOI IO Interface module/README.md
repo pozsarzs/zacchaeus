@@ -13,7 +13,6 @@
 |pioi-gerber.zip      |Gerber files for manufacturing|
 |pioi.pdf             |schematic drawing             |
 
-
 ### About module
 
 The PIOI is a combined interface module originally built for another device.
@@ -27,10 +26,7 @@ the device are not connected.
 
 #### The installed module
 
-<p align="center">
-<img style="width:50%;height:auto; margin:auto 0 10px 0 0;" alt="Appearance"
-  src="pioi.jpg" border="10">
-</p>
+![Appearance](pioi.jpg)
 
 ### Jumper settings
 
@@ -39,7 +35,6 @@ the device are not connected.
 |PIOI  |JP1|    |TTL level type +5V  |closed  |    |
 |PIOI  |JP2|    |TTL level type +3.3V|opened  |    |
 |SC719 |JP1|A7-0|I/O address         |00001011|0x0B|
-
 
 ### Connection with others
 

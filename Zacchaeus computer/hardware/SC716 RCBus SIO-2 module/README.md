@@ -11,18 +11,16 @@
 |SC716 schematic.pdf                     |schematic drawing                         |
 |SC716_v1.0.0_2023-04-28_19-42_Gerber.zip|Gerber files for manufacturing            |
 
-
 ### About module
 
 This is a commercially available expansion card designed by Stephen C. Cousins.
 You can find the details in the original PDF files.
 
-
 ### Jumper settings
 
 |Module|Num |Sign|Function                              |State     |Note|
 |------|:--:|----|--------------------------------------|:--------:|----|
-|SC716 |JP1 |A7-0|I/O address                           |10000000  |    | 
+|SC716 |JP1 |A7-0|I/O address                           |10000000  |    |
 |SC716 |JP2 |    |clock source for port A (CLK2/X1 osc.)|2-3 closed|    |
 |SC716 |JP3 |    |clock source for port B (CLK2/X1 osc.)|2-3 closed|    |
 |SC716 |JP4 |    |connect bus TX to TXA/TXB             |all opened|    |
@@ -33,7 +31,6 @@ You can find the details in the original PDF files.
 |SC716 |JP9 |IEO |daisy-chain interrupt line            |closed    |    |
 |SC716 |JP10|    |+5 V to serial connector A            |opened    |    |
 |SC716 |JP11|    |+5 V to serial connector B            |closed    |    |
-
 
 ### Connection with others
 

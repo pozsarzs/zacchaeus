@@ -3,6 +3,7 @@
 ## Current file status
 
 This list tracks the current status of the project units:
+
 - [ ] – In-progress or still-changing file.
 - [x] – Completed, stable, and tested file or module.
 
@@ -11,7 +12,7 @@ within form a single entity (e.g., CAD drawings, original files).
 
 - [ ] **Zacchaeus computer**  
   - [x] README.md  
-  - [ ]	**hardware**
+  - [ ] **hardware**
     - [x] **Front panel**
       - [x] README.md
       - [x] z180cpu.cdr

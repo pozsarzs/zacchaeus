@@ -13,7 +13,6 @@
 |pman-sw-gerber.zip      |Gerber files for manufacturing|
 |pman-sw.pdf             |schematic drawing             |
 
-
 ### About module
 
 The PMAN-SW module is the component of the Manual control panel, which contains
@@ -22,11 +21,9 @@ a matrix. The module has four row selection lines and eight column output line.
 The other components are connected separately. The module does not require power
 voltage to operate.
 
-
 ### Jumper settings
 
 There is no jumper setting option on the module.
-
 
 ### Connection with others
 

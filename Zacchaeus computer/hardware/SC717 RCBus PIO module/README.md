@@ -11,12 +11,10 @@
 |SC717 schematic.pdf                     |schematic drawing                         |
 |SC717_v1.0.0_2023-05-07_17-00_Gerber.zip|Gerber files for manufacturing            |
 
-
 ### About module
 
 This is a commercially available expansion card designed by Stephen C. Cousins.
 You can find the details in the original PDF files.
-
 
 ### Jumper settings
 
@@ -25,7 +23,6 @@ You can find the details in the original PDF files.
 |SC717 |JP1|A7-0|I/O address               |01101000|    |
 |SC717 |JP2|IEI |daisy-chain interrupt line|closed  |    |
 |SC717 |JP3|IEO |daisy-chain interrupt line|closed  |    |
-
 
 ### Connection with others
 

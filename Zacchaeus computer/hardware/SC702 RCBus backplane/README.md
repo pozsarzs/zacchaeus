@@ -11,12 +11,10 @@
 |SC702 schematic.pdf                     |schematic drawing                         |
 |SC702_v1.0.0_2023-03-21_00-15_Gerber.zip|Gerber files for manufacturing            |
 
-
 ### About module
 
 This is a commercially available backplane card with BP80 bus sockets designed
 by Stephen C. Cousins. You can find the details in the original PDF files.
-
 
 ### Jumper settings
 
@@ -56,7 +54,6 @@ by Stephen C. Cousins. You can find the details in the original PDF files.
 |SC702 |JP10|    |connect P42 signal between bus sockets|1-2 closed |direct|
 |SC702 |JP10|    |connect P43 signal between bus sockets|3-4 closed |direct|
 |SC702 |JP10|    |connect P44 signal between bus sockets|5-6 closed |direct|
-
 
 ### Connection with others
 

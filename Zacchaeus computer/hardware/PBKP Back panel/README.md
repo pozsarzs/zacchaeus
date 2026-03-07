@@ -9,7 +9,6 @@
 |\[pbkp\]|KiCAD files      |
 |pbkp.pdf|schematic drawing|
 
-
 ### About module
 
 This wiring diagram contains the connections of the fixed and removable

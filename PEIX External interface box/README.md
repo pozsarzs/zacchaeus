@@ -36,7 +36,6 @@ the following schedule:
 
 This equipment requires 230 V AC for operation.
 
-
 ## Mechanical structure
 
 The device remains in the original PS 316.x08 housing, which also includes the
@@ -48,7 +47,7 @@ modules were not used, the front panel contacts are ideal for stable connection
 of crocodile clips. Remember, this is just a 'toy', it will not perform a
 serious control task.
 
-**Modules**
+**Modules**  
 
 |Slot|Sign     |Function                 |Note|
 |----|---------|-------------------------|----|
@@ -63,7 +62,6 @@ serious control task.
 | #8 |EBE 266.1|digital output           |    |
 | #9 |EBE 266.1|digital output           |    |
 
-
 ## Jumper settings
 
 |Module     |Num |Sign    |Function                 |State     |Note        |
@@ -75,7 +73,6 @@ serious control task.
 |EBE 266.1@8|SW1 |'DA0-5  |card address             |11100000  |switch 1..8 |
 |EBE 266.1@9|SW1 |'DA0-5  |card address             |00010000  |switch 1..8 |
 
-
 ## Connection with others
 
 |Module|Num |Sign|Function              |Sign|Num   |Module     |
@@ -83,7 +80,6 @@ serious control task.
 |PEIX  |J7/2|RXD |received data (DCE)   |RXD |DB9M/2|serial port|
 |PEIX  |J7/3|TXD |transmitted data (DCE)|TXD |DB9M/3|serial port|
 |PEIX  |J7/5|RXD |GND                   |GND |DB9M/5|serial port|
-
 
 ## Software
 
@@ -99,7 +95,6 @@ This ensures a fast and reliable connection between the hardware and the
 monitoring system. The module communicates with the computer via the
 [SCRAP](https://github.com/pozsarzs/scrap) protocol.
 
-
 ## Legal disclaimer & interoperability statement
 
 ### Purpose of this project
@@ -109,7 +104,6 @@ interface logic of the Moeller/Eaton PS316 I/O cards. The sole purpose of this
 work is to achieve interoperability between legacy industrial hardware and
 modern control systems, ensuring the continued use and maintenance of existing
 equipment (Right to Repair).
-
 
 ### Legal basis (EU & USA)
 
@@ -127,7 +121,6 @@ access controls (if any) and the analysis of hardware for the sole purpose of
 enabling a software program or hardware device to exchange and use information
 with other systems.
 
-
 ### Status of the PS316 system
 
 **Legacy hardware:** The PS316 series, originally manufactured by Moeller (now
@@ -141,7 +134,6 @@ no longer commercially available or supported by the vendor.
 **Functional information:** The information shared (such as pinouts, voltage
 levels, and signal paths) is strictly functional and does not constitute a
 "creative work" protected by copyright.
-
 
 ### Intellectual property compliance
 

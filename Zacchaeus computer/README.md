@@ -6,10 +6,10 @@
 |----------------|---------------------------------------------|
 |motherboard     |SC126                                        |
 |firmware        |RomWBW SCZ180_sc126 v3.5.1 2025-05-21        |
-|processor       |Z180 processor (33 MHz - at 18.432 MHz)      | 
+|processor       |Z180 processor (33 MHz - at 18.432 MHz)      |
 |ROM             |2 x 512 kB byte Flash memory                 |
 |RAM             |512 kB byte RAM                              |
-|bus             |BP80 (extended RC2014 bus), 9 sockets        |                              |
+|bus             |BP80 (extended RC2014 bus), 9 sockets        |
 |disks           |32 MB CF card                                |
 |                |SD card                                      |
 |others          |RTC                                          |
@@ -18,13 +18,13 @@
 |                |16 address input switch                      |
 |                |8 control button                             |
 |                |(partly implemented)                         |
-|front connectors|1 x tape (not yet implemented)               | 
+|front connectors|1 x tape (not yet implemented)               |
 |                |1 x earphone (not yet implemented)           |
 |                |4 x protected digital input 12V              |
 |                |4 x open collector output                    |
 |                |4 x NO/NC relay contact output               |
-|                |2 x analog input 0-10V (not yet implemented) | 
-|                |2 x analog output 0-10V (not yet implemented)| 
+|                |2 x analog input 0-10V (not yet implemented) |
+|                |2 x analog output 0-10V (not yet implemented)|
 |                |+12/5/3.3V 3A power outputs                  |
 |                |-12/5V 0.5A power outputs                    |
 |back connectors |2 x serial RS-232 (DB9M black)               |
@@ -39,7 +39,6 @@
 |OS              |Digital Research CP/M v2.2                   |
 |                |Z-System                                     |
 
-
 ### Internal structure
 
 The SCxxx modules are designed by Stephen C. Cousins, all information about
@@ -52,9 +51,7 @@ available on my [homepage](http://www.pozsarzs.hu).
 
 The machine is housed in a power supply cover (OMSZÖV OE-222) from the 1980s.
 
-<img align="left" style="float: center; margin: 0 10px 0 0;" alt="Appearance"
-  src="../pictures/Zacchaeus_03.jpg" border="10">
-<br>&nbsp;
+![Appearance](../pictures/Zacchaeus_03.jpg)
 
 The computer consists of the following components:
 
@@ -75,7 +72,6 @@ The computer consists of the following components:
 |MCS-51M|[2 pcs. TTL/RS232 level shifter module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/MCS-51M%20RS232%20level%20shifter%20module)              |
 |       |ATX PC power supply                                                                                                                                                            |
 
-
 ### Planned modules
 
 |name   |function                                                                                                                                                                 |
@@ -89,7 +85,7 @@ The computer consists of the following components:
 [2]: The circuit are currently under construction.  
 [3]: The software is currently under construction.
 
-<hr>
+---
 
 ## Hardware
 
@@ -118,7 +114,6 @@ address space defined by the Z80/Z180 instruction set.
 |80000h|FFFFFh|RAM (512k bytes)      |
 |00000h|7FFFFh|Flash ROM (512k bytes)|
 
-
 ### I/O address table
 
 |From|To |Module|Function                          |Note   |
@@ -141,7 +136,6 @@ address space defined by the Z80/Z180 instruction set.
 |8Ch |BFh|      |                                  |       |
 |C0h |FFh|SC126 |Z180’s internal I/O registers     |       |
 
-
 ### IRQ table
 
 |Number|Module|Function       |Note         |
@@ -150,7 +144,6 @@ address space defined by the Z80/Z180 instruction set.
 |INT0  |SC718 |timed interrupt|priority: 1st|
 |INT1  |      |               |             |
 |INT2  |      |               |             |
-
 
 ### BP80 extended bus
 
@@ -200,7 +193,6 @@ Backplane-80 (or BP80). This is an unofficial variant of the RC2014 Bus.
 | 79 | USER7     |    |I2C SDA         | 39 | USER3     |    |not used     |
 | 80 | USER8     |    |IEI             | 40 | USER4     |    |IEO          |
 
-
 **USERn lines**  
 
 USERn lines are the "free-to-use" lines of the RC2014 bus system. They were
@@ -227,10 +219,9 @@ Jumpering:
 
 _On the backplane:_  
 
-The SC-702 backplane forwards all lines straight with basic jumpering,
-but if necessary, daisy-chain interrupt lines can be created
+The SC-702 backplane forwards all lines straight with basic jumpering, but if
+necessary, daisy-chain interrupt lines can be created
 [using the USER lines](hardware/RCBus/bus_connection.pdf).
-
 
 _On expansion cards:_  
 
@@ -256,15 +247,13 @@ Jumpering:
 [10]: SC718 JP7 close 1-2  
 [11]: SC718 JP10 close 1-2  
 
-
-**Other lines** 
+**Other lines**  
 
 |Pin|Signal name|User function                    |
 |--:|-----------|---------------------------------|
 | 61|CLK2       |Speaker signal SC718/CTC2 -> PTAP|
 | 75|TX2        |Serial data  SC126 -> PTAP       |
 | 76|RX2        |Serial data  SC126 <- PTAP       |
-
 
 ### Modules in the expansion sockets
 
@@ -282,7 +271,7 @@ Jumpering:
 
 The order is important because of daisy-chain interrupt handling.
 
-<hr>
+---
 
 ## Software
 
@@ -294,15 +283,14 @@ The [motherboard library](https://github.com/pozsarzs/zacchaeus/tree/main/Zaccha
 contains the current contents of the two ROMs, the newer version can be
 downloaded from the internet.
 
-
 ### Utilities
 
 - [_tapload.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PTAP%20Tape%20interface%20module):
   Loads data from tape into memory starting at a specific RAM address and can optionally execute it. (soon)
 - [_tapsave.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PTAP%20Tape%20interface%20module):
-  Saves data from a selected memory range to tape. (soon) 
+  Saves data from a selected memory range to tape. (soon)
 - [_tapdump.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PTAP%20Tape%20interface%20module):
-  Saves data from tape to disk or displays it. (soon) 
+  Saves data from tape to disk or displays it. (soon)
 - [_coxplayer.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PCOX%20COVOX%20module):
   Plays a raw audio file using the PCOX module.
 - [_coxpiano.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PCOX%20COVOX%20module):

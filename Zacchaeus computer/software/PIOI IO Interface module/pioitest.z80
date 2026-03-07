@@ -13,19 +13,19 @@
 ; FOR A PARTICULAR PURPOSE.
 
 	ORG	100h
-BDOS	EQU	005h			; BDOS system call
+BDOS	EQU	005h		; BDOS system call
 
-START:	LD	DE, MSG01		; show header 
+START:	LD	DE, MSG01	; show header 
 	CALL	WRITE
 	LD	DE, MSG02	   	
 	CALL	WRITE
-MENU:	LD	DE, MSG03		; show menu 
+MENU:	LD	DE, MSG03	; show menu 
 	CALL	WRITE
-CHOICE:	LD	DE, MSG04		; show menu prompt
+CHOICE:	LD	DE, MSG04	; show menu prompt
 	CALL	WRITE 
-	LD	C, 1			; read a character
+	LD	C, 1		; read a character
 	CALL	BDOS
-	CP	'1'			; evaluation
+	CP	'1'		; evaluation
 	JP	Z, PROC_1
 	CP	'2'
 	JP	Z, PROC_2
@@ -35,41 +35,41 @@ CHOICE:	LD	DE, MSG04		; show menu prompt
 	JP	Z, PROC_4
 	CP	'q'
 	JP	Z, QUIT
-	LD	DE, MSG05		; bad choice
+	LD	DE, MSG05	; bad choice
 	CALL	WRITE
 	JP	CHOICE 
 
 PROC_1:
-	LD	DE, MSG06		; set I/O address
+	LD	DE, MSG06	; set I/O address
 	CALL	WRITE
 	LD	DE, MSG04
-	XOR	A			; erase variables
+	XOR	A		; erase variables
 	LD	(BA), A
 	LD	(DIGCNT), A
-READ_1:	CALL	GETCHR			; read a character
-	LD	(CH1), A		; store in ASCII code
-	CALL	HEX2BIN			; convert to byte value
-	JP	C, READ_1		; if it a 'bad' char, read a new one
-	LD	B,A			; increment number of digits
+READ_1:	CALL	GETCHR		; read a character
+	LD	(CH1), A	; store in ASCII code
+	CALL	HEX2BIN		; convert to byte value
+	JP	C, READ_1	; if it a 'bad' char, read a new one
+	LD	B,A		; increment number of digits
 	LD	A,(DIGCNT)
 	INC	A
 	LD	(DIGCNT),A
-	CP	2			; if it the 2nd digit go to other storing method
+	CP	2		; if it the 2nd digit go to other storing method
 	JP	Z, ST2ND
-	LD	A, (CH1)		; store in ASCII code
+	LD	A, (CH1)	; store in ASCII code
 	LD	(CH0),A
-	LD	A, B			; multiplicate with 16
+	LD	A, B		; multiplicate with 16
 	SLA	A
 	SLA	A
 	SLA	A
 	SLA	A
-	LD	(BA), A			; store (higher half-byte)
-	JP	READ_1			; new read for 2nd digit
-ST2ND:	LD	A, (BA)			; add lower half-byte to higher
+	LD	(BA), A		; store (higher half-byte)
+	JP	READ_1		; new read for 2nd digit
+ST2ND:	LD	A, (BA)		; add lower half-byte to higher
 	OR	B
-	LD	(BA), A			; store base address
-DONE_1:	LD	DE, MSG09		; done is value entering
-	CALL	WRITE			; show base address
+	LD	(BA), A		; store base address
+DONE_1:	LD	DE, MSG09	; done is value entering
+	CALL	WRITE		; show base address
 	LD	A, (CH0)
 	LD	E, A
 	CALL	PUTCHR 
@@ -80,30 +80,30 @@ DONE_1:	LD	DE, MSG09		; done is value entering
 	CALL	WRITE 
 	JP	MENU 
 
-PROC_2:					; read protected inputs (PI 0..3)
+PROC_2:				; read protected inputs (PI 0..3)
 	LD	DE, MSG07
 	CALL	WRITE
-LOOP_2:	LD	B, 255			; delay
+LOOP_2:	LD	B, 255		; delay
 WAIT_2:	NOP
 	NOP
 	NOP
 	NOP
 	DJNZ	WAIT_2
-	LD	DE, CR			; carriage return
+	LD	DE, CR		; carriage return
 	CALL	WRITE
-	LD	C, 1			; read a character
+	LD	C, 1		; read a character
 	CALL	BDOS
-	CP	' '			; 'space' -> read port
+	CP	' '		; 'space' -> read port
 	JP	Z, GETP_2
-	CP	'q'			; 'q' -> exit to menu 
+	CP	'q'		; 'q' -> exit to menu 
 	JP	Z, MENU
 	JP	LOOP_2 
-GETP_2:	LD	A, (BA)			; read port
+GETP_2:	LD	A, (BA)		; read port
 	LD	C, A 
 	IN	A, (C)
 	XOR	255
 	LD	B, A
-BIT76:	AND	3			; state of PI 0
+BIT76:	AND	3		; state of PI 0
 	CP	3
 	JP	Z, HIGH_1
 	LD	DE, LOW
@@ -112,7 +112,7 @@ BIT76:	AND	3			; state of PI 0
 	JP	BIT54
 HIGH_1:	LD	DE, HIGH
 	CALL	WRITE
-BIT54:	POP	BC			; state of PI 1
+BIT54:	POP	BC		; state of PI 1
 	LD	A, B	
 	AND	12
 	CP	12
@@ -123,7 +123,7 @@ BIT54:	POP	BC			; state of PI 1
 	JP	BIT32
 HIGH_2:	LD	DE, HIGH
 	CALL	WRITE
-BIT32:	POP	BC			; state of PI 2
+BIT32:	POP	BC		; state of PI 2
 	LD	A, B
 	AND	48
 	CP	48
@@ -134,7 +134,7 @@ BIT32:	POP	BC			; state of PI 2
 	JP	BIT10
 HIGH_3:	LD	DE, HIGH
 	CALL	WRITE
-BIT10:	POP	BC			; state of PI 3
+BIT10:	POP	BC		; state of PI 3
 	LD	A, B	
 	AND	192
 	CP	192
@@ -150,20 +150,20 @@ DONE_2:	LD	DE, CR
 	CALL	WRITE
 JP	LOOP_2
 
-PROC_3:;				set open collector outputs (OCO 0..3)
+PROC_3:;			set open collector outputs (OCO 0..3)
 	LD	DE, MSG08
 	CALL	WRITE
 LOOP_3:	LD	B, 255
-WAIT_3:	NOP				; delay
+WAIT_3:	NOP			; delay
 	NOP
 	NOP
 	NOP
 	DJNZ	WAIT_3
-	LD	DE, CR			; carriage return
+	LD	DE, CR		; carriage return
 	CALL	WRITE
-	LD	C, 1			; read a character
+	LD	C, 1		; read a character
 	CALL	BDOS
-	CP	'0'			; evaluation
+	CP	'0'		; evaluation
 	JP	Z, SET_31
 	CP	'1'
 	JP	Z, SET_32
@@ -174,63 +174,63 @@ WAIT_3:	NOP				; delay
 	CP	'q'
 	JP	Z, RST
 	JP	LOOP_3 
-SET_31:	LD	D, 01h			; set/reset OCO 0
+SET_31:	LD	D, 01h		; set/reset OCO 0
 	CALL	SETP
 	JP	LOOP_3
-SET_32:	LD	D, 02h			; set/reset OCO 1
+SET_32:	LD	D, 02h		; set/reset OCO 1
 	CALL	SETP
 	JP	LOOP_3
-SET_33:	LD	D, 04h			; set/reset OCO 2
+SET_33:	LD	D, 04h		; set/reset OCO 2
 	CALL	SETP
 	JP	LOOP_3
-SET_34:	LD	D, 08h			; set/reset OCO 3
+SET_34:	LD	D, 08h		; set/reset OCO 3
 	CALL	SETP
 	JP	LOOP_3
 
 
 PROC_4:
-	LD	DE, MSG08		; set relay contact outputs (RCO 0..3)
+	LD	DE, MSG08	; set relay contact outputs (RCO 0..3)
 	CALL	WRITE
 LOOP_4:	LD	B, 255
-WAIT_4:	NOP				; delay
+WAIT_4:	NOP			; delay
 	NOP
 	NOP
 	NOP
 	DJNZ	WAIT_4
-	LD	DE, CR			; carriage return
+	LD	DE, CR		; carriage return
 	CALL	WRITE
-	LD	C, 1			; read a character
+	LD	C, 1		; read a character
 	CALL	BDOS
-	CP	'0'			; evaluation
+	CP	'0'		; evaluation
 	JP	Z, SET_41
 	CP	'1'
 	JP	Z, SET_42
 	CP	'2'
 	JP	Z, SET_43
 	CP	'3'
-	JP	Z, SET_44		; set/reset RCO 3
+	JP	Z, SET_44	; set/reset RCO 3
 	CP	'q'
 	JP	Z, RST
 	JP	LOOP_4 
-SET_41:	LD	D, 10h			; set/reset RCO  
+SET_41:	LD	D, 10h		; set/reset RCO  
 	CALL	SETP
 	JP	LOOP_4
-SET_42:	LD	D, 20h			; set/reset RCO 1
+SET_42:	LD	D, 20h		; set/reset RCO 1
 	CALL	SETP
 	JP	LOOP_4
-SET_43:	LD	D, 40h			; set/reset RCO 2
+SET_43:	LD	D, 40h		; set/reset RCO 2
 	CALL	SETP
 	JP	LOOP_4
-SET_44:	LD	D, 80h			; set/reset RCO 3
+SET_44:	LD	D, 80h		; set/reset RCO 3
 	CALL	SETP
 	JP	LOOP_4
 
-RST:					; reset all ports
+RST:				; reset all ports
 	CALL	RESETP
 	JP	MENU
 
 QUIT:
-	CALL	RESETP			; exit from program
+	CALL	RESETP		; exit from program
 	LD	C, 0
 	CALL	BDOS
 	RET
@@ -274,17 +274,17 @@ RESETP:
 ;           Carry = 1: error
 ; Clobbers:  AF
 HEX2BIN:
-	CP	'0'			; input character: 0..9
+	CP	'0'		; input character: 0..9
 	JP	C, BAD
 	CP	'9'+1
 	JP	C, NUM
 
-	CP	'A'			; input character: A..F
+	CP	'A'		; input character: A..F
 	JP	C, BAD
 	CP	'F'+1
 	JP	C, BIG
 
-	CP	'a'			; input character: a..f
+	CP	'a'		; input character: a..f
 	JP	C, BAD
 	CP	'f'+1
 	JP	NC, BAD
@@ -301,7 +301,7 @@ NUM:	SUB	'0'
 	OR	A
 	RET
 
-BAD:	SCF				; input character is bad
+BAD:	SCF			; input character is bad
 	RET
 
 ; --- READ A CHARACTER FROM CONSOLE ---
@@ -335,16 +335,16 @@ WRITE:
 	RET
 
 ; --- DATA AREA ---------------------------------------------------------------------------------
-BA:	DB	0Ch			; base address
-CH0	DB	32			; input value in ASCII
-CH1	DB	32			; input value in ASCII
-CR:	DB	0Dh, '$'		; carriage return
-DIGCNT:	DB	0			; digit number of input value
-HIGH:	DB	' 1$'			; high state
-LF:	DB	0Ah, '$'		; line feed
-LOW:	DB	' 0$'			; low state
-NL:	DB	0Dh, 0Ah, '$'		; new line
-OD:	DB	0			; output data
+BA:	DB	0Ch		; base address
+CH0	DB	32		; input value in ASCII
+CH1	DB	32		; input value in ASCII
+CR:	DB	0Dh, '$'	; carriage return
+DIGCNT:	DB	0		; digit number of input value
+HIGH:	DB	' 1$'		; high state
+LF:	DB	0Ah, '$'	; line feed
+LOW:	DB	' 0$'		; low state
+NL:	DB	0Dh, 0Ah, '$'	; new line
+OD:	DB	0		; output data
 ; messages
 MSG01:	DB   	'*** PIOI module tester for Zacchaeus Microcomputer ***', 0Dh, 0Ah, '$'
 MSG02:	DB   	'(C) 2025 Pozsar Zsolt <pozsarzs@gmail.com> EUPL v1.2$'

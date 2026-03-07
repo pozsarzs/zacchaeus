@@ -12,7 +12,6 @@
 |pspk-gerber.zip      |Gerber files for manufacturing|
 |pspk.pdf             |schematic drawing             |
 
-
 ### About module
 
 The PSPK is a combined power voltage input and simple speaker amplifier module
@@ -21,16 +20,11 @@ The module requires +5V DC to operate.
 
 #### The installed module
 
-<p align="center">
-<img style="width:50%;height:auto; margin:auto 0 10px 0 0;" alt="Appearance"
-  src="pspk.jpg" border="10">
-</p>
-
+![Appearance](pspk.jpg)
 
 ### Jumper settings
 
 There is no jumper setting option on the module.
-
 
 ### Connection with others
 

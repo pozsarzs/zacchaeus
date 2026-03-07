@@ -14,12 +14,10 @@
 |ptap-gerber.zip      |Gerber files for manufacturing               |
 |ptap.pdf             |schematic drawing                            |
 
-
 ### About module
 
 This BP-80 bus system-compatible expansion card includes a flexibly configurable
 tape interface and a speaker driver.
-
 
 #### Tape Interface
 
@@ -46,7 +44,6 @@ tape interface and a speaker driver.
 * **Output:** Harmonic-filtered, TTL-level signal and integrated transistor
   amplifier stage for driving low-impedance speakers. The output volume can be
   adjusted with a trimmer potentiometer.
-
 
 ### Jumper settings
 
@@ -87,7 +84,6 @@ All operating parameters of the card can be customized by jumpering.
 |      |      |R19200|                                |          |H: 2-3 closed            |
 |PTAP  |JP5   |TLVL  |Tape output level               |          |Aux: 1-2, mic: 2-3 closed|
 |PTAP  |JP6   |SPLVL |Speaker output level            |2-3 closed|TTL: 1-2, amp: 2-3 closed|
-
 
 ### Recording/Playback Parameters
 

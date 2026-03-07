@@ -1,6 +1,6 @@
 # Zacchaeus Microcomputer
 
-## Hardware/PPOW Power distribution module 
+## Hardware/PPOW Power distribution module
 
 ### Directory content
 
@@ -12,7 +12,6 @@
 |ppow-F_Silkscreen.pdf|silkscreen of the PCB         |
 |ppow-gerber.zip      |Gerber files for manufacturing|
 |ppow.pdf             |schematic drawing             |
-
 
 ### About module
 
@@ -26,16 +25,11 @@ auxiliary power outputs, power switch and LED connectors.
 
 #### The installed module
 
-<p align="center">
-<img style="width:50%;height:auto; margin:auto 0 10px 0 0;" alt="Appearance"
-  src="ppow.jpg" border="10">
-</p>
-
+![Appearance](ppow.jpg)
 
 ### Jumper settings
 
 There is no jumper setting option on the module.
-
 
 ### Connection with others
 
