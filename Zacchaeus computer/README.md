@@ -193,7 +193,7 @@ Backplane-80 (or BP80). This is an unofficial variant of the RC2014 Bus.
 | 79 | USER7     |    |I2C SDA         | 39 | USER3     |    |not used     |
 | 80 | USER8     |    |IEI             | 40 | USER4     |    |IEO          |
 
-**USERn lines**  
+#### Using USERn lines
 
 USERn lines are the "free-to-use" lines of the RC2014 bus system. They were
 created to keep the system flexible and allow users to add features that are
@@ -214,27 +214,27 @@ _On the motherboard:_
 
 Jumpering:  
 
-[1]: SC126 JP5 close 1-2  
-[2]: SC126 JP5 close 3-4  
+[1]: SC126 JP5 close 1-2 (default: opened)
+[2]: SC126 JP5 close 3-4 (default: opened) 
 
 _On the backplane:_  
 
 The SC-702 backplane forwards all lines straight with basic jumpering, but if
-necessary, daisy-chain interrupt lines can be created
-[using the USER lines](hardware/RCBus/bus_connection.pdf).
+necessary, daisy-chain interrupt lines can be created.
+
 
 _On expansion cards:_  
 
-|Pin|Signal name|SC715|SC716  |SC717  |SC718     |SC719|PCOX|
-|--:|-----------|-----|-------|-------|----------|-----|----|
-| 37|USER1      |     |       |       |/INT1 [8] |     |    |
-| 38|USER2      |     |IEI [4]|IEI [6]|IEI [9]   |     |    |
-| 39|USER2      |     |IEO [5]|IEO [7]|IEO [10]  |     |    |
-| 40|USER4      |     |       |       |          |     |    |
-| 77|USER5      |     |       |       |/INT2 [11]|     |    |
-| 78|USER6      |     |       |       |          |     |    |
-| 79|USER7      |     |       |       |          |     |    |
-| 80|USER8      |     |       |       |          |     |    |
+|Pin|Signal name|SC715|SC716  |SC717  |SC718      |SC719|PCOX|
+|--:|-----------|-----|-------|-------|-----------|-----|----|
+| 37|USER1      |     |       |       |/CINT1 [8] |     |    |
+| 38|USER2      |     |IEI [4]|IEI [6]|IEI [9]    |     |    |
+| 39|USER2      |     |IEO [5]|IEO [7]|IEO [10]   |     |    |
+| 40|USER4      |     |       |       |           |     |    |
+| 77|USER5      |     |       |       |/CINT2 [11]|     |    |
+| 78|USER6      |     |       |       |           |     |    |
+| 79|USER7      |     |       |       |           |     |    |
+| 80|USER8      |     |       |       |           |     |    |
 
 Jumpering:  
 
@@ -247,7 +247,7 @@ Jumpering:
 [10]: SC718 JP7 close 1-2  
 [11]: SC718 JP10 close 1-2  
 
-**Other lines**  
+**Other special lines**  
 
 |Pin|Signal name|User function                    |
 |--:|-----------|---------------------------------|
