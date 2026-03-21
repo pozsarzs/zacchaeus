@@ -257,7 +257,7 @@ Jumpering:
 
 **How to jumper the USERn and TX/RX lines of the bus**  
 
-![USERn and TX/RX lines](hardware/RCBus/bus_connection.png)
+<kbd>![USERn and TX/RX lines](hardware/RCBus/bus_connection.png)</kbd>
 
 ### Modules in the expansion sockets
 
