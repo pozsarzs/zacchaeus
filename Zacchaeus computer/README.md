@@ -255,6 +255,10 @@ Jumpering:
 | 75|TX2        |Serial data  SC126 -> PTAP       |
 | 76|RX2        |Serial data  SC126 <- PTAP       |
 
+**How to jumper the USERn and TX/RX lines of the bus**  
+
+![USERn and TX/RX lines](hardware/RCBus/bus_connection.png)
+
 ### Modules in the expansion sockets
 
 |Unit       |Socket|Modul |Function                                  |Note   |
