@@ -66,4 +66,4 @@ A detailed description of the memory box can be found in the
 - [Simulator for running DATAS machine code for CP/M and DOS](https://github.com/pozsarzs/datassim)
 - [The FORTRAN Month](https://github.com/pozsarzs/fortran_month)
 - [Synchronized Client Register Access Protocol](https://github.com/pozsarzs/scrap)
-- [lowFAT EPROM filesystem](https://github.com/pozsarzs/lowfat)
+- [ROMCat EPROM filesystem](https://github.com/pozsarzs/romfat)
