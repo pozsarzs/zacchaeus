@@ -335,7 +335,7 @@ WRITE:
 	RET
 
 ; --- DATA AREA ---------------------------------------------------------------------------------
-BA:	DB	0Ch		; base address
+BA:	DB	30h		; base address
 CH0	DB	32		; input value in ASCII
 CH1	DB	32		; input value in ASCII
 CR:	DB	0Dh, '$'	; carriage return
