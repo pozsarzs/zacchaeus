@@ -64,6 +64,7 @@ The computer consists of the following components:
 |SC717  |[RCBus PIO module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC717%20RCBus%20PIO%20module)                                                 |
 |SC718  |[RCBus CTC module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC718%20RCBus%20CTC%20module)                                                 |
 |SC719  |[RCBus DIO module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC719%20RCBus%20DIO%20module)                                                 |
+|PCOX   |[Internal COVOX-style mono sound module with earphone amplifier](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PCOX%20COVOX%20module)          |
 |PIOI   |[I/O interface module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PIOI%20IO%20Interface%20module)                                           |
 |PMAN-DP|[Manual control panel - display module (currently not used)](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PMAN-DP%20Display%20module)         |
 |PMAN-SW|[Manual control panel - switch module (currently not used)](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PMAN-SW%20Switch%20module)           |
@@ -74,16 +75,11 @@ The computer consists of the following components:
 
 ### Planned modules
 
-|name   |function                                                                                                                                                                 |
-|-------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|PANA   |Analog input/output module (2AI, 2AO, 0-10V)                                                                                                                             |
-|PCOX   |[Internal COVOX-style mono sound module with earphone amplifier](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PCOX%20COVOX%20module) [3]|
-|PMAN-IF|Manual control panel - interface module                                                                                                                                  |
-|PTAP   |[Tape and speaker interface module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PTAP%20Tape%20interface%20module) [1]                  |
-
-[1]: The circuit and software are currently under planning.  
-[2]: The circuit are currently under construction.  
-[3]: The software is currently under construction.
+|name   |function                                                                                                                                           |
+|-------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+|PANA   |Analog input/output module (2AI, 2AO, 0-10V)                                                                                                       |
+|PMAN-IF|Manual control panel - interface module                                                                                                            |
+|PTAP   |[Tape and speaker interface module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PTAP%20Tape%20interface%20module)|
 
 ---
 
@@ -125,7 +121,7 @@ address space defined by the Z80/Z180 instruction set.
 |10h |17h|SC715 |CF module                         |       |
 |18h |2Fh|      |                                  |       |
 |30h |   |SC719 |DIO for PIOI module               |       |
-|31h |   |PCOX  |Covox module                      |planned|
+|31h |   |PCOX  |Covox module                      |       |
 |32h |   |PTAP  |Tape and speaker interface        |planned|
 |33h |67h|      |                                  |       |
 |68h |6Bh|SC717 |PIO module                        |       |
@@ -263,7 +259,7 @@ Jumpering:
 
 |Unit       |Socket|Modul |Function                                  |Note   |
 |-----------|------|------|------------------------------------------|-------|
-|motherboard|  S2  |PCOX  |Covox module                              |planned|
+|motherboard|  S2  |PCOX  |Covox module                              |       |
 |motherboard|  S3  |PMAN  |manual programming unit's interface module|planned|
 |backplane  |  K1  |SC718 |CTC module                                |       |
 |backplane  |  K2  |SC716 |SIO/2 module                              |       |
