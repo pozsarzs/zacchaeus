@@ -5,15 +5,13 @@ COXPiano program
   licence	EUPL v1.2
   architecture	Z80
   OS		CP/M-80
-  compiler	Borland Turbo Pascal v3.01A (1985)
+  compiler	SLR Systems Z80ASM v1.32 (1986)
   author	Pozsar Zsolt <pozsarzs@gmail.com> (2026)
 
   This software is a piano emulator that converts keystrokes into real-time
   8-bit audio signals for the PCOX COVOX module.
 
-
 Usage
 ~~~~~
 
 (..)
-

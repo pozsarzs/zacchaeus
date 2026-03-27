@@ -10,7 +10,6 @@ PIOI API for Zacchaeus Microcomputer
 
 This is a collection of routines for easy management of PIOI interface ports.
 
-
 Available functions
 ~~~~~~~~~~~~~~~~~~~
 

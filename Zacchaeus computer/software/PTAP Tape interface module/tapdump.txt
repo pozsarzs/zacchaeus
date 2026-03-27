@@ -11,7 +11,6 @@ TAPDump utility
   This utility saves data from a tape drive to disk or displays its contents on
   the screen as needed.
 
-
 Usage
 ~~~~~
 

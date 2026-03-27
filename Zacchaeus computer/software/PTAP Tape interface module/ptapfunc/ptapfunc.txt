@@ -10,7 +10,6 @@ PTAP functions
 
 This is a collection of routines for easy management of PTAP module.
 
-
 Available functions
 ~~~~~~~~~~~~~~~~~~~
 

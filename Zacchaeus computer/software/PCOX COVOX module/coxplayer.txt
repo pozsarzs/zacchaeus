@@ -10,7 +10,6 @@ COXPlayer program
 
   Simple raw audio file player program for the COX module.
 
-
 Usage
 ~~~~~
 

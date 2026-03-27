@@ -17,14 +17,13 @@
 |                |8 data input switch                          |
 |                |16 address input switch                      |
 |                |8 control button                             |
-|                |(partly implemented)                         |
-|front connectors|1 x tape (not yet implemented)               |
-|                |1 x earphone (not yet implemented)           |
+|front connectors|1 x tape                                     |
+|                |1 x earphone                                 |
 |                |4 x protected digital input 12V              |
 |                |4 x open collector output                    |
 |                |4 x NO/NC relay contact output               |
-|                |2 x analog input 0-10V (not yet implemented) |
-|                |2 x analog output 0-10V (not yet implemented)|
+|                |2 x analog input 0-10V                       |
+|                |2 x analog output 0-10V                      |
 |                |+12/5/3.3V 3A power outputs                  |
 |                |-12/5V 0.5A power outputs                    |
 |back connectors |2 x serial RS-232 (DB9M black)               |
@@ -34,8 +33,8 @@
 |                |1 x spare DB9F (DB9F white)                  |
 |                |1 x I<sup>2</sup>C TTL                       |
 |                |1 x SPI TTL                                  |
-|                |1 x Line out (not yet implemented)           |
-|power supply    |ATX 600W                                     |
+|                |1 x Line out                                 |
+|power supply    |ATX                                          |
 |OS              |Digital Research CP/M v2.2                   |
 |                |Z-System                                     |
 
@@ -55,30 +54,30 @@ The machine is housed in a power supply cover (OMSZÖV OE-222) from the 1980s.
 
 The computer consists of the following components:
 
-|name   |function                                                                                                                                                                       |
-|-------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|SC126  |[motherboard](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC126%20Z180%20motherboard)                                                        |
-|SC702  |[RCBus backplane](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC702%20RCBus%20backplane)                                                     |
-|SC715  |[RCBus CF module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC715%20RCBus%20CF%20module)                                                   |
-|SC716  |[RCBus SIO-2 module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC716%20RCBus%20SIO-2%20module)                                             |
-|SC717  |[RCBus PIO module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC717%20RCBus%20PIO%20module)                                                 |
-|SC718  |[RCBus CTC module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC718%20RCBus%20CTC%20module)                                                 |
-|SC719  |[RCBus DIO module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC719%20RCBus%20DIO%20module)                                                 |
-|PCOX   |[Internal COVOX-style mono sound module with earphone amplifier](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PCOX%20COVOX%20module)          |
-|PIOI   |[I/O interface module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PIOI%20IO%20Interface%20module)                                           |
-|PMAN-DP|[Manual control panel - display module (currently not used)](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PMAN-DP%20Display%20module)         |
-|PMAN-SW|[Manual control panel - switch module (currently not used)](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PMAN-SW%20Switch%20module)           |
-|PPOW   |[Power distribution module with external fuses](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PPOW%20Power%20distribution%20module)            |
-|PSPK   |[Speaker amplifier module with speaker (currently not used)](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PSPK%20Speaker%20amplifier%20module)|
-|MCS-51M|[2 pcs. TTL/RS232 level shifter module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/MCS-51M%20RS232%20level%20shifter%20module)              |
-|       |ATX PC power supply                                                                                                                                                            |
+|name   |function                                                                                                                                                             |
+|-------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|SC126  |[motherboard](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC126%20Z180%20motherboard)                                              |
+|SC702  |[RCBus backplane](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC702%20RCBus%20backplane)                                           |
+|SC715  |[RCBus CF module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC715%20RCBus%20CF%20module)                                         |
+|SC716  |[RCBus SIO-2 module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC716%20RCBus%20SIO-2%20module)                                   |
+|SC717  |[RCBus PIO module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC717%20RCBus%20PIO%20module)                                       |
+|SC718  |[RCBus CTC module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC718%20RCBus%20CTC%20module)                                       |
+|SC719  |[RCBus DIO module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC719%20RCBus%20DIO%20module)                                       |
+|PCOX   |[Internal COVOX-style mono sound module with earphone amplifier](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PCOX%20COVOX%20module)|
+|PIOI   |[I/O interface module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PIOI%20IO%20Interface%20module)                                 |
+|PMAN-DP|[Manual control panel display module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PMAN-DP%20Display%20module)                      |
+|PMAN-SW|[Manual control panel switch module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PMAN-SW%20Switch%20module)                        |
+|PPOW   |[Power distribution module with external fuses](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PPOW%20Power%20distribution%20module)  |
+|PSPK   |[Speaker amplifier module with speaker](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PSPK%20Speaker%20amplifier%20module)           |
+|MCS-51M|[2 pcs. TTL/RS232 level shifter module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/MCS-51M%20RS232%20level%20shifter%20module)    |
+|       |ATX PC power supply                                                                                                                                                  |
 
 ### Planned modules
 
 |name   |function                                                                                                                                           |
 |-------|---------------------------------------------------------------------------------------------------------------------------------------------------|
 |PANA   |Analog input/output module (2AI, 2AO, 0-10V)                                                                                                       |
-|PMAN-IF|Manual control panel - interface module                                                                                                            |
+|PMAN-IF|[Manual control panel interface module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PMAN-IF%20Interface%20module)|
 |PTAP   |[Tape and speaker interface module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PTAP%20Tape%20interface%20module)|
 
 ---
@@ -112,25 +111,26 @@ address space defined by the Z80/Z180 instruction set.
 
 ### I/O address table
 
-|From|To |Module|Function                          |Note   |
-|---:|--:|------|----------------------------------|-------|
-|00h |0Bh|      |                                  |       |
-|0Ch |   |SC126 |system I/O port (RTC, SPI and I2C)|       |
-|0Dh |   |SC126 |LED output port                   |       |
-|0Eh |0Fh|      |                                  |       |
-|10h |17h|SC715 |CF module                         |       |
-|18h |2Fh|      |                                  |       |
-|30h |   |SC719 |DIO for PIOI module               |       |
-|31h |   |PCOX  |Covox module                      |       |
-|32h |   |PTAP  |Tape and speaker interface        |planned|
-|33h |67h|      |                                  |       |
-|68h |6Bh|SC717 |PIO module                        |       |
-|6Ch |7Fh|      |                                  |       |
-|80h |83h|SC716 |SIO/2 module                      |       |
-|84h |87h|      |                                  |       |
-|88h |8Bh|SC718 |CTC module                        |       |
-|8Ch |BFh|      |                                  |       |
-|C0h |FFh|SC126 |Z180’s internal I/O registers     |       |
+|From|To |Module |Function                          |Note   |
+|---:|--:|-------|----------------------------------|-------|
+|00h |0Bh|       |                                  |       |
+|0Ch |   |SC126  |system I/O port (RTC, SPI and I2C)|       |
+|0Dh |   |SC126  |LED output port                   |       |
+|0Eh |0Fh|       |                                  |       |
+|10h |17h|SC715  |CF module                         |       |
+|18h |2Fh|       |                                  |       |
+|30h |   |SC719  |DIO for PIOI module               |       |
+|31h |   |PCOX   |Covox module                      |       |
+|32h |   |PTAP   |Tape and speaker interface        |planned|
+|33h |3Bh|PMAN-IF|Manual control panel interface    |planned|
+|3Ch |67h|       |                                  |       |
+|68h |6Bh|SC717  |PIO module                        |       |
+|6Ch |7Fh|       |                                  |       |
+|80h |83h|SC716  |SIO/2 module                      |       |
+|84h |87h|       |                                  |       |
+|88h |8Bh|SC718  |CTC module                        |       |
+|8Ch |BFh|       |                                  |       |
+|C0h |FFh|SC126  |Z180’s internal I/O registers     |       |
 
 ### IRQ table
 
@@ -257,17 +257,17 @@ Jumpering:
 
 ### Modules in the expansion sockets
 
-|Unit       |Socket|Modul |Function                                  |Note   |
-|-----------|------|------|------------------------------------------|-------|
-|motherboard|  S2  |PCOX  |Covox module                              |       |
-|motherboard|  S3  |PMAN  |manual programming unit's interface module|planned|
-|backplane  |  K1  |SC718 |CTC module                                |       |
-|backplane  |  K2  |SC716 |SIO/2 module                              |       |
-|backplane  |  K3  |SC719 |DIO for PIOI module                       |       |
-|backplane  |  K4  |SC719 |PTAP module                               |planned|
-|backplane  |  K5  |PANA  |analog I/O module                         |planned|
-|backplane  |  K6  |SC717 |PIO module                                |       |
-|backplane  |  P1  |SC715 |CF module                                 |       |
+|Unit       |Socket|Modul  |Function                      |Note   |
+|-----------|------|-------|------------------------------|-------|
+|motherboard|  S2  |PCOX   |COVOX module                  |       |
+|motherboard|  S3  |PMAN-IF|Manual control panel interface|planned|
+|backplane  |  K1  |SC718  |CTC module                    |       |
+|backplane  |  K2  |SC716  |SIO/2 module                  |       |
+|backplane  |  K3  |SC719  |DIO for PIOI module           |       |
+|backplane  |  K4  |SC719  |PTAP module                   |planned|
+|backplane  |  K5  |PANA   |analog I/O module             |planned|
+|backplane  |  K6  |SC717  |PIO module                    |       |
+|backplane  |  P1  |SC715  |CF module                     |       |
 
 The order is important because of daisy-chain interrupt handling.
 
@@ -285,15 +285,17 @@ downloaded from the internet.
 
 ### Utilities
 
-- [_tapload.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PTAP%20Tape%20interface%20module):
-  Loads data from tape into memory starting at a specific RAM address and can optionally execute it. (soon)
-- [_tapsave.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PTAP%20Tape%20interface%20module):
-  Saves data from a selected memory range to tape. (soon)
-- [_tapdump.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PTAP%20Tape%20interface%20module):
-  Saves data from tape to disk or displays it. (soon)
 - [_coxplayer.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PCOX%20COVOX%20module):
   Plays a raw audio file using the PCOX module.
 - [_coxpiano.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PCOX%20COVOX%20module):
   A utility for checking the PCOX module. (soon)
 - [_pioitest.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PIOI%20IO%20Interface%20module):
   A utility for checking the PIOI module.
+- [_pmon.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PMAN-IF%20Interface%20module):
+  A monitor program that uses a manual control panel. (soon)
+- [_tapload.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PTAP%20Tape%20interface%20module):
+  Loads data from tape into memory starting at a specific RAM address and can optionally execute it. (soon)
+- [_tapsave.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PTAP%20Tape%20interface%20module):
+  Saves data from a selected memory range to tape. (soon)
+- [_tapdump.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PTAP%20Tape%20interface%20module):
+  Saves data from tape to disk or displays it. (soon)

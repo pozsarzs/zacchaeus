@@ -11,6 +11,7 @@
 |pman-dp-F_Cu.pdf        |component side of the PCB     |
 |pman-dp-F_Silkscreen.pdf|silkscreen of the PCB         |
 |pman-dp-gerber.zip      |Gerber files for manufacturing|
+|pman-dp-?.pdf           |installed module              |
 |pman-dp.pdf             |schematic drawing             |
 
 ### About module

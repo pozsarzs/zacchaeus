@@ -1,0 +1,18 @@
+PMon program
+~~~~~~~~~~~~
+
+  version	v0.1
+  licence	EUPL v1.2
+  architecture	Z180
+  OS		CP/M-80
+  compiler	
+  author	Pozsar Zsolt <pozsarzs@gmail.com> (2026)
+
+  This software is a system monitor that uses only the manual control panel. All
+  data input is via the front panel switches and push buttons and all output is
+  displayed on the hexadecimal displays.
+
+Usage
+~~~~~
+
+(..)

@@ -1,0 +1,4 @@
+z80asm pmanapi/m
+z80asm $1/m
+l80 $1,pmanapi,$1/n/e
+

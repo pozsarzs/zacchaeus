@@ -11,6 +11,7 @@
 |pioi-F_Cu.pdf        |component side of the PCB     |
 |pioi-F_Silkscreen.pdf|silkscreen of the PCB         |
 |pioi-gerber.zip      |Gerber files for manufacturing|
+|pioi.jpg             |installed module              |
 |pioi.pdf             |schematic drawing             |
 
 ### About module

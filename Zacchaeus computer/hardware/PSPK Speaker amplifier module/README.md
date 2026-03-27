@@ -10,6 +10,7 @@
 |pspk-B_Cu.pdf        |solder side of the PCB        |
 |pspk-F_Silkscreen.pdf|silkscreen of the PCB         |
 |pspk-gerber.zip      |Gerber files for manufacturing|
+|pspk.jpg             |installed module              |
 |pspk.pdf             |schematic drawing             |
 
 ### About module

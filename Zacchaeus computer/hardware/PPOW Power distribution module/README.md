@@ -11,6 +11,7 @@
 |ppow-F_Cu.pdf        |component side of the PCB     |
 |ppow-F_Silkscreen.pdf|silkscreen of the PCB         |
 |ppow-gerber.zip      |Gerber files for manufacturing|
+|ppow.jpg             |installed module              |
 |ppow.pdf             |schematic drawing             |
 
 ### About module

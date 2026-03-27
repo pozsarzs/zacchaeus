@@ -11,6 +11,7 @@
 |pcox-F_Cu.pdf        |component side of the PCB     |
 |pcox-F_Silkscreen.pdf|silkscreen of the PCB         |
 |pcox-gerber.zip      |Gerber files for manufacturing|
+|pcox.jpg             |picture of the module         |
 |pcox.pdf             |schematic drawing             |
 
 ### About module
@@ -20,6 +21,10 @@ Thing with a headphone amplifier. It uses a simple R-2R resistor ladder to
 convert 8-bit digital audio into analog output. The board has LINE and headphone
 outputs, with headphone volume control. The module requires +5V and +12V DC to
 operate.
+
+#### Picture of the module
+
+![Appearance](pcox.jpg)
 
 ### Jumper settings
 

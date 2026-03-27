@@ -12,6 +12,7 @@
 |ptap-F_Cu.pdf        |component side of the PCB                    |
 |ptap-F_Silkscreen.pdf|silkscreen of the PCB                        |
 |ptap-gerber.zip      |Gerber files for manufacturing               |
+|ptap.jpg             |installed module                             |
 |ptap.pdf             |schematic drawing                            |
 
 ### About module
