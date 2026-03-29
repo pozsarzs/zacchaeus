@@ -32,7 +32,7 @@ within form a single entity (e.g., CAD drawings, original files).
       - [x] pcox-B_Cu.pdf
       - [x] pcox-F_Cu.pdf
       - [x] pcox-F_Silkscreen.pdf
-      - [x] pcox-gbr.zip
+      - [x] pcox-gerber.zip
       - [ ] pcox.jpg
       - [x] pcox.pdf
       - [x] README.md
@@ -45,11 +45,20 @@ within form a single entity (e.g., CAD drawings, original files).
       - [x] pioi-B_Cu.pdf
       - [x] pioi-F_Cu.pdf
       - [x] pioi-F_Silkscreen.pdf
-      - [x] pioi-gbr.zip
+      - [x] pioi-gerber.zip
       - [x] pioi.jpg
       - [x] pioi.pdf
       - [x] README.md
       - [x] **_pioi_**
+    - [ ] **PMAN-IF  Interface module**
+      - [ ] pman-if-1.jpg
+      - [ ] pman-if-B_Cu.pdf
+      - [ ] pman-if-F_Cu.pdf
+      - [ ] pman-if-F_Silkscreen.pdf
+      - [ ] pman-if-gerber.zip
+      - [ ] pman-if.pdf
+      - [ ] README.md
+      - [ ] **_pman-if_**
     - [x] **PMAN-DP Display module**
       - [x] pman-dp-1.jpg
       - [x] pman-dp-2.jpg
@@ -90,13 +99,17 @@ within form a single entity (e.g., CAD drawings, original files).
       - [ ] ptap-B_Cu.pdf
       - [ ] ptap-F_Cu.pdf
       - [ ] ptap-F_Silkscreen.pdf
-      - [ ] ptap-gbr.zip
+      - [ ] ptap-geber.zip
       - [ ] ptap.jpg
       - [ ] ptap.pdf
       - [ ] README.md
     - [x] **RCBus**
-      - [x] bus_connection.pdf
+      - [x] bus_connection.png
       - [x] bus_connection.zip
+      - [x] protocard-1.zip
+      - [x] protocard-1.pdf
+      - [x] protocard-2.zip
+      - [x] protocard-2.pdf
       - [x] RCBus* (original files)
     - [x] **SC126 Z180 motherboard**
       - [x] README.md
@@ -122,7 +135,7 @@ within form a single entity (e.g., CAD drawings, original files).
   - [ ] **software**  
     - [ ] **PCOX COVOX module**
       - [ ] coxpiano.com
-      - [ ] coxpiano.pas
+      - [ ] coxpiano.z80
       - [ ] coxpiano.txt
       - [ ] coxplayer.com
       - [ ] coxplayer.pas
@@ -154,6 +167,15 @@ within form a single entity (e.g., CAD drawings, original files).
         - [x] pioifunc.txt
         - [x] pioirst.com
         - [x] pioirst.pas
+    - [ ] **PMAN-IF  Interface module**
+      - [ ] pmon.com
+      - [ ] pmon.txt
+      - [ ] pmon.z18t
+      - [ ] **pmanapi**
+        - [ ] build.sub
+        - [ ] pmanapi.rel
+        - [ ] pmanapi.txt
+        - [ ] pmanapi.z18
     - [ ] **PTAP Tape interface module**
       - [ ] tapdump.com
       - [ ] tapdump.txt
