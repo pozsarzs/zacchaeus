@@ -443,7 +443,7 @@
       "label_dangling": "error",
       "label_multiple_wires": "warning",
       "lib_symbol_issues": "warning",
-      "lib_symbol_mismatch": "warning",
+      "lib_symbol_mismatch": "ignore",
       "missing_bidi_pin": "warning",
       "missing_input_pin": "warning",
       "missing_power_pin": "error",
@@ -454,7 +454,7 @@
       "no_connect_dangling": "warning",
       "pin_not_connected": "error",
       "pin_not_driven": "error",
-      "pin_to_pin": "warning",
+      "pin_to_pin": "error",
       "power_pin_not_driven": "error",
       "same_local_global_label": "warning",
       "similar_label_and_power": "warning",
@@ -502,7 +502,6 @@
         "bus_width": 12,
         "clearance": 0.2,
         "diff_pair_gap": 0.25,
-        "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
         "line_style": 0,
         "microvia_diameter": 0.3,
@@ -665,6 +664,18 @@
     [
       "2b98932b-1694-4573-88df-6f0ce09fa9d6",
       "Root"
+    ],
+    [
+      "23942aa6-0a3e-49c0-9aff-43816f12b8ef",
+      "Address decoder"
+    ],
+    [
+      "45a562d9-2922-437e-9ac3-457f514a7400",
+      "PMAN-DP interface"
+    ],
+    [
+      "0267d5e9-4a23-4179-876d-8ce5472fc289",
+      "PMAN-SW interface"
     ]
   ],
   "text_variables": {}
