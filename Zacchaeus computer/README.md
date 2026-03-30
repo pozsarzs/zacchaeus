@@ -65,6 +65,7 @@ The computer consists of the following components:
 |SC719  |[RCBus DIO module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/SC719%20RCBus%20DIO%20module)                                       |
 |PCOX   |[Internal COVOX-style mono sound module with earphone amplifier](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PCOX%20COVOX%20module)|
 |PIOI   |[I/O interface module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PIOI%20IO%20Interface%20module)                                 |
+|PMAN-IF|[Manual control panel interface module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PMAN-IF%20Interface%20module)|
 |PMAN-DP|[Manual control panel display module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PMAN-DP%20Display%20module)                      |
 |PMAN-SW|[Manual control panel switch module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PMAN-SW%20Switch%20module)                        |
 |PPOW   |[Power distribution module with external fuses](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PPOW%20Power%20distribution%20module)  |
@@ -77,7 +78,6 @@ The computer consists of the following components:
 |name   |function                                                                                                                                           |
 |-------|---------------------------------------------------------------------------------------------------------------------------------------------------|
 |PANA   |Analog input/output module (2AI, 2AO, 0-10V)                                                                                                       |
-|PMAN-IF|[Manual control panel interface module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PMAN-IF%20Interface%20module)|
 |PTAP   |[Tape and speaker interface module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PTAP%20Tape%20interface%20module)|
 
 ---
@@ -122,7 +122,7 @@ address space defined by the Z80/Z180 instruction set.
 |30h |   |SC719  |DIO for PIOI module               |       |
 |31h |   |PCOX   |Covox module                      |       |
 |32h |   |PTAP   |Tape and speaker interface        |planned|
-|33h |3Bh|PMAN-IF|Manual control panel interface    |planned|
+|40h |4Bh|PMAN-IF|Manual control panel interface    |planned|
 |3Ch |67h|       |                                  |       |
 |68h |6Bh|SC717  |PIO module                        |       |
 |6Ch |7Fh|       |                                  |       |
@@ -173,7 +173,7 @@ Backplane-80 (or BP80). This is an unofficial variant of the RC2014 Bus.
 | 63 | /HALT     | <- |CPU-/HALT       | 23 | /MREQ     | <- |CPU-/MEMRQ   |
 | 64 | /BUSRQ    | -> |CPU-/BUSREQ     | 24 | /WR       | <- |CPU-/WR      |
 | 65 | /WAIT     | -> |CPU-/WAIT       | 25 | /RD       | <- |CPU-/RD      |
-| 66 | /NMI      |    |CPU-/NMI        | 26 | /IORQ     | <- |CPU-/IORQ    |
+| 66 | /NMI      | -> |CPU-/NMI        | 26 | /IORQ     | <- |CPU-/IORQ    |
 | 67 | D8        |    |not used        | 27 | D0        | <->|CPU-D0       |
 | 68 | D9        |    |not used        | 28 | D1        | <->|CPU-D1       |
 | 69 | D10       |    |not used        | 29 | D2        | <->|CPU-D2       |
@@ -291,7 +291,9 @@ downloaded from the internet.
   A utility for checking the PCOX module. (soon)
 - [_pioitest.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PIOI%20IO%20Interface%20module):
   A utility for checking the PIOI module.
-- [_pmon.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PMAN-IF%20Interface%20module):
+- [_mancheck.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PMAN-IF%20Interface%20module):
+  A utility for checking the PMAN module.
+- [_manitou.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PMAN-IF%20Interface%20module):
   A monitor program that uses a manual control panel. (soon)
 - [_tapload.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PTAP%20Tape%20interface%20module):
   Loads data from tape into memory starting at a specific RAM address and can optionally execute it. (soon)

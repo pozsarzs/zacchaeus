@@ -1,5 +1,5 @@
-PMon program
-~~~~~~~~~~~~
+Manitou program
+~~~~~~~~~~~~~~~
 
   version	v0.1
   licence	EUPL v1.2

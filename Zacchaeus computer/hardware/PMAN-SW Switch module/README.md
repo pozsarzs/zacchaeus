@@ -29,26 +29,7 @@ There is no jumper setting option on the module.
 
 This component is connected to the computer bus by the PMAN-IF interface module.
 
-|Module |Num  |Sign|Function                 |Sign|Num |Module |
-|-------|:---:|----|-------------------------|----|:--:|-------|
-|PMAN-IF|     | C0 |Column output            | C0 |J1/1|PMAN-SW|
-|PMAN-IF|     | C1 |Column output            | C1 |J1/2|PMAN-SW|
-|PMAN-IF|     | C2 |Column output            | C2 |J1/3|PMAN-SW|
-|PMAN-IF|     | C3 |Column output            | C3 |J1/4|PMAN-SW|
-|PMAN-IF|     | C4 |Column output            | C4 |J1/5|PMAN-SW|
-|PMAN-IF|     | C5 |Column output            | C5 |J1/6|PMAN-SW|
-|PMAN-IF|     | C6 |Column output            | C6 |J1/7|PMAN-SW|
-|PMAN-IF|     | C7 |Column output            | C7 |J1/8|PMAN-SW|
-|PMAN-IF|     | R0 |Row selection (A0-A7)    | R0 |J2/1|PMAN-SW|
-|PMAN-IF|     | R1 |Row selection (A8-A15)   | R1 |J2/2|PMAN-SW|
-|PMAN-IF|     | R2 |Row selection (D0-D7)    | R2 |J2/3|PMAN-SW|
-|PMAN-IF|     | R3 |Row selection (buttons)  | R3 |J2/4|PMAN-SW|
-|PMAN-SW|J3/1 |GND |GND                      |GND |P8/1|SC126  |
-|PMAN-SW|J3/2 |    |RESET button             |    |P8/2|SC126  |
-|PMAN-IF|     |GND |GND                      |GND |J4/1|PMAN-SW|
-|PMAN-IF|     |    |NMI button               |    |J4/2|PMAN-SW|
-|PMAN-IF|     |GND |Common cathode           |GND |J5/1|PMAN-SW|
-|PMAN-IF|     |    |ERROR LED anode          |    |J5/2|PMAN-SW|
-|PMAN-IF|     |    |RUN LED anode            |    |J5/3|PMAN-SW|
-|PMAN-IF|     |    |PAUSE LED anode          |    |J5/4|PMAN-SW|
-|PMAN-IF|     |    |STOP LED anode           |    |J5/5|PMAN-SW|
+|Module |Num |Sign|Function                 |Sign|Num |Module |
+|-------|:--:|----|-------------------------|----|:--:|-------|
+|PMAN-SW|J3/1|GND |GND                      |GND |P8/1|SC126  |
+|PMAN-SW|J3/2|    |RESET button             |    |P8/2|SC126  |
