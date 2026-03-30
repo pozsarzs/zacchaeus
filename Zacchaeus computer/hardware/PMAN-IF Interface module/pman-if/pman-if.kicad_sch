@@ -458,7 +458,7 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 134.62) (xy 143.51 134.62)
+			(xy 138.43 130.81) (xy 143.51 130.81)
 		)
 		(stroke
 			(width 0)
@@ -668,7 +668,7 @@
 	)
 	(sheet
 		(at 98.425 116.84)
-		(size 40.005 31.115)
+		(size 40.005 17.145)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -681,8 +681,8 @@
 			(color 0 0 0 0.0000)
 		)
 		(uuid "0267d5e9-4a23-4179-876d-8ce5472fc289")
-		(property "Sheetname" "PMAN-SW interface"
-			(at 98.044 150.876 0)
+		(property "Sheetname" "switch interface"
+			(at 98.298 136.144 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -821,7 +821,7 @@
 			)
 		)
 		(pin "BLANK" output
-			(at 138.43 134.62 0)
+			(at 138.43 130.81 0)
 			(uuid "de3e8f32-d506-4bdf-a8fc-7756629263c0")
 			(effects
 				(font
@@ -839,13 +839,12 @@
 		)
 	)
 	(sheet
-		(at 111.125 44.45)
-		(size 76.835 31.75)
+		(at 111.125 57.15)
+		(size 76.835 19.05)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
 			(type solid)
@@ -854,9 +853,8 @@
 			(color 0 0 0 0.0000)
 		)
 		(uuid "23942aa6-0a3e-49c0-9aff-43816f12b8ef")
-		(property "Sheetname" "Address decoder"
-			(at 110.4134 76.2 90)
-			(show_name yes)
+		(property "Sheetname" "address decoder"
+			(at 110.998 56.642 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -865,7 +863,7 @@
 			)
 		)
 		(property "Sheetfile" "pman-if-1.kicad_sch"
-			(at 188.5446 76.2 90)
+			(at 188.5446 88.9 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1134,7 +1132,7 @@
 	)
 	(sheet
 		(at 143.51 116.84)
-		(size 37.465 30.48)
+		(size 37.465 17.145)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -1147,8 +1145,8 @@
 			(color 0 0 0 0.0000)
 		)
 		(uuid "45a562d9-2922-437e-9ac3-457f514a7400")
-		(property "Sheetname" "PMAN-DP interface"
-			(at 143.51 149.479 0)
+		(property "Sheetname" "display interface"
+			(at 143.256 136.398 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1287,7 +1285,7 @@
 			)
 		)
 		(pin "BLANK" input
-			(at 143.51 134.62 180)
+			(at 143.51 130.81 180)
 			(uuid "9490d28e-b586-41bc-b628-b9de8153b335")
 			(effects
 				(font

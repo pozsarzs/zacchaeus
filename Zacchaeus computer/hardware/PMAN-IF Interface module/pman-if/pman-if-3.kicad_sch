@@ -10,6 +10,7 @@
 		(rev "1.0")
 		(company "Pozsar Zsolt")
 		(comment 1 "Zacchaeus Microcomputer")
+		(comment 2 "Switch interface")
 	)
 	(lib_symbols
 		(symbol "74xx:74LS14"

@@ -676,15 +676,15 @@
     ],
     [
       "23942aa6-0a3e-49c0-9aff-43816f12b8ef",
-      "Address decoder"
+      "address decoder"
     ],
     [
       "45a562d9-2922-437e-9ac3-457f514a7400",
-      "PMAN-DP interface"
+      "display interface"
     ],
     [
       "0267d5e9-4a23-4179-876d-8ce5472fc289",
-      "PMAN-SW interface"
+      "switch interface"
     ]
   ],
   "text_variables": {}
