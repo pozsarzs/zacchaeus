@@ -122,7 +122,8 @@ address space defined by the Z80/Z180 instruction set.
 |30h |   |SC719  |DIO for PIOI module               |       |
 |31h |   |PCOX   |Covox module                      |       |
 |32h |   |PTAP   |Tape and speaker interface        |planned|
-|40h |4Bh|PMAN-IF|Manual control panel interface    |planned|
+|40h |4Bh|PMAN-IF|Manual control panel interface    |       |
+|50h |5xh|PANA   |analog I/O module                 |planned|
 |3Ch |67h|       |                                  |       |
 |68h |6Bh|SC717  |PIO module                        |       |
 |6Ch |7Fh|       |                                  |       |
@@ -260,7 +261,7 @@ Jumpering:
 |Unit       |Socket|Modul  |Function                      |Note   |
 |-----------|------|-------|------------------------------|-------|
 |motherboard|  S2  |PCOX   |COVOX module                  |       |
-|motherboard|  S3  |PMAN-IF|Manual control panel interface|planned|
+|motherboard|  S3  |PMAN-IF|Manual control panel interface|       |
 |backplane  |  K1  |SC718  |CTC module                    |       |
 |backplane  |  K2  |SC716  |SIO/2 module                  |       |
 |backplane  |  K3  |SC719  |DIO for PIOI module           |       |
