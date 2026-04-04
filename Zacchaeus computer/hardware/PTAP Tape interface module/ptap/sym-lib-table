@@ -1,3 +1,5 @@
 (sym_lib_table
+  (version 7)
   (lib (name "DS87C520")(type "Legacy")(uri "${KIPRJMOD}/DS87C520.lib")(options "")(descr ""))
+  (lib (name "relay_leg-5")(type "Legacy")(uri "${KIPRJMOD}/relay_leg-5.lib")(options "")(descr ""))
 )
