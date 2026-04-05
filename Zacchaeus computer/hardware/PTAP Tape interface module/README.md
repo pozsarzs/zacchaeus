@@ -1,69 +1,100 @@
-<img align="left" style="height:64px; float: left;  margin: 0 0 0 0;" alt="logo" src="pictures/icon/z180_64x64_black.png">
-
 # Zacchaeus Microcomputer
-**8-bit microcomputer built from commercially available and home-built components**  
 
-> [!NOTE]
-> Content will be updated continuously as development progresses.  
-> The [current status of the related files is shown here](devstat/Zacchaeus_files.md).
+## Hardware/PTAP Tape and speaker interface module
 
-This project is a personal journey back in time to the heroic age of computing:
-a newly built, classic 8-bit system, in which I supplement the factory components
-with modules of my own design. My goal is to revive the joy of discovery, while
-on this new machine, legendary languages ​such as BASIC, Fortran or Cobol come to
-life again.
+### Directory content
 
-![Appearance](pictures/Zacchaeus_04.jpg)
+|file                 |description                                  |
+|---------------------|---------------------------------------------|
+|\[ptap\]             |KiCAD files                                  |
+|KCS.md               |Excerpts from the Kansas City Standard (1976)|
+|ptap-B_Cu.pdf        |solder side of the PCB                       |
+|ptap-F_Cu.pdf        |component side of the PCB                    |
+|ptap-F_Silkscreen.pdf|silkscreen of the PCB                        |
+|ptap-gerber.zip      |Gerber files for manufacturing               |
+|ptap.jpg             |module                                       |
+|ptap.pdf             |schematic drawing                            |
 
-The computer is built on a motherboard based on the Z180 processor and expansion
-cards designed by Stephen C. Cousins. These component descriptions are provided
-for completeness and represent the versions available at the time of use.
-For more detailed descriptions and the latest updates, please visit the original
-author's website ([Small Computer Central](https://smallcomputercentral.com/)).
-These components are licensed as _open source_ and _public domain_.
+### About module
 
-These components are complemented by custom-designed expansion cards and
-external peripherals. The custom-designed software are licensed as
-_open source_ and hardware are licensed as _public domain_.  
+This is a universal, MCU-based, BP-80 bus system-compatible expansion card
+includes a flexibly configurable tape and speaker interfaces. The firmware
+supports the FSK (Frequency-shift keying) modulation mode. The analog part of
+the card can be used in the entire audio frequency band (20Hz-20 kHz). The data
+transfer rate is 300-2400 baud, the frequency pairs can be between
+600Hz-19.2 kHz. The module can be configured from the operating program. After
+power-off or RESET, the default settings take effect. The module requires a +5 V
+and a symmetrical 12 V power supply to operate.
 
-A detailed description of the computer can be found in the
-[Zacchaeus computer](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer) folder.
+#### Tape Interface
 
-## External interface box
+* **Data source:** Jumper-selectable between the serial port of the BP-80 bus
+  or an external connector.
+* **Modulation:** MCU's firmware supports the Kansas City Standard format, as
+  well as the FSK mode using individual frequency pairs, which allows faster
+  data transfer at higher tape speeds.
+* **Output:** Harmonically filtered, sinusoidal signal, the level of which can
+  be adjusted within limits with a trimmer potentiometer (mic/line level).
+* **Input:** Automatically muted when not in use.
+<<<<<<< HEAD
+* **Control:** It has a built-in tape motor remote control and a mode indicator
+  light output for the front panel LEDs.
 
-> [!NOTE]
-> Content will be updated continuously as development progresses.  
-> The [current status of the related files is shown here](devstat/PEIX_files.md).
+### Speaker interface
 
-PEIX is an 8-slot interface connecting legacy _Klöckner-Moeller PS316_ I/O modules
-to the Zacchaeus computer via RS-232 serial line with SCRAP protocol. It restores
-functionality to these obsolete analog and digital modules.
+* **Output:** TTL-level signal output and integrated transistor amplifier stage
+  for driving low-impedance speakers.
 
-![Appearance](pictures/PEIX_01.jpg)
+### Jumper settings
 
-A detailed description of the interface box can be found in the
-[PEIX External interface box](https://github.com/pozsarzs/zacchaeus/tree/main/PEIX%20External%20interface%20box) folder.
+All operating parameters of the card can be customized by jumpering.
 
-## External memory box (EPROM bank)
+|Module|Num   |Sign  |Function                        |State     |Note                     |
+|------|:----:|:----:|--------------------------------|:--------:|-----------------------|
+|PTAP  |SW1   |/A7-2 |I/O address                     |101011xx  |DIP switch, address 50h|
+|PTAP  |JP1   |RXD0  |select RX line                  |1-2 closed|BP80/connector         |
+|PTAP  |JP2   |TXD0  |select TX line                  |1-2 closed|BP80/connector         |
+|PTAP  |JP3   |      |mute speaker amplifier          |opened    |                       |
+|PTAP  |JP4   |      |enable speaker amplifier        |closed    |                       |
 
-> [!NOTE]
-> Content will be updated continuously as development progresses.  
-> The [current status of the related files is shown here](devstat/PEMX_files.md).
+### Recording/Playback Parameters
 
-PEMX is an 8-slot external EPROM bank connected via two PIO ports. It supports
-2764 through 27512 EPROMs, including 'A' and CMOS variants with raw data and
-lowFAT filesystem.
+The recording parameters are based on recommendations made at a symposium
+held in Kansas City in 1975. (Kansas City Standard)
 
-A detailed description of the memory box can be found in the
-[PEMX External memory box](https://github.com/pozsarzs/zacchaeus/tree/main/PEMX%20External%20memory%20box) folder.
+|medium  |tape speed|level L|cycle|level H |cycle|baudrate |bandwidth|note        |
+|--------|---------:|------:|:---:|-------:|:---:|--------:|--------:|------------|
+|cassette| 4.76 cm/s|1200 Hz|  4  | 2400 Hz|  8  | 300 baud|   ~3 kHz|original KCS|
+|cassette| 4.76 cm/s|2400 Hz|  4  | 4800 Hz|  8  | 600 baud|   ~5 kHz|maximal     |
+|tape    | 2.38 cm/s| 600 Hz|  4  | 1200 Hz|  8  | 150 baud|   ~2 kHz|suggested   |
+|tape    | 4.76 cm/s|1200 Hz|  4  | 2400 Hz|  8  | 300 baud|   ~3 kHz|suggested   |
+|tape    | 9.53 cm/s|2400 Hz|  4  | 4800 Hz|  8  | 600 baud|   ~5 kHz|suggested   |
+|tape    |19.05 cm/s|4800 Hz|  4  | 9600 Hz|  8  |1200 baud|  ~10 kHz|suggested   |
+|tape    | 2.38 cm/s|1200 Hz|  4  | 2400 Hz|  8  | 300 baud|   ~3 kHz|maximal     |
+|tape    | 4.76 cm/s|4800 Hz|  4  | 9600 Hz|  8  |1200 baud|  ~10 kHz|maximal     |
+|tape    | 9.53 cm/s|4800 Hz|  4  | 9600 Hz|  8  |1200 baud|  ~10 kHz|maximal     |
+|tape    |19.05 cm/s|9600 Hz|  4  |19200 Hz|  8  |2400 baud|  ~20 kHz|maximal     |
 
----
+The maximum values​were calculated based on the parameters of the UHER 4000
+tape recorder used.
 
-### My related projects on Github
+### Connection with others
 
-- [An extended Turing machine implementation for CP/M and DOS](https://github.com/pozsarzs/alanz80x)
-- [Turing machine implementation for CP/M and DOS](https://github.com/pozsarzs/alanz80)
-- [Simulator for running DATAS machine code for CP/M and DOS](https://github.com/pozsarzs/datassim)
-- [The FORTRAN Month](https://github.com/pozsarzs/fortran_month)
-- [Synchronized Client Register Access Protocol](https://github.com/pozsarzs/scrap)
-- [ROMCat EPROM filesystem](https://github.com/pozsarzs/romfat)
+The module is connected to the BP80 expansion socket.
+
+|Module|Num  |Sign|Function          |Sign  |Num |Module|
+|------|:---:|----|------------------|------|:--:|------|
+|PTAP  |J1   |    |expansion socket  |      |    |SC126 |
+|PTAP  |J2   |    |piezo speaker     |TTL in|J3  |PSPK  |
+|PTAP  |J3   |    |dynamic speaker   |      |    |      |
+|PTAP  |J4   |RLED|READ LED (green)  |RLED  |D3  |PFRP  |
+|PTAP  |J5   |WLED|WRITE LED (red)   |WLED  |D4  |PFRP  |
+|PTAP  |J6   |MLED|MOTOR LED (yellow |MLED  |D5  |PFRP  |
+|PPOW  |     |+12V|+12V input        |+12V|J7/1  |PCOX  |
+|PPOW  |     |GND |GND               |GND |J7/2  |PCOX  |
+|PPOW  |     |-12V|-12V input        |-12V|J7/3  |PCOX  |
+|PTAP  |J8/1 |REL |tape connector    |REL   |J1/1|PFRP  |
+|      |J8/2 |DIN |tape connector    |DIN   |J1/4|PFRP  |
+|      |J8/3 |GND |tape connector    |GND   |J1/2|PFRP  |
+|      |J8/4 |DOUT|tape connector    |DOUT  |J1/5|PFRP  |
+|      |J8/5 |REL |tape connector    |REL   |J1/3|PFRP  |

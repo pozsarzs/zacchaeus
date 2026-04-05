@@ -121,9 +121,9 @@ address space defined by the Z80/Z180 instruction set.
 |18h |2Fh|       |                                  |       |
 |30h |   |SC719  |DIO for PIOI module               |       |
 |31h |   |PCOX   |Covox module                      |       |
-|32h |   |PTAP   |Tape and speaker interface        |planned|
 |40h |4Bh|PMAN-IF|Manual control panel interface    |       |
-|50h |5xh|PANA   |analog I/O module                 |planned|
+|50h |53h|PTAP   |Tape and speaker interface        |planned|
+|60h |6xh|PANA   |analog I/O module                 |planned|
 |3Ch |67h|       |                                  |       |
 |68h |6Bh|SC717  |PIO module                        |       |
 |6Ch |7Fh|       |                                  |       |
@@ -261,11 +261,11 @@ Jumpering:
 |Unit       |Socket|Modul  |Function                      |Note   |
 |-----------|------|-------|------------------------------|-------|
 |motherboard|  S2  |PCOX   |COVOX module                  |       |
-|motherboard|  S3  |PMAN-IF|Manual control panel interface|       |
+|motherboard|  S3  |PMAN-IF|manual control panel interface|       |
 |backplane  |  K1  |SC718  |CTC module                    |       |
 |backplane  |  K2  |SC716  |SIO/2 module                  |       |
 |backplane  |  K3  |SC719  |DIO for PIOI module           |       |
-|backplane  |  K4  |SC719  |PTAP module                   |planned|
+|backplane  |  K4  |PTAP   |tape and speaker interface    |planned|
 |backplane  |  K5  |PANA   |analog I/O module             |planned|
 |backplane  |  K6  |SC717  |PIO module                    |       |
 |backplane  |  P1  |SC715  |CF module                     |       |
@@ -287,13 +287,13 @@ downloaded from the internet.
 ### Utilities
 
 - [_coxplayer.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PCOX%20COVOX%20module):
-  Plays a raw audio file using the PCOX module.
+  Plays a raw audio file using the PCOX module. (soon)
 - [_coxpiano.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PCOX%20COVOX%20module):
   A utility for checking the PCOX module. (soon)
 - [_pioitest.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PIOI%20IO%20Interface%20module):
   A utility for checking the PIOI module.
 - [_mancheck.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PMAN-IF%20Interface%20module):
-  A utility for checking the PMAN module.
+  A utility for checking the PMAN module. (soon)
 - [_manitou.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PMAN-IF%20Interface%20module):
   A monitor program that uses a manual control panel. (soon)
 - [_tapload.com_](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/software/PTAP%20Tape%20interface%20module):
