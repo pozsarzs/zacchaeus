@@ -36,8 +36,13 @@ and a symmetrical 12 V power supply to operate.
 * **Output:** Harmonically filtered, sinusoidal signal, the level of which can
   be adjusted within limits with a trimmer potentiometer (mic/line level).
 * **Input:** Automatically muted when not in use.
+<<<<<<< HEAD
 * **Control:** It has a built-in tape motor remote control and a mode indicator
   light output for the front panel LEDs.
+=======
+* **Control:** It has a built-in tape motor remote control and a mode indicator light output
+  for the front panel LEDs. Such indicators are also found on the board.
+>>>>>>> a8127050641e4d322609d87b3bc2e14fe68eaeee
 
 ### Speaker interface
 
