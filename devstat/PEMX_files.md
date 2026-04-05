@@ -25,8 +25,8 @@ within form a single entity (e.g., CAD drawings).
     - [x] pemx-cables.pdf  
     - [x] pemx-reset.pdf  
   - [ ] **software**  
-    - [ ] emxdump.com  _(soon)_  
-    - [ ] emxdump.pas  _(soon)_  
+    - [ ] emxdump.com
+    - [ ] emxdump.pas
     - [x] emxdump.txt  
     - [ ] emxload.com  
     - [ ] emxload.txt  
@@ -37,5 +37,5 @@ within form a single entity (e.g., CAD drawings).
       - [x] pemxapi.txt  
       - [x] pemxapi.z80  
     - [ ] **pemxfunc**  
-      - [ ] pemxfunc.pas  _(soon)_  
+      - [ ] pemxfunc.pas
       - [x] pemxfunc.txt

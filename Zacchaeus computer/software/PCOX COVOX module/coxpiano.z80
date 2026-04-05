@@ -14,7 +14,7 @@
 
 	ORG	100h
 BDOS	EQU	005h			; BDOS system call
-EXTRN	PEMX
+EXTRN	PCOX
 
 START:
 

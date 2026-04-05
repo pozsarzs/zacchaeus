@@ -1,8 +1,8 @@
 ; +----------------------------------------------------------------------------+
 ; | Zacchaeus Microcomputer                                                    |
 ; | Copyright (C) 2025-2026 Pozsar Zsolt <pozsarzs@gmail.com>                  |
-; | tapsave.z80                                                                |
-; | Tape data loader utility, Z80, CP/M-80, v0.1                               |
+; | manitou.pas                                                                |
+; | System monitor, Z180, CP/M-80, v0.1                                        |
 ; +----------------------------------------------------------------------------+
 
 ; This program is free software: you can redistribute it and/or modify it
@@ -14,7 +14,7 @@
 
 	ORG	100h
 BDOS	EQU	005h			; BDOS system call
-EXTRN	PTAP
+EXTRN	PMAN
 
 START:
 

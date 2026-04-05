@@ -50,15 +50,15 @@ within form a single entity (e.g., CAD drawings, original files).
       - [x] pioi.pdf
       - [x] README.md
       - [x] **_pioi_**
-    - [ ] **PMAN-IF  Interface module**
+    - [ ] **PMAN-IF Interface module**
       - [ ] pman-if-1.jpg
-      - [ ] pman-if-B_Cu.pdf
-      - [ ] pman-if-F_Cu.pdf
-      - [ ] pman-if-F_Silkscreen.pdf
-      - [ ] pman-if-gerber.zip
-      - [ ] pman-if.pdf
-      - [ ] README.md
-      - [ ] **_pman-if_**
+      - [x] pman-if-B_Cu.pdf
+      - [x] pman-if-F_Cu.pdf
+      - [x] pman-if-F_Silkscreen.pdf
+      - [x] pman-if-gerber.zip
+      - [x] pman-if.pdf
+      - [x] README.md
+      - [x] **_pman-if_**
     - [x] **PMAN-DP Display module**
       - [x] pman-dp-1.jpg
       - [x] pman-dp-2.jpg
@@ -103,6 +103,7 @@ within form a single entity (e.g., CAD drawings, original files).
       - [ ] ptap.jpg
       - [ ] ptap.pdf
       - [ ] README.md
+      - [ ] **_ptap_**
     - [x] **RCBus**
       - [x] bus_connection.png
       - [x] bus_connection.zip
@@ -141,7 +142,7 @@ within form a single entity (e.g., CAD drawings, original files).
       - [ ] coxplayer.pas
       - [ ] coxplayer.txt
       - [ ] **pcoxapi**
-        - [ ] build.sub
+        - [x] build.sub
         - [ ] pcoxapi.rel
         - [ ] pcoxapi.txt
         - [ ] pcoxapi.z80
@@ -167,12 +168,12 @@ within form a single entity (e.g., CAD drawings, original files).
         - [x] pioifunc.txt
         - [x] pioirst.com
         - [x] pioirst.pas
-    - [ ] **PMAN-IF  Interface module**
+    - [ ] **PMAN-IF Interface module**
       - [ ] pmon.com
       - [ ] pmon.txt
-      - [ ] pmon.z18t
+      - [ ] pmon.z18
       - [ ] **pmanapi**
-        - [ ] build.sub
+        - [x] build.sub
         - [ ] pmanapi.rel
         - [ ] pmanapi.txt
         - [ ] pmanapi.z18
@@ -187,7 +188,7 @@ within form a single entity (e.g., CAD drawings, original files).
       - [ ] tapsave.txt
       - [ ] tapsave.z80
       - [ ] **ptapapi**
-        - [ ] build.sub
+        - [x] build.sub
         - [ ] ptapapi.rel
         - [ ] ptapapi.txt
         - [ ] ptapapi.z80
