@@ -17,34 +17,32 @@
 
 ### About module
 
-This BP-80 bus system-compatible expansion card includes a flexibly configurable
-tape interface and a speaker driver.
+This is a universal, MCU-based, BP-80 bus system-compatible expansion card
+includes a flexibly configurable tape and speaker interfaces. The firmware
+supports the FSK (Frequency-shift keying) modulation mode. The analog part of
+the card can be used in the entire audio frequency band (20Hz-20 kHz). The data
+transfer rate is 300-2400 baud, the frequency pairs can be between
+600Hz-19.2 kHz. The module can be configured from the operating program. After
+power-off or RESET, the default settings take effect. The module requires a +5 V
+and a symmetrical 12 V power supply to operate.
 
 #### Tape Interface
 
 * **Data source:** Jumper-selectable between the serial port of the BP-80 bus
   or an external connector.
-* **Modulation:** Supports the standard KCS (Kansas City Standard) format,
-  as well as the FSK mode using individual frequency pairs, which allows
-  faster data transfer at higher tape speeds.
-* **Output:** Harmonically-filtered, clean sinusoidal signal, with two
-  jumper-selectable signal levels.
-* **Input:** Automatically muted when not in use. The input stage has a 600 Hz
-  low-pass filter to eliminate annoying low-frequency noise and fluctuations
-  caused by tape stretch.
-* **Control:** Has a built-in tape motor remote control and an operating mode
-  output for front-panel LEDs. The control LED on the card monitors both the
-  transmit and receive processes. Thanks to the gated logic control, the LED
-  provides visual feedback by flashing for every active data traffic.
+* **Modulation:** MCU's firmware supports the Kansas City Standard format, as
+  well as the FSK mode using individual frequency pairs, which allows faster
+  data transfer at higher tape speeds.
+* **Output:** Harmonically filtered, sinusoidal signal, the level of which can
+  be adjusted within limits with a trimmer potentiometer (mic/line level).
+* **Input:** Automatically muted when not in use.
+* **Control:** It has a built-in tape motor remote control and a mode indicator
+  light output for the front panel LEDs.
 
 ### Speaker interface
 
-* **Signal Source:** Channels 1 and 2 of the Z80 CTC card connected in cascade.
-  Signal coming from an "user" pin of the BP-80 bus, which can be enabled in
-  software with a gating signal.
-* **Output:** Harmonic-filtered, TTL-level signal and integrated transistor
-  amplifier stage for driving low-impedance speakers. The output volume can be
-  adjusted with a trimmer potentiometer.
+* **Output:** TTL-level signal and integrated transistor amplifier stage for
+  driving low-impedance speakers.
 
 ### Jumper settings
 
@@ -52,39 +50,9 @@ All operating parameters of the card can be customized by jumpering.
 
 |Module|Num   |Sign  |Function                        |State     |Note                     |
 |------|:----:|:----:|--------------------------------|:--------:|-------------------------|
-|SC718 |JP3   |CLK   |CTC1 clock source: system clock |closed    |                         |
-|      |      |CLK2  |CTC1 clock source: CLK2         |opened    |                         |
-|      |      |CLKX  |CTC1 clock source: X1 oscillator|opened    |                         |
-|      |      |INT1  |CTC1 clock source: INT1         |opened    |                         |
-|      |      |INT2  |CTC1 clock source: INT2         |opened    |                         |
-|SC718 |JP4   |CLK   |CTC2 clock source: system clock |opened    |                         |
-|      |      |CLK2  |CTC2 clock source: CLK2         |opened    |                         |
-|      |      |CLKX  |CTC2 clock source: X1 oscillator|opened    |                         |
-|      |      |INT1  |CTC2 clock source: INT1         |opened    |                         |
-|      |      |INT2  |CTC2 clock source: INT2         |opened    |                         |
-|SC718 |JP6   |ZT0   |CLK2 source: CTC0 output        |closed    |                         |
-|      |      |ZT1   |CLK2 source: CTC1 output        |opened    |                         |
-|      |      |ZT2   |CLK2 source: CTC2 output        |closed    |                         |
-|      |      |CLKX  |CLK2 source: X1 oscillator      |opened    |                         |
-|      |      |CLX   |CLK2 source: system clock       |opened    |                         |
-|SC718 |P2/5-6|CTCIO |ZT1-CT2 cascade                 |closed    |                         |
 |PTAP  |SW1   |/A7-0 |I/O address                     |11001101  |DIP switch, address 32h  |
 |PTAP  |JP1   |RX    |select RX line                  |1-2 closed|BP80/connector           |
 |PTAP  |JP2   |TX    |select TX line                  |1-2 closed|BP80/connector           |
-|PTAP  |JP3   | T600 |TX frequency pair               |          |L: 1-2 closed            |
-|      |      |T1200 |                                |          |L: 1-2, H: 2-3 closed    |
-|      |      |T2400 |                                |1-2 closed|L: 1-2, H: 2-3 closed    |
-|      |      |T4800 |                                |2-3 closed|L: 1-2, H: 2-3 closed    |
-|      |      |T9600 |                                |          |L: 1-2, H: 2-3 closed    |
-|      |      |T19200|                                |          |H: 2-3 closed            |
-|PTAP  |JP4   | R600 |FSK RX frequency pair           |          |L: 1-2 closed            |
-|      |      |R1200 |                                |          |L: 1-2, H: 2-3 closed    |
-|      |      |R2400 |                                |1-2 closed|L: 1-2, H: 2-3 closed    |
-|      |      |R4800 |                                |2-3 closed|L: 1-2, H: 2-3 closed    |
-|      |      |R9600 |                                |          |L: 1-2, H: 2-3 closed    |
-|      |      |R19200|                                |          |H: 2-3 closed            |
-|PTAP  |JP5   |TLVL  |Tape output level               |          |Aux: 1-2, mic: 2-3 closed|
-|PTAP  |JP6   |SPLVL |Speaker output level            |2-3 closed|TTL: 1-2, amp: 2-3 closed|
 
 ### Recording/Playback Parameters
 
