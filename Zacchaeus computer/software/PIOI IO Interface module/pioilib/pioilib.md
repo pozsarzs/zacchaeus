@@ -18,7 +18,7 @@ This is a collection of routines for easy management of PIOI interface ports.
 ### Available functions
 
 |A      |B      |C   |Function                                    |Return (A)|
-|-------|-------|----|--------------------------------------------|----------|
+|:-----:|:-----:|:--:|--------------------------------------------|:--------:|
 |address|N/A    |00h |set address                                 |N/A       |
 |N/A    |N/A    |01h |get address                                 |address   |
 |N/A    |N/A    |02h |reset all OCOs and RCOs                     |N/A       |
