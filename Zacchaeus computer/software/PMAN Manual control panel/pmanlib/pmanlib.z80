@@ -13,88 +13,379 @@
 
 PUBLIC PMAN
 
-; REGISTERS
-; ------------------------------------
-; Input:     A: function code
-;            BC, DE, HL: input data
-; Output:    A, HL: output data (CF=0)
-;            A: error code (CF=1)
+; -------- CONSTANTS --------
+RNUM	EQU	0Ch			; Number of routines
+
+; -------- CODE AREA --------
+
+; Input:     A = function code
+;            BC, DE, HL = input data
+; Output:    Carry = 0, A = output data
+;            Carry = 1, A = error code
 ; Preserves: BC, DE
 ; Clobbers:  AF, HL
 
-; ERROR CODES
-; ------------------------------------
-; 01h:       invalid function code
-; 02h:       invalid parameter
-; 03h:       timeout
-; 04h:       device error
-
 ; ---- ENTRY POINT AND JUMP TABLE ----
-PMAN:	CP	FCMAX		; compare function code with maximal value
-	JR	NC, MNBADF	; if 
+PMAN:	PUSH	BC		; preserve BC (caller-saved in this API)
+	PUSH	DE		; preserve DE
 
-	ADD	A, A
+	CP	RNUM		; compare A (function code) with max valid index
+	JR	NC, MNBADF	; if A >= RNUM: invalid function, jump to MNBADF
+
+	ADD	A, A		; A = A * 2 (word index into jump table)
 	LD	L, A
-	LD	H, 0
-	ADD	HL, MNJTAB
+	LD	H, 0		; HL = zero-extended offset
+	ADD	HL, MNJTAB	; HL = address of jump table entry
 
-	LD	E,(HL)
+	LD	E, (HL)		; load low byte of handler address
 	INC	HL
-	LD	D,(HL)
-	EX	DE,HL
-	JP	(HL)
+	LD	D, (HL)		; load high byte
+	EX	DE, HL		; HL = handler address
+	JP	(HL)		; indirect jump to selected routine
 
-MNJTAB:	DW	IFINIT		; set base address and initialize interface
-	DW	DPBLNK		; clear entire display
-	DW	DPWAAD		; write address and data
-	DW	DPWBYB		; write byte in binary
-	DW	DPWBYH		; write byte in hexadecimal
-	DW	DPWWRD		; write word
-	DW	DPWDIG		; change digit
-	DW	DPWMIR		; write 8 byte from memory to display
+MNJTAB:	DW	IFINIT		; 0: set base address and initialize interface
+	DW	DPBLNK		; 1: blank display
+	DW	DPZERO		; 2: fill display with zeros
+	DW	DPWAAD		; 3: write address and data
+	DW	DPWBYB		; 4: write byte in binary
+	DW	DPWBYH		; 5: write byte in hexadecimal
+	DW	DPWWRD		; 6: write word
+	DW	DPWDIG		; 7: change digit
+	DW	DPWMIR		; 8: write 8 byte from memory to display
+	DW	SWRADD		; 9: read address switches
+	DW	SWRDAT		; 10: read data switches
+	DW	SWRBTN		; 11: read buttons
+	DW	SWRMIR		; 12: mirror switch matrix to memory
+	DW	SWWLED		; 13: write all status LEDs
 
-	DW	SWRADD		; read address switches
-	DW	SWRDAT		; read data switches
-	DW	SWRBTN		; read buttons
-	DW	SWRMIR		; mirror switch matrix to memory
-	DW	SWWLED		; write all status LEDs
-
-MNBADF:	LD	A, 01h
-	SCF
+MNBADF:	POP	DE		; restore DE
+	POP	BC		; restore BC
+	LD	A, 01h		; 01h -> A
+	SCF			; CR = 1
 	RET
 
-; --- API FUNCTION -------------------------------------
-
-
-
-; --- API FUNCTION --------------------------
-
-; --- INITIALIZE INTERFACE ---------------
-; Input:  A:  I/O address (00h-FFh)
-;         HL: buffer address (0000h-FFFFh)
-; Output: A:  error code
-;         CF: 1 at error
-IFINIT:
-	PUSH	BC		; save BC register pair
-	PUSH	DE		; save DE register pair
-	PUSH	HL		; save HL register pair
-INITDN:	POP	HL		; restore HL register pair
-	POP	DE		; restore DE register pair
-	POP	BC		; restore BC register pair
+; ---- INITIALIZE INTERFACE ---------------
+; Input:  B  = I/O address (00h-FFh)
+;         HL = buffer address (0000h-FFFFh)
+; Output: CF = 0
+IFINIT:	LD	A, B		; B -> A
+	LD	(IOADDR), A	; store i/o base address
+	LD	(BUADDR), HL	; store buffer starting address
+	
+INITDN: XOR	A, A		; A = 0, CF = 0
+	POP	DE		; restore DE
+	POP	BC		; restore BC
 	RET
 
-; --- CLEAR ENTIRE DISPLAY ---------
-; Input:  A:  I/O address (00h/>00h)
-; Output: A:  error code
-;         CF: 1 at error
-DPBLNK:
-	PUSH	BC		; save BC register pair
-	PUSH	DE		; save DE register pair
-	PUSH	HL		; save HL register pair
-BLNKDN:	POP	HL		; restore HL register pair
-	POP	DE		; restore DE register pair
-	POP	BC		; restore BC register pair
+; ---- BLANK DISPLAY ---------------
+; Input:  B  = blank/show (FFh/<FFh)
+; Output: CF = 0
+DPBLNK:	LD	A, B		; B -> A
+	CP	0FFh		; check if A == FFh
+	JR	C, BLNKLE	; if A < FFh -> show
+	LD	A, 1Fh		; mask for blanking
+	JR	BLNKBU
+BLNKLE:	LD	A, 0Fh		; mask for normal display
+
+BLNKBU:	LD	HL, (BUADDR)	; buffer address
+	LD	BC, 13		; offset
+	ADD	HL, BC
+
+	LD	B, (HL)		; read current value
+	AND	B		; A = A & B
+	LD	(HL), A		; store result
+
+	CALL	WRLEDS		; update hardware
+
+BLNKDN:	XOR	A		; A = 0, CF = 0
+	POP	DE		; restore DE
+	POP	BC		; restore BC
 	RET
+
+; ---- FILL DISPLAY WITH ZEROS ----
+; Input:  -
+; Output: CF = 0
+DPZERO:	LD	HL, (BUADDR)	; start address
+	LD	BC, 0008h	; length = 8 bytes
+
+ZEROLP:	XOR	A		; A = 0
+	LD	(HL), A		; write 0
+	INC	HL		; next address
+	DEC	BC		; decrement counter
+	LD	A, B
+	OR	C		; check if BC == 0
+	JR	NZ, ZEROLP	; loop if not zero
+
+	CALL	WRDISP		; update hardware
+
+ZERODN:	XOR	A		; A = 0, CF = 0
+	POP	DE		; restore DE
+	POP	BC		; restore BC
+	RET
+
+; ---- WRITE ADDRESS AND DATA ---------------------
+; Format: wwww00bb  (each nibble stored separately)
+; Input:  B  = data byte (00-FFh)
+;         HL = data word (0000-FFFFh)
+; Output: CF = 0
+DPWAAD:	LD	DE, (BUADDR)	; buffer start address
+
+	; --- high byte (H) ---
+	LD	A, H
+	AND	0F0h		; isolate high nibble
+	RRCA			; shift right 4 bits
+	RRCA
+	RRCA
+	RRCA
+	LD	(DE), A		; store high nibble of H
+	INC	DE
+
+	LD	A, H
+	AND	0Fh		; isolate low nibble
+	LD	(DE), A
+	INC	DE		; store low nibble of H
+
+	; --- low byte (L) ---
+	LD	A, L
+	AND	0F0h		; isolate high nibble
+	RRCA			; shift right 4 bits
+	RRCA
+	RRCA
+	RRCA
+	LD	(DE), A		; store high nibble of L
+	INC	DE
+
+	LD	A, L
+	AND	0Fh		; isolate low nibble
+	LD	(DE), A
+	INC	DE		; store low nibble of L
+
+	; --- separator "00" ---
+	XOR	A		; A = 0
+	LD	(DE), A		; store separator
+	INC	DE
+	LD	(DE), A		; store separator
+	INC	DE
+
+	; --- data byte (B) ---
+	LD	A, B
+	AND	0F0h		; isolate high nibble
+	RRCA			; shift right 4 bits
+	RRCA
+	RRCA
+	RRCA
+	LD	(DE), A		; store high nibble of B
+	INC	DE
+
+	LD	A, B
+	AND	0Fh		; isolate low nibble
+	LD	(DE), A		; store low nibble of B
+
+	CALL	WRDISP		; update hardware
+
+WAADDN:	XOR	A		; A = 0, CF = 0
+	POP	DE		; restore DE
+	POP	BC		; restore BC
+	RET
+
+; ---- WRITE BYTE IN BINARY ----
+; Input:  B  = data byte (00–FFh)
+; Output: CF = 0
+DPWBYB:	LD	DE, (BUADDR)	; DE = buffer base (DIG7)
+
+	PUSH	DE		; preserve DE
+	PUSH	BC		; preserve BC
+	LD	BC, 0008h	; length = 8 bytes
+WBYBNZ:	LD	A, 01h		; A = 01h
+	LD	(DE), A		; write 01h
+	INC	DE		; next address
+	DEC	BC		; decrement counter
+	LD	A, B
+	OR	C		; check if BC == 0
+	JR	NZ, WBYBNZ	; loop if not zero
+	POP	DE		; restore DE
+	POP	BC		; restore BC
+
+	LD	A, B
+	LD	B, 8
+WBYBLP:	SLA	A
+	JR	C, WBYBNX
+	LD	(DE), 00h
+WBYBNX:	INC	DE
+	DEC	B
+	JP	NZ, WBYBLP
+
+	CALL	WRDISP		; update display hardware
+
+WBYBDN:	XOR	A		; A = 0, CF = 0
+	POP	DE		; restore DE
+	POP	BC		; restore BC
+	RET
+
+; ---- WRITE BYTE IN HEXADECIMAL ------------------------
+; Format: xxxbbxxx  (two hex digits placed at position C)
+; Input:  B  = data byte (00–FFh)
+;         C  = start position (01..07h)
+; Output: A  = error code (01h: bad position)
+;         CF = 1 on error, 0 on success
+DPWBYH:	LD	DE, (BUADDR)	; DE = buffer base (DIG7)
+
+	PUSH	DE
+	PUSH	BC
+	LD	BC, 0008h	; length = 8 bytes
+WBYHNZ:	XOR	A		; A = 0
+	LD	(DE), A		; write 0
+	INC	DE		; next address
+	DEC	BC		; decrement counter
+	LD	A, B
+	OR	C		; check if BC == 0
+	JR	NZ, WBYHNZ	; loop if not zero
+	POP	BC
+	POP	DE
+
+	LD	A, C
+	CP	1
+	JR	C, WBYHER	; if C < 1 -> invalid position
+	CP	8
+	JR	NC, WBYHER	; if C >= 8 -> invalid position
+
+	LD	C, A		; C = DIG index (1..7)
+	LD	A, 7
+	SUB	C		; A = 7 - C  → fordított index
+	LD	H, 0
+	LD	L, A		; HL = offset
+	ADD	HL, DE		; HL = BUADDR + (7 - C)
+
+	; --- high nibble of B ---
+	LD	A, B
+	AND	0F0h		; isolate upper nibble
+	RRCA			; shift right 4 bits -> 0..F
+	RRCA
+	RRCA
+	RRCA
+	LD	(HL), A		; store high hex digit
+	INC	HL
+
+	; --- low nibble of B ---
+	LD	A, B
+	AND	0Fh		; isolate lower nibble
+	LD	(HL), A		; store low hex digit
+
+	CALL	WRDISP		; update display hardware
+
+	XOR	A		; A = 0, CF = 0 (success)
+	JR	WBYHDN
+
+WBYHER:	LD	A, 1		; error code = bad position
+	SCF			; CF = 1 (error)
+
+WBYHDN:	POP	DE		; restore DE
+	POP	BC		; restore BC
+	RET
+
+; ---- WRITE WORD IN HEXADECIMAL -------------------------
+; Format: xxxwwwwx  (four hex digits placed at position C)
+; Input:  C  = start position (03..07h)
+;         HL = data word (0000–FFFFh)
+; Output: A  = error code (01h: bad position)
+;         CF = 1 on error, 0 on success
+DPWWRD:	LD	DE, (BUADDR)	; DE = buffer base (DIG7)
+
+	PUSH	DE
+	PUSH	BC
+	LD	BC, 0008h	; length = 8 bytes
+WWRDNZ:	XOR	A		; A = 0
+	LD	(DE), A		; write 0
+	INC	DE		; next address
+	DEC	BC		; decrement counter
+	LD	A, B
+	OR	C		; check if BC == 0
+	JR	NZ, WWRDNZ	; loop if not zero
+	POP	BC
+	POP	DE
+
+	LD	A, C
+	CP	3
+	JR	C, WWRDER	; if C < 3 -> invalid position
+	CP	8
+	JR	NC, WWRDER	; if C >= 8 -> invalid position
+
+	PUSH	HL		; preserve data word
+	LD	C, A		; C = DIG index (3..7)
+	LD	A, 7
+	SUB	C		; A = 7 - C  → fordított index
+	LD	H, 0
+	LD	L, A		; HL = offset
+	ADD	HL, DE		; HL = BUADDR + (7 - C)
+	EX	DE, HL		; HL <-> DE
+	POP	HL		; restore data word
+
+	; --- high byte (H) ---
+	LD	A, H
+	AND	0F0h		; isolate high nibble
+	RRCA			; shift right 4 bits
+	RRCA
+	RRCA
+	RRCA
+	LD	(DE), A		; store high nibble of H
+	INC	DE
+
+	LD	A, H
+	AND	0Fh		; isolate low nibble
+	LD	(DE), A
+	INC	DE		; store low nibble of H
+
+	; --- low byte (L) ---
+	LD	A, L
+	AND	0F0h		; isolate high nibble
+	RRCA			; shift right 4 bits
+	RRCA
+	RRCA
+	RRCA
+	LD	(DE), A		; store high nibble of L
+	INC	DE
+
+	LD	A, L
+	AND	0Fh		; isolate low nibble
+	LD	(DE), A
+
+	CALL	WRDISP		; update display hardware
+
+	XOR	A		; A = 0, CF = 0 (success)
+	JR	WWRDDN
+
+WWRDER:	LD	A, 1		; error code = bad position
+	SCF			; CF = 1 (error)
+
+WWRDDN:	POP	DE		; restore DE
+	POP	BC		; restore BC
+	RET
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ; --- CHANGE DIGIT -------
 ; Input:  A:  number (0-F)
@@ -102,97 +393,24 @@ BLNKDN:	POP	HL		; restore HL register pair
 ; Output: A:  error code
 ;         CF: 1 at error
 DPWDIG:
-	PUSH	BC		; save BC register pair
-	PUSH	DE		; save DE register pair
-	PUSH	HL		; save HL register pair
 WDIGDN:	POP	HL		; restore HL register pair
 	POP	DE		; restore DE register pair
 	POP	BC		; restore BC register pair
 	RET
 
-; --- WRITE ADDRESS AND DATA ----
-; Input:  A:  data (00-FF)
-;         HL: address (0000-FFFF)
-; Output: A:  error code
-;         CF: 1 at error
-DPWAAD:
-	PUSH	BC		; save BC register pair
-	PUSH	DE		; save DE register pair
-	PUSH	HL		; save HL register pair
-WAADDN:	POP	HL		; restore HL register pair
-	POP	DE		; restore DE register pair
-	POP	BC		; restore BC register pair
-	RET
 
-; --- WRITE BYTE IN BINARY ---
-; Input:  A:  data (00-FF)
-; Output: A:  error code
-;         CF: 1 at error
-DPWBYB:
-	PUSH	BC		; save BC register pair
-	PUSH	DE		; save DE register pair
-	PUSH	HL		; save HL register pair
-WAADDN:	POP	HL		; restore HL register pair
-	POP	DE		; restore DE register pair
-	POP	BC		; restore BC register pair
-	RET
 
-; --- WRITE BYTE IN HEXADECIMAL ---
-; Input:  A:  data (00-FF)
-; Output: A:  error code
-;         CF: 1 at error
-DPWBYH:
-	PUSH	BC		; save BC register pair
-	PUSH	DE		; save DE register pair
-	PUSH	HL		; save HL register pair
-WAADDN:	POP	HL		; restore HL register pair
-	POP	DE		; restore DE register pair
-	POP	BC		; restore BC register pair
-	RET
 
 ; --- mirror memory slice to display ---
-; Input:  HL: data (0000-FFFF)
-; Output: A:  error code
+; Input:  -
+; Output: -
 ;         CF: 1 at error
 DPWMIR:
-	PUSH	BC		; save BC register pair
-	PUSH	DE		; save DE register pair
-	PUSH	HL		; save HL register pair
-WAADDN:	POP	HL		; restore HL register pair
-	POP	DE		; restore DE register pair
+WMIRDN:	POP	DE		; restore DE register pair
 	POP	BC		; restore BC register pair
 	RET
 
 
-; --- WRITE WORD -------------
-; Input:  HL: data (0000-FFFF)
-; Output: A:  error code
-;         CF: 1 at error
-DPWWRD:
-	PUSH	BC		; save BC register pair
-	PUSH	DE		; save DE register pair
-	PUSH	HL		; save HL register pair
-WAADDN:	POP	HL		; restore HL register pair
-	POP	DE		; restore DE register pair
-	POP	BC		; restore BC register pair
-	RET
-
-
-
-
-
-;------
-
-	JP	DPWBYB		; write a byte in binary
-	JP	DPWBYH		; write a byte in hexadecimal
-	JP	DPWMIR		; mirror memory slice to display
-	JP	DPWWRD		; write a word
-
-	JP	SWRADD		; read address switches
-	JP	SWRBTN		; read buttons
-	JP	SWRDAT		; read data switches
-	JP	SWRMIR		; mirror switch matrix to memory
-	JP	SWWLED		; write all status LEDs
 
 ------------------------------------------------------------
 
@@ -221,35 +439,17 @@ RDATDN:	POP	HL		; restore HL register pair
 	POP	BC		; restore BC register pair
 	RET
 
+WRDISP:
+	RET
 
+WRLED:
+	RET
 
+RDSWTCH:
+	RET
 
-
-
-	
-|data (00-FF)|           |                |DPWBYB|            |                |
-|data (00-FF)|           |                |DPWBYF|            |                |
-|            |           |                |DPWMIR|            |                |
-|            |           |data (0000-FFFF)|DPWWRD|            |                |
-|            |           |                |SWRADD|            |data (0000-FFFF)|
-|            |           |                |SWRBTN|data (00-3F)|                |
-|            |           |                |SWRDAT|data (00-FF)|                |
-|            |           |                |SWRMIR|            |                |
-|number (0-F)|           |                |SWWLED|            |                |
-
-
-MAXENT	DB	1
-
-
-; -- DATA AREA -----------------------------------------------------------------
-ADDR:	DB	0			; I/O address
+; -------- DATA AREA --------
+IOADDR:	DB	0		; I/O address
+BUADDR:	DB	0		; I/O address
 	END
-IOA:	DB	0		; I/O address
-BUA:	DB	0		; buffer address
-	END
-
-
-DPBUFF:	DB	0		; 
-	DB	0
-	DB	0
-	DB	0
+
