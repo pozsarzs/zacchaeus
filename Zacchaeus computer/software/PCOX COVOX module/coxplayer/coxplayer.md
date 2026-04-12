@@ -1,0 +1,20 @@
+# Zacchaeus Microcomputer
+
+## COXPlayer program
+
+|Key         |Value                                             |
+|------------|--------------------------------------------------|
+|version     |v0.1                                              |
+|licence     |EUPL v1.2                                         |
+|architecture|Z80                                               |
+|OS          |CP/M-80                                           |
+|compiler    |Borland Turbo Pascal v3.01A (1985)                |
+|author      |[Pozsar Zsolt](mailto:pozsarzs@gmail.com) (2026)  |
+|web         |[Pozsi's homepage](https://www.pozsarzs.hu)       |
+|            |[on Github](https://github.com/pozsarzs/zacchaeus)|
+
+Simple raw audio file player program for the COX module.
+
+### Usage
+
+(..)

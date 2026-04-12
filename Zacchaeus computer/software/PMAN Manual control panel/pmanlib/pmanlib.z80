@@ -1,0 +1,255 @@
+; +----------------------------------------------------------------------------+
+; | Zacchaeus Microcomputer                                                    |
+; | Copyright (C) 2025-2026 Pozsar Zsolt <pozsarzs@gmail.com>                  |
+; | pmanlib.z80                                                                |
+; | Routine collection, Z80, CP/M-80, v0.1                                     |
+; +----------------------------------------------------------------------------+
+; This program is free software: you can redistribute it and/or modify it
+; under the terms of the European Union Public License 1.2 version.
+;
+; This program is distributed in the hope that it will be useful, but WITHOUT
+; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+; FOR A PARTICULAR PURPOSE.
+
+PUBLIC PMAN
+
+; REGISTERS
+; ------------------------------------
+; Input:     A: function code
+;            BC, DE, HL: input data
+; Output:    A, HL: output data (CF=0)
+;            A: error code (CF=1)
+; Preserves: BC, DE
+; Clobbers:  AF, HL
+
+; ERROR CODES
+; ------------------------------------
+; 01h:       invalid function code
+; 02h:       invalid parameter
+; 03h:       timeout
+; 04h:       device error
+
+; ---- ENTRY POINT AND JUMP TABLE ----
+PMAN:	CP	FCMAX		; compare function code with maximal value
+	JR	NC, MNBADF	; if 
+
+	ADD	A, A
+	LD	L, A
+	LD	H, 0
+	ADD	HL, MNJTAB
+
+	LD	E,(HL)
+	INC	HL
+	LD	D,(HL)
+	EX	DE,HL
+	JP	(HL)
+
+MNJTAB:	DW	IFINIT		; set base address and initialize interface
+	DW	DPBLNK		; clear entire display
+	DW	DPWAAD		; write address and data
+	DW	DPWBYB		; write byte in binary
+	DW	DPWBYH		; write byte in hexadecimal
+	DW	DPWWRD		; write word
+	DW	DPWDIG		; change digit
+	DW	DPWMIR		; write 8 byte from memory to display
+
+	DW	SWRADD		; read address switches
+	DW	SWRDAT		; read data switches
+	DW	SWRBTN		; read buttons
+	DW	SWRMIR		; mirror switch matrix to memory
+	DW	SWWLED		; write all status LEDs
+
+MNBADF:	LD	A, 01h
+	SCF
+	RET
+
+; --- API FUNCTION -------------------------------------
+
+
+
+; --- API FUNCTION --------------------------
+
+; --- INITIALIZE INTERFACE ---------------
+; Input:  A:  I/O address (00h-FFh)
+;         HL: buffer address (0000h-FFFFh)
+; Output: A:  error code
+;         CF: 1 at error
+IFINIT:
+	PUSH	BC		; save BC register pair
+	PUSH	DE		; save DE register pair
+	PUSH	HL		; save HL register pair
+INITDN:	POP	HL		; restore HL register pair
+	POP	DE		; restore DE register pair
+	POP	BC		; restore BC register pair
+	RET
+
+; --- CLEAR ENTIRE DISPLAY ---------
+; Input:  A:  I/O address (00h/>00h)
+; Output: A:  error code
+;         CF: 1 at error
+DPBLNK:
+	PUSH	BC		; save BC register pair
+	PUSH	DE		; save DE register pair
+	PUSH	HL		; save HL register pair
+BLNKDN:	POP	HL		; restore HL register pair
+	POP	DE		; restore DE register pair
+	POP	BC		; restore BC register pair
+	RET
+
+; --- CHANGE DIGIT -------
+; Input:  A:  number (0-F)
+;         B:  digit (0-7)
+; Output: A:  error code
+;         CF: 1 at error
+DPWDIG:
+	PUSH	BC		; save BC register pair
+	PUSH	DE		; save DE register pair
+	PUSH	HL		; save HL register pair
+WDIGDN:	POP	HL		; restore HL register pair
+	POP	DE		; restore DE register pair
+	POP	BC		; restore BC register pair
+	RET
+
+; --- WRITE ADDRESS AND DATA ----
+; Input:  A:  data (00-FF)
+;         HL: address (0000-FFFF)
+; Output: A:  error code
+;         CF: 1 at error
+DPWAAD:
+	PUSH	BC		; save BC register pair
+	PUSH	DE		; save DE register pair
+	PUSH	HL		; save HL register pair
+WAADDN:	POP	HL		; restore HL register pair
+	POP	DE		; restore DE register pair
+	POP	BC		; restore BC register pair
+	RET
+
+; --- WRITE BYTE IN BINARY ---
+; Input:  A:  data (00-FF)
+; Output: A:  error code
+;         CF: 1 at error
+DPWBYB:
+	PUSH	BC		; save BC register pair
+	PUSH	DE		; save DE register pair
+	PUSH	HL		; save HL register pair
+WAADDN:	POP	HL		; restore HL register pair
+	POP	DE		; restore DE register pair
+	POP	BC		; restore BC register pair
+	RET
+
+; --- WRITE BYTE IN HEXADECIMAL ---
+; Input:  A:  data (00-FF)
+; Output: A:  error code
+;         CF: 1 at error
+DPWBYH:
+	PUSH	BC		; save BC register pair
+	PUSH	DE		; save DE register pair
+	PUSH	HL		; save HL register pair
+WAADDN:	POP	HL		; restore HL register pair
+	POP	DE		; restore DE register pair
+	POP	BC		; restore BC register pair
+	RET
+
+; --- mirror memory slice to display ---
+; Input:  HL: data (0000-FFFF)
+; Output: A:  error code
+;         CF: 1 at error
+DPWMIR:
+	PUSH	BC		; save BC register pair
+	PUSH	DE		; save DE register pair
+	PUSH	HL		; save HL register pair
+WAADDN:	POP	HL		; restore HL register pair
+	POP	DE		; restore DE register pair
+	POP	BC		; restore BC register pair
+	RET
+
+
+; --- WRITE WORD -------------
+; Input:  HL: data (0000-FFFF)
+; Output: A:  error code
+;         CF: 1 at error
+DPWWRD:
+	PUSH	BC		; save BC register pair
+	PUSH	DE		; save DE register pair
+	PUSH	HL		; save HL register pair
+WAADDN:	POP	HL		; restore HL register pair
+	POP	DE		; restore DE register pair
+	POP	BC		; restore BC register pair
+	RET
+
+
+
+
+
+;------
+
+	JP	DPWBYB		; write a byte in binary
+	JP	DPWBYH		; write a byte in hexadecimal
+	JP	DPWMIR		; mirror memory slice to display
+	JP	DPWWRD		; write a word
+
+	JP	SWRADD		; read address switches
+	JP	SWRBTN		; read buttons
+	JP	SWRDAT		; read data switches
+	JP	SWRMIR		; mirror switch matrix to memory
+	JP	SWWLED		; write all status LEDs
+
+------------------------------------------------------------
+
+; --- READ ADDRESS SWITCHES ---
+; Input:  -
+; Output: HL: data (0000-FFFF)
+;         A:  error code = 0 
+;         CF: 1 at error = 0
+SWRADD:
+	PUSH	BC		; save BC register pair
+	PUSH	DE		; save DE register pair
+RADDDN:	POP	DE		; restore DE register pair
+	POP	BC		; restore BC register pair
+	RET
+
+; --- READ DATA SWITCHES ---
+; Input:  -
+; Output: A: data (00-FFh)
+;         CF: 1 at error = 0
+SWRDAT:
+	PUSH	BC		; save BC register pair
+	PUSH	DE		; save DE register pair
+	PUSH	HL		; save HL register pair
+RDATDN:	POP	HL		; restore HL register pair
+	POP	DE		; restore DE register pair
+	POP	BC		; restore BC register pair
+	RET
+
+
+
+
+
+
+	
+|data (00-FF)|           |                |DPWBYB|            |                |
+|data (00-FF)|           |                |DPWBYF|            |                |
+|            |           |                |DPWMIR|            |                |
+|            |           |data (0000-FFFF)|DPWWRD|            |                |
+|            |           |                |SWRADD|            |data (0000-FFFF)|
+|            |           |                |SWRBTN|data (00-3F)|                |
+|            |           |                |SWRDAT|data (00-FF)|                |
+|            |           |                |SWRMIR|            |                |
+|number (0-F)|           |                |SWWLED|            |                |
+
+
+MAXENT	DB	1
+
+
+; -- DATA AREA -----------------------------------------------------------------
+ADDR:	DB	0			; I/O address
+	END
+IOA:	DB	0		; I/O address
+BUA:	DB	0		; buffer address
+	END
+
+
+DPBUFF:	DB	0		; 
+	DB	0
+	DB	0
+	DB	0

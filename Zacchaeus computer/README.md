@@ -78,6 +78,7 @@ The computer consists of the following components:
 |name   |function                                                                                                                                           |
 |-------|---------------------------------------------------------------------------------------------------------------------------------------------------|
 |PANA   |Analog input/output module (2AI, 2AO, 0-10V)                                                                                                       |
+|PTVI   |Monochrome Graphics Adapter with external RF modulator                                                                                             |
 |PTAP   |[Tape and speaker interface module](https://github.com/pozsarzs/zacchaeus/tree/main/Zacchaeus%20computer/hardware/PTAP%20Tape%20interface%20module)|
 
 ---

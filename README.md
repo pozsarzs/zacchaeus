@@ -1,11 +1,11 @@
 <img align="left" style="height:64px; float: left;  margin: 0 0 0 0;" alt="logo" src="pictures/icon/z180_64x64_black.png">
 
-# Zacchaeus Microcomputer
-**8-bit microcomputer built from commercially available and home-built components**  
-
 > [!NOTE]
 > Content will be updated continuously as development progresses.  
-> The [current status of the related files is shown here](devstat/Zacchaeus_files.md).
+> The [current status of the related files is shown here](projectmap/projectmap.html).
+
+# Zacchaeus Microcomputer
+**8-bit microcomputer built from commercially available and home-built components**  
 
 This project is a personal journey back in time to the heroic age of computing:
 a newly built, classic 8-bit system, in which I supplement the factory components
@@ -31,10 +31,6 @@ A detailed description of the computer can be found in the
 
 ## External interface box
 
-> [!NOTE]
-> Content will be updated continuously as development progresses.  
-> The [current status of the related files is shown here](devstat/PEIX_files.md).
-
 PEIX is an 8-slot interface connecting legacy _Klöckner-Moeller PS316_ I/O modules
 to the Zacchaeus computer via RS-232 serial line with SCRAP protocol. It restores
 functionality to these obsolete analog and digital modules.
@@ -45,10 +41,6 @@ A detailed description of the interface box can be found in the
 [PEIX External interface box](https://github.com/pozsarzs/zacchaeus/tree/main/PEIX%20External%20interface%20box) folder.
 
 ## External memory box (EPROM bank)
-
-> [!NOTE]
-> Content will be updated continuously as development progresses.  
-> The [current status of the related files is shown here](devstat/PEMX_files.md).
 
 PEMX is an 8-slot external EPROM bank connected via two PIO ports. It supports
 2764 through 27512 EPROMs, including 'A' and CMOS variants with raw data and

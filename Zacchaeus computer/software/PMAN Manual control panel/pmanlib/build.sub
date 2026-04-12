@@ -1,0 +1,4 @@
+z80asm pmanlib/m
+z80asm $1/m
+l80 $1,pmanlib,$1/n/e
+

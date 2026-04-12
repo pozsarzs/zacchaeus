@@ -1,0 +1,4 @@
+z80asm pemxlib/m
+z80asm $1/m
+l80 $1,pemxlib,$1/n/e
+

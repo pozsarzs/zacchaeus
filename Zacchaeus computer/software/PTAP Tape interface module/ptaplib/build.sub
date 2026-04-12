@@ -1,0 +1,4 @@
+z80asm ptaplib/m
+z80asm $1/m
+l80 $1,ptaplib,$1/n/e
+
