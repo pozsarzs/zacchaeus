@@ -1,9 +1,5 @@
 <img align="left" style="height:64px; float: left;  margin: 0 0 0 0;" alt="logo" src="pictures/icon/z180_64x64_black.png">
 
-> [!NOTE]
-> Content will be updated continuously as development progresses.  
-> The [current status of the related files is shown here](projectmap/projectmap.html).
-
 # Zacchaeus Microcomputer
 **8-bit microcomputer built from commercially available and home-built components**  
 
@@ -59,3 +55,7 @@ A detailed description of the memory box can be found in the
 - [The FORTRAN Month](https://github.com/pozsarzs/fortran_month)
 - [Synchronized Client Register Access Protocol](https://github.com/pozsarzs/scrap)
 - [ROMCat EPROM filesystem](https://github.com/pozsarzs/romfat)
+
+> [!NOTE]
+> Content will be updated continuously as development progresses.  
+> The [current status of the related files is shown here](projectmap/projectmap.html).
