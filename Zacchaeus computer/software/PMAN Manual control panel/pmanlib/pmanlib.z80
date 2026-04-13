@@ -51,11 +51,11 @@ MNJTAB:	DW	IFINIT		; 0: set base address and initialize interface
 	DW	DPWBYH		; 5: write byte in hexadecimal
 	DW	DPWWRD		; 6: write word
 	DW	DPWDIG		; 7: change digit
-	DW	DPWMIR		; 8: write 8 byte from memory to display
+	DW	DPWMIR		; 8: mirror buffer content to display
 	DW	SWRADD		; 9: read address switches
 	DW	SWRDAT		; 10: read data switches
 	DW	SWRBTN		; 11: read buttons
-	DW	SWRMIR		; 12: mirror switch matrix to memory
+	DW	SWRMIR		; 12: mirror switch matrix to buffer
 	DW	SWWLED		; 13: write all status LEDs
 
 MNBADF:	POP	DE		; restore DE
@@ -64,9 +64,9 @@ MNBADF:	POP	DE		; restore DE
 	SCF			; CR = 1
 	RET
 
-; ---- INITIALIZE INTERFACE ---------------
-; Input:  B  = I/O address (00h-FFh)
-;         HL = buffer address (0000h-FFFFh)
+; ---- INITIALIZE INTERFACE --------------
+; Input:  B  = I/O address (00-FFh)
+;         HL = buffer address (0000-FFFFh)
 ; Output: CF = 0
 IFINIT:	LD	A, B		; B -> A
 	LD	(IOADDR), A	; store i/o base address
@@ -361,90 +361,107 @@ WWRDDN:	POP	DE		; restore DE
 	POP	BC		; restore BC
 	RET
 
+; ---- CHANGE A DIGIT -------------------------------------
+; Input:  B = number (00..0Fh)
+;         C = digit number (00..07h)
+; Output: A  = error code (01h: bad number, 02h: bad digit)
+;         CF = 1 on error, 0 on success
+DPWDIG:	LD	DE, (BUADDR)	; DE = buffer base (DIG7)
 
+;	(...)
 
+	CALL	WRDISP		; update display hardware
 
+	XOR	A		; A = 0, CF = 0 (success)
+	JR	WWRDDN
 
+WDIGE1:	LD	A, 1		; error code = bad position
+	SCF			; CF = 1 (error)
+	JR	WWRDDN
 
+WDIGE2:	LD	A, 2		; error code = bad position
+	SCF			; CF = 1 (error)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-; --- CHANGE DIGIT -------
-; Input:  A:  number (0-F)
-;         B:  digit (0-7)
-; Output: A:  error code
-;         CF: 1 at error
-DPWDIG:
-WDIGDN:	POP	HL		; restore HL register pair
-	POP	DE		; restore DE register pair
-	POP	BC		; restore BC register pair
+WDIGDN:	POP	DE		; restore DE
+	POP	BC		; restore BC
 	RET
 
-
-
-
-; --- mirror memory slice to display ---
+; ---- MIRROR BUFFER CONTENT TO DISPLAY ----
 ; Input:  -
-; Output: -
-;         CF: 1 at error
-DPWMIR:
-WMIRDN:	POP	DE		; restore DE register pair
-	POP	BC		; restore BC register pair
+; Output: CF = 0
+DPWMIR:	CALL	WRDISP		; update display hardware
+
+	XOR	A		; A = 0, CF = 0 (success)
+WMIRDN:	POP	DE		; restore DE
+	POP	BC		; restore BC
 	RET
 
-
-
-------------------------------------------------------------
-
-; --- READ ADDRESS SWITCHES ---
+; ---- READ ADDRESS SWITCHES --------
 ; Input:  -
-; Output: HL: data (0000-FFFF)
-;         A:  error code = 0 
-;         CF: 1 at error = 0
-SWRADD:
-	PUSH	BC		; save BC register pair
-	PUSH	DE		; save DE register pair
-RADDDN:	POP	DE		; restore DE register pair
-	POP	BC		; restore BC register pair
+; Output: HL = data word (0000–FFFFh)
+;         CF = 0
+SWRADD:	LD	DE, (BUADDR)	; DE = buffer base (DIG7)
+
+	XOR	A		; A = 0, CF = 0 (success)
+RADDDN:	POP	DE		; restore DE
+	POP	BC		; restore BC
 	RET
 
-; --- READ DATA SWITCHES ---
+; ---- READ DATA SWITCHES ------
 ; Input:  -
-; Output: A: data (00-FFh)
-;         CF: 1 at error = 0
-SWRDAT:
-	PUSH	BC		; save BC register pair
-	PUSH	DE		; save DE register pair
-	PUSH	HL		; save HL register pair
-RDATDN:	POP	HL		; restore HL register pair
-	POP	DE		; restore DE register pair
-	POP	BC		; restore BC register pair
+; Output: A = data byte (00–FFh)
+;         CF = 0
+SWRDAT:	LD	DE, (BUADDR)	; DE = buffer base (DIG7)
+
+	XOR	A		; A = 0, CF = 0 (success)
+	LD	A, ...
+RDATDN:	POP	DE		; restore DE
+	POP	BC		; restore BC
 	RET
 
+; ---- READ BUTTONS ------------
+; Input:  -
+; Output: A = data byte (00–FFh)
+;         CF = 0
+SWRBTN:	LD	DE, (BUADDR)	; DE = buffer base (DIG7)
+
+	XOR	A		; A = 0, CF = 0 (success)
+	LD	A, ...
+RBTNDN:	POP	DE		; restore DE
+	POP	BC		; restore BC
+	RET
+
+; ---- MIRROR SWITCH MATRIX TO BUFFER ----
+; Input:  -
+; Output: CF = 0
+SWRMIR:	LD	DE, (BUADDR)	; DE = buffer base (DIG7)	
+
+	XOR	A		; A = 0, CF = 0 (success)
+RMIRDN:	POP	DE		; restore DE
+	POP	BC		; restore BC
+	RET
+
+; ---- WRITE ALL STATUS LEDS -----
+; Input:  A = data byte (00–FFh)
+; Output: CF = 0
+SWWLED:	LD	DE, (BUADDR)	; DE = buffer base (DIG7)
+
+	CALL	WRLED		; update hardware
+
+	XOR	A		; A = 0, CF = 0 (success)
+WLEDDN:	POP	DE		; restore DE
+	POP	BC		; restore BC
+	RET
+
+; ---- WRITE DATA FROM BUFFER TO DISPLAY  -----
 WRDISP:
 	RET
 
+; ---- WRITE DATA FROM BUFFER TO STATUS LEDs  -----
 WRLED:
 	RET
 
+; ---- READ SWITCH AND BUTTON MATRIX DATA TO BUFFER -----
 RDSWTCH:
 	RET
 
