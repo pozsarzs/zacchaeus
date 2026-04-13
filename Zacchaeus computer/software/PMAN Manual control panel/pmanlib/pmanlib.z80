@@ -88,14 +88,14 @@ DPBLNK:	LD	A, B		; B -> A
 BLNKLE:	LD	A, 0Fh		; mask for normal display
 
 BLNKBU:	LD	HL, (BUADDR)	; buffer address
-	LD	BC, 13		; offset
+	LD	BC, 0Ch		; offset
 	ADD	HL, BC
 
 	LD	B, (HL)		; read current value
 	AND	B		; A = A & B
 	LD	(HL), A		; store result
 
-	CALL	WRLEDS		; update hardware
+	CALL	WRLED		; update hardware
 
 BLNKDN:	XOR	A		; A = 0, CF = 0
 	POP	DE		; restore DE
@@ -105,7 +105,7 @@ BLNKDN:	XOR	A		; A = 0, CF = 0
 ; ---- FILL DISPLAY WITH ZEROS ----
 ; Input:  -
 ; Output: CF = 0
-DPZERO:	LD	HL, (BUADDR)	; start address
+DPZERO:	LD	HL, (BUADDR)	; HL = buffer starting address
 	LD	BC, 0008h	; length = 8 bytes
 
 ZEROLP:	XOR	A		; A = 0
@@ -128,7 +128,7 @@ ZERODN:	XOR	A		; A = 0, CF = 0
 ; Input:  B  = data byte (00-FFh)
 ;         HL = data word (0000-FFFFh)
 ; Output: CF = 0
-DPWAAD:	LD	DE, (BUADDR)	; buffer start address
+DPWAAD:	LD	DE, (BUADDR)	; DE = buffer starting address
 
 	; --- high byte (H) ---
 	LD	A, H
@@ -191,7 +191,7 @@ WAADDN:	XOR	A		; A = 0, CF = 0
 ; ---- WRITE BYTE IN BINARY ----
 ; Input:  B  = data byte (00–FFh)
 ; Output: CF = 0
-DPWBYB:	LD	DE, (BUADDR)	; DE = buffer base (DIG7)
+DPWBYB:	LD	DE, (BUADDR)	; DE = buffer starting address
 
 	PUSH	DE		; preserve DE
 	PUSH	BC		; preserve BC
@@ -228,7 +228,7 @@ WBYBDN:	XOR	A		; A = 0, CF = 0
 ;         C  = start position (01..07h)
 ; Output: A  = error code (01h: bad position)
 ;         CF = 1 on error, 0 on success
-DPWBYH:	LD	DE, (BUADDR)	; DE = buffer base (DIG7)
+DPWBYH:	LD	DE, (BUADDR)	; DE = buffer starting address
 
 	PUSH	DE
 	PUSH	BC
@@ -289,7 +289,7 @@ WBYHDN:	POP	DE		; restore DE
 ;         HL = data word (0000–FFFFh)
 ; Output: A  = error code (01h: bad position)
 ;         CF = 1 on error, 0 on success
-DPWWRD:	LD	DE, (BUADDR)	; DE = buffer base (DIG7)
+DPWWRD:	LD	DE, (BUADDR)	; DE = buffer starting address
 
 	PUSH	DE
 	PUSH	BC
@@ -361,23 +361,40 @@ WWRDDN:	POP	DE		; restore DE
 	POP	BC		; restore BC
 	RET
 
-; ---- CHANGE A DIGIT -------------------------------------
+; ---- CHANGE A DIGIT ----------------------------------------
 ; Input:  B = number (00..0Fh)
-;         C = digit number (00..07h)
-; Output: A  = error code (01h: bad number, 02h: bad digit)
+;         C = position (00..07h)
+; Output: A  = error code (01h: bad number, 02h: bad position)
 ;         CF = 1 on error, 0 on success
-DPWDIG:	LD	DE, (BUADDR)	; DE = buffer base (DIG7)
+DPWDIG:	LD	DE, (BUADDR)	; DE = buffer starting address
 
-;	(...)
+	LD	A, B
+	CP	10h
+	JR	NC, WDIGE1	; if B >= 16 -> bad number
+
+	LD	A, C
+	CP	08h
+	JR	NC, WDIGE2	; if C >= 8 -> bad position
+
+	LD	A, 7
+	SUB	C		; A = 7 - C  → fordított index
+	LD	H, 0
+	LD	L, A		; HL = offset
+	ADD	HL, DE		; HL = BUADDR + (7 - C)
+
+	; --- low nibble of B ---
+	LD	A, B
+	AND	0Fh		; isolate lower nibble
+	LD	(HL), A		; store low hex digit
 
 	CALL	WRDISP		; update display hardware
 
 	XOR	A		; A = 0, CF = 0 (success)
-	JR	WWRDDN
+	JR	WDIGDN
 
-WDIGE1:	LD	A, 1		; error code = bad position
+WDIGE1:	LD	A, 1		; error code = bad number
 	SCF			; CF = 1 (error)
-	JR	WWRDDN
+	JR	WDIGDN
 
 WDIGE2:	LD	A, 2		; error code = bad position
 	SCF			; CF = 1 (error)
@@ -400,10 +417,18 @@ WMIRDN:	POP	DE		; restore DE
 ; Input:  -
 ; Output: HL = data word (0000–FFFFh)
 ;         CF = 0
-SWRADD:	LD	DE, (BUADDR)	; DE = buffer base (DIG7)
+SWRADD:	CALL	RDSWTCH		; read switch matrix into buffer
 
-	XOR	A		; A = 0, CF = 0 (success)
-RADDDN:	POP	DE		; restore DE
+	LD	DE, (BUADDR)	; DE = buffer starting address
+	LD	HL, 0008h	; offset to address switches state within buffer
+	ADD	HL, DE		; HL = address of address switches state 
+	EX	DE, HL
+	LD	H, (DE)		; load high address switches state into H
+	INC	DE		; advance to next byte
+	LD	L, (DE)		; load low address switches state into L
+
+RADDDN:	XOR	A		; A = 0, CF = 0 (success)
+	POP	DE		; restore DE
 	POP	BC		; restore BC
 	RET
 
@@ -411,7 +436,13 @@ RADDDN:	POP	DE		; restore DE
 ; Input:  -
 ; Output: A = data byte (00–FFh)
 ;         CF = 0
-SWRDAT:	LD	DE, (BUADDR)	; DE = buffer base (DIG7)
+SWRDAT:	CALL	RDSWTCH		; read switch matrix into buffer
+
+	LD	DE, (BUADDR)	; DE = buffer starting address
+	LD	HL, 000Ah	; offset to data switches state within buffer
+	ADD	HL, DE		; HL = address of data switches state 
+	XOR	A		; A = 0, CF = 0 (success)
+	LD	A, (HL)		; load data switches state into A
 
 	XOR	A		; A = 0, CF = 0 (success)
 	LD	A, ...
@@ -423,10 +454,14 @@ RDATDN:	POP	DE		; restore DE
 ; Input:  -
 ; Output: A = data byte (00–FFh)
 ;         CF = 0
-SWRBTN:	LD	DE, (BUADDR)	; DE = buffer base (DIG7)
+SWRBTN:	CALL	RDSWTCH		; read switch matrix into buffer
 
+	LD	DE, (BUADDR)	; DE = buffer starting address
+	LD	HL, 000Bh	; offset to button data within buffer
+	ADD	HL, DE		; HL = address of button data byte
 	XOR	A		; A = 0, CF = 0 (success)
-	LD	A, ...
+	LD	A, (HL)		; load button state into A
+
 RBTNDN:	POP	DE		; restore DE
 	POP	BC		; restore BC
 	RET
@@ -434,22 +469,25 @@ RBTNDN:	POP	DE		; restore DE
 ; ---- MIRROR SWITCH MATRIX TO BUFFER ----
 ; Input:  -
 ; Output: CF = 0
-SWRMIR:	LD	DE, (BUADDR)	; DE = buffer base (DIG7)	
+SWRMIR:	CALL	RDSWTCH		; read matrix to buffer
 
-	XOR	A		; A = 0, CF = 0 (success)
-RMIRDN:	POP	DE		; restore DE
+RMIRDN:	XOR	A		; A = 0, CF = 0 (success)
+	POP	DE		; restore DE
 	POP	BC		; restore BC
 	RET
 
 ; ---- WRITE ALL STATUS LEDS -----
 ; Input:  A = data byte (00–FFh)
 ; Output: CF = 0
-SWWLED:	LD	DE, (BUADDR)	; DE = buffer base (DIG7)
+SWWLED:	LD	DE, (BUADDR)	; DE = buffer starting address
+	LD	HL, 000Ch	; offset to status LED position within buffer
+	ADD	HL, DE		; HL = address of status LED byte
+	LD	(HL), A		; store input data into buffer
 
-	CALL	WRLED		; update hardware
+	CALL	WRLED		; update LEDs hardware
 
-	XOR	A		; A = 0, CF = 0 (success)
-WLEDDN:	POP	DE		; restore DE
+WLEDDN:	XOR	A		; A = 0, CF = 0 (success)
+	POP	DE		; restore DE
 	POP	BC		; restore BC
 	RET
 

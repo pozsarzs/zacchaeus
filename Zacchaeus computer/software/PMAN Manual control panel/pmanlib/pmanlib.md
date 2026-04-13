@@ -60,7 +60,7 @@ panel's buttons, switches, LEDs and hexadecimal LED displays.
 |   9  |  A07  |  A06  |  A05  |  A04  |  A03  |  A02  |  A01  |  A00  |
 |  10  |  D7   |  D6   |  D5   |  D4   |  D3   |  D2   |  D1   |  D0   |
 |  11  |   0   |   0   | STEP  |  RUN  | PAUS  | STOP  | EXAM  | DEPO  |
-|  11  |   0   |   0   |   0   | BLANK | LERR  | LRUN  | LPAU  | LSTP  |
+|  12  |   0   |   0   |   0   | BLANK | LERR  | LRUN  | LPAU  | LSTP  |
 
 The first eight bytes of the buffer contain the display (DIG7..DIG0), the next
 4 byte contain the position of the address switches (A15-A08) and the data
