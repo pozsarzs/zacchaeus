@@ -91,34 +91,34 @@ status. (1 is means closed switch or active LED.)
 
 #### Switches on switch module
 
-|_on the board_|operation|SW1 |SW2 |SW3 |SW4 |SW5 |SW6 |SW7 |SW8 |
-|--------------|:-------:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|_logical name_|         |A15 |A14 |A13 |A12 |A11 |A10 |A09 |A08 |
-|_i/o address_ |select   |BA+5|BA+5|BA+5|BA+5|BA+5|BA+5|BA+5|BA+5|
-|_data_        |select   |08h |04h |02h |01h |80h |40h |20h |10h |
-|_i/o address_ |read     |BA+6|BA+6|BA+6|BA+6|BA+6|BA+6|BA+6|BA+6|
-|_data_        |read     |0Eh |0Dh |0Bh |07h |0Eh |0Dh |0Bh |07h |
+|_on the board_    |operation|SW1 |SW2 |SW3 |SW4 |SW5 |SW6 |SW7 |SW8 |
+|------------------|:-------:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|_logical name_    |         |A15 |A14 |A13 |A12 |A11 |A10 |A09 |A08 |
+|_i/o address_     |select   |BA+5|BA+5|BA+5|BA+5|BA+5|BA+5|BA+5|BA+5|
+|_data_            |select   |08h |04h |02h |01h |80h |40h |20h |10h |
+|_i/o address_     |read     |BA+6|BA+6|BA+6|BA+6|BA+6|BA+6|BA+6|BA+6|
+|_bit_ (active low)|         | 0  | 0  | 0  | 0  | 0  | 0  | 0  | 0  |
 
-|_on the board_|operation|SW9 |SW10|SW11|SW12|SW13|SW14|S15 |SW16|
-|--------------|:-------:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|_logical name_|         |A07 |A06 |A05 |A04 |A03 |A02 |A01 |A00 |
-|_i/o address_ |select   |BA+5|BA+5|BA+5|BA+5|BA+5|BA+5|BA+5|BA+5|
-|_data_        |select   |08h |04h |02h |01h |80h |40h |20h |10h |
-|_i/o address_ |read     |BA+6|BA+6|BA+6|BA+6|BA+6|BA+6|BA+6|BA+6|
-|_data_        |read     |0Eh |0Dh |0Bh |07h |0Eh |0Dh |0Bh |07h |
+|_on the board_    |operation|SW9 |SW10|SW11|SW12|SW13|SW14|S15 |SW16|
+|------------------|:-------:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|_logical name_    |         |A07 |A06 |A05 |A04 |A03 |A02 |A01 |A00 |
+|_i/o address_     |select   |BA+5|BA+5|BA+5|BA+5|BA+5|BA+5|BA+5|BA+5|
+|_data_            |select   |08h |04h |02h |01h |80h |40h |20h |10h |
+|_i/o address_     |read     |BA+6|BA+6|BA+6|BA+6|BA+6|BA+6|BA+6|BA+6|
+|_bit_ (active low)|         | 1  | 1  | 1  | 1  | 1  | 1  | 1  | 1  |
 
-|_on the board_|operation|SW17|SW18|SW19|SW20|SW21|SW22|SW23|SW24|
-|--------------|:-------:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|_logical name_|         | D7 | D6 | D5 | D4 | D3 | D2 | D1 | D0 |
-|_i/o address_ |select   |BA+5|BA+5|BA+5|BA+5|BA+5|BA+5|BA+5|BA+5|
-|_data_        |select   |08h |04h |02h |01h |80h |40h |20h |10h |
-|_i/o address_ |read     |BA+6|BA+6|BA+6|BA+6|BA+6|BA+6|BA+6|BA+6|
-|_data_        |read     |0Eh |0Dh |0Bh |07h |0Eh |0Dh |0Bh |07h |
+|_on the board_    |operation|SW17|SW18|SW19|SW20|SW21|SW22|SW23|SW24|
+|------------------|:-------:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|_logical name_    |         | D7 | D6 | D5 | D4 | D3 | D2 | D1 | D0 |
+|_i/o address_     |select   |BA+5|BA+5|BA+5|BA+5|BA+5|BA+5|BA+5|BA+5|
+|_data_            |select   |08h |04h |02h |01h |80h |40h |20h |10h |
+|_i/o address_     |read     |BA+6|BA+6|BA+6|BA+6|BA+6|BA+6|BA+6|BA+6|
+|_bit_ (active low)|         | 2  | 2  | 2  | 2  | 2  | 2  | 2  | 2  |
 
-|_on the board_|operation|SW25|SW26|SW27|SW28|SW29|SW30|SW31|SW32|
-|--------------|:-------:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|_logical name_|         |RST |NMI |STEP|RUN |PAUS|STOP|EXAM|DEPO|
-|_i/o address_ |select   |    |    |BA+5|BA+5|BA+5|BA+5|BA+5|BA+5|
-|_data_        |select   |    |    |02h |01h |80h |40h |20h |10h |
-|_i/o address_ |read     |    |    |BA+6|BA+6|BA+6|BA+6|BA+6|BA+6|
-|_data_        |read     |    |    |0Bh |07h |0Eh |0Dh |0Bh |07h |
+|_on the board_    |operation|SW25|SW26|SW27|SW28|SW29|SW30|SW31|SW32|
+|------------------|:-------:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|_logical name_    |         |RST |NMI |STEP|RUN |PAUS|STOP|EXAM|DEPO|
+|_i/o address_     |select   |    |    |BA+5|BA+5|BA+5|BA+5|BA+5|BA+5|
+|_data_            |select   |    |    |02h |01h |80h |40h |20h |10h |
+|_i/o address_     |read     |    |    |BA+6|BA+6|BA+6|BA+6|BA+6|BA+6|
+|_bit_ (active low)|         | 3  | 3  | 3  | 3  | 3  | 3  | 3  | 3  |

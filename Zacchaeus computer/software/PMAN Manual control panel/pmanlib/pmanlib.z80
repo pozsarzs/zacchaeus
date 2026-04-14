@@ -534,12 +534,34 @@ DISPDN:	POP	DE		; restore DE
 	POP	BC		; restore BC
 	RET
 	
-; ---- WRITE DATA FROM BUFFER TO STATUS LEDs  -----
+; ---- WRITE STATUS LED BYTE FROM BUFFER TO I/O PORT ----
 WRLED:
+	PUSH	BC			; preserve BC
+	PUSH	DE			; preserve DE
+
+	LD	DE,(BUADDR)		; DE = base address of buffer
+	LD	HL,000Ch		; offset of LED status byte within buffer
+	ADD	HL,DE			; HL = address of LED status byte
+
+	LD	A,(IOADDR)		; load base I/O address
+	ADD	A,04h			; select LED/BLANK port (BA + 4)
+	LD	C,A			; C = port address for OUT (C),A
+
+	LD	A,(HL)			; load LED status byte from buffer
+	OUT	(C),A			; write full byte to hardware port
+
+	POP	DE			; restore DE
+	POP	BC			; restore BC
 	RET
 
 ; ---- READ SWITCH AND BUTTON MATRIX DATA TO BUFFER -----
 RDSWTCH:
+
+
+
+
+
+
 	RET
 
 ; -------- DATA AREA --------

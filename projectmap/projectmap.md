@@ -15,7 +15,6 @@ title: Project Zacchaeus
   - [x] documentation
   - [x] ProtoCard #1 planning and CAD files
   - [x] ProtoCard #2 planning and CAD files
-  - [x] ProtoCard #2 planning and CAD files
   - [ ] ExtenderCard planning and CAD files
 - **Custom modules**
   - **Module PANA**
