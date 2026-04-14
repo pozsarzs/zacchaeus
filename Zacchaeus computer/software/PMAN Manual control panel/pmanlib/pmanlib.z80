@@ -492,9 +492,48 @@ WLEDDN:	XOR	A		; A = 0, CF = 0 (success)
 	RET
 
 ; ---- WRITE DATA FROM BUFFER TO DISPLAY  -----
-WRDISP:
-	RET
+WRDISP:	PUSH	BC
+	PUSH	DE
 
+	LD	DE, (BUADDR)	; DE = base address of input buffer
+	LD	B, 3		; index (starts from 3 down to 0)
+	LD	E, 4		; loop counter (4 iterations total)
+	LD	C, IOADDR	; starting I/O port address
+
+DISPLP:
+	; --- lower nibble: (BUADDR + B)
+	LD	A, B
+	LD	H, 0
+	LD	L, A
+	ADD	HL, DE		; HL = BUADDR + B
+	LD	A, (HL)
+	LD	D, A		; store lower nibble in D
+
+	; --- upper nibble: (BUADDR + B + 4)
+	LD	A, B
+	ADD	A, 4
+	LD	H, 0
+	LD	L, A
+	ADD	HL, DE		; HL = BUADDR + B + 4
+	LD	A, (HL)
+
+	SLA	A		; shift upper nibble to high 4 bits
+	SLA	A
+	SLA	A
+	SLA	A
+
+	OR	D		; combine upper and lower nibbles
+	OUT	(C), A		; --- output result to current I/O port
+
+	INC	C		; move to next I/O port
+	DEC	B		; next index
+	DEC	E		; decrement loop counter
+	JP	NZ, DISPLP	; repeat until 4 iterations done
+
+DISPDN:	POP	DE		; restore DE
+	POP	BC		; restore BC
+	RET
+	
 ; ---- WRITE DATA FROM BUFFER TO STATUS LEDs  -----
 WRLED:
 	RET
@@ -507,4 +546,3 @@ RDSWTCH:
 IOADDR:	DB	0		; I/O address
 BUADDR:	DB	0		; I/O address
 	END
-
