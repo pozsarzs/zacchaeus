@@ -555,13 +555,13 @@ WRLED:
 	RET
 
 ; ---- READ SWITCH AND BUTTON MATRIX DATA TO BUFFER -----
-RDSWTCH:
+RDSWTCH:PUSH	BC
+	PUSH	DE
 
 
 
-
-
-
+	POP	DE			; restore DE
+	POP	BC			; restore BC
 	RET
 
 ; -------- DATA AREA --------

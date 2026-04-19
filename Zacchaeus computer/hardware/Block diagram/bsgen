@@ -1,0 +1,3 @@
+#!/bin/bash
+NAME=blk_zacchaeus
+dot -Tpng $NAME.dot -o ../images/schematics/$NAME.png

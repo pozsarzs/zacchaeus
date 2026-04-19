@@ -55,7 +55,3 @@ A detailed description of the memory box can be found in the
 - [The FORTRAN Month](https://github.com/pozsarzs/fortran_month)
 - [Synchronized Client Register Access Protocol](https://github.com/pozsarzs/scrap)
 - [ROMCat EPROM filesystem](https://github.com/pozsarzs/romfat)
-
-> [!NOTE]
-> Content will be updated continuously as development progresses.  
-> The [current status of the related files is shown here](projectmap/projectmap.html).

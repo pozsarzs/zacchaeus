@@ -1,0 +1,88 @@
+digraph InStr {
+  pad=0.3
+  splines=ortho;
+  edge [arrowsize=0.5];
+  node [shape=box];
+  nodesep=0.2;
+  
+  ATX [label = "ATX type\n power supply"];
+  MCS51M1 [label = "MCS-51M\n level shifter"];
+  MCS51M2 [label = "MCS-51M\n level shifter"];
+  PANA [label = "PANA\n analog I/O"];
+  PBKP [label = <<b>back panel</b>>, width=5];
+  PCOX [label = "PCOX\n COVOX & amp."];
+  PFRP [label = <<b>front panel</b>>, width=6];
+  PIOI [label = "PIOI\n digital I/O"];
+  PMANDP [label = "PMAN-DP\n display"];
+  PMANIF [label = "PMAN-IF\n interface"];
+  PMANSW [label = "PMAN-SW\n switches"];
+  PPOW [label = "PPOW\n power distributor"];
+  PSPK [label = "PSPK\n speaker\n amp."];
+  PTAP [label = "PTAP\n tape int."];
+  SC126 [label = "SC126\n motherboard", width=3];
+  SC702 [label = "SC702\n backplane", width=5];
+  SC715 [label = "SC715\n CF int."];
+  SC716 [label = "SC716\n SIO-2"];
+  SC717 [label = "SC717\n PIO"];
+  SC718 [label = "SC718\n CTC"];
+  SC719 [label = "SC719\n DIO"];
+
+  CFCard [shape=box, style=rounded]
+  SDCard [shape=box, style=rounded]
+  Power [label="±5V\n ±12V\n +24V", shape=box, style=rounded]
+  Speaker [shape=box, style=rounded]
+  
+  // power supply
+  PBKP -> ATX [color=red];
+  ATX -> PPOW [color=red];
+  ATX -> SC715 [color=red];
+  PPOW -> PFRP [color=red];
+  PPOW -> Power [color=red];
+
+  // modules on motherboard
+  SC126 -> SC702 [dir=both, color=blue];
+  SC126	-> MCS51M1 [dir=both, color=darkgreen];
+  MCS51M1 -> PBKP [dir=both, color=darkgreen];
+  SC126	-> PTAP [dir=both, color=darkgreen];
+
+  // SD card
+  SC126	-> "SDC int." [dir=both, color=darkgreen];
+  "SDC int." -> SDCard [dir=both, color=darkgreen];
+  // PCOX
+  SC126 -> PCOX [dir=both, color=blue];
+  PCOX	-> PBKP
+  PCOX	-> PFRP
+  // PMAN
+  SC126 -> PMANIF [dir=both, color=blue];
+  PMANIF -> PMANDP;
+  PMANIF -> PMANSW [dir=both];
+
+  // modules on the backplane
+  // SC715
+  SC702	-> SC715 [dir=both, color=blue];
+  SC715 -> CFCard [dir=both];
+  // SC716
+  SC702	-> SC716 [dir=both, color=blue];
+  SC716 -> PBKP [dir=both, color=darkgreen];
+  SC716 -> MCS51M2 [dir=both, color=darkgreen];
+  MCS51M2 -> PBKP [dir=both, color=darkgreen];
+  // SC717
+  SC702	-> SC717 [dir=both, color=blue];
+  SC717 -> PBKP [dir=both];
+  // SC718
+  SC702	-> SC718 [dir=both, color=blue];
+  SC718 -> PBKP;
+  SC718 -> PTAP;
+  // SC719
+  SC702	-> SC719 [dir=both, color=blue];
+  SC719 -> PIOI [dir=both];
+  PIOI -> PFRP [dir=both];  
+  // PANA
+  SC702	-> PANA [dir=both, color=blue];
+  PANA -> PFRP [dir=both];  
+  // PTAP
+  SC702	-> PTAP [dir=both, color=blue];
+  PTAP	-> PSPK;
+  PSPK	-> Speaker;
+  PTAP -> PFRP [dir=both];  
+}
