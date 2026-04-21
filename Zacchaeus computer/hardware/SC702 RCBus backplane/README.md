@@ -6,6 +6,7 @@
 
 |file                                    |description                               |
 |----------------------------------------|------------------------------------------|
+|SC702.jpg                               |picture about assembled board             |
 |SC702 description.pdf                   |detailed description                      |
 |SC702 kit contents.pdf                  |contents of the kit available for purchase|
 |SC702 schematic.pdf                     |schematic drawing                         |

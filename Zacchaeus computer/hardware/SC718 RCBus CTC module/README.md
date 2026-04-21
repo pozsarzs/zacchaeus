@@ -6,6 +6,7 @@
 
 |file                                    |description                               |
 |----------------------------------------|------------------------------------------|
+|SC718.jpg                               |picture about assembled board             |
 |SC718 description.pdf                   |detailed description                      |
 |SC718 kit contents.pdf                  |contents of the kit available for purchase|
 |SC718 schematic.pdf                     |schematic drawing                         |

@@ -6,7 +6,7 @@
 
 |file                  |description                               |
 |----------------------|------------------------------------------|
-|SC126 assembled.jpg   |picture about assembled board             |
+|SC126.jpg             |picture about assembled board             |
 |SC126 description.pdf |detailed description                      |
 |SC126 kit contents.pdf|contents of the kit available for purchase|
 |SC126 schematic.pdf   |schematic drawing                         |

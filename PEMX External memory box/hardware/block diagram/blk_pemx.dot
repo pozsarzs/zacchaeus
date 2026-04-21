@@ -1,0 +1,61 @@
+digraph PEMX {
+  pad=0.3
+  splines=ortho;
+  edge [arrowsize=0.5];
+  node [shape=box];
+  nodesep=0.4;
+  ranksep=0.4;
+  
+  BANK [label="EPROM banks\n U12-19", width=9, rank=2]
+  LED [label="RD LED", shape=box, style=rounded, rank=2,]
+  PIO1 [label="PIO #1\n control in", style=rounded, rank=1]
+  PIO2 [label="PIO #2\n data out", style=rounded, rank=1]
+
+  {rank=same; PIO1; PIO2;}
+  {rank=same; LED; BANK;}
+
+  U1 [label="U1\n 74LS138\n -E0...4/-OE", height=1.5]
+  U2 [label="U2\n 74LS245\n control"]
+  U3 [label="U3\n 74LS245\n data"]
+  U4 [label="U4\n reset circuit", width=2]
+  U5 [label="U5\n 74LS173\n DS0...3", height=1.5]
+  U6 [label="U6\n 74LS173\n A0...3"]
+  U7 [label="U7\n 74LS173\n A4...7"]
+  U8 [label="U8\n 74LS122\n RD LED"]
+  U9 [label="U9\n 74LS138\n -CS0...7"]
+  U10 [label="U10\n 74LS173\n A8...11", width=1.1]
+  U11 [label="U11\n 74LS173\n A12...15"]
+
+  // control
+  PIO1 -> U2
+  U2 -> U1
+  U1 -> U6
+  U1 -> U7
+  U1 -> U8 [weight=20]
+  U8 -> LED [weight=20]
+  U1 -> U10
+  U1 -> U11
+  U1 -> BANK
+
+  U2 -> U5 [weight=10];
+  U5 -> U9 [weight=10];
+  U9 -> BANK [color=blue]
+
+  U4 -> U6
+  U4 -> U7
+  U4 -> U10
+  U4 -> U11
+
+  U2 -> U6
+  U6 -> BANK [color=red]
+  U2 -> U7
+  U7 -> BANK [color=red]
+  U2 -> U10
+  U10 -> BANK [color=red]
+  U2 -> U11
+  U11 -> BANK [color=red]
+
+  // data
+  PIO2 -> U3 [dir=back]
+  U3 -> BANK [dir=back, color=darkgreen]
+}
